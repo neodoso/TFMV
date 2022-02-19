@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4ECC5125-1306-48F3-8314-4959EF1E5D8E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TFMV</RootNamespace>
+    <AssemblyName>TFMV</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.5.1</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TFMV.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>TFMV.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AnimatedGif, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\AnimatedGif.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>bin\Debug\Libs\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="MouseKeyboardLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\MouseKeyboardLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions">
+      <HintPath>.\System.Web.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Functions\BitmapProcessing.cs" />
+    <Compile Include="Functions\misc.cs" />
+    <Compile Include="Functions\Serializer.cs" />
+    <Compile Include="Functions\OS_settings.cs" />
+    <Compile Include="Functions\StringExtensions.cs" />
+    <Compile Include="Functions\tga.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SourceEngine\SteamGameConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SourceEngine\SteamGameConfig.designer.cs">
+      <DependentUpon>SteamGameConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SourceEngine\VMT.cs" />
+    <Compile Include="SourceEngine\VPK.cs" />
+    <Compile Include="SourceEngine\VTFedit.cs" />
+    <Compile Include="TF2\model_attachement.cs" />
+    <Compile Include="TF2\paints.cs" />
+    <Compile Include="TF2\player_bodygroups.cs" />
+    <Compile Include="TF2\player_materials_all.cs" />
+    <Compile Include="TF2\player_materials.cs" />
+    <Compile Include="SourceEngine\VDF.cs" />
+    <Compile Include="TF2\items_game.cs" />
+    <Compile Include="UserControls\ColorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Loadout\Loadout_File.cs" />
+    <Compile Include="UserControls\Loadout\Loadout_Item.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Loadout\Loadout_Item.Designer.cs">
+      <DependentUpon>Loadout_Item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Loadout\Loadout_Item_simple.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\Bodygroup_manager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\Bodygroup_manager.Designer.cs">
+      <DependentUpon>Bodygroup_manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\MaterialColorPicker\ColorPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\MaterialEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\MaterialEditorDialog.designer.cs">
+      <DependentUpon>MaterialEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\MaterialColorPicker\ColorShowBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\MaterialColorPicker\ColorSlider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\MaterialColorPicker\ExtMethodsSystemDrawingColor.cs" />
+    <Compile Include="UserControls\Loadout\ExtdListViewItem.cs" />
+    <Compile Include="UserControls\Screenshot_Paints_Tool\CheckBox_Paint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Screenshot_Paints_Tool\CheckBox_Paint.Designer.cs">
+      <DependentUpon>CheckBox_Paint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Screenshot_Paints_Tool\MessageBox_PaintsChartNotice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Screenshot_Paints_Tool\MessageBox_PaintsChartNotice.Designer.cs">
+      <DependentUpon>MessageBox_PaintsChartNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Screenshot_Paints_Tool\PickPaints_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Screenshot_Paints_Tool\PickPaints_List.Designer.cs">
+      <DependentUpon>PickPaints_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\PaintColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\Skins Manager\Model_Painter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\Model_Painter.Designer.cs">
+      <DependentUpon>Model_Painter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Model_Selection\VPKSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Model_Selection\VPKSelect.Designer.cs">
+      <DependentUpon>VPKSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Model_Selection\ModelSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Model_Selection\ModelSelect.Designer.cs">
+      <DependentUpon>ModelSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\VMT_Painter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Skins Manager\VMT_Painter.Designer.cs">
+      <DependentUpon>VMT_Painter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TurnTable_Gif_gen\Turntable_GIF_Generator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TurnTable_Gif_gen\Turntable_GIF_Generator.Designer.cs">
+      <DependentUpon>Turntable_GIF_Generator.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceEngine\SteamGameConfig.resx">
+      <DependentUpon>SteamGameConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Loadout\Loadout_Item.resx">
+      <DependentUpon>Loadout_Item.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Skins Manager\Bodygroup_manager.resx">
+      <DependentUpon>Bodygroup_manager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Skins Manager\MaterialEditorDialog.de.resx">
+      <DependentUpon>MaterialEditorDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Skins Manager\MaterialEditorDialog.resx">
+      <DependentUpon>MaterialEditorDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Screenshot_Paints_Tool\CheckBox_Paint.resx">
+      <DependentUpon>CheckBox_Paint.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Screenshot_Paints_Tool\MessageBox_PaintsChartNotice.resx">
+      <DependentUpon>MessageBox_PaintsChartNotice.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Screenshot_Paints_Tool\PickPaints_List.resx">
+      <DependentUpon>PickPaints_List.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Skins Manager\Model_Painter.resx">
+      <DependentUpon>Model_Painter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Skins Manager\VMT_Painter.resx">
+      <DependentUpon>VMT_Painter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Model_Selection\VPKSelect.resx">
+      <DependentUpon>VPKSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Model_Selection\ModelSelect.resx">
+      <DependentUpon>ModelSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Files\textures\fireLayeredSlowTiled512.vtf" />
+    <EmbeddedResource Include="Files\textures\flat_color.vtf" />
+    <EmbeddedResource Include="Files\textures\player_masks.zip" />
+    <EmbeddedResource Include="Files\textures\flat_color_white.vtf" />
+    <EmbeddedResource Include="Files\models\tfmv_bg.dx80.vtx" />
+    <EmbeddedResource Include="Files\models\tfmv_bg.dx90.vtx" />
+    <EmbeddedResource Include="Files\models\tfmv_bg.mdl" />
+    <EmbeddedResource Include="Files\models\tfmv_bg.swx.vtx" />
+    <EmbeddedResource Include="Files\models\tfmv_bg.vvd" />
+    <EmbeddedResource Include="UserControls\TurnTable_Gif_gen\Turntable_GIF_Generator.resx">
+      <DependentUpon>Turntable_GIF_Generator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Resources\bodygroup_masks\demoman_shoes.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\demoman_shoes_grenades.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\demoman_grenades.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hand.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hand_hat.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hat.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\hvyweapon_hands.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\medic_backpack.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\pyro_backpack.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\pyro_backpack_grenades.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\pyro_backpack_head.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\pyro_grenades.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\pyro_head.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\pyro_head_grenades.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\pyro_head_grenades_backpack.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_dogtags.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_hat.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_hat_dogtags.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_hat_dogtags_headphones.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_hat_headphones.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_hat_shoes_socks.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_hat_shoes_socks_dogtags.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_hat_shoes_socks_dogtags_headphones.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_hat_shoes_socks_headphones.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_headphones.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_shoes_socks.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\sniper_hat.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\soldier_grenades.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\soldier_grenades_hat.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\soldier_hat.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_16xLG.png" />
+    <EmbeddedResource Include="Resources\folder_Open_16xLG.png" />
+    <EmbeddedResource Include="Resources\Remove_16xLG.png" />
+    <EmbeddedResource Include="Resources\action_add_16xLG.png" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_headphones_dogtags.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_shoes_socks_dogtags.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_shoes_socks_headphones.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\scout_headphones_shoes_socks_dogtags.bin" />
+    <None Include="Resources\icon_mdl_item.png" />
+    <None Include="Resources\icon_workshop_item.png" />
+    <None Include="Resources\gear_32xMD.png" />
+    <None Include="Resources\gear_16xLG.png" />
+    <None Include="Resources\icon_missing.png" />
+    <None Include="Resources\demoman_icon.png" />
+    <None Include="Resources\engineer_icon.png" />
+    <None Include="Resources\heavy_icon.png" />
+    <None Include="Resources\medic_icon.png" />
+    <None Include="Resources\pyro_icon.png" />
+    <None Include="Resources\scout_icon.png" />
+    <None Include="Resources\sniper_icon.png" />
+    <None Include="Resources\soldier_icon.png" />
+    <None Include="Resources\spy_icon.png" />
+    <EmbeddedResource Include="Resources\player_icons\demoman.png" />
+    <EmbeddedResource Include="Resources\player_icons\engineer.png" />
+    <EmbeddedResource Include="Resources\player_icons\heavy.png" />
+    <EmbeddedResource Include="Resources\player_icons\medic.png" />
+    <EmbeddedResource Include="Resources\player_icons\pyro.png" />
+    <EmbeddedResource Include="Resources\player_icons\scout.png" />
+    <EmbeddedResource Include="Resources\player_icons\sniper.png" />
+    <EmbeddedResource Include="Resources\player_icons\soldier.png" />
+    <EmbeddedResource Include="Resources\player_icons\spy.png" />
+    <None Include="Resources\to_arrow_b16.png" />
+    <None Include="Resources\pencil_32.png" />
+    <None Include="Resources\btn_x.png" />
+    <None Include="Resources\up.png" />
+    <None Include="Resources\down.png" />
+    <Content Include="Libs\AnimatedGif.dll" />
+    <Content Include="Libs\Ionic.Zip.dll" />
+    <Content Include="Libs\MouseKeyboardLibrary.dll" />
+    <Content Include="TFMV.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
