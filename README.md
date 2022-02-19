@@ -1,9 +1,9 @@
 # TFMV 1.9.2
 Team Fortress 2 Model Viewer
 
-User Guide: https://steamcommunity.com/sharedfiles/filedetails/?id=158547475
+User Guide / More information: https://steamcommunity.com/sharedfiles/filedetails/?id=158547475
 
-TFMV is a program that add functionality and automation to the Source Engine HLMV.exe model viewer (of Team Fortress 2).
+TFMV is a program that adds functionality and automation to the Source Engine HLMV.exe model viewer (of Team Fortress 2).
 
 TFMV (Team Fortress Model Viewer) is a tool for Windows that makes it easier to load and preview TF2 player item loadouts in the model viewer "HLMV" 
 and also helps for testing and developing workshop items by automating file loading and adding features on top of HLMV for tasks which are otherwise 
