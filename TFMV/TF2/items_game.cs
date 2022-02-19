@@ -26,7 +26,7 @@ namespace TFMV.TF2
 
             // item_slot from schema.vdf = "misc" since in items_game.vdf it can be anything (head, feet, etc) and wee
             // we get the category (misc, primary,secondary, melee etc) from schema.vdf
-            public string item_slot_schema { get; set; }
+            public string item_slot_schema { get; set; } 
             public string equip_rgn { get; set; }
             public bool not_paintable { get; set; }
 
@@ -47,7 +47,7 @@ namespace TFMV.TF2
             public void models_allclass_ADD(string Class, string Model)
             {
                 models model = new models();
-
+                
                 model.tfclass = Class;
                 model.model = Model;
 
@@ -87,7 +87,7 @@ namespace TFMV.TF2
         {
             public List<String> regions;
             public String region;
-
+            
 
 
             public region_list()
@@ -102,7 +102,7 @@ namespace TFMV.TF2
         {
             public string model;
             public string tfclass;
-
+            
         }
         [Serializable]
         public class used_by_class
@@ -122,9 +122,9 @@ namespace TFMV.TF2
 
             public visuals()
             {
-                player_bodygroups = new List<player_bodygroup>();
-                attached_models = new List<attached_model>();
-                styles = new List<style>();
+                 player_bodygroups = new List<player_bodygroup>();
+                 attached_models = new List<attached_model>();
+                 styles = new List<style>();
             }
         }
 
@@ -182,14 +182,14 @@ namespace TFMV.TF2
         [Serializable]
         public class style_hidden_bodygroup
         {
-            public string bodygrop_name { get; set; }
-            public byte toggle { get; set; }
+           public string bodygrop_name { get; set; }
+           public byte toggle { get; set; }
 
-            public style_hidden_bodygroup(string _bodygrop_name, byte _toggle)
-            {
-                this.bodygrop_name = _bodygrop_name;
-                this.toggle = _toggle;
-            }
+           public style_hidden_bodygroup(string _bodygrop_name, byte _toggle)
+           {
+               this.bodygrop_name = _bodygrop_name;
+               this.toggle = _toggle;
+           }
         }
 
 

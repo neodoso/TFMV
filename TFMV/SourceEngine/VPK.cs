@@ -1,8 +1,12 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.IO;
+using Microsoft.Win32;
+using System.Diagnostics;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace TFMV.SourceEngine
 {
@@ -12,8 +16,7 @@ namespace TFMV.SourceEngine
         public static string tf_dir, tf2_dir;
 
         //converts long paths to short paths, for "dos" console commands
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-        public static extern int GetShortPathName(
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)] public static extern int GetShortPathName(
         [MarshalAs(UnmanagedType.LPTStr)] string path,
         [MarshalAs(UnmanagedType.LPTStr)] StringBuilder shortPath, int shortPathLength);
 
@@ -140,29 +143,29 @@ namespace TFMV.SourceEngine
             string filename = Path.GetFileName(file_path);
 
             //create temporary directory if it doesn't exist
-            if (!Directory.Exists(tmp_dir))
+            if (!Directory.Exists(tmp_dir)) 
             {
-                Directory.CreateDirectory(tmp_dir);
+                Directory.CreateDirectory(tmp_dir); 
             }
 
             string VPK = (tf_dir + vpk_file).Replace("\\", "/");
-
+            
             string filename_export = file_path.Replace("\\", "/");
             string extract_dir = extract_path.Replace("\\", "/");
+            
 
-
-            if (Directory.Exists(extract_dir) == false)
-            {
+            if (Directory.Exists(extract_dir) == false) 
+            {         
                 try
                 {
-                    Directory.CreateDirectory(extract_dir);
+                     Directory.CreateDirectory(extract_dir); 
 
                 }
                 catch //(Exception ex)
-                {
-                    MessageBox.Show("Error: (VPK extract) could not create directory: " + extract_dir);
+	            {
+	                MessageBox.Show("Error: (VPK extract) could not create directory: " + extract_dir );
                     return false;
-                }
+	            }
             }
 
             StringBuilder shortPath = new StringBuilder(512);

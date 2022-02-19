@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace TFMV.UserControls.Loadout
@@ -37,7 +41,7 @@ namespace TFMV.UserControls.Loadout
 
             skin_blu = 1;
             skin_override_all = 255;
-
+            
         }
 
         protected override void OnPaint(PaintEventArgs pe)

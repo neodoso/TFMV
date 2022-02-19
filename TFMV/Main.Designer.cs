@@ -273,6 +273,9 @@
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.label37 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
             this.Settings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_screenshot_delay)).BeginInit();
             this.panel20.SuspendLayout();
@@ -1898,6 +1901,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Controls.Add(this.label44);
+            this.panel2.Controls.Add(this.label43);
+            this.panel2.Controls.Add(this.label37);
             this.panel2.Controls.Add(this.progressBar_item_list);
             this.panel2.Controls.Add(this.btn_expand_item_list);
             this.panel2.Controls.Add(this.btn_item_sorting_order);
@@ -2384,6 +2390,27 @@
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.TabStop = false;
             // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.BackColor = System.Drawing.Color.Gainsboro;
+            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label37.Name = "label37";
+            // 
+            // label43
+            // 
+            resources.ApplyResources(this.label43, "label43");
+            this.label43.BackColor = System.Drawing.Color.Gainsboro;
+            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label43.Name = "label43";
+            // 
+            // label44
+            // 
+            resources.ApplyResources(this.label44, "label44");
+            this.label44.BackColor = System.Drawing.Color.Gainsboro;
+            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label44.Name = "label44";
+            // 
             // Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2469,6 +2496,7 @@
             this.panel_items.ResumeLayout(false);
             this.panel_items.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.vtab_items.ResumeLayout(false);
             this.vtab_items.PerformLayout();
             this.panel_adv_settings_btn.ResumeLayout(false);
@@ -2734,6 +2762,9 @@
         public System.Windows.Forms.Panel panel_Bgcolor1;
         private System.Windows.Forms.Button btn_turntable;
         private System.Windows.Forms.CheckBox cb_disable_cam_rotPos;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label37;
     }
 }
 

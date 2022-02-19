@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace TFMV.UserControls.Screenshot_Paints_Tool
@@ -12,7 +17,7 @@ namespace TFMV.UserControls.Screenshot_Paints_Tool
         {
             InitializeComponent();
         }
-
+        
         public void set_params(Color _color, string _label, byte _paint_id)
         {
             label_paint.Text = _label;
@@ -32,13 +37,11 @@ namespace TFMV.UserControls.Screenshot_Paints_Tool
 
         private void check_box(object sender, EventArgs e)
         {
-            if (cb_paint.Checked)
+            if(cb_paint.Checked)
             {
                 cb_paint.Checked = false;
 
-            }
-            else
-            {
+            } else{
                 cb_paint.Checked = true;
             }
         }
@@ -47,6 +50,6 @@ namespace TFMV.UserControls.Screenshot_Paints_Tool
         {
             cb_paint.Checked = true;
         }
-
+         
     }
 }

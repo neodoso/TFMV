@@ -1,14 +1,16 @@
-﻿using AnimatedGif;
-using MouseKeyboardLibrary;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Windows.Forms;
+using MouseKeyboardLibrary;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+using System.Windows;
+using AnimatedGif;
 using TFMV.Functions;
+using System.IO;
+using System.Collections.Generic;
 
 namespace TFMV.UserControls
 {
@@ -36,18 +38,17 @@ namespace TFMV.UserControls
         {
             #region error checks
 
-            if (!Main.Process_IsRunning(proc_HLMV))
+            if(!Main.Process_IsRunning(proc_HLMV))
             {
-                System.Windows.MessageBox.Show("Could not run task, HLMV is closed");
+              System.Windows.MessageBox.Show("Could not run task, HLMV is closed");
             }
 
-            if (!Directory.Exists(screemshots_dir))
+            if(!Directory.Exists(screemshots_dir))
             {
                 try
                 {
                     Directory.CreateDirectory(screemshots_dir);
-                }
-                catch
+                } catch
                 {
                     System.Windows.MessageBox.Show("Could not create screenshots folder, verify the path is correct");
                 }
@@ -61,7 +62,7 @@ namespace TFMV.UserControls
             int loop_count = 360 / Convert.ToInt32(txtb_move_x_factor.Text);
             int move_x_factor = Convert.ToInt32(txtb_move_x_factor.Text);
 
-            if (cb_invert_rotation.Checked)
+            if(cb_invert_rotation.Checked)
             {
                 move_x_factor = move_x_factor * -1;
             }
@@ -90,7 +91,7 @@ namespace TFMV.UserControls
             {
                 for (int i = 0; i < loop_count; i++)
                 {
-                    if (cancel_capture)
+                    if(cancel_capture)
                     {
                         break;
                     }
@@ -204,11 +205,11 @@ namespace TFMV.UserControls
 
         private void save_settings()
         {
-            if (!File.Exists(Main.settings_dir + "settings_turntable.ini"))
+            if(!File.Exists(Main.settings_dir + "settings_turntable.ini"))
             {
-                using (File.Create(Main.settings_dir + "settings_turntable.ini")) ;
+                using (File.Create(Main.settings_dir + "settings_turntable.ini"));
             }
-
+  
             string[] lines = File.ReadAllLines(Main.settings_dir + "settings_turntable.ini", System.Text.Encoding.UTF8);
             List<String> settings = new List<string>(lines);
 
@@ -218,31 +219,29 @@ namespace TFMV.UserControls
                 if (settings[i].Split('<')[1] == "txtb_move_x_factor")
                 {
                     found_set_a = true;
-                    settings[i] = txtb_move_x_factor.Text.ToString() + "<" + "txtb_move_x_factor";
+                    settings[i] = txtb_move_x_factor.Text.ToString() + "<" + "txtb_move_x_factor" ;
                 }
                 if (settings[i].Split('<')[1] == "cb_invert_rotation")
                 {
                     found_set_b = true;
-                    settings[i] = cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation";
+                    settings[i] = cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation" ;
                 }
             }
 
-            if (!found_set_a)
+            if(!found_set_a)
             {
-                settings.Add(txtb_move_x_factor.Text.ToString() + "<" + "txtb_move_x_factor");
+                settings.Add(txtb_move_x_factor.Text.ToString() + "<" + "txtb_move_x_factor"  );
             }
 
             if (!found_set_b)
             {
-                settings.Add(cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation");
+                settings.Add(cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation" );
             }
 
             try
             {
                 System.IO.File.WriteAllLines(Main.settings_dir + "settings_turntable.ini", settings);
-            }
-            catch
-            {
+            } catch { 
             }
         }
 
@@ -267,13 +266,13 @@ namespace TFMV.UserControls
                         lines.Add(line);
                     }
                 }
-
+                    
                 foreach (string s in lines)
                 {
 
                     string[] arg = s.Split('<');
 
-                    if (arg[1] == "txtb_move_x_factor")
+                    if(arg[1] == "txtb_move_x_factor")
                     {
                         txtb_move_x_factor.Text = arg[0];
                     }
@@ -282,12 +281,10 @@ namespace TFMV.UserControls
                         if (arg[0].ToLower() == "true")
                         {
                             cb_invert_rotation.Checked = true;
-                        }
-                        else
-                        {
+                        } else {
                             cb_invert_rotation.Checked = false;
                         }
-
+                           
                     }
 
                 }

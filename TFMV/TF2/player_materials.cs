@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace TFMV.TF2
 {
@@ -16,7 +19,7 @@ namespace TFMV.TF2
             players_mats.Add(new player_material("engineer", @"materials\models\player\engineer\", "engineer", 2));
 
             players_mats.Add(new player_material("heavy", @"materials\models\player\hvyweapon\", "hvyweapon", 0));
-            // players_mats.Add(new player_material("heavy", @"materials\models\player\hvyweapon\", "hvyweapon_hands"));
+           // players_mats.Add(new player_material("heavy", @"materials\models\player\hvyweapon\", "hvyweapon_hands"));
 
             players_mats.Add(new player_material("medic", @"materials\models\player\medic\", "medic", 2));
             players_mats.Add(new player_material("medic", @"materials\models\player\medic\", "medic_backpack", 0));
@@ -26,7 +29,7 @@ namespace TFMV.TF2
             players_mats.Add(new player_material("sniper", @"materials\models\player\sniper\", "sniper", 1));
             players_mats.Add(new player_material("soldier", @"materials\models\player\soldier\", "soldier", 1));
 
-            // players_mats.Add(new player_material("spy", @"materials\models\player\spy\", "spy"));
+           // players_mats.Add(new player_material("spy", @"materials\models\player\spy\", "spy"));
         }
     }
 

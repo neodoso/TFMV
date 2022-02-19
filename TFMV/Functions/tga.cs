@@ -31,9 +31,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections;
+using System.Text;
+using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Runtime.InteropServices;
 
 namespace TFMV.Functions
@@ -1267,47 +1269,47 @@ namespace TFMV.Functions
 
                     break;
 
-                    /*
-                                    case 32:
+/*
+                case 32:
 
-                                        // if this is a new tga file and we have an extension area, we'll determine the alpha based on 
-                                        // the extension area Attributes 
-                                        if (this.Format == TGAFormat.NEW_TGA && this.objTargaFooter.ExtensionAreaOffset > 0)
-                                        {
-                                            switch (this.objTargaExtensionArea.AttributesType)
-                                            {
+                    // if this is a new tga file and we have an extension area, we'll determine the alpha based on 
+                    // the extension area Attributes 
+                    if (this.Format == TGAFormat.NEW_TGA && this.objTargaFooter.ExtensionAreaOffset > 0)
+                    {
+                        switch (this.objTargaExtensionArea.AttributesType)
+                        {
 
-                                                case 0:
-                                                case 1:
-                                                case 2: // no alpha data
-                                                    pfTargaPixelFormat = PixelFormat.Format32bppRgb;
-                                                    break;
+                            case 0:
+                            case 1:
+                            case 2: // no alpha data
+                                pfTargaPixelFormat = PixelFormat.Format32bppRgb;
+                                break;
 
-                                                case 3: // useful alpha data
-                                                    pfTargaPixelFormat = PixelFormat.Format32bppArgb;
-                                                    break;
+                            case 3: // useful alpha data
+                                pfTargaPixelFormat = PixelFormat.Format32bppArgb;
+                                break;
 
-                                                case 4: // premultiplied alpha data
-                                                    pfTargaPixelFormat = PixelFormat.Format32bppPArgb;
-                                                    break;
+                            case 4: // premultiplied alpha data
+                                pfTargaPixelFormat = PixelFormat.Format32bppPArgb;
+                                break;
 
-                                            }
-                                        }
-                                        else
-                                        {
-                                            // just a regular tga, determine the alpha based on the Header Attributes
-                                            if (this.Header.AttributeBits == 0)
-                                                pfTargaPixelFormat = PixelFormat.Format32bppRgb;
-                                            if (this.Header.AttributeBits == 8)
-                                                pfTargaPixelFormat = PixelFormat.Format32bppArgb;
+                        }
+                    }
+                    else
+                    {
+                        // just a regular tga, determine the alpha based on the Header Attributes
+                        if (this.Header.AttributeBits == 0)
+                            pfTargaPixelFormat = PixelFormat.Format32bppRgb;
+                        if (this.Header.AttributeBits == 8)
+                            pfTargaPixelFormat = PixelFormat.Format32bppArgb;
 
-                                            break;
-                                        }
+                        break;
+                    }
 
 
 
-                                        break;
-                                        */
+                    break;
+                    */
             }
 
 

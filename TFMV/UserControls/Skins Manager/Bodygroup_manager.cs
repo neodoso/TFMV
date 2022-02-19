@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.IO;
+using System.Data;
 using System.Linq;
-using System.Reflection;
-using System.Text.RegularExpressions;
+using System.Text;
 using System.Windows.Forms;
-using TFMV.Functions;
+
 using TFMV.SourceEngine;
+using TFMV.Functions;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Threading;
+using System.Reflection;
 
 namespace TFMV.UserControls
 {
@@ -18,7 +23,7 @@ namespace TFMV.UserControls
         private List<TF2.player_bodygroup> bodygroups_class = new List<TF2.player_bodygroup>();
         private List<TF2.bodygroup_combination> bodygroups_combinations = new List<TF2.bodygroup_combination>();
 
-        private string tfmv_dir, cached_dir, player_class, team_color;
+        private string tfmv_dir,cached_dir,player_class,team_color;
 
 
         public Bodygroup_manager()
@@ -184,7 +189,7 @@ namespace TFMV.UserControls
 
             gen_player_material(bodygroups_off);
 
-            if (refresh_hlmv)
+            if(refresh_hlmv)
             {
                 Main.refresh_hlmv(false);
             }
@@ -214,7 +219,7 @@ namespace TFMV.UserControls
             string tf_class = player_class;
 
             if (tf_class == "demo") { tf_class = "demoman"; }
-
+          
             #region search for player material
 
             TF2.player_material player_material = null;
@@ -258,7 +263,7 @@ namespace TFMV.UserControls
 
             // extract VMT of player's team color
             if (!Main.grey_material)
-            {
+            { 
                 VPK.Extract(player_material.mat_dir + mat_name + ".vmt", tfmv_dir + player_material.mat_dir, 0);
             }
 
@@ -286,22 +291,20 @@ namespace TFMV.UserControls
 
                 string mask_name = "";
                 for (int i = 0; i < bodygroups_class.Count; i++)
-                {
+			    {
                     if (bodygroups_class[i].name == bodygroups_off[0])
                     {
                         mask_name = bodygroups_class[i].mask_name;
                     }
-                }
+			    }
                 System.IO.Stream fs;
                 if (mask_name != "")
                 {
                     fs = asm.GetManifestResourceStream("TFMV.Resources.bodygroup_masks." + mask_name + ".bin");
+                } else {
+                     fs = asm.GetManifestResourceStream("TFMV.Resources.bodygroup_masks." + tf_class + "_" + bodygroups_off[0] + ".bin");
                 }
-                else
-                {
-                    fs = asm.GetManifestResourceStream("TFMV.Resources.bodygroup_masks." + tf_class + "_" + bodygroups_off[0] + ".bin");
-                }
-
+                
 
                 if (fs == null) { return; }
 
@@ -320,7 +323,7 @@ namespace TFMV.UserControls
 
                 string cached_vtf = cached_dir + vtf_name + "_mask" + ".vtf";
                 if ((player_material.texture_res == 1) && (Main.grey_material)) { cached_vtf = cached_dir + "rgba_grey_1024_512.vtf"; }
-                if ((player_material.texture_res == 2) && (Main.grey_material)) { cached_vtf = cached_dir + "rgba_grey_2048_1024.vtf"; }
+                if((player_material.texture_res == 2) && (Main.grey_material)) { cached_vtf = cached_dir + "rgba_grey_2048_1024.vtf"; }
 
 
                 // inject alpha
@@ -378,7 +381,7 @@ namespace TFMV.UserControls
                     if (match != "") { break; }
                 }
 
-                #endregion
+            #endregion
 
 
                 if (match != "")
@@ -466,13 +469,11 @@ namespace TFMV.UserControls
                     // make sure its not a line that's commented out
                     if (line.Contains("{"))
                     {
-
+                       
                         if (tf_class == "medic")
                         {
                             vmt_lines.Insert(i + 1, "\t$translucent 1\n\t$alphatest 1\n" + "\t$basemapalphaphongmask 0");
-                        }
-                        else
-                        {
+                        } else {
                             vmt_lines.Insert(i + 1, "\t$translucent 1\n\t$alphatest 1\n");
                         }
                         break;
@@ -481,7 +482,7 @@ namespace TFMV.UserControls
 
                 // make VMT red, since we can't switch the model skin in HLMV
                 if (team_color == "blue") { mat_name = mat_name.Replace("blue", "red"); }
-
+             
                 File.WriteAllLines(tfmv_dir + player_material.mat_dir + mat_name + ".vmt", vmt_lines);
             }
             catch

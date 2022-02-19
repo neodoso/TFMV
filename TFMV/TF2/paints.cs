@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Drawing;
 
 namespace TFMV.TF2
 {
     public class paints
     {
-        public static List<paint> red = new List<paint>
+        public static List<paint> red = new List<paint> 
         {
             new paint(Color.FromArgb(230, 230, 230), "An Extraordinary Abundance of Tinge"),
             new paint(Color.FromArgb(216, 190, 216), "Color No. 216-190-216"),
@@ -39,7 +42,7 @@ namespace TFMV.TF2
         };
 
 
-        public static List<paint> blu = new List<paint>
+        public static List<paint> blu = new List<paint> 
         {
             new paint(Color.FromArgb(230, 230, 230), "An Extraordinary Abundance of Tinge"),
             new paint(Color.FromArgb(216, 190, 216), "Color No. 216-190-216"),

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using TFMV.UserControls.Screenshot_Paints_Tool;
 
@@ -12,8 +16,8 @@ namespace TFMV.UserControls
 
         #region paints list (with shorter names)
 
-        List<string> paints_list = new List<string>
-        {
+        List<string> paints_list = new List<string> 
+        { 
         "230 230 230:Extra. Abundance of Tinge",
         "216 190 216:Color No. 216-190-216",
         "197 175 145:Peculiarly Drab Tincture",

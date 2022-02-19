@@ -1,9 +1,14 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+using System.IO;
+using Microsoft.Win32;
 
 
 namespace TFMV.SourceEngine
@@ -31,9 +36,9 @@ namespace TFMV.SourceEngine
         public SteamGameConfig()
         {
             InitializeComponent();
-#if DEBUG
-            settings_dir = "C:\\Users\\Mike\\Desktop\\TFMV\\config\\";
-#endif
+            #if DEBUG
+                settings_dir = "C:\\Users\\Mike\\Desktop\\TFMV\\config\\";
+            #endif
         }
 
         // get Steam install directory from the windows registry
@@ -47,7 +52,7 @@ namespace TFMV.SourceEngine
                 valid_config = true;
                 return true;
             }
-
+           
             // if not try to find SteamDir and TF2 dir and test if hlmv.exe exists
             try
             {
@@ -80,19 +85,17 @@ namespace TFMV.SourceEngine
                 //verify that steam dir is valid
                 if (Directory.Exists(steam_dir))
                 {
-                    txtb_steamdir.Text = steam_dir;
+                     txtb_steamdir.Text = steam_dir;
 
                     //get team fortress 2 install dir
                     if (get_app_config(appid))
                     {
-                        if (validate_tf_dir(true))
+                        if(validate_tf_dir(true))
                         {
                             valid_config = true;
                             // successfully found steam dir, tf2 dir and the sdk tools
                             return true;
-                        }
-                        else
-                        {
+                        } else {
                             valid_config = false;
                             MessageBox.Show("Error  (1) Steam and TF2 directories where found, but the SDK tools were not, make sure TF2 tools are properly insalled in 'Team Fortress 2\bin\'.");
                             // could not find HLMV
@@ -100,9 +103,7 @@ namespace TFMV.SourceEngine
                         }
 
 
-                    }
-                    else
-                    {
+                    } else {
 
                         valid_config = false;
                         // tf2 dir not found
@@ -125,7 +126,7 @@ namespace TFMV.SourceEngine
                 return false;
             }
 
-
+     
         }
 
         // gets game (tf2) install path from the steam config.vdf
@@ -134,7 +135,7 @@ namespace TFMV.SourceEngine
             var steam_config = steam_dir + "config\\config.vdf";
 
             //if config.vdf exists
-            if (!File.Exists(steam_config))
+            if(!File.Exists(steam_config))
             {
                 MessageBox.Show("Error (0) Could not find   " + steam_config);
                 return false;
@@ -179,7 +180,7 @@ namespace TFMV.SourceEngine
                     return true;
                 }
             }
-
+        
 
             #region get libraryfolders.vdf data
 
@@ -209,7 +210,7 @@ namespace TFMV.SourceEngine
             }
 
             // test steam_dir + \SteamApps\common\Team Fortress 2\tf\
-            if (Directory.Exists(steam_dir + @"\SteamApps\common\Team Fortress 2\tf\"))
+            if (Directory.Exists(steam_dir  + @"\SteamApps\common\Team Fortress 2\tf\"))
             {
                 if (sett_tf_dir(steam_dir + @"\SteamApps\common\Team Fortress 2\tf\"))
                 {
@@ -221,7 +222,7 @@ namespace TFMV.SourceEngine
 
             MessageBox.Show("Error (5) Could not find the TF2 install directory, please set the TF directory path manually.");
             return false;
-
+            
         }
 
         // checks if hlmv.exe exists
@@ -364,7 +365,7 @@ namespace TFMV.SourceEngine
                     }
                 }
 
-            }
+                }
 
             catch (System.Exception excep)
             {
@@ -410,7 +411,7 @@ namespace TFMV.SourceEngine
             {
                 tf_dir = (tf_path + "\\").Replace(@"\\", @"\");
                 tf2_dir = tf_dir.Replace("\\tf\\", "\\");
-                bin_dir = (tf2_dir + "\\bin\\").Replace("\\tf\\", "\\").Replace(@"\\", @"\");
+                bin_dir = (tf2_dir + "\\bin\\").Replace("\\tf\\", "\\").Replace(@"\\", @"\"); 
                 txtb_moddir.Text = tf_dir;
                 valid_config = true;
 

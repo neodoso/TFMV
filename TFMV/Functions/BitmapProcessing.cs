@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace TFMV.Functions
 {
@@ -38,13 +42,13 @@ namespace TFMV.Functions
                     for (int x = 0; x < widthInBytes; x = x + bytesPerPixel)
                     {
                         // calculate pixel differences between bitmB and bitmW
-                        byte alpha = (byte)Math.Abs(((Line_src[x] + Line_src[x + 1] + Line_src[x + 2]) - (Line_dst[x] + Line_dst[x + 1] + Line_dst[x + 2])) / 3);
+                        byte alpha = (byte)Math.Abs( ((Line_src[x] + Line_src[x + 1] + Line_src[x + 2]) - (Line_dst[x] + Line_dst[x + 1] + Line_dst[x + 2])) / 3);
 
                         // multiply pixel exposure to get a sharper alpha mask
                         int mult_alpha = Convert.ToInt16(alpha); // * 1.15
 
                         // todo replace this by a Math. method() to cap the value to 255, if it's faster
-                        if (mult_alpha > 255) { mult_alpha = 255; }
+                        if (mult_alpha > 255)  { mult_alpha = 255; }
                         alpha = (byte)mult_alpha;
 
                         // invert alpha

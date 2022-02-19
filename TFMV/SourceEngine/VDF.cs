@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 
@@ -140,7 +141,7 @@ namespace TFMV
         public string name { get; set; } //bs
         public string file_path { get; set; }
 
-        bool _indent = true;
+		bool _indent = true;
         public VDF_node RootNode { get; set; }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace TFMV
         /// </summary>
         public VDF_parser()
         {
-
+            
         }
 
 
@@ -172,9 +173,7 @@ namespace TFMV
             try
             {
                 lines = File.ReadAllLines(file_path);
-            }
-            catch
-            {
+            } catch {
                 return;
             }
 
@@ -278,14 +277,14 @@ namespace TFMV
         }
 
 
-        /// <summary>
-        /// Saves the file
-        /// </summary>
-        /// <param name="path">The path to save the file</param>
-        /// <param name="indent">Defines whether to indent the nodes or not</param>
-        public void save_VDF_file(string path, bool indent = true)
-        {
-            _indent = indent;
+    	/// <summary>
+    	/// Saves the file
+    	/// </summary>
+    	/// <param name="path">The path to save the file</param>
+    	/// <param name="indent">Defines whether to indent the nodes or not</param>
+    	public void save_VDF_file(string path, bool indent = true)
+    	{
+    		_indent = indent;
             File.WriteAllText(path, write_line(RootNode, (path.Split('.')[0]).ToString())); //path.Split('.')[0] is bs
         }
 
@@ -320,13 +319,13 @@ namespace TFMV
             }
 
 
-            if (node.nvalue != null)
+            if (node.nvalue != null) 
             {
                 append += "\t\"" + node.nvalue + "\"\r\n";
             }
             else
             {
-                append += "\r\n" + (_indent ? node.get_ident_str() : "") + "{\r\n";
+				append += "\r\n" + (_indent ? node.get_ident_str() : "") +"{\r\n";
             }
             foreach (VDF_node sub in node.nSubNodes)
             {
@@ -336,7 +335,7 @@ namespace TFMV
 
             if (node.nvalue == null)
             {
-                append += (_indent ? node.get_ident_str() : "") + "}\r\n";
+				append += (_indent ? node.get_ident_str() : "") + "}\r\n";
             }
 
             return append;
@@ -368,7 +367,7 @@ namespace TFMV
                 {
                     value = node.nSubNodes[i].nvalue;
                 }
-
+                
             }
 
             return value;

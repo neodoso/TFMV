@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 
 namespace TFMV.SourceEngine
 {
@@ -180,7 +181,7 @@ namespace TFMV.SourceEngine
 
             for (int i = 0; i < mask.Length; i++)
             {
-                result[i] = (byte)(Math.Abs(255 - mask[i]));
+                result[i] = (byte) (Math.Abs(255 - mask[i]));
             }
 
             return result;

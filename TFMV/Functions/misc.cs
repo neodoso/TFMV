@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text;
+using System.IO;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
+using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TFMV.Functions
 {
@@ -101,7 +101,7 @@ namespace TFMV.Functions
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         public static extern int GetShortPathName(
         [MarshalAs(UnmanagedType.LPTStr)] string path,
-        [MarshalAs(UnmanagedType.LPTStr)] StringBuilder shortPath, int shortPathLength);
+        [MarshalAs(UnmanagedType.LPTStr)]  StringBuilder shortPath, int shortPathLength);
 
 
         public static void create_missing_dir(string path)
@@ -129,9 +129,9 @@ namespace TFMV.Functions
         {
             if (File.Exists(source))
             {
-                if (!Directory.Exists(Path.GetDirectoryName(destination)))
-                {
-                    Directory.CreateDirectory(Path.GetDirectoryName(destination));
+                if (!Directory.Exists(Path.GetDirectoryName(destination))) 
+                { 
+                    Directory.CreateDirectory(Path.GetDirectoryName(destination)); 
                 }
                 File.Copy(source, destination, true);
             }
@@ -154,7 +154,7 @@ namespace TFMV.Functions
 
         public static void move_dir_safe(string source, string target)
         {
-            if (!Directory.Exists(source))
+            if(!Directory.Exists(source))
             {
                 return;
             }
@@ -195,10 +195,10 @@ namespace TFMV.Functions
 
         public static void DeleteDirectoryContent(string target_dir)
         {
-            if (!Directory.Exists(target_dir))
-            {
+           if( !Directory.Exists(target_dir))
+           {
                 return;
-            }
+           }
 
             System.IO.DirectoryInfo di = new DirectoryInfo(target_dir);
 
@@ -207,27 +207,25 @@ namespace TFMV.Functions
                 try
                 {
                     file.Delete();
-                }
-                catch
-                {
-
+                } catch {
+                
                 }
 
-
+                
             }
             foreach (DirectoryInfo dir in di.GetDirectories())
             {
 
                 try
                 {
-#if !DEBUG
+                   #if !DEBUG
                         dir.Delete(true);
-#endif
+                    #endif
                 }
                 catch
                 {
 
-                }
+                }          
             }
         }
 
@@ -249,9 +247,9 @@ namespace TFMV.Functions
         }
 
         // checks if file is being used by another process
-        public static bool IsFileLocked(string filepath)
+        public static  bool IsFileLocked(string filepath)
         {
-            // if (File.Exists(filepath)) { System.Windows.Forms.MessageBox.Show("File does not exist: \n" + filepath); return true; }
+           // if (File.Exists(filepath)) { System.Windows.Forms.MessageBox.Show("File does not exist: \n" + filepath); return true; }
             FileInfo file = new FileInfo(filepath);
 
             FileStream stream = null;
@@ -280,7 +278,7 @@ namespace TFMV.Functions
 
 
 
-        #endregion
+#endregion
 
         #region dynamic
 
@@ -307,6 +305,6 @@ namespace TFMV.Functions
         }
 
         #endregion
-
+   
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace TFMV.TF2
 {
@@ -30,8 +33,9 @@ namespace TFMV.TF2
 
             #endregion
 
-            #region engineer
 
+            #region engineer
+    
             var engineer_red = new player_mats("engineer");
             engineer_red.materials.Add(new player_mat(@"materials\models\player\engineer\engineer_red", 2, true, true));
             engineer_red.materials.Add(new player_mat(@"materials\models\player\engineer\engineer_head_red", 0, true, true));
@@ -83,6 +87,7 @@ namespace TFMV.TF2
             players_mats_blue.Add(medic_blue);
 
             #endregion
+
 
             #region pyro
 
@@ -191,7 +196,7 @@ namespace TFMV.TF2
     {
         public string material { get; set; }
         public byte texture_res { get; set; }  // 0 = do not rewrite VTF      // 1 = 1024x512   // 2 = 2048x1024
-
+    
         //  (if true, we keep the VMT's original bump texture for the  player grey material
         public bool keep_bumptexture { get; set; }
 

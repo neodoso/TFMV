@@ -1,24 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TFMV.UserControls
 {
     public partial class VPKSelect : Form
     {
-        List<string> mdls = new List<string>();
-        public Boolean closed = false;
+       List<string> mdls = new List<string>();
+       public Boolean closed = false;
 
         public VPKSelect(List<string> models)
         {
             InitializeComponent();
 
-            mdls = models;
-
+            mdls = models ;
+          
             for (int i = 0; i < models.Count; i++)
             {
-                listBox_vpks.Items.Add(Path.GetFileName(models[i]));
+               listBox_vpks.Items.Add(Path.GetFileName(models[i]));  
             }
 
         }
@@ -30,7 +35,7 @@ namespace TFMV.UserControls
 
             Main.vpk_tmp_path = mdls[listBox_vpks.SelectedIndex];
             closed = true;
-            this.Close();
+           this.Close();
         }
 
         private void VPKSelect_FormClosing(object sender, FormClosingEventArgs e)

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.Text;
+using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace TFMV.SourceEngine
 {
@@ -83,21 +85,21 @@ namespace TFMV.SourceEngine
         {
             if (File.Exists(vmt_path) == false) { return null; }
             string[,] results = new string[param_list.Count, 2];
-
+            
 
             try
             {
                 #region read vmt lines to list
 
-                List<string> vmt_lines = new List<string>();
-                string rline;
-                System.IO.StreamReader file = new System.IO.StreamReader(vmt_path);
-                while ((rline = file.ReadLine()) != null)
-                {
-                    vmt_lines.Add(rline);
-                }
+                    List<string> vmt_lines = new List<string>();
+                    string rline;
+                    System.IO.StreamReader file = new System.IO.StreamReader(vmt_path);
+                    while ((rline = file.ReadLine()) != null)
+                    {
+                        vmt_lines.Add(rline);
+                    }
 
-                file.Close();
+                    file.Close();
 
                 #endregion
 
@@ -113,7 +115,7 @@ namespace TFMV.SourceEngine
                     if (!line.StartsWith("//") && line != "")
                     {
                         //string[] line_split = ((line.ToLower()).Replace("  ", string.Empty)).Split('"');
-
+                        
                         List<String> line_split = ((line.ToLower()).Replace("  ", string.Empty)).Split('"').ToList();
 
                         line_split = line_split.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
@@ -125,20 +127,20 @@ namespace TFMV.SourceEngine
 
                             // check if param/value is already in results
                             bool result_exists = false;
-                            for (int r = 0; r < param_list.Count; r++)
-                            {
-                                if (results[r, 0] != null)
-                                {
-                                    if (results[r, 0] == param_list[p])
-                                    {
-                                        result_exists = true;
-                                    }
-                                }
+                            for (int r = 0; r < param_list.Count; r++) 
+                            { 
+                                if (results[r, 0] != null) 
+                                { 
+                                    if (results[r, 0] == param_list[p]) 
+                                    { 
+                                        result_exists = true; 
+                                    } 
+                                } 
                             }
 
                             // skip param value if it already exists in results array
                             if (result_exists) { continue; }
-
+                    
                             if (line.Contains('"'))
                             {
                                 if ((line_split[0].Contains(param_name)))
@@ -148,7 +150,7 @@ namespace TFMV.SourceEngine
                                 }
                             }
 
-
+                            
                             if (line_split.Count > 1)
                             {
                                 if (line_split[1] == param_name)
@@ -182,7 +184,7 @@ namespace TFMV.SourceEngine
 
                 if (!File.Exists(filepath))
                 {
-                    // MessageBox.Show("Error: invalid vmt path " + filepath);
+                   // MessageBox.Show("Error: invalid vmt path " + filepath);
                     return false;
                 }
                 vmt_lines = File.ReadAllLines(filepath);
@@ -247,7 +249,7 @@ namespace TFMV.SourceEngine
 
                 for (int i = 0; i < vmt_lines.Count; i++)
                 {
-                    string line = ((regex.Replace(vmt_lines[i], @" ")).Trim()).ToLower().Replace("  ", " ");
+                   string line = ((regex.Replace(vmt_lines[i], @" ")).Trim()).ToLower().Replace("  ", " ");
 
                     //make sure its not a line that's commented out
                     if (!line.StartsWith("//") && line != "")
@@ -359,7 +361,7 @@ namespace TFMV.SourceEngine
                             //find colortint_base and get it
                             if ((line_split[1] == "$colortint_base") || (line_split[1] == "$colortintbase"))
                             {
-                                colortint_base = line_split[3].Replace("{", "").Replace("}", "");
+                                colortint_base = line_split[3].Replace("{", "").Replace("}", "");  
                             }
                         }
                     }

@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Collections;
 
 namespace TFMV
 {
@@ -87,7 +92,7 @@ namespace TFMV
         {
             // cancel void if the this. color picker combobox is disabled
             // means its not paintable
-            if (!this.Enabled) { return; }
+            if (!this.Enabled)  {  return;  }
 
             if (paint_.Contains(":"))
             {
@@ -136,7 +141,7 @@ namespace TFMV
             }
         }
 
-
+   
         // get/set selected item.
         public new ColorInfo SelectedItem
         {

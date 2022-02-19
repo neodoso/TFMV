@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace TFMV.TF2
 {
@@ -40,7 +42,7 @@ namespace TFMV.TF2
             this.scout_combinations.Add(new bodygroup_combination(new string[2] { "hat", "dogtags" }, "scout_hat_dogtags"));
             this.scout_combinations.Add(new bodygroup_combination(new string[3] { "hat", "dogtags", "headphones" }, "scout_hat_dogtags_headphones"));
             this.scout_combinations.Add(new bodygroup_combination(new string[2] { "hat", "headphones" }, "scout_hat_headphones"));
-
+            
             this.scout_combinations.Add(new bodygroup_combination(new string[3] { "hat", "shoes_socks", "dogtags" }, "scout_hat_shoes_socks_dogtags"));
             this.scout_combinations.Add(new bodygroup_combination(new string[4] { "hat", "shoes_socks", "dogtags", "headphones" }, "scout_hat_shoes_socks_dogtags_headphones"));
             this.scout_combinations.Add(new bodygroup_combination(new string[3] { "hat", "shoes_socks", "headphones" }, "scout_hat_shoes_socks_headphones"));
