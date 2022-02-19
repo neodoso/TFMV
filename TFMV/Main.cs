@@ -35,8 +35,8 @@ namespace TFMV
         // this key is necesary in order to download the TF2's item schema from Valve's servers
         // you can get your steam api key here: https://steamcommunity.com/dev/apikey
         // http://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key=" + steam_api_key +"&format=vdf"
-        private string steam_api_key = "003BBFE2675C3B44FDA8C61843DC2C54";
-        string DirUserName = "Mike";
+        private string steam_api_key = "";
+        string DirUserName = "";
 
         #endregion
 
