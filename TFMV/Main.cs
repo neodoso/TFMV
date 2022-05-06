@@ -35,8 +35,16 @@ namespace TFMV
         // this key is necesary in order to download the TF2's item schema from Valve's servers
         // you can get your steam api key here: https://steamcommunity.com/dev/apikey
         // http://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key=" + steam_api_key +"&format=vdf"
+        //        private string steam_api_key = "989D1517F19FB88BE9DF763E5D6BEC31";
+        //        private string steam_api_key = "http://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key=989D1517F19FB88BE9DF763E5D6BEC31";
+        //        http://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key=
+
+
         private string steam_api_key = "";
-        string DirUserName = "";
+
+
+
+        string DirUserName = "jburn";
 
         #endregion
 
@@ -167,6 +175,7 @@ namespace TFMV
         string schema_dir = app_data_dir + "tf2_schema\\";
         public static string settings_dir = app_data_dir;
 
+        //todo: neodement: this is where bodygroups are breaking i guess, maybe?
         string tmp_dir = app_data_dir + "tmp\\";
         string cached_dir = app_data_dir + "cached\\";
         string tmp_loadout_dir = app_data_dir + "tmp_loadout\\";
@@ -278,24 +287,43 @@ namespace TFMV
         public Main()
         {
 
+
             InitializeComponent();
 
 
-            // for debugging: set config / schema directories to TFMV in desktop folder
-#if DEBUG
-            
-                app_data_dir = "C:\\Users\\" + DirUserName + "\\Desktop\\TFMV\\config\\";
-                tools_dir = "C:\\Users\\" + DirUserName + "\\Desktop\\TFMV\\tools\\";
 
-                schema_dir = app_data_dir + "tf2_schema\\";
+            // for debugging: set config / schema directories to TFMV in desktop folder
+            //(this is to stop you writing crap like updated schema pngs to the debug folder)
+#if DEBUG
+
+            app_data_dir = "C:\\Users\\" + DirUserName + "\\Desktop\\TFMV\\config\\";
+            tools_dir = "C:\\Users\\" + DirUserName + "\\Desktop\\TFMV\\tools\\";
+
+            schema_dir = app_data_dir + "tf2_schema\\";
                 settings_dir = app_data_dir;
 
                 tmp_dir = app_data_dir + "tmp\\";
                 cached_dir = app_data_dir + "cached\\";
                 tmp_loadout_dir = app_data_dir + "tmp_loadout\\";
                 tmp_workshop_zip_dir = app_data_dir + "\\tmp_workshop_zip\\";
-            
+
 #endif
+
+
+
+            steam_api_key = LoadAPIKey();
+
+            //neodement:
+            //if api key was empty the above function will have thrown out an appropriate error message explaining why
+            if (steam_api_key == "")
+            {
+                tabControl.SelectedIndex = 1;
+            }
+            else
+            {
+                txtb_API_Key.Text = steam_api_key;
+            }
+
 
 
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
@@ -343,7 +371,10 @@ namespace TFMV
 
             string[] ver = tfmv_version.Split('.');
 
-            string version = ver[0] + "." + ver[1] + "  [v." + ver[2] + "]";
+            //neodement: new version number
+            //            string version = ver[0] + "." + ver[1] + "  [v." + ver[2] + "]";
+
+            string version = "hello";
 
             // version
             this.Text = "TFMV " + version;
@@ -637,7 +668,6 @@ namespace TFMV
         {
             // Form1.Size = new System.Drawing.Size(100, 100); // 890 // 1181
             collapsable_options_panel();
-            // Form1.siz
         }
 
         private void collapsable_options_panel()
@@ -1055,7 +1085,7 @@ namespace TFMV
         }
 
 
-
+        //neodement: this is the function that is breaking
 
         public static void WriteResourceToFile(string resourceName, string fileName)
         {
@@ -1082,6 +1112,7 @@ namespace TFMV
             }
             catch
             {
+                MessageBox.Show("failed to write resource " + resourceName + " to file " + fileName);
             }
         }
 
@@ -1106,6 +1137,8 @@ namespace TFMV
         // loadout to HLMV + paints
         private void btn_loadout_to_HLMV_Click(object sender, EventArgs e)
         {
+
+            //MessageBox.Show(tfmv_dir);
 
             #region check if paramters are set
 
@@ -1247,7 +1280,7 @@ namespace TFMV
                 panel_adv_settings_btn.Refresh();
             }
 
-            if(btn_expand_item_list.Text == "-")
+            if (btn_expand_item_list.Text == "-")
             {
                 ui_scale();
             }
@@ -1319,7 +1352,47 @@ namespace TFMV
             }
             // }
 
-            loadout_to_hlmv();
+
+            //todo: this is poor!
+            /*
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\scout\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\soldier\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\pyro\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\demo\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\hvyweapon\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\engineer\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\medic\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\sniper\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\spy\\");
+            */
+
+            //todo: neodement: make this readable
+
+            //todo: spy head team colours?
+            if (selected_player_class == "spy")
+            {
+                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head_red.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head_red.vtf");
+                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head_blue.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head_blue.vtf");
+            }
+            else if (selected_player_class != "pyro")
+            {
+                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head.vtf");
+            }
+
+            //MessageBox.Show(tfmv_dir + get_player_path_by_class(selected_player_class));
+
+            /*
+            selected_player_class
+
+
+                if (selected_player_class == "heavy")
+            { }
+            selected_player_class = "hvyweapon";
+        }
+        */
+
+
+        loadout_to_hlmv();
 
 
             vtab_loadout_close();
@@ -1884,30 +1957,38 @@ namespace TFMV
 
                     if (!Directory.Exists(tmp_workshop_zip_dir)) { Directory.CreateDirectory(tmp_workshop_zip_dir); }
 
-
-                    // extract to tmp
-                    using (ZipFile zip1 = ZipFile.Read(zip_path))
-                    {
-
-                        // extract files in "content" folder for backpack icon
-                        foreach (ZipEntry z in zip1.Where(x => x.FileName.StartsWith("content\\materialsrc\\backpack")))
+                    //neodement: wrapped this in a try statement to stop error message while debugging
+                    try
+                    { 
+                        // extract to tmp
+                        using (ZipFile zip1 = ZipFile.Read(zip_path))
                         {
-                            // if ((!e.FileName.Contains(".tga")) && (!e.FileName.Contains(".dmx")) && (!e.FileName.Contains(".qc")))
-                            z.Extract(tmp_workshop_zip_dir, ExtractExistingFileAction.OverwriteSilently);
-                        }
 
-                        try
-                        {
-                            if (zip1["manifest.txt"] == null) { continue; }
+                            // extract files in "content" folder for backpack icon
+                            foreach (ZipEntry z in zip1.Where(x => x.FileName.StartsWith("content\\materialsrc\\backpack")))
+                            {
+                                // if ((!e.FileName.Contains(".tga")) && (!e.FileName.Contains(".dmx")) && (!e.FileName.Contains(".qc")))
+                                z.Extract(tmp_workshop_zip_dir, ExtractExistingFileAction.OverwriteSilently);
+                            }
 
-                            // extract manifest
-                            zip1["manifest.txt"].Extract(tmp_workshop_zip_dir, ExtractExistingFileAction.OverwriteSilently);
-                        }
-                        catch
-                        {
-                            continue;
+                            try
+                            {
+                                if (zip1["manifest.txt"] == null) { continue; }
+
+                                // extract manifest
+                                zip1["manifest.txt"].Extract(tmp_workshop_zip_dir, ExtractExistingFileAction.OverwriteSilently);
+                            }
+                            catch
+                            {
+                                continue;
+                            }
                         }
                     }
+                    catch
+                    {
+                    }
+
+
                 }
 
                 #endregion
@@ -2108,6 +2189,7 @@ namespace TFMV
 
             Button btn = (Button)sender;
             set_class(btn.Text.ToLower(), true);
+
         }
 
 
@@ -9698,19 +9780,78 @@ namespace TFMV
             turntable_gen.Show();
         }
 
+        private void Settings_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #region tf/custom/ mod handling
 
         // installs TFMV mods in "custom" folder, such as disabling the tiled fire overlay texture
         private void install_tfmv_mods()
         {
+            //create directory for fire overlay
             miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\effects\\tiledfire\\");
+
+            /*
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\scout\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\soldier\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\pyro\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\demo\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\hvyweapon\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\engineer\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\medic\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\sniper\\");
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\spy\\");
+            */
+
 
             // write no fire overlay texture file
             try
             {
+             
+                //todo: neodement: delete this crapola!
+
                 WriteResourceToFile("TFMV.Files.textures.fireLayeredSlowTiled512.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\effects\\tiledfire\\fireLayeredSlowTiled512.vtf");
 
-                if(cb_screenshot_transparency.Checked)
+
+                /*
+                //neodement: replaces the face textures with recompressed ones (BGR888) to stop a bug where they appear low res in hlmv (especially obvious on the eyebrows)
+
+                WriteResourceToFile("TFMV.Files.textures.scout_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\scout\\scout_head.vtf");
+                //WriteResourceToFile("TFMV.Files.textures.soldier_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\soldier\\soldier_head.vtf");
+                //(pyro doesn't need one because he doesn't have a separate head texture)
+                WriteResourceToFile("TFMV.Files.textures.demoman_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\demo\\demoman_head.vtf");
+                WriteResourceToFile("TFMV.Files.textures.heavy_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\hvyweapon\\heavy_head.vtf");
+                WriteResourceToFile("TFMV.Files.textures.engineer_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\engineer\\engineer_head.vtf");
+                WriteResourceToFile("TFMV.Files.textures.medic_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\medic\\medic_head.vtf");
+                WriteResourceToFile("TFMV.Files.textures.sniper_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\sniper\\sniper_head.vtf");
+                WriteResourceToFile("TFMV.Files.textures.spy_head_red.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\spy\\spy_head_red.vtf");
+                WriteResourceToFile("TFMV.Files.textures.spy_head_blue.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\spy\\spy_head_blue.vtf");
+
+                //WriteResourceToFile("TFMV.Files.textures.fireLayeredSlowTiled512.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\effects\\tiledfire\\fireLayeredSlowTiled512_2.vtf");
+                WriteResourceToFile("TFMV.Files.textures.fireLayeredSlowTiled512.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\soldier\\soldier_head.vtf");
+
+                //WriteResourceToFile("TFMV.Files.textures.fireLayeredSlowTiled512.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\effects\\tiledfire\\fireLayeredSlowTiled512_3.vtf");
+
+                //"custom\\TFMV\\materials\\models\\player\\soldier");
+                //"custom\\TFMV\\materials\\models\\player\\soldier\\soldier_head.vtf");
+
+                /*
+                materials\models\player\demo\demoman_head.vtf
+materials\models\player\engineer\engineer_head.vtf
+materials\models\player\hvyweapon\heavy_head.vtf
+materials\models\player\medic\medic_head.vtf
+(no pyro)
+materials\models\player\scout\scout_head.vtf
+materials\models\player\sniper\sniper_head.vtf
+materials\models\player\soldier\soldier_head.vtf
+                */
+
+            
+
+
+                if (cb_screenshot_transparency.Checked)
                 {
                     string out_dir = steamGameConfig.tf_dir + "custom\\TFMV\\models\\TFMV\\";
                     miscFunc.create_missing_dir(out_dir);
@@ -9723,7 +9864,14 @@ namespace TFMV
             }
             catch
             {
+                MessageBox.Show("errored");
             }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            linkLabel2.LinkVisited = true;
+            System.Diagnostics.Process.Start("https://steamcommunity.com/dev/apikey");
         }
 
         // checks tf/custom/ contents to see if custom mods are installed and warns user if they want to disable mods while using TFMV
@@ -9766,6 +9914,19 @@ namespace TFMV
                 }
         }
 
+        private void txtb_API_Key_TextChanged(object sender, EventArgs e)
+        {
+
+            string txtb_API_Key_Text = txtb_API_Key.Text;
+
+            //check if it's a 32 character Alphanumerical string. as soon as it is, try to save it
+            if (txtb_API_Key_Text.Length == 32 && Regex.IsMatch(txtb_API_Key_Text, "^[a-zA-Z0-9]*$"))
+            {
+                steam_api_key = txtb_API_Key.Text;
+                SaveAPIKey();
+            }
+
+        }
 
         private void disable_custom_mods()
         {
@@ -9793,6 +9954,53 @@ namespace TFMV
             }
 
             settings_save(sender, e);
+        }
+
+
+        //neodement:
+        //load API key from "api_key.ini"
+        private string LoadAPIKey()
+        {
+            MessageBox.Show(app_data_dir + "/api_key.ini");
+            try
+            {
+                //            File.ReadAllText(app_data_dir)
+                string LoadedAPIKey = File.ReadAllText(app_data_dir + "api_key.ini");
+
+
+
+                //check if it's a 32 character Alphanumerical string
+                if (LoadedAPIKey.Length == 32 && Regex.IsMatch(LoadedAPIKey, "^[a-zA-Z0-9]*$"))
+                {
+                    return LoadedAPIKey;
+                }
+                else
+                {
+                    MessageBox.Show("Failed to load API key from file (invalid key).\nPlease set your API Key at the bottom of the settings window.");
+                    return "";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Failed to load API key from file (api_key.ini couldn't be loaded).\nPlease set your API Key at the bottom of the settings window.");
+                return "";
+            }
+        }
+
+
+        //neodement:
+        //save API key to "api_key.ini"
+        private void SaveAPIKey()
+        {
+
+            try
+            {
+                 File.WriteAllText(app_data_dir + "api_key.ini", steam_api_key);
+            }
+            catch
+            {
+                MessageBox.Show("Failed to save API key to file.");
+            }
         }
 
 

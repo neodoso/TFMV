@@ -106,6 +106,8 @@ namespace TFMV.Functions
 
         public static void create_missing_dir(string path)
         {
+//todo: remove these comments
+            //System.Windows.Forms.MessageBox.Show(path);
             try
             {
                 if (path == "") { return; }
@@ -121,6 +123,7 @@ namespace TFMV.Functions
             }
             catch
             {
+                //System.Windows.Forms.MessageBox.Show("mystery error");
             }
         }
 

@@ -337,6 +337,15 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Files\textures\demoman_head.vtf" />
+    <None Include="Files\textures\engineer_head.vtf" />
+    <None Include="Files\textures\heavy_head.vtf" />
+    <None Include="Files\textures\medic_head.vtf" />
+    <None Include="Files\textures\scout_head.vtf" />
+    <None Include="Files\textures\sniper_head.vtf" />
+    <None Include="Files\textures\soldier_head.vtf" />
+    <None Include="Files\textures\spy_head_blue.vtf" />
+    <None Include="Files\textures\spy_head_red.vtf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
