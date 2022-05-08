@@ -1,8 +1,11 @@
 # TFMV 1.9.2.2 - NeoDement's Fork
 Team Fortress 2 Model Viewer
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 What's different in the NeoDement fork?
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -TFMV now asks for an API Key the first time you launch it, so you're no longer relying on a key that could be invalidated at some point in the future.
 
@@ -10,6 +13,7 @@ What's different in the NeoDement fork?
 
 -TFMV no longer deletes the HLMV recent files list (good for those of us that still launch HLMV the old fashioned way sometimes).
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 User Guide / More information: https://steamcommunity.com/sharedfiles/filedetails/?id=158547475
 
