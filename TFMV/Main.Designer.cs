@@ -119,6 +119,7 @@
             this.lab_warn_refresh = new System.Windows.Forms.Label();
             this.btn_close_paints_chart = new System.Windows.Forms.Panel();
             this.lab_exit_ScreenPaintsTool = new System.Windows.Forms.Label();
+            this.pictureBox_screen_paints_preview = new System.Windows.Forms.PictureBox();
             this.numUpDown_screen_paints_delay = new System.Windows.Forms.NumericUpDown();
             this.lab_warn_refresh1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -134,6 +135,7 @@
             this.panel_paints = new System.Windows.Forms.Panel();
             this.vtab_paints = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.btn_update_paints = new System.Windows.Forms.Button();
             this.panel43 = new System.Windows.Forms.Panel();
             this.panel40 = new System.Windows.Forms.Panel();
             this.panel39 = new System.Windows.Forms.Panel();
@@ -142,6 +144,7 @@
             this.panel_Bgcolor1 = new System.Windows.Forms.Panel();
             this.btn_mainModel_material = new System.Windows.Forms.Button();
             this.separator1 = new System.Windows.Forms.Panel();
+            this.btn_browse_screenshots_dir = new System.Windows.Forms.Button();
             this.panel_tools = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -171,10 +174,14 @@
             this.skins_manager_control = new System.Windows.Forms.Panel();
             this.panel_loadout = new System.Windows.Forms.Panel();
             this.main_model_panel = new System.Windows.Forms.Panel();
+            this.btn_example = new System.Windows.Forms.Button();
             this.lab_info_dragndrop2 = new System.Windows.Forms.Label();
             this.lab_info_dragndrop1 = new System.Windows.Forms.Label();
             this.lab_info_dragndrop = new System.Windows.Forms.Label();
+            this.btn_loadout_item_to_mainModel = new System.Windows.Forms.Button();
+            this.btn_load_loadout = new System.Windows.Forms.Button();
             this.separator = new System.Windows.Forms.Panel();
+            this.btn_save_loadout = new System.Windows.Forms.Button();
             this.panel_hlmv_settings = new System.Windows.Forms.Panel();
             this.label39 = new System.Windows.Forms.Label();
             this.lab_item_id = new System.Windows.Forms.Label();
@@ -205,6 +212,7 @@
             this.vtab_adv_settings = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.btn_clist_add = new System.Windows.Forms.Button();
+            this.btn_use_mainmodel = new System.Windows.Forms.Button();
             this.txtb_cmdl_path = new System.Windows.Forms.ComboBox();
             this.panel_items = new System.Windows.Forms.Panel();
             this.lab_region_filter = new System.Windows.Forms.Label();
@@ -214,6 +222,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.progressBar_item_list = new System.Windows.Forms.ProgressBar();
             this.btn_expand_item_list = new System.Windows.Forms.Button();
+            this.btn_item_sorting_order = new System.Windows.Forms.Button();
             this.list_view = new System.Windows.Forms.ListView();
             this.vtab_items = new System.Windows.Forms.Panel();
             this.lab_tf2_itemlist = new System.Windows.Forms.Label();
@@ -263,18 +272,9 @@
             this.label23 = new System.Windows.Forms.Label();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox_screen_paints_preview = new System.Windows.Forms.PictureBox();
-            this.btn_update_paints = new System.Windows.Forms.Button();
-            this.btn_browse_screenshots_dir = new System.Windows.Forms.Button();
-            this.btn_example = new System.Windows.Forms.Button();
-            this.btn_loadout_item_to_mainModel = new System.Windows.Forms.Button();
-            this.btn_load_loadout = new System.Windows.Forms.Button();
-            this.btn_save_loadout = new System.Windows.Forms.Button();
-            this.btn_use_mainmodel = new System.Windows.Forms.Button();
-            this.btn_item_sorting_order = new System.Windows.Forms.Button();
-            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.colorPicker_master = new TFMV.PaintColorPicker();
             this.bodygroup_manager_panel = new TFMV.UserControls.Bodygroup_manager();
             this.steamGameConfig = new TFMV.SourceEngine.SteamGameConfig();
@@ -295,6 +295,7 @@
             this.panel10.SuspendLayout();
             this.panel25.SuspendLayout();
             this.btn_close_paints_chart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_screen_paints_preview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_screen_paints_delay)).BeginInit();
             this.panel7.SuspendLayout();
             this.panel_paints.SuspendLayout();
@@ -324,7 +325,6 @@
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_screen_paints_preview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1051,6 +1051,13 @@
             this.lab_exit_ScreenPaintsTool.MouseLeave += new System.EventHandler(this.lab_exit_ScreenPaintsTool_MouseLeave);
             this.lab_exit_ScreenPaintsTool.MouseHover += new System.EventHandler(this.lab_exit_ScreenPaintsTool_MouseHover);
             // 
+            // pictureBox_screen_paints_preview
+            // 
+            this.pictureBox_screen_paints_preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.pictureBox_screen_paints_preview, "pictureBox_screen_paints_preview");
+            this.pictureBox_screen_paints_preview.Name = "pictureBox_screen_paints_preview";
+            this.pictureBox_screen_paints_preview.TabStop = false;
+            // 
             // numUpDown_screen_paints_delay
             // 
             this.numUpDown_screen_paints_delay.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1171,6 +1178,16 @@
             this.label12.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label12.Name = "label12";
             // 
+            // btn_update_paints
+            // 
+            resources.ApplyResources(this.btn_update_paints, "btn_update_paints");
+            this.btn_update_paints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btn_update_paints.Image = global::TFMV.Properties.Resources.refresh_16xLG;
+            this.btn_update_paints.Name = "btn_update_paints";
+            this.btn_update_paints.Tag = "Refresh skins";
+            this.btn_update_paints.UseVisualStyleBackColor = true;
+            this.btn_update_paints.Click += new System.EventHandler(this.btn_set_mdl_mats_paints_Click);
+            // 
             // panel43
             // 
             this.panel43.BackColor = System.Drawing.Color.Silver;
@@ -1207,7 +1224,7 @@
             // 
             // panel_Bgcolor1
             // 
-            this.panel_Bgcolor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(212)))), ((int)(((byte)(215)))));
+            this.panel_Bgcolor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.panel_Bgcolor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.panel_Bgcolor1, "panel_Bgcolor1");
             this.panel_Bgcolor1.Name = "panel_Bgcolor1";
@@ -1229,6 +1246,15 @@
             this.separator1.ForeColor = System.Drawing.SystemColors.ControlText;
             resources.ApplyResources(this.separator1, "separator1");
             this.separator1.Name = "separator1";
+            // 
+            // btn_browse_screenshots_dir
+            // 
+            this.btn_browse_screenshots_dir.BackColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.btn_browse_screenshots_dir, "btn_browse_screenshots_dir");
+            this.btn_browse_screenshots_dir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btn_browse_screenshots_dir.Name = "btn_browse_screenshots_dir";
+            this.btn_browse_screenshots_dir.UseVisualStyleBackColor = false;
+            this.btn_browse_screenshots_dir.Click += new System.EventHandler(this.btn_browser_screensdir_Click);
             // 
             // panel_tools
             // 
@@ -1477,6 +1503,18 @@
             this.main_model_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.listb_cmdls_DragDrop);
             this.main_model_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.listb_cmdls_DragEnter);
             // 
+            // btn_example
+            // 
+            this.btn_example.AllowDrop = true;
+            this.btn_example.BackColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.btn_example, "btn_example");
+            this.btn_example.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_example.Name = "btn_example";
+            this.btn_example.Tag = "selected item as main model";
+            this.btn_example.UseVisualStyleBackColor = false;
+            this.btn_example.DragDrop += new System.Windows.Forms.DragEventHandler(this.listb_cmdls_DragDrop);
+            this.btn_example.DragEnter += new System.Windows.Forms.DragEventHandler(this.listb_cmdls_DragEnter);
+            // 
             // lab_info_dragndrop2
             // 
             this.lab_info_dragndrop2.AllowDrop = true;
@@ -1507,12 +1545,42 @@
             this.lab_info_dragndrop.DragDrop += new System.Windows.Forms.DragEventHandler(this.listb_cmdls_DragDrop);
             this.lab_info_dragndrop.DragEnter += new System.Windows.Forms.DragEventHandler(this.listb_cmdls_DragEnter);
             // 
+            // btn_loadout_item_to_mainModel
+            // 
+            resources.ApplyResources(this.btn_loadout_item_to_mainModel, "btn_loadout_item_to_mainModel");
+            this.btn_loadout_item_to_mainModel.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_loadout_item_to_mainModel.Name = "btn_loadout_item_to_mainModel";
+            this.btn_loadout_item_to_mainModel.Tag = "selected item as main model";
+            this.toolTip1.SetToolTip(this.btn_loadout_item_to_mainModel, resources.GetString("btn_loadout_item_to_mainModel.ToolTip"));
+            this.btn_loadout_item_to_mainModel.UseVisualStyleBackColor = true;
+            this.btn_loadout_item_to_mainModel.Click += new System.EventHandler(this.btn_loadout_item_to_mainModel_Click);
+            // 
+            // btn_load_loadout
+            // 
+            resources.ApplyResources(this.btn_load_loadout, "btn_load_loadout");
+            this.btn_load_loadout.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_load_loadout.Name = "btn_load_loadout";
+            this.btn_load_loadout.Tag = "Load loadout";
+            this.toolTip1.SetToolTip(this.btn_load_loadout, resources.GetString("btn_load_loadout.ToolTip"));
+            this.btn_load_loadout.UseVisualStyleBackColor = true;
+            this.btn_load_loadout.Click += new System.EventHandler(this.btn_load_loadout_Click);
+            // 
             // separator
             // 
             this.separator.BackColor = System.Drawing.Color.DimGray;
             this.separator.ForeColor = System.Drawing.Color.DimGray;
             resources.ApplyResources(this.separator, "separator");
             this.separator.Name = "separator";
+            // 
+            // btn_save_loadout
+            // 
+            resources.ApplyResources(this.btn_save_loadout, "btn_save_loadout");
+            this.btn_save_loadout.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_save_loadout.Name = "btn_save_loadout";
+            this.btn_save_loadout.Tag = "Save loadout";
+            this.toolTip1.SetToolTip(this.btn_save_loadout, resources.GetString("btn_save_loadout.ToolTip"));
+            this.btn_save_loadout.UseVisualStyleBackColor = true;
+            this.btn_save_loadout.Click += new System.EventHandler(this.btn_save_loadout_Click);
             // 
             // panel_hlmv_settings
             // 
@@ -1611,7 +1679,7 @@
             // 
             // panel_Bgcolor
             // 
-            this.panel_Bgcolor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(212)))), ((int)(((byte)(215)))));
+            this.panel_Bgcolor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(63)))));
             this.panel_Bgcolor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.panel_Bgcolor, "panel_Bgcolor");
             this.panel_Bgcolor.Name = "panel_Bgcolor";
@@ -1767,6 +1835,15 @@
             this.btn_clist_add.UseVisualStyleBackColor = true;
             this.btn_clist_add.Click += new System.EventHandler(this.btn_clist_add_Click);
             // 
+            // btn_use_mainmodel
+            // 
+            resources.ApplyResources(this.btn_use_mainmodel, "btn_use_mainmodel");
+            this.btn_use_mainmodel.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btn_use_mainmodel.Name = "btn_use_mainmodel";
+            this.btn_use_mainmodel.Tag = "";
+            this.btn_use_mainmodel.UseVisualStyleBackColor = true;
+            this.btn_use_mainmodel.Click += new System.EventHandler(this.btn_use_mainmodel_Click);
+            // 
             // txtb_cmdl_path
             // 
             this.txtb_cmdl_path.BackColor = System.Drawing.Color.Gainsboro;
@@ -1864,6 +1941,18 @@
             this.toolTip1.SetToolTip(this.btn_expand_item_list, resources.GetString("btn_expand_item_list.ToolTip"));
             this.btn_expand_item_list.UseVisualStyleBackColor = false;
             this.btn_expand_item_list.Click += new System.EventHandler(this.btn_expand_item_list_Click_1);
+            // 
+            // btn_item_sorting_order
+            // 
+            this.btn_item_sorting_order.BackColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.btn_item_sorting_order, "btn_item_sorting_order");
+            this.btn_item_sorting_order.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_item_sorting_order.Image = global::TFMV.Properties.Resources.down;
+            this.btn_item_sorting_order.Name = "btn_item_sorting_order";
+            this.btn_item_sorting_order.Tag = "";
+            this.toolTip1.SetToolTip(this.btn_item_sorting_order, resources.GetString("btn_item_sorting_order.ToolTip"));
+            this.btn_item_sorting_order.UseVisualStyleBackColor = false;
+            this.btn_item_sorting_order.Click += new System.EventHandler(this.btn_item_sorting_order_Click);
             // 
             // list_view
             // 
@@ -2309,95 +2398,6 @@
             this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Gray;
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.launch_link);
             // 
-            // pictureBox_screen_paints_preview
-            // 
-            this.pictureBox_screen_paints_preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.pictureBox_screen_paints_preview, "pictureBox_screen_paints_preview");
-            this.pictureBox_screen_paints_preview.Name = "pictureBox_screen_paints_preview";
-            this.pictureBox_screen_paints_preview.TabStop = false;
-            // 
-            // btn_update_paints
-            // 
-            resources.ApplyResources(this.btn_update_paints, "btn_update_paints");
-            this.btn_update_paints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btn_update_paints.Image = global::TFMV.Properties.Resources.refresh_16xLG;
-            this.btn_update_paints.Name = "btn_update_paints";
-            this.btn_update_paints.Tag = "Refresh skins";
-            this.btn_update_paints.UseVisualStyleBackColor = true;
-            this.btn_update_paints.Click += new System.EventHandler(this.btn_set_mdl_mats_paints_Click);
-            // 
-            // btn_browse_screenshots_dir
-            // 
-            this.btn_browse_screenshots_dir.BackColor = System.Drawing.Color.LightGray;
-            resources.ApplyResources(this.btn_browse_screenshots_dir, "btn_browse_screenshots_dir");
-            this.btn_browse_screenshots_dir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btn_browse_screenshots_dir.Name = "btn_browse_screenshots_dir";
-            this.btn_browse_screenshots_dir.UseVisualStyleBackColor = false;
-            this.btn_browse_screenshots_dir.Click += new System.EventHandler(this.btn_browser_screensdir_Click);
-            // 
-            // btn_example
-            // 
-            this.btn_example.AllowDrop = true;
-            this.btn_example.BackColor = System.Drawing.Color.LightGray;
-            resources.ApplyResources(this.btn_example, "btn_example");
-            this.btn_example.ForeColor = System.Drawing.Color.LightGray;
-            this.btn_example.Name = "btn_example";
-            this.btn_example.Tag = "selected item as main model";
-            this.btn_example.UseVisualStyleBackColor = false;
-            this.btn_example.DragDrop += new System.Windows.Forms.DragEventHandler(this.listb_cmdls_DragDrop);
-            this.btn_example.DragEnter += new System.Windows.Forms.DragEventHandler(this.listb_cmdls_DragEnter);
-            // 
-            // btn_loadout_item_to_mainModel
-            // 
-            resources.ApplyResources(this.btn_loadout_item_to_mainModel, "btn_loadout_item_to_mainModel");
-            this.btn_loadout_item_to_mainModel.ForeColor = System.Drawing.Color.DimGray;
-            this.btn_loadout_item_to_mainModel.Name = "btn_loadout_item_to_mainModel";
-            this.btn_loadout_item_to_mainModel.Tag = "selected item as main model";
-            this.toolTip1.SetToolTip(this.btn_loadout_item_to_mainModel, resources.GetString("btn_loadout_item_to_mainModel.ToolTip"));
-            this.btn_loadout_item_to_mainModel.UseVisualStyleBackColor = true;
-            this.btn_loadout_item_to_mainModel.Click += new System.EventHandler(this.btn_loadout_item_to_mainModel_Click);
-            // 
-            // btn_load_loadout
-            // 
-            resources.ApplyResources(this.btn_load_loadout, "btn_load_loadout");
-            this.btn_load_loadout.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btn_load_loadout.Name = "btn_load_loadout";
-            this.btn_load_loadout.Tag = "Load loadout";
-            this.toolTip1.SetToolTip(this.btn_load_loadout, resources.GetString("btn_load_loadout.ToolTip"));
-            this.btn_load_loadout.UseVisualStyleBackColor = true;
-            this.btn_load_loadout.Click += new System.EventHandler(this.btn_load_loadout_Click);
-            // 
-            // btn_save_loadout
-            // 
-            resources.ApplyResources(this.btn_save_loadout, "btn_save_loadout");
-            this.btn_save_loadout.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btn_save_loadout.Name = "btn_save_loadout";
-            this.btn_save_loadout.Tag = "Save loadout";
-            this.toolTip1.SetToolTip(this.btn_save_loadout, resources.GetString("btn_save_loadout.ToolTip"));
-            this.btn_save_loadout.UseVisualStyleBackColor = true;
-            this.btn_save_loadout.Click += new System.EventHandler(this.btn_save_loadout_Click);
-            // 
-            // btn_use_mainmodel
-            // 
-            resources.ApplyResources(this.btn_use_mainmodel, "btn_use_mainmodel");
-            this.btn_use_mainmodel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btn_use_mainmodel.Name = "btn_use_mainmodel";
-            this.btn_use_mainmodel.Tag = "";
-            this.btn_use_mainmodel.UseVisualStyleBackColor = true;
-            this.btn_use_mainmodel.Click += new System.EventHandler(this.btn_use_mainmodel_Click);
-            // 
-            // btn_item_sorting_order
-            // 
-            this.btn_item_sorting_order.BackColor = System.Drawing.Color.LightGray;
-            resources.ApplyResources(this.btn_item_sorting_order, "btn_item_sorting_order");
-            this.btn_item_sorting_order.ForeColor = System.Drawing.Color.LightGray;
-            this.btn_item_sorting_order.Image = global::TFMV.Properties.Resources.down;
-            this.btn_item_sorting_order.Name = "btn_item_sorting_order";
-            this.btn_item_sorting_order.Tag = "";
-            this.toolTip1.SetToolTip(this.btn_item_sorting_order, resources.GetString("btn_item_sorting_order.ToolTip"));
-            this.btn_item_sorting_order.UseVisualStyleBackColor = false;
-            this.btn_item_sorting_order.Click += new System.EventHandler(this.btn_item_sorting_order_Click);
-            // 
             // logoPictureBox
             // 
             resources.ApplyResources(this.logoPictureBox, "logoPictureBox");
@@ -2478,6 +2478,7 @@
             this.panel25.PerformLayout();
             this.btn_close_paints_chart.ResumeLayout(false);
             this.btn_close_paints_chart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_screen_paints_preview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_screen_paints_delay)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -2533,7 +2534,6 @@
             this.panel16.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_screen_paints_preview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
 

@@ -1173,7 +1173,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>steamGameConfig</value>
   </data>
   <data name="&gt;&gt;steamGameConfig.Type" xml:space="preserve">
-    <value>TFMV.SourceEngine.SteamGameConfig, TFMV, Version=1.9.1.9, Culture=neutral, PublicKeyToken=null</value>
+    <value>TFMV.SourceEngine.SteamGameConfig, TFMV, Version=1.9.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;steamGameConfig.Parent" xml:space="preserve">
     <value>Settings</value>
@@ -3132,7 +3132,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>colorPicker_master</value>
   </data>
   <data name="&gt;&gt;colorPicker_master.Type" xml:space="preserve">
-    <value>TFMV.PaintColorPicker, TFMV, Version=1.9.1.9, Culture=neutral, PublicKeyToken=null</value>
+    <value>TFMV.PaintColorPicker, TFMV, Version=1.9.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorPicker_master.Parent" xml:space="preserve">
     <value>panel_paints</value>
@@ -3426,7 +3426,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>bodygroup_manager_panel</value>
   </data>
   <data name="&gt;&gt;bodygroup_manager_panel.Type" xml:space="preserve">
-    <value>TFMV.UserControls.Bodygroup_manager, TFMV, Version=1.9.1.9, Culture=neutral, PublicKeyToken=null</value>
+    <value>TFMV.UserControls.Bodygroup_manager, TFMV, Version=1.9.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bodygroup_manager_panel.Parent" xml:space="preserve">
     <value>panel_tools</value>
@@ -7931,9 +7931,6 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
         AAAAAAAAAAAAAAAAAAAAAAAAAPAPAADgBwAAwmMAAI5xAACccAAAHDAAADwAAAAgAAAAIAQAACAcAAAQ
         GAAAkDgAAIARAADAAwAA4AcAAPgfAAA=
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TFMV</value>

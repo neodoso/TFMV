@@ -233,6 +233,10 @@ namespace TFMV
 
         List<equip_region_tfmv> equip_regions_list;
 
+
+        //neodement: array of bytes needed to store hlmv.rf (Recent files list)
+        byte[] hlmv_rf_backup;
+
         private class equip_region_tfmv
         {
             public string name { get; set; }
@@ -374,7 +378,7 @@ namespace TFMV
             //neodement: new version number
             //            string version = ver[0] + "." + ver[1] + "  [v." + ver[2] + "]";
 
-            string version = "hello";
+            string version = "hello 2";
 
             // version
             this.Text = "TFMV " + version;
@@ -1350,47 +1354,6 @@ namespace TFMV
             {
                 write_flat_mat(tfmv_dir + @"materials\models\TFMV\tfmv_bg.vmt", panel_Bgcolor.BackColor.R.ToString() + " " + panel_Bgcolor.BackColor.G.ToString() + " " + panel_Bgcolor.BackColor.B.ToString());
             }
-            // }
-
-
-            //todo: this is poor!
-            /*
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\scout\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\soldier\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\pyro\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\demo\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\hvyweapon\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\engineer\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\medic\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\sniper\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\spy\\");
-            */
-
-            //todo: neodement: make this readable
-
-            //todo: spy head team colours?
-            if (selected_player_class == "spy")
-            {
-                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head_red.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head_red.vtf");
-                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head_blue.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head_blue.vtf");
-            }
-            else if (selected_player_class != "pyro")
-            {
-                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head.vtf");
-            }
-
-            //MessageBox.Show(tfmv_dir + get_player_path_by_class(selected_player_class));
-
-            /*
-            selected_player_class
-
-
-                if (selected_player_class == "heavy")
-            { }
-            selected_player_class = "hvyweapon";
-        }
-        */
-
 
         loadout_to_hlmv();
 
@@ -7170,6 +7133,27 @@ namespace TFMV
 
             #endregion
 
+
+
+            //todo: this is poor!
+
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\" + get_player_path_by_class(selected_player_class));
+
+            //todo: neodement: make this readable
+
+            //todo: spy head team colours?
+            if (selected_player_class == "spy")
+            {
+                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head_red.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head_red.vtf");
+                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head_blue.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head_blue.vtf");
+            }
+            else if (selected_player_class != "pyro")
+            {
+                File.Copy(app_data_dir + "cached/heads/" + selected_player_class + "_head.vtf", tfmv_dir + "/materials/" + get_player_path_by_class(selected_player_class) + selected_player_class + "_head.vtf");
+            }
+
+
+
             reg_create_hlmv_model(tfmv_dir.Replace(":", ".") + mdlpath);
 
             launch_hlmv(mdlpath);
@@ -7293,27 +7277,53 @@ namespace TFMV
 
         private void launch_hlmv(string mdl_path)
         {
-            if (check_sdk_tools())
-            {
-                    //  HLMV recent files
-                    string rf_path = steamGameConfig.tf2_dir + "bin\\hlmv.rf";
-
-                    if (File.Exists(rf_path))
-                    {
-                        FileInfo fi = new FileInfo(rf_path);
-                        fi.Attributes = FileAttributes.Normal;
-                    }
-
-                    miscFunc.delete_safe(rf_path);
-            }
-          
-
 
             #region setup HLMV process
 
             string args = "-game \"" + steamGameConfig.tf_dir.Replace("tf\\", "tf") + "\"" + " \"" + tfmv_dir + mdl_path + "\"";
 
             close_hlmv();
+
+            //MessageBox.Show("backing up rf file now");
+
+            //neodement: don't delete recent files list. back it up instead and then restore it when we close tfmv.
+            //(this is to stop the latest entry in the file list being a non-existent player model in the custom folder)
+            if (check_sdk_tools())
+            {
+
+                //  HLMV recent files
+                string rf_path = steamGameConfig.tf2_dir + "bin\\hlmv.rf";
+
+                if (File.Exists(rf_path))
+                {
+                    //FileInfo fi = new FileInfo(rf_path);
+                    //fi.Attributes = FileAttributes.Normal;
+                    hlmv_rf_backup = File.ReadAllBytes(rf_path);
+                }
+
+                //delete it if it isn't exactly 2048 bytes, as this causes hlmv to crash on launch
+                if (hlmv_rf_backup.Length < 2048)
+                {
+                    MessageBox.Show("Warning! Deleted corrupted recent files list! (hlmv.rf)");
+                    miscFunc.delete_safe(rf_path);
+                }
+
+
+            }
+
+            /*
+                string temp = "";
+
+                foreach (int val in hlmv_rf_backup)
+                {
+                    if (val != 0)
+                    {
+                        temp += (char)val;
+                    }
+                }
+
+                MessageBox.Show("backup complete! here's what we got:" + temp);
+            */
 
             proc_HLMV = new Process
             {
@@ -7425,6 +7435,43 @@ namespace TFMV
 
                     // clear process var
                     proc_HLMV = null;
+
+                    //neodement: todo: ?      wait a bit longer for process to be closed or it overwrites our rf file as soon as we write it...
+                    Thread.Sleep(300);
+
+                    //neodement: if we've stored a backup of the .rf file, restore it now
+                    if (hlmv_rf_backup.Length == 2048)
+                    {
+
+                        /*
+                        string temp = "";
+
+                        foreach (int val in hlmv_rf_backup)
+                        {
+                            if (val != 0)
+                            {
+                                temp += (char)val;
+                            }
+                        }
+
+                        MessageBox.Show("restoring rf file: " + temp);
+                        */
+
+                        //  HLMV recent files
+                        string rf_path = steamGameConfig.tf2_dir + "bin\\hlmv.rf";
+
+                        //make sure it's writable
+                        if (File.Exists(rf_path))
+                        {
+                            FileInfo fi = new FileInfo(rf_path);
+                            fi.Attributes = FileAttributes.Normal;
+                        }
+
+
+                        File.WriteAllBytes(rf_path, hlmv_rf_backup);
+
+                        Array.Clear(hlmv_rf_backup, 0, hlmv_rf_backup.Length);
+                    }
 
                 }
                 catch (Exception ex)
@@ -9961,13 +10008,9 @@ materials\models\player\soldier\soldier_head.vtf
         //load API key from "api_key.ini"
         private string LoadAPIKey()
         {
-            MessageBox.Show(app_data_dir + "/api_key.ini");
             try
             {
-                //            File.ReadAllText(app_data_dir)
                 string LoadedAPIKey = File.ReadAllText(app_data_dir + "api_key.ini");
-
-
 
                 //check if it's a 32 character Alphanumerical string
                 if (LoadedAPIKey.Length == 32 && Regex.IsMatch(LoadedAPIKey, "^[a-zA-Z0-9]*$"))
