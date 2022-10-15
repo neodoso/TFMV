@@ -128,7 +128,7 @@
     <value>108, 17</value>
   </metadata>
   <data name="label_model.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 391</value>
+    <value>4, 363</value>
   </data>
   <data name="label_model.Size" type="System.Drawing.Size, System.Drawing">
     <value>332, 13</value>
@@ -140,6 +140,9 @@
   <data name="label_model.Text" xml:space="preserve">
     <value>...</value>
   </data>
+  <data name="label_model.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;label_model.Name" xml:space="preserve">
     <value>label_model</value>
   </data>
@@ -150,7 +153,7 @@
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;label_model.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>14</value>
   </data>
   <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>279, 17</value>
@@ -199,7 +202,7 @@
     <value>NoControl</value>
   </data>
   <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 468</value>
+    <value>17, 466</value>
   </data>
   <data name="label46.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
@@ -229,7 +232,7 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabel2.LinkArea" type="System.Windows.Forms.LinkArea, System.Windows.Forms">
-    <value>127, 37</value>
+    <value>125, 37</value>
   </data>
   <data name="linkLabel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>411, 469</value>
@@ -360,7 +363,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="lab_trsp_scrn1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>836, 337</value>
+    <value>837, 339</value>
   </data>
   <data name="lab_trsp_scrn1.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
@@ -396,13 +399,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>683, 339</value>
   </data>
   <data name="lab_trsp_scrn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 13</value>
+    <value>110, 13</value>
   </data>
   <data name="lab_trsp_scrn.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
   </data>
   <data name="lab_trsp_scrn.Text" xml:space="preserve">
-    <value>capture refresh delay:</value>
+    <value>Capture refresh delay:</value>
   </data>
   <data name="lab_trsp_scrn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -420,7 +423,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>6</value>
   </data>
   <data name="numUpDown_screenshot_delay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>792, 335</value>
+    <value>793, 337</value>
   </data>
   <data name="numUpDown_screenshot_delay.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 20</value>
@@ -453,7 +456,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 314</value>
+    <value>17, 312</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 13</value>
@@ -489,13 +492,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>686, 316</value>
   </data>
   <data name="cb_screenshot_transparency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 17</value>
+    <value>140, 17</value>
   </data>
   <data name="cb_screenshot_transparency.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
   <data name="cb_screenshot_transparency.Text" xml:space="preserve">
-    <value>transparent background</value>
+    <value>Transparent background</value>
   </data>
   <data name="&gt;&gt;cb_screenshot_transparency.Name" xml:space="preserve">
     <value>cb_screenshot_transparency</value>
@@ -851,6 +854,42 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
   <data name="&gt;&gt;panel9.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
+  <data name="cb_lodclamps.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cb_lodclamps.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cb_lodclamps.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cb_lodclamps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>357, 403</value>
+  </data>
+  <data name="cb_lodclamps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 17</value>
+  </data>
+  <data name="cb_lodclamps.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="cb_lodclamps.Text" xml:space="preserve">
+    <value>TODO: Correct LOD UV Clamps (fixes blurry head textures)</value>
+  </data>
+  <data name="cb_lodclamps.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cb_lodclamps.Name" xml:space="preserve">
+    <value>cb_lodclamps</value>
+  </data>
+  <data name="&gt;&gt;cb_lodclamps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cb_lodclamps.Parent" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;cb_lodclamps.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
   <data name="cb_hwm.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -861,16 +900,16 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="cb_hwm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 403</value>
+    <value>194, 403</value>
   </data>
   <data name="cb_hwm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 17</value>
+    <value>140, 17</value>
   </data>
   <data name="cb_hwm.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
   <data name="cb_hwm.Text" xml:space="preserve">
-    <value>use HWM player models</value>
+    <value>Use HWM player models</value>
   </data>
   <data name="&gt;&gt;cb_hwm.Name" xml:space="preserve">
     <value>cb_hwm</value>
@@ -882,7 +921,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;cb_hwm.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="cb_disable_fov_mod.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -918,7 +957,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;cb_disable_fov_mod.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="cb_adv_settings_start_open.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -951,7 +990,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;cb_adv_settings_start_open.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="cb_disable_custom_mods.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -984,7 +1023,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;cb_disable_custom_mods.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="cb_AllowMultipleProc.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1017,7 +1056,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;cb_AllowMultipleProc.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1071,7 +1110,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1125,7 +1164,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="btn_recache_schema.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1158,7 +1197,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;btn_recache_schema.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="steamGameConfig.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 4</value>
@@ -1179,7 +1218,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>Settings</value>
   </data>
   <data name="&gt;&gt;steamGameConfig.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="Settings.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -1233,7 +1272,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel44</value>
   </data>
   <data name="&gt;&gt;btn_reset_light.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1266,7 +1305,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel44</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btn_lColor.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1275,7 +1314,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="btn_lColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 291</value>
+    <value>206, 263</value>
   </data>
   <data name="btn_lColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 25</value>
@@ -1296,13 +1335,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;btn_lColor.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="txtb_hlmv_lightrot_z.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="txtb_hlmv_lightrot_z.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 257</value>
+    <value>236, 229</value>
   </data>
   <data name="txtb_hlmv_lightrot_z.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 20</value>
@@ -1329,13 +1368,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_lightrot_z.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="txtb_hlmv_lightrot_y.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="txtb_hlmv_lightrot_y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 257</value>
+    <value>142, 229</value>
   </data>
   <data name="txtb_hlmv_lightrot_y.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 20</value>
@@ -1362,7 +1401,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_lightrot_y.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="btn_aColor.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1374,7 +1413,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="btn_aColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 291</value>
+    <value>49, 263</value>
   </data>
   <data name="btn_aColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 25</value>
@@ -1395,13 +1434,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;btn_aColor.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>11</value>
   </data>
   <data name="txtb_hlmv_lightrot_x.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="txtb_hlmv_lightrot_x.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 257</value>
+    <value>49, 229</value>
   </data>
   <data name="txtb_hlmv_lightrot_x.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 20</value>
@@ -1428,10 +1467,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_lightrot_x.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>12</value>
   </data>
   <data name="panel_aColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>19, 291</value>
+    <value>19, 263</value>
   </data>
   <data name="panel_aColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
@@ -1449,10 +1488,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;panel_aColor.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>13</value>
   </data>
   <data name="panel_lColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 291</value>
+    <value>175, 263</value>
   </data>
   <data name="panel_lColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
@@ -1470,7 +1509,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;panel_lColor.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>15</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1500,7 +1539,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>24</value>
   </data>
   <data name="btn_reset_camposrot.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -1563,7 +1602,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_campos_y.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>25</value>
   </data>
   <data name="txtb_hlmv_camrot_x.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
@@ -1596,7 +1635,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_camrot_x.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>28</value>
   </data>
   <data name="txtb_hlmv_camrot_z.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
@@ -1629,7 +1668,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_camrot_z.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>26</value>
   </data>
   <data name="txtb_hlmv_campos_z.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
@@ -1662,7 +1701,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_campos_z.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>20</value>
   </data>
   <data name="txtb_hlmv_campos_x.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
@@ -1695,7 +1734,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_campos_x.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>27</value>
   </data>
   <data name="txtb_hlmv_camrot_y.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
@@ -1728,7 +1767,82 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_camrot_y.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>19</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 542</value>
+  </data>
+  <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 232</value>
+  </data>
+  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>TODO:
+-Disable TFMV Background Settings checkbox
+-Add warning for zombie skins
+-Eventually add zombie skin bodygroup compatability
+-Add many extra bodygroups based on backpack_players
+-Fix disable jigglebones so it can be used
+-Make it so "disable jigglebones" can be ticked and activated in the same way as fix wrists
+-Replace uncompressed head textures with code to automatically fix the ones from the VPK
+-Cache workshop zips
+-Add badge download support
+-Test if API key is valid whenever TFMV is started
+-Improve clarity of Wiki button
+-Fix auto updater to point to my own URL</value>
+  </data>
+  <data name="textBox1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
+    <value>textBox1</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+    <value>tab_items</value>
+  </data>
+  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lab_item_id.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lab_item_id.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lab_item_id.Location" type="System.Drawing.Point, System.Drawing">
+    <value>970, 596</value>
+  </data>
+  <data name="lab_item_id.Size" type="System.Drawing.Size, System.Drawing">
+    <value>18, 13</value>
+  </data>
+  <data name="lab_item_id.TabIndex" type="System.Int32, mscorlib">
+    <value>111</value>
+  </data>
+  <data name="lab_item_id.Text" xml:space="preserve">
+    <value>px</value>
+  </data>
+  <data name="lab_item_id.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lab_item_id.Name" xml:space="preserve">
+    <value>lab_item_id</value>
+  </data>
+  <data name="&gt;&gt;lab_item_id.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lab_item_id.Parent" xml:space="preserve">
+    <value>tab_items</value>
+  </data>
+  <data name="&gt;&gt;lab_item_id.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="cb_sort_order.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1767,7 +1881,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>tab_items</value>
   </data>
   <data name="&gt;&gt;cb_sort_order.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="lab_PaintsChart_descr.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2925,7 +3039,43 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>tab_items</value>
   </data>
   <data name="&gt;&gt;panel_screen_paints_tool.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 7pt</value>
+  </data>
+  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>838, 600</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>FOV:</value>
+  </data>
+  <data name="label18.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>tab_items</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3278,6 +3428,105 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
   <data name="&gt;&gt;btn_browse_screenshots_dir.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="dfgfd.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="dfgfd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="dfgfd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="dfgfd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="dfgfd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 408</value>
+  </data>
+  <data name="dfgfd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 17</value>
+  </data>
+  <data name="dfgfd.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="dfgfd.Text" xml:space="preserve">
+    <value>TODO: Disable jiggle bones</value>
+  </data>
+  <data name="dfgfd.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;dfgfd.Name" xml:space="preserve">
+    <value>dfgfd</value>
+  </data>
+  <data name="&gt;&gt;dfgfd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dfgfd.Parent" xml:space="preserve">
+    <value>panel_tools</value>
+  </data>
+  <data name="&gt;&gt;dfgfd.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label37.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 439</value>
+  </data>
+  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label37.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>Cubemap:</value>
+  </data>
+  <data name="label37.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label37.Name" xml:space="preserve">
+    <value>label37</value>
+  </data>
+  <data name="&gt;&gt;label37.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
+    <value>panel_tools</value>
+  </data>
+  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lst_cubemap.Items" xml:space="preserve">
+    <value>(Valve default)</value>
+  </data>
+  <data name="lst_cubemap.Location" type="System.Drawing.Point, System.Drawing">
+    <value>82, 438</value>
+  </data>
+  <data name="lst_cubemap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 21</value>
+  </data>
+  <data name="lst_cubemap.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="lst_cubemap.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lst_cubemap.Name" xml:space="preserve">
+    <value>lst_cubemap</value>
+  </data>
+  <data name="&gt;&gt;lst_cubemap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lst_cubemap.Parent" xml:space="preserve">
+    <value>panel_tools</value>
+  </data>
+  <data name="&gt;&gt;lst_cubemap.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3330,7 +3579,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;panel6.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3360,7 +3609,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="panel19.Location" type="System.Drawing.Point, System.Drawing">
     <value>164, 50</value>
@@ -3381,7 +3630,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;panel19.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="txtb_hlmv_wsize_x.Location" type="System.Drawing.Point, System.Drawing">
     <value>181, 153</value>
@@ -3393,7 +3642,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>50</value>
   </data>
   <data name="txtb_hlmv_wsize_x.Text" xml:space="preserve">
-    <value>512</value>
+    <value>800</value>
   </data>
   <data name="txtb_hlmv_wsize_x.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -3411,7 +3660,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_wsize_x.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="bodygroup_manager_panel.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 65</value>
@@ -3432,7 +3681,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;bodygroup_manager_panel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="txtb_hlmv_wsize_y.Location" type="System.Drawing.Point, System.Drawing">
     <value>261, 153</value>
@@ -3444,7 +3693,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>51</value>
   </data>
   <data name="txtb_hlmv_wsize_y.Text" xml:space="preserve">
-    <value>512</value>
+    <value>600</value>
   </data>
   <data name="txtb_hlmv_wsize_y.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -3462,7 +3711,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_wsize_y.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="btn_window_scale.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -3492,7 +3741,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;btn_window_scale.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="panel22.Location" type="System.Drawing.Point, System.Drawing">
     <value>164, 0</value>
@@ -3525,16 +3774,16 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 6</value>
+    <value>166, 6</value>
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 15</value>
+    <value>167, 15</value>
   </data>
   <data name="label38.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label38.Text" xml:space="preserve">
-    <value>Window / Camera</value>
+    <value>Window/Camera/Lighting</value>
   </data>
   <data name="&gt;&gt;label38.Name" xml:space="preserve">
     <value>label38</value>
@@ -3600,7 +3849,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="label35.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3636,7 +3885,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>0</value>
   </data>
   <data name="panel38.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 397</value>
+    <value>0, 313</value>
   </data>
   <data name="panel38.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 25</value>
@@ -3654,7 +3903,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;panel38.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="btn_save_hlmv_cam.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -3684,7 +3933,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;btn_save_hlmv_cam.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="cb_fix_hlp_bones.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3696,7 +3945,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="cb_fix_hlp_bones.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 438</value>
+    <value>18, 354</value>
   </data>
   <data name="cb_fix_hlp_bones.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 17</value>
@@ -3717,7 +3966,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;cb_fix_hlp_bones.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="cb_refresh_SkinPaintChange.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3732,16 +3981,16 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="cb_refresh_SkinPaintChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 465</value>
+    <value>18, 381</value>
   </data>
   <data name="cb_refresh_SkinPaintChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 17</value>
+    <value>146, 17</value>
   </data>
   <data name="cb_refresh_SkinPaintChange.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
   <data name="cb_refresh_SkinPaintChange.Text" xml:space="preserve">
-    <value>Auto refresh skins changes</value>
+    <value>Auto refresh skin changes</value>
   </data>
   <data name="&gt;&gt;cb_refresh_SkinPaintChange.Name" xml:space="preserve">
     <value>cb_refresh_SkinPaintChange</value>
@@ -3753,7 +4002,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;cb_refresh_SkinPaintChange.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="btn_turntable.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -3783,7 +4032,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;btn_turntable.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="btn_paints_chart_tool.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -3813,7 +4062,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;btn_paints_chart_tool.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="label21.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3867,7 +4116,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_tools</value>
   </data>
   <data name="&gt;&gt;vtab_tools.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="panel_tools.Location" type="System.Drawing.Point, System.Drawing">
     <value>891, 0</value>
@@ -4092,7 +4341,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>tab_items</value>
   </data>
   <data name="&gt;&gt;panel_paints.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="main_model_panel.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 30</value>
@@ -4312,7 +4561,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="btn_load_loadout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>720, 37</value>
+    <value>722, 37</value>
   </data>
   <data name="btn_load_loadout.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
@@ -4415,7 +4664,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="btn_save_loadout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>720, 78</value>
+    <value>722, 78</value>
   </data>
   <data name="btn_save_loadout.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
@@ -4445,7 +4694,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="label39.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 191</value>
+    <value>15, 163</value>
   </data>
   <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
     <value>30, 13</value>
@@ -4468,39 +4717,6 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
   <data name="&gt;&gt;label39.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lab_item_id.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lab_item_id.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="lab_item_id.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 126</value>
-  </data>
-  <data name="lab_item_id.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 13</value>
-  </data>
-  <data name="lab_item_id.TabIndex" type="System.Int32, mscorlib">
-    <value>111</value>
-  </data>
-  <data name="lab_item_id.Text" xml:space="preserve">
-    <value>px</value>
-  </data>
-  <data name="lab_item_id.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;lab_item_id.Name" xml:space="preserve">
-    <value>lab_item_id</value>
-  </data>
-  <data name="&gt;&gt;lab_item_id.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lab_item_id.Parent" xml:space="preserve">
-    <value>panel_hlmv_settings</value>
-  </data>
-  <data name="&gt;&gt;lab_item_id.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4508,7 +4724,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 191</value>
+    <value>228, 163</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>18, 13</value>
@@ -4529,43 +4745,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 7pt</value>
-  </data>
-  <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 130</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 13</value>
-  </data>
-  <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>110</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>FOV:</value>
-  </data>
-  <data name="label18.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>panel_hlmv_settings</value>
-  </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="cb_disable_cam_rotPos.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4574,16 +4754,16 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="cb_disable_cam_rotPos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 6</value>
+    <value>105, 6</value>
   </data>
   <data name="cb_disable_cam_rotPos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 17</value>
+    <value>170, 17</value>
   </data>
   <data name="cb_disable_cam_rotPos.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
   <data name="cb_disable_cam_rotPos.Text" xml:space="preserve">
-    <value>Disable TFMV pos/rot settings</value>
+    <value>Disable TFMV camera settings</value>
   </data>
   <data name="&gt;&gt;cb_disable_cam_rotPos.Name" xml:space="preserve">
     <value>cb_disable_cam_rotPos</value>
@@ -4649,7 +4829,67 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;panel11.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
+  </data>
+  <data name="cb_disable_window.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cb_disable_window.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cb_disable_window.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 6</value>
+  </data>
+  <data name="cb_disable_window.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 17</value>
+  </data>
+  <data name="cb_disable_window.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="cb_disable_window.Text" xml:space="preserve">
+    <value>Disable TFMV window settings</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_window.Name" xml:space="preserve">
+    <value>cb_disable_window</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_window.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_window.Parent" xml:space="preserve">
+    <value>panel18</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_window.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btn_reset_window.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btn_reset_window.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_reset_window.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, -2</value>
+  </data>
+  <data name="btn_reset_window.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="btn_reset_window.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="btn_reset_window.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="&gt;&gt;btn_reset_window.Name" xml:space="preserve">
+    <value>btn_reset_window</value>
+  </data>
+  <data name="&gt;&gt;btn_reset_window.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_reset_window.Parent" xml:space="preserve">
+    <value>panel18</value>
+  </data>
+  <data name="&gt;&gt;btn_reset_window.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4682,10 +4922,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel18</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="panel18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 153</value>
+    <value>0, 125</value>
   </data>
   <data name="panel18.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 25</value>
@@ -4703,10 +4943,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;panel18.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>3</value>
   </data>
   <data name="panel_Bgcolor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 358</value>
+    <value>20, 330</value>
   </data>
   <data name="panel_Bgcolor.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 25</value>
@@ -4724,7 +4964,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;panel_Bgcolor.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="btn_bg_color.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -4736,7 +4976,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="btn_bg_color.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 358</value>
+    <value>49, 330</value>
   </data>
   <data name="btn_bg_color.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 25</value>
@@ -4757,7 +4997,70 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;btn_bg_color.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
+  </data>
+  <data name="cb_disable_background.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cb_disable_background.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cb_disable_background.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 5</value>
+  </data>
+  <data name="cb_disable_background.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 17</value>
+  </data>
+  <data name="cb_disable_background.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="cb_disable_background.Text" xml:space="preserve">
+    <value>TODO: Disable TFMV background</value>
+  </data>
+  <data name="cb_disable_background.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_background.Name" xml:space="preserve">
+    <value>cb_disable_background</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_background.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_background.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_background.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btn_reset_background.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btn_reset_background.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_reset_background.Location" type="System.Drawing.Point, System.Drawing">
+    <value>277, -1</value>
+  </data>
+  <data name="btn_reset_background.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 28</value>
+  </data>
+  <data name="btn_reset_background.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="btn_reset_background.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="&gt;&gt;btn_reset_background.Name" xml:space="preserve">
+    <value>btn_reset_background</value>
+  </data>
+  <data name="&gt;&gt;btn_reset_background.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_reset_background.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;btn_reset_background.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4790,10 +5093,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel3</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 326</value>
+    <value>0, 298</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 25</value>
@@ -4811,40 +5114,40 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
-  <data name="txtb_hlmv_fov.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 126</value>
+  <data name="cb_disable_light_rotCol.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="txtb_hlmv_fov.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 20</value>
+  <data name="cb_disable_light_rotCol.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="txtb_hlmv_fov.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+  <data name="cb_disable_light_rotCol.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 6</value>
   </data>
-  <data name="txtb_hlmv_fov.Text" xml:space="preserve">
-    <value>30</value>
+  <data name="cb_disable_light_rotCol.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 17</value>
   </data>
-  <data name="txtb_hlmv_fov.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
+  <data name="cb_disable_light_rotCol.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
   </data>
-  <data name="txtb_hlmv_fov.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="cb_disable_light_rotCol.Text" xml:space="preserve">
+    <value>Disable TFMV light settings</value>
   </data>
-  <data name="&gt;&gt;txtb_hlmv_fov.Name" xml:space="preserve">
-    <value>txtb_hlmv_fov</value>
+  <data name="&gt;&gt;cb_disable_light_rotCol.Name" xml:space="preserve">
+    <value>cb_disable_light_rotCol</value>
   </data>
-  <data name="&gt;&gt;txtb_hlmv_fov.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;cb_disable_light_rotCol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtb_hlmv_fov.Parent" xml:space="preserve">
-    <value>panel_hlmv_settings</value>
+  <data name="&gt;&gt;cb_disable_light_rotCol.Parent" xml:space="preserve">
+    <value>panel44</value>
   </data>
-  <data name="&gt;&gt;txtb_hlmv_fov.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;cb_disable_light_rotCol.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="panel44.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 216</value>
+    <value>0, 188</value>
   </data>
   <data name="panel44.Size" type="System.Drawing.Size, System.Drawing">
     <value>338, 25</value>
@@ -4862,10 +5165,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;panel44.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>9</value>
   </data>
   <data name="txtb_hlmv_def_wsize_x.Location" type="System.Drawing.Point, System.Drawing">
-    <value>49, 187</value>
+    <value>49, 159</value>
   </data>
   <data name="txtb_hlmv_def_wsize_x.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 20</value>
@@ -4874,7 +5177,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>24</value>
   </data>
   <data name="txtb_hlmv_def_wsize_x.Text" xml:space="preserve">
-    <value>512</value>
+    <value>800</value>
   </data>
   <data name="txtb_hlmv_def_wsize_x.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -4892,7 +5195,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_def_wsize_x.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>16</value>
   </data>
   <data name="label25.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4946,10 +5249,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;vtab_hlmv_settings.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>17</value>
   </data>
   <data name="txtb_hlmv_def_wsize_y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>142, 187</value>
+    <value>142, 159</value>
   </data>
   <data name="txtb_hlmv_def_wsize_y.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 20</value>
@@ -4958,7 +5261,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>25</value>
   </data>
   <data name="txtb_hlmv_def_wsize_y.Text" xml:space="preserve">
-    <value>512</value>
+    <value>600</value>
   </data>
   <data name="txtb_hlmv_def_wsize_y.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
@@ -4976,7 +5279,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;txtb_hlmv_def_wsize_y.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>18</value>
   </data>
   <data name="cb_hlmv_bg.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5009,7 +5312,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>0</value>
   </data>
   <data name="panel13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 358</value>
+    <value>175, 330</value>
   </data>
   <data name="panel13.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 25</value>
@@ -5027,7 +5330,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;panel13.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>21</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5036,7 +5339,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 261</value>
+    <value>15, 233</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 13</value>
@@ -5057,7 +5360,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>22</value>
   </data>
   <data name="label40.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5087,7 +5390,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_hlmv_settings</value>
   </data>
   <data name="&gt;&gt;label40.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>23</value>
   </data>
   <data name="panel_hlmv_settings.Location" type="System.Drawing.Point, System.Drawing">
     <value>891, 113</value>
@@ -5352,6 +5655,36 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
   <data name="&gt;&gt;panel_adv_settings.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="btn_tauntprop.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btn_tauntprop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_tauntprop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>491, 61</value>
+  </data>
+  <data name="btn_tauntprop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btn_tauntprop.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="btn_tauntprop.Text" xml:space="preserve">
+    <value>Taunt Prop</value>
+  </data>
+  <data name="&gt;&gt;btn_tauntprop.Name" xml:space="preserve">
+    <value>btn_tauntprop</value>
+  </data>
+  <data name="&gt;&gt;btn_tauntprop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_tauntprop.Parent" xml:space="preserve">
+    <value>panel_items</value>
+  </data>
+  <data name="&gt;&gt;btn_tauntprop.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="lab_region_filter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5383,7 +5716,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;lab_region_filter.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btn_tf2_wiki.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -5416,7 +5749,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;btn_tf2_wiki.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="comboBox_equip_region_filter.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -5443,7 +5776,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;comboBox_equip_region_filter.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="btn_workshop_items.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -5476,13 +5809,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;btn_workshop_items.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="progressBar_item_list.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="progressBar_item_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 304</value>
+    <value>1, 304</value>
   </data>
   <data name="progressBar_item_list.Size" type="System.Drawing.Size, System.Drawing">
     <value>859, 10</value>
@@ -5515,7 +5848,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="btn_expand_item_list.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 294</value>
+    <value>860, 294</value>
   </data>
   <data name="btn_expand_item_list.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
@@ -5617,7 +5950,46 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
+  </data>
+  <data name="cb_disable_jigglebones.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cb_disable_jigglebones.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="cb_disable_jigglebones.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
+  </data>
+  <data name="cb_disable_jigglebones.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="cb_disable_jigglebones.Location" type="System.Drawing.Point, System.Drawing">
+    <value>771, 4</value>
+  </data>
+  <data name="cb_disable_jigglebones.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 17</value>
+  </data>
+  <data name="cb_disable_jigglebones.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="cb_disable_jigglebones.Text" xml:space="preserve">
+    <value>Disable jiggle bones</value>
+  </data>
+  <data name="cb_disable_jigglebones.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_jigglebones.Name" xml:space="preserve">
+    <value>cb_disable_jigglebones</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_jigglebones.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_jigglebones.Parent" xml:space="preserve">
+    <value>vtab_items</value>
+  </data>
+  <data name="&gt;&gt;cb_disable_jigglebones.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="lab_tf2_itemlist.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5650,7 +6022,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>vtab_items</value>
   </data>
   <data name="&gt;&gt;lab_tf2_itemlist.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="vtab_items.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, -1</value>
@@ -5671,7 +6043,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;vtab_items.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="txtb_searchitem.Location" type="System.Drawing.Point, System.Drawing">
     <value>753, 35</value>
@@ -5695,7 +6067,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;txtb_searchitem.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btn_scout.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -5725,7 +6097,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;btn_scout.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btn_badge.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -5758,7 +6130,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;btn_badge.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="cb_allclass_only.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5770,16 +6142,16 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="cb_allclass_only.Location" type="System.Drawing.Point, System.Drawing">
-    <value>660, 66</value>
+    <value>657, 65</value>
   </data>
   <data name="cb_allclass_only.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
+    <value>73, 17</value>
   </data>
   <data name="cb_allclass_only.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
   <data name="cb_allclass_only.Text" xml:space="preserve">
-    <value>all class</value>
+    <value>Multi-Class</value>
   </data>
   <data name="&gt;&gt;cb_allclass_only.Name" xml:space="preserve">
     <value>cb_allclass_only</value>
@@ -5791,7 +6163,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;cb_allclass_only.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="btn_secondary.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -5821,7 +6193,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;btn_secondary.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="btn_primary.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -5851,36 +6223,6 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel_items</value>
   </data>
   <data name="&gt;&gt;btn_primary.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="btn_pda2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btn_pda2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btn_pda2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>491, 61</value>
-  </data>
-  <data name="btn_pda2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btn_pda2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="btn_pda2.Text" xml:space="preserve">
-    <value>PDA 2</value>
-  </data>
-  <data name="&gt;&gt;btn_pda2.Name" xml:space="preserve">
-    <value>btn_pda2</value>
-  </data>
-  <data name="&gt;&gt;btn_pda2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btn_pda2.Parent" xml:space="preserve">
-    <value>panel_items</value>
-  </data>
-  <data name="&gt;&gt;btn_pda2.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
   <data name="btn_demoman.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
@@ -6274,7 +6616,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="btn_reset_loadout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>752, 74</value>
+    <value>754, 74</value>
   </data>
   <data name="btn_reset_loadout.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 33</value>
@@ -6304,7 +6646,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="btn_loadout_to_HLMV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>752, 30</value>
+    <value>754, 30</value>
   </data>
   <data name="btn_loadout_to_HLMV.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 39</value>
@@ -6655,7 +6997,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>tab_items</value>
   </data>
   <data name="&gt;&gt;panel_loadout.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="btn_pick_paints.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -6688,7 +7030,70 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>tab_items</value>
   </data>
   <data name="&gt;&gt;btn_pick_paints.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
+  </data>
+  <data name="btn_pda2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btn_pda2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn_pda2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1145, 542</value>
+  </data>
+  <data name="btn_pda2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="btn_pda2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btn_pda2.Text" xml:space="preserve">
+    <value>PDA 2</value>
+  </data>
+  <data name="btn_pda2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;btn_pda2.Name" xml:space="preserve">
+    <value>btn_pda2</value>
+  </data>
+  <data name="&gt;&gt;btn_pda2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn_pda2.Parent" xml:space="preserve">
+    <value>tab_items</value>
+  </data>
+  <data name="&gt;&gt;btn_pda2.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="txtb_hlmv_fov.Location" type="System.Drawing.Point, System.Drawing">
+    <value>872, 596</value>
+  </data>
+  <data name="txtb_hlmv_fov.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 20</value>
+  </data>
+  <data name="txtb_hlmv_fov.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="txtb_hlmv_fov.Text" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="txtb_hlmv_fov.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="txtb_hlmv_fov.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtb_hlmv_fov.Name" xml:space="preserve">
+    <value>txtb_hlmv_fov</value>
+  </data>
+  <data name="&gt;&gt;txtb_hlmv_fov.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtb_hlmv_fov.Parent" xml:space="preserve">
+    <value>tab_items</value>
+  </data>
+  <data name="&gt;&gt;txtb_hlmv_fov.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="tab_items.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -6723,6 +7128,143 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
   <data name="tabControl.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
     <value>FlatButtons</value>
   </data>
+  <data name="img_EasterEgg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="img_EasterEgg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 128</value>
+  </data>
+  <data name="img_EasterEgg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 27</value>
+  </data>
+  <data name="img_EasterEgg.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="img_EasterEgg.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;img_EasterEgg.Name" xml:space="preserve">
+    <value>img_EasterEgg</value>
+  </data>
+  <data name="&gt;&gt;img_EasterEgg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;img_EasterEgg.Parent" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;img_EasterEgg.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label44.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label44.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="label44.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 203</value>
+  </data>
+  <data name="label44.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 16</value>
+  </data>
+  <data name="label44.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="label44.Text" xml:space="preserve">
+    <value>Latest Patch Notes:</value>
+  </data>
+  <data name="&gt;&gt;label44.Name" xml:space="preserve">
+    <value>label44</value>
+  </data>
+  <data name="&gt;&gt;label44.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label44.Parent" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;label44.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 222</value>
+  </data>
+  <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>742, 263</value>
+  </data>
+  <data name="richTextBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>_________v0.3 (16/10/2022)_________
+
+-Fixed a bug preventing the TFMV folder in the Custom folder from being deleted when closing TFMV.
+-Added a checkbox to disable jiggle bones on loaded items.
+-Removed PDA2 item filter type. It didn't work properly and both PDA2 items in the game are duplicates of existing items.
+-Added Taunt Prop item filter type. This means you can load any ingame taunt prop alongside regular items.
+-Fixed "Made Man" not appearing in Spy's list of cosmetic items.
+-Made the "Mercenary", "Soldier of Fortune", "Grizzled Veteran" and "Primeval Warrior" medals visible in the list of multi-class cosmetic items.
+-Changed default HLMV window size to 800x600.
+-Added options to disable TFMV overrides for Light and Window settings.
+-Added reset buttons to Background and Window settings.
+-Updated "Save current as default" button to also save Light and Background color settings.
+-Added "Latest Patch Notes" to About tab.
+
+
+_________v0.2 (8/05/2022)_________
+
+-TFMV now asks for an API Key the first time you launch it, so you're no longer relying on a key that could be invalidated at some point in the future.
+
+_________v0.1 (6/05/2022)_________
+
+-TFMV now auto-installs fixed head textures into the custom folder when putting a loadout into HLMV (no more pixelated eyebrows!)
+-TFMV no longer deletes the HLMV recent files list (good for those of us that still launch HLMV the old fashioned way sometimes).
+</value>
+  </data>
+  <data name="&gt;&gt;richTextBox1.Name" xml:space="preserve">
+    <value>richTextBox1</value>
+  </data>
+  <data name="&gt;&gt;richTextBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;richTextBox1.Parent" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;richTextBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label43.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label43.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label43.Location" type="System.Drawing.Point, System.Drawing">
+    <value>733, 6</value>
+  </data>
+  <data name="label43.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="label43.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="label43.Text" xml:space="preserve">
+    <value>Later updates by</value>
+  </data>
+  <data name="&gt;&gt;label43.Name" xml:space="preserve">
+    <value>label43</value>
+  </data>
+  <data name="&gt;&gt;label43.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label43.Parent" xml:space="preserve">
+    <value>panel17</value>
+  </data>
+  <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label20.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -6730,7 +7272,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>787, 6</value>
+    <value>627, 6</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
@@ -6751,7 +7293,40 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel17</value>
   </data>
   <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="linkLabel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkLabel4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="linkLabel4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>815, 6</value>
+  </data>
+  <data name="linkLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="linkLabel4.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="linkLabel4.Text" xml:space="preserve">
+    <value>NeoDement</value>
+  </data>
+  <data name="&gt;&gt;linkLabel4.Name" xml:space="preserve">
+    <value>linkLabel4</value>
+  </data>
+  <data name="&gt;&gt;linkLabel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabel4.Parent" xml:space="preserve">
+    <value>panel17</value>
+  </data>
+  <data name="&gt;&gt;linkLabel4.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="linkLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6763,7 +7338,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>841, 6</value>
+    <value>681, 6</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>
@@ -6784,10 +7359,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>panel17</value>
   </data>
   <data name="&gt;&gt;linkLabel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="panel17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 497</value>
+    <value>-2, 499</value>
   </data>
   <data name="panel17.Size" type="System.Drawing.Size, System.Drawing">
     <value>1292, 25</value>
@@ -6805,7 +7380,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;panel17.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="label41.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6859,7 +7434,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;panel16.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="label30.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6913,7 +7488,40 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;panel15.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
+  </data>
+  <data name="lbl_EasterEgg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lbl_EasterEgg.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Verdana, 8.25pt, style=Bold</value>
+  </data>
+  <data name="lbl_EasterEgg.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lbl_EasterEgg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 131</value>
+  </data>
+  <data name="lbl_EasterEgg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
+  </data>
+  <data name="lbl_EasterEgg.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="lbl_EasterEgg.Text" xml:space="preserve">
+    <value>:)</value>
+  </data>
+  <data name="&gt;&gt;lbl_EasterEgg.Name" xml:space="preserve">
+    <value>lbl_EasterEgg</value>
+  </data>
+  <data name="&gt;&gt;lbl_EasterEgg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lbl_EasterEgg.Parent" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;lbl_EasterEgg.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="label22.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6928,13 +7536,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>11, 131</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 13</value>
+    <value>58, 13</value>
   </data>
   <data name="label22.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
-    <value>Thanks! :)</value>
+    <value>Thanks!</value>
   </data>
   <data name="&gt;&gt;label22.Name" xml:space="preserve">
     <value>label22</value>
@@ -6946,7 +7554,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="label24.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6961,13 +7569,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>12, 67</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 13</value>
+    <value>557, 13</value>
   </data>
   <data name="label24.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
   </data>
   <data name="label24.Text" xml:space="preserve">
-    <value>please consider suggesting TFMV as workshop provider for TF2 on the following link:</value>
+    <value>please consider suggesting TFMV as a service provider for TF2 on the following link:</value>
   </data>
   <data name="&gt;&gt;label24.Name" xml:space="preserve">
     <value>label24</value>
@@ -6979,7 +7587,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6994,13 +7602,13 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>11, 42</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>775, 13</value>
+    <value>777, 13</value>
   </data>
   <data name="label23.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
   </data>
   <data name="label23.Text" xml:space="preserve">
-    <value>If you are a workshop contributor who uses TFMV and would like to support the development of TFMV and other tools,</value>
+    <value>If you are a Workshop contributor who uses TFMV and would like to support the development of TFMV and other tools,</value>
   </data>
   <data name="&gt;&gt;label23.Name" xml:space="preserve">
     <value>label23</value>
@@ -7012,7 +7620,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="linkLabel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7045,22 +7653,22 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;linkLabel5.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="linkLabel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="linkLabel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Verdana, 15.75pt, style=Bold</value>
+    <value>Verdana, 12pt, style=Bold</value>
   </data>
   <data name="linkLabel3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="linkLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>271, 371</value>
+    <value>12, 164</value>
   </data>
   <data name="linkLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 25</value>
+    <value>295, 18</value>
   </data>
   <data name="linkLabel3.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
@@ -7078,7 +7686,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;linkLabel3.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="logoPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -7320,10 +7928,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>NoControl</value>
   </data>
   <data name="logoPictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>365, 204</value>
+    <value>766, 365</value>
   </data>
   <data name="logoPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 164</value>
+    <value>120, 120</value>
   </data>
   <data name="logoPictureBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -7341,7 +7949,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>About</value>
   </data>
   <data name="&gt;&gt;logoPictureBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="About.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>

@@ -162,6 +162,12 @@
     <Compile Include="UserControls\ColorPicker.Designer.cs">
       <DependentUpon>ColorPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\DisableBackgroundWarning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\DisableBackgroundWarning.Designer.cs">
+      <DependentUpon>DisableBackgroundWarning.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Loadout\Loadout_File.cs" />
     <Compile Include="UserControls\Loadout\Loadout_Item.cs">
       <SubType>UserControl</SubType>
@@ -276,6 +282,9 @@
     <EmbeddedResource Include="UserControls\ColorPicker.resx">
       <DependentUpon>ColorPicker.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DisableBackgroundWarning.resx">
+      <DependentUpon>DisableBackgroundWarning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Loadout\Loadout_Item.resx">
       <DependentUpon>Loadout_Item.cs</DependentUpon>
@@ -427,6 +436,8 @@
     <Content Include="Libs\AnimatedGif.dll" />
     <Content Include="Libs\Ionic.Zip.dll" />
     <Content Include="Libs\MouseKeyboardLibrary.dll" />
+    <Content Include="Resources\steamcrappy.png" />
+    <None Include="Resources\steamcrappy1.png" />
     <Content Include="TFMV.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -153,6 +153,22 @@ namespace TFMV.Functions
                     System.Windows.Forms.MessageBox.Show("Unable to delete file: " + file + "\nFile might be locked by another process \nor TFMV doesn't have the user rights to delete.");
                 }
             }
+            //neodement: this fixes the tfmv directory in custom not getting removed
+            else
+            {
+                if (Directory.Exists(file))
+                {
+                    try
+                    {
+                        Directory.Delete(file);
+                    }
+                    catch
+                    {
+                        //System.Windows.Forms.MessageBox.Show("Unable to delete directory: " + file + "\nDirectory might be locked by another process \nor TFMV doesn't have the user rights to delete.");
+                    }
+                }
+            }
+
         }
 
         public static void move_dir_safe(string source, string target)
@@ -221,13 +237,14 @@ namespace TFMV.Functions
 
                 try
                 {
-                   #if !DEBUG
+                    //neodement: delete stuff even if we're in debug mode. this was making testing difficult.
+                   //#if !DEBUG
                         dir.Delete(true);
-                    #endif
+                   //#endif
                 }
                 catch
                 {
-
+                    //could warn the user if the directories weren't successfully deleted?
                 }          
             }
         }

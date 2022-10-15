@@ -204,7 +204,7 @@ namespace TFMV
 
         #region hlmv settings
 
-        private Color bg_color = Color.FromArgb(24, 22, 18);
+        private Color bg_color = Color.FromArgb(63, 63, 63);
         private Color aColor = Color.FromArgb(75, 75, 75);
         private Color lColor = Color.FromArgb(255, 255, 255);
         private bool bg_toggle = false;
@@ -274,14 +274,16 @@ namespace TFMV
 
         #region ui scale
 
-        private const int options_panel_closed_width = 902; //905;
-        private const int options_panel_open_width = 1240;
+        //neodement: fixed numbers being wrong here??
+
+        private const int options_panel_closed_width = 915; //905;
+        private const int options_panel_open_width = 1250;
 
         // private int this_width = 915;
-        private const int this_height = 577;
-        private const int this_height_extended = 855;
+        private const int this_height = 590;
+        private const int this_height_extended = 869;
 
-        private const int vtab_loadout_open_height = 525;
+        private const int vtab_loadout_open_height = 525; //todo: fix this number too, if you need to
 
         #endregion
 
@@ -373,15 +375,16 @@ namespace TFMV
 
             #region set form controls params
 
-            string[] ver = tfmv_version.Split('.');
+            //string[] ver = tfmv_version.Split('.');
 
             //neodement: new version number
             //            string version = ver[0] + "." + ver[1] + "  [v." + ver[2] + "]";
 
-            string version = "hello 2";
+            //todo: always update this number when releasing a new version
+            string version = "0.3";
 
             // version
-            this.Text = "TFMV " + version;
+            this.Text = "TFMV Neo " + version;
 
 
             #region progress / status controls
@@ -1144,7 +1147,7 @@ namespace TFMV
 
             //MessageBox.Show(tfmv_dir);
 
-            #region check if paramters are set
+            #region check if parameters are set
 
             close_hlmv();
 
@@ -1271,7 +1274,7 @@ namespace TFMV
 
             close_hlmv();
 
-            set_hlmv_fov();
+            //set_hlmv_fov();
 
             // if adv options tab is not open
             if (this.Size.Width <= options_panel_closed_width)
@@ -1391,7 +1394,7 @@ namespace TFMV
             // lab_expand_options.Text = "Advanced Settings";
 
 
-            // advaced settings panel open
+            // advanced settings panel open
             if (this.Size.Width <= options_panel_closed_width)
             {
                 // lab_expand_options.Text = "<<";
@@ -1726,8 +1729,12 @@ namespace TFMV
             if (_slot == "misc") { btn_misc.BackColor = clr; } else { btn_misc.BackColor = Color.Gainsboro; }
             if (_slot == "building") { btn_building.BackColor = clr; } else { btn_building.BackColor = Color.Gainsboro; }
             if (_slot == "pda") { btn_pda.BackColor = clr; } else { btn_pda.BackColor = Color.Gainsboro; }
+            //neodement: removed unnecessary pda2 slot
             if (_slot == "pda2") { btn_pda2.BackColor = clr; } else { btn_pda2.BackColor = Color.Gainsboro; }
+            //neodement: todo: this is an old removed button, but maybe we can bring it back
             if (_slot == "badge") { btn_badge.BackColor = clr; } else { btn_badge.BackColor = Color.Gainsboro; }
+            //neodement: added taunt prop slot
+            if (_slot == "taunt") { btn_tauntprop.BackColor = clr; } else { btn_tauntprop.BackColor = Color.Gainsboro; }
 
             btn_badge.BackColor = Color.Gainsboro;
 
@@ -1793,8 +1800,12 @@ namespace TFMV
                 if (_slot == "misc") { btn_misc.BackColor = clr; } else { btn_misc.BackColor = Color.Gainsboro; }
                 if (_slot == "building") { btn_building.BackColor = clr; } else { btn_building.BackColor = Color.Gainsboro; }
                 if (_slot == "pda") { btn_pda.BackColor = clr; } else { btn_pda.BackColor = Color.Gainsboro; }
+                //neodement: removed unnecessary pda2 slot
                 if (_slot == "pda2") { btn_pda2.BackColor = clr; } else { btn_pda2.BackColor = Color.Gainsboro; }
+                //neodement: todo: this is an old removed button, but maybe we can bring it back
                 if (_slot == "badge") { btn_badge.BackColor = clr; } else { btn_badge.BackColor = Color.Gainsboro; }
+                //neodement: added taunt prop slot
+                if (_slot == "taunt") { btn_tauntprop.BackColor = clr; } else { btn_tauntprop.BackColor = Color.Gainsboro; }
 
                 btn_badge.BackColor = Color.Gainsboro;
 
@@ -1921,6 +1932,7 @@ namespace TFMV
                     if (!Directory.Exists(tmp_workshop_zip_dir)) { Directory.CreateDirectory(tmp_workshop_zip_dir); }
 
                     //neodement: wrapped this in a try statement to stop error message while debugging
+                    //todo: get rid of this try statement probably?
                     try
                     { 
                         // extract to tmp
@@ -2156,6 +2168,7 @@ namespace TFMV
         }
 
 
+        //neodement: todo: removed badge button...
         private void btn_badge_Click(object sender, EventArgs e)
         {
 
@@ -2332,7 +2345,10 @@ namespace TFMV
             int width = x + hlmv_padding.left;
             int height = y + hlmv_padding.bottom;
 
-            SetWindowPos(proc_HLMV.MainWindowHandle, HWND_TOP, rect.left, rect.top, width, height, 0);
+            if (!cb_disable_window.Checked)
+            {
+                SetWindowPos(proc_HLMV.MainWindowHandle, HWND_TOP, rect.left, rect.top, width, height, 0);
+            }
         }
         // textbox event : set HLMV window size X
         private void txtb_hlmv_wsize_x_KeyPress(object sender, KeyPressEventArgs e)
@@ -4272,8 +4288,12 @@ namespace TFMV
                                     prefab_name = name;
                                 if (name == "cannonball")
                                     prefab_name = name;
+
+                                //neodement: todo: let's download taunts too
+                                if (name == "taunt")
+                                    prefab_name = name;
                             }
-                        }
+                        } 
 
 
                         // if item has a prefab get the info and replace values by prefab ones (with  get_item_info(prefab, item, "item_prefab");)
@@ -4367,13 +4387,18 @@ namespace TFMV
                         // add item only if it has a model or at least one all class model definition
                         if ((valid_model) || (item.model_player_per_class.Count >= 1))
                         {
-                            // place medals in their own array
-                            if ((item.equip_rgn == "medal")) // && (item.item_type_name == "#TF_Wearable_Badge")
+                            //neodement: enabled Made Man spy "medal" and 119th medals
+                            //todo: add more medals to a separate category?
+
+                            if ( (item.equip_rgn == "medal") && (item.Name_str != "The Made Man") && (item.Name_str.StartsWith("Employee Badge ") == false) ) // && (item.item_type_name == "#TF_Wearable_Badge")
                             {
                                 //items_badges.Add(item); // add to badges list
+
+                                //MessageBox.Show(item.Name_str);
                             }
                             else
                             {
+                            
                                 items_game.Add(item); // add to items list
                             }
                         }
@@ -4653,6 +4678,7 @@ namespace TFMV
 
                         continue;
 
+
                     case "visuals":
                         if (type == "item_game") visuals = node;
                         if (type == "item_prefab") visuals = node;
@@ -4776,6 +4802,31 @@ namespace TFMV
                         #endregion
 
                         continue;
+
+//neodement: get info from taunts
+                    case "taunt":
+                        //if (item.extra_wearable == null) { item.extra_wearable = new TF2.items_game.extra_wearable(); }
+                        if (node.nSubNodes.Count > 0)
+                        {
+                            foreach (var obj in node.nSubNodes)
+                            {
+
+
+                                // neodement: get sub nodes for TAUNT PROPS
+                                if (obj.nkey == "custom_taunt_prop_per_class")
+                                    // model per class (for all class items)
+                                    if (obj.nSubNodes.Count > 0)
+                                    {
+                                        foreach (var player_model in obj.nSubNodes)
+                                        {
+                                            item.models_allclass_ADD(player_model.nkey, player_model.nvalue);
+                                        }
+                                    }
+                            }
+
+                        }
+                        continue;
+
 
                     case "visuals_red":
                         if (item.extra_wearable == null) { item.extra_wearable = new TF2.items_game.extra_wearable(); }
@@ -5445,9 +5496,9 @@ namespace TFMV
                     // slot animation
                     item_ListView.anim_slot = the_item.anim_slot;
 
-                    #region add item: for model attachements
+                    #region add item: for model attachments
 
-                    // if model has attachements
+                    // if model has attachments
                     if (the_item.visuals.attached_models.Count > 0)
                     {
                         item_ListView.model_attachements = the_item.visuals.attached_models;
@@ -5455,7 +5506,7 @@ namespace TFMV
                         if (item_ListView.model_attachements == null) { item_ListView.model_attachements = new List<TF2.items_game.attached_model>(); }
                     }
 
-                    // extra_wearable - another attachement model parameter (i.e. used by MVM 'botkiller' weapons)
+                    // extra_wearable - another attachment model parameter (i.e. used by MVM 'botkiller' weapons)
                     item_ListView.extra_wearable = the_item.extra_wearable;
 
                     #endregion
@@ -5644,7 +5695,7 @@ namespace TFMV
                     #endregion
 
 
-                    #region add item: no attachements no styles
+                    #region add item: no attachments no styles
 
 
                     #region load icon
@@ -6088,7 +6139,7 @@ namespace TFMV
                         // make sure item has a model
                         if ((item.model_path == "") && (item.extra_wearable == null)) { MessageBox.Show("Item has no model defined."); item.Checked = false; return; }
 
-                        // enforce HLMV max items attachements (up to 12)
+                        // enforce HLMV max items attachments (up to 12)
                         if (check_max_loadout_items()) { item.Checked = false; return; }
 
                         // item strict mode
@@ -6141,15 +6192,15 @@ namespace TFMV
                         loadout_item.equip_region = item.equip_region;
                         loadout_item.not_paintable = item.not_paintable;
 
-                        #region add model attachements
+                        #region add model attachments
 
-                        // if has attachements
+                        // if has attachments
                         if (item.model_attachements != null)
                         {
-                            // if model has attachement models, add them too
+                            // if model has attachment models, add them too
                             foreach (var attachement in item.model_attachements)
                             {
-                                // TODO handle number 2 (its probably 1 = skin_0    2 = skin_1 but it looks like no model attachements using 1-2 have different skins, so far)
+                                // TODO handle number 2 (its probably 1 = skin_0    2 = skin_1 but it looks like no model attachments using 1-2 have different skins, so far)
                                 if (attachement.model_display_flags == 1)
                                 {
                                     // skip if model is undefined
@@ -6160,7 +6211,7 @@ namespace TFMV
                                     if (check_max_loadout_items()) { break; }
 
                                     // create loadout item
-                                    Loadout_Item loadout_item_attachement  = loadout_addItem(item.ImageList.Images[item.ImageIndex], "attachement", attachement.model, 0,1, item.item_id, false);
+                                    Loadout_Item loadout_item_attachement  = loadout_addItem(item.ImageList.Images[item.ImageIndex], "Attachment", attachement.model, 0,1, item.item_id, false);
 
                                     loadout_item_attachement.item_slot = selected_item_slot;
                                     // parent item to loadout list
@@ -6171,18 +6222,18 @@ namespace TFMV
                             }  
                         #endregion
 
-                        #region add extra wearable item (kind of like an attachement, but different)
+                        #region add extra wearable item (kind of like an attachment, but different)
 
                         if (item.extra_wearable != null)
                         {
-                            // skip if model is undefined  // enforce HLMV max items attachements (up to 12)
+                            // skip if model is undefined  // enforce HLMV max items attachments (up to 12)
                             if ((item.extra_wearable.mdl_path != null) && (item.extra_wearable.mdl_path != "") && (!check_max_loadout_items()))
                             {
                                 byte skin_red = 0, skin_blu = 0;
 
                                 if (item.extra_wearable.skin_override) { skin_red = item.extra_wearable.skin_red; skin_blu = item.extra_wearable.skin_blu; }
 
-                                Loadout_Item loadout_item_wearable = loadout_addItem(item.ImageList.Images[item.ImageIndex], "attachement", item.extra_wearable.mdl_path, skin_red, skin_blu, item.item_id, false);
+                                Loadout_Item loadout_item_wearable = loadout_addItem(item.ImageList.Images[item.ImageIndex], "Attachment", item.extra_wearable.mdl_path, skin_red, skin_blu, item.item_id, false);
                                 loadout_item_wearable.item_slot = selected_item_slot;
                                 loadout_item_wearable.Parent = loadout_list;
                             }
@@ -6195,10 +6246,10 @@ namespace TFMV
                         {
                             foreach (var attached_model in item.visuals_red_attached_models)
                             {
-                                // skip if model is undefined  // enforce HLMV max items attachements (up to 12)
+                                // skip if model is undefined  // enforce HLMV max items attachments (up to 12)
                                 if ((attached_model != null) && (attached_model != "") && (!check_max_loadout_items()))
                                 {
-                                    Loadout_Item loadout_item_wearable = loadout_addItem(item.ImageList.Images[item.ImageIndex], "attachement", attached_model, 0, 1, item.item_id, false);
+                                    Loadout_Item loadout_item_wearable = loadout_addItem(item.ImageList.Images[item.ImageIndex], "Attachment", attached_model, 0, 1, item.item_id, false);
                                     loadout_item_wearable.item_slot = selected_item_slot;
                                     loadout_item_wearable.Parent = loadout_list;
                                 }
@@ -6211,7 +6262,7 @@ namespace TFMV
                     }
                     #endregion
 
-                    #region remove item and attachements
+                    #region remove item and attachments
                     //  if item gets unchecked / deselected
                     // remove model from loadout
                     else if ((item.Checked == false) || (item.Selected))
@@ -6290,10 +6341,10 @@ namespace TFMV
 
         private bool check_max_loadout_items()
         {
-            // enforce HLMV max items attachements (up to 12)
+            // enforce HLMV max items attachments (up to 12)
             if ((loadout_list.Controls.Count > 11))
             {
-                MessageBox.Show("HLMV allows up to 12 model attachements.");
+                MessageBox.Show("HLMV only allows up to 12 model attachments.");
                 return true;
             }
 
@@ -6709,7 +6760,7 @@ namespace TFMV
             }
 
 
-            // if the are no attachements load the main model materials
+            // if the are no attachments load the main model materials
             if ((loadout_list.Controls.Count == 0) && (txtb_main_model.Text != ""))
             {
                 string mdlpath = txtb_main_model.Text;
@@ -7043,10 +7094,11 @@ namespace TFMV
 
 
         // copy/extract models to tf/custom/TFMV/models
-        // set HLMV main model settings and attachements
+        // set HLMV main model settings and attachments
         // launch HLMV
         private void loadout_to_hlmv()
         {
+
             string mdlpath = txtb_main_model.Text;
 
             #region get main model to "tf/custom/TFMV/models"
@@ -7101,13 +7153,13 @@ namespace TFMV
 
             #endregion
 
-            #region extract and copy model attachements to tf/custom/TFMV/models
+            #region extract and copy model attachments to tf/custom/TFMV/models
 
             int max_models = 12;
-            // Add TFMV background model if its enabled in the screenshot settings
+            // Add TFMV background model if transparent screenshots are enabled in the screenshot settings
             if (cb_screenshot_transparency.Checked) { max_models = 11; }
 
-            // HLMV model attachements 12 max
+            // HLMV model attachments 12 max
             for (int i = 0; i < loadout_list.Controls.Count; i++)
             {
                 if (i > max_models) { break; }
@@ -7116,7 +7168,10 @@ namespace TFMV
 
                 if (model_path != "")
                 {
+                    
                     string filename = Path.GetFileName(model_path);
+
+                    //todo: somewhere around here, you need to extract the mdl so it can have its jigglebones disabled!
 
                     if (File.Exists(tfmv_dir + model_path))
                     {
@@ -7212,25 +7267,30 @@ namespace TFMV
             key.SetValue("cclanguageid", 0);
             key.SetValue("enablenormalmapping", 1);
             key.SetValue("gColor", "(0.850000 0.850000 0.690000 0.000000)");
-            key.SetValue("lColor", "(" + lColor_R + " " + lColor_G + " " + lColor_B + " " + " 0.000000)");
-            key.SetValue("lightrot", "(" + light_rotx + " " + light_roty   + " " + light_rotz + ")");
+
+            if (!cb_disable_light_rotCol.Checked)
+            {
+                key.SetValue("lColor", "(" + lColor_R + " " + lColor_G + " " + lColor_B + " " + " 0.000000)");
+                key.SetValue("lightrot", "(" + light_rotx + " " + light_roty + " " + light_rotz + ")");
+            }
 
             int max_models = 12;
             // Add TFMV background model if its enabled in the screenshot settings
-            if (cb_screenshot_transparency.Checked)
+            //neodement: if "Disable Background" is checked, don't load it
+            if (cb_screenshot_transparency.Checked && !cb_disable_background.Checked)
             {
                 max_models = 11;
-                // set 12th attachement as TFMV background
+                // set 12th attachment as TFMV background
                 key.SetValue("merge" + (12), @"models\TFMV\tfmv_bg.mdl");
             }
 
-            // reset attachements // better delete the whole thing though
+            // reset attachments // better delete the whole thing though
             for (int i = 0; i < max_models; i++)
             {
                 key.SetValue("merge" + (i + 1), "");
             }
 
-            // HLMV model attachements 12 max
+            // HLMV model attachments 12 max
             for (int i = 0; i < loadout_list.Controls.Count; i++)
             {
                 if (i > max_models) { break; }
@@ -7372,7 +7432,7 @@ namespace TFMV
 
                     MessageBox.Show("The process hlmv.exe (model viewer) has closed unexpectedly." +
                         "\n\nMake sure TF2 is updated and not in the middle of an update, verify integrity of files." +
-                    "\n\nIf the proble persists, try running 'set_sdk_env.bat' and 'hlmv.bat' located in " + steamGameConfig.bin_dir);
+                    "\n\nIf the problem persists, try running 'set_sdk_env.bat' and 'hlmv.bat' located in " + steamGameConfig.bin_dir);
 
                     return;
                 }
@@ -7380,29 +7440,32 @@ namespace TFMV
 
             #region set HLMV window size
 
-            if ((proc_HLMV == null) || (proc_HLMV.HasExited))
+            if (!cb_disable_window.Checked)
             {
-                //MessageBox.Show("Cannot resize window, HLMV is not running.");
-                return;
+                if ((proc_HLMV == null) || (proc_HLMV.HasExited))
+                {
+                    //MessageBox.Show("Cannot resize window, HLMV is not running.");
+                    return;
+                }
+
+                // make number integer
+                if (txtb_hlmv_def_wsize_x.Text.Contains(".")) { txtb_hlmv_def_wsize_x.Text = txtb_hlmv_def_wsize_x.Text.Split('.')[0]; }
+                if (txtb_hlmv_def_wsize_y.Text.Contains(".")) { txtb_hlmv_def_wsize_y.Text = txtb_hlmv_def_wsize_y.Text.Split('.')[0]; }
+                txtb_hlmv_def_wsize_x.Text = Regex.Replace(txtb_hlmv_def_wsize_x.Text, "[^0-9]", "");
+                txtb_hlmv_def_wsize_y.Text = Regex.Replace(txtb_hlmv_def_wsize_y.Text, "[^0-9]", "");
+
+                int x = Convert.ToInt32(txtb_hlmv_def_wsize_x.Text);
+                int y = Convert.ToInt32(txtb_hlmv_def_wsize_y.Text);
+
+                var rect = new Rect();
+                GetWindowRect(proc_HLMV.MainWindowHandle, ref rect);
+
+                // padding of the HLMV panels so we scale the model viewer area
+                int width = x + hlmv_padding.left;
+                int height = y + hlmv_padding.bottom;
+
+                SetWindowPos(proc_HLMV.MainWindowHandle, HWND_TOP, rect.left, rect.top, width, height, 0);
             }
-
-            // make number integer
-            if (txtb_hlmv_def_wsize_x.Text.Contains(".")) { txtb_hlmv_def_wsize_x.Text = txtb_hlmv_def_wsize_x.Text.Split('.')[0]; }
-            if (txtb_hlmv_def_wsize_y.Text.Contains(".")) { txtb_hlmv_def_wsize_y.Text = txtb_hlmv_def_wsize_y.Text.Split('.')[0]; }
-            txtb_hlmv_def_wsize_x.Text = Regex.Replace(txtb_hlmv_def_wsize_x.Text, "[^0-9]", "");
-            txtb_hlmv_def_wsize_y.Text = Regex.Replace(txtb_hlmv_def_wsize_y.Text, "[^0-9]", "");
-
-            int x = Convert.ToInt32(txtb_hlmv_def_wsize_x.Text);
-            int y = Convert.ToInt32(txtb_hlmv_def_wsize_y.Text);
-
-            var rect = new Rect();
-            GetWindowRect(proc_HLMV.MainWindowHandle, ref rect);
-
-            // padding of the HLMV panels so we scale the model viewer area
-            int width = x + hlmv_padding.left;
-            int height = y + hlmv_padding.bottom;
-
-            SetWindowPos(proc_HLMV.MainWindowHandle, HWND_TOP, rect.left, rect.top, width, height, 0);
 
             #endregion
         }
@@ -7506,7 +7569,7 @@ namespace TFMV
 
         }
 
-        // returns model attachement path from given index
+        // returns model attachment path from given index
         private string get_attachment(int item_index)
         {
             if (item_index <= loadout_list.Controls.Count)
@@ -8006,14 +8069,19 @@ namespace TFMV
         {
             if (!File.Exists(filepath)) { return; }
 
-            try
-            {
-                byte[] mdl_data = File.ReadAllBytes(filepath);
 
-                int bone_names_list_offset = BitConverter.ToInt32(mdl_data, 348);
-                int bone_names_list_length = mdl_data.Length - bone_names_list_offset;
+                        try
+                        {
 
-                byte[] string_list = new byte[bone_names_list_length];
+
+            byte[] mdl_data = File.ReadAllBytes(filepath);
+
+            int bone_names_list_offset = BitConverter.ToInt32(mdl_data, 348);
+            int bone_names_list_length = mdl_data.Length - bone_names_list_offset;
+
+
+
+            byte[] string_list = new byte[bone_names_list_length];
                 Array.Copy(mdl_data, bone_names_list_offset, string_list, 0, bone_names_list_length);
 
                 System.Text.Encoding enc = System.Text.Encoding.UTF8;
@@ -8035,6 +8103,70 @@ namespace TFMV
             }
             catch { }
         }
+
+
+
+
+
+
+        private void mdl_disable_jigglebones(string filepath)
+        {
+
+            byte[] mdl_data = File.ReadAllBytes(filepath);
+
+        //156 is the offset to the bone count
+        int bone_count = BitConverter.ToInt32(mdl_data, 156);
+
+        //MessageBox.Show("how many bones? this many: " + bone_count);
+
+        //neodement: 160 is the offset to the first bone in the bone data (seems to always be 664)
+        int bone_offset = BitConverter.ToInt32(mdl_data, 160);
+
+
+                //iterate over each bone
+                for (int i = 1; i <= bone_count; i++)
+
+                {
+
+                    //check if it's a jigglebone or not
+                    //the 160th byte is the procedural bone type.
+
+                    byte bone_type = mdl_data[bone_offset + 160];
+
+                //(it's intended to be read as an int but easier to just treat it as a single byte)
+                //int bone_type = BitConverter.ToInt32(mdl_data, bone_offset + 164);
+
+                //if bone type is jigglebone (05), set it to 00 (normal bone).
+                if (bone_type == 0x05)
+                {
+                    mdl_data[bone_offset + 160] = 0x00;
+
+
+                    int bone_names_list_offset = BitConverter.ToInt32(mdl_data, 348);
+                    //int bone_names_list_length = mdl_data.Length - bone_names_list_offset;
+
+
+                    //the first int32 in each bone is the offset to its entry in the name table
+                    int bone_name_offset = BitConverter.ToInt32(mdl_data, bone_offset) + bone_offset;
+
+                    //this stops reading strings from attempting to seek past the end of the file
+                    int numBytesToRead = mdl_data.Length - bone_name_offset;
+
+                    string bone_name = Encoding.Default.GetString(mdl_data, bone_name_offset, numBytesToRead);
+
+                    MessageBox.Show("Changed bone " + bone_name + " from a jigglebone to a regular bone.");
+
+                }
+
+
+                    //each bone is 216 bytes long. jump to the next bone.
+                    bone_offset += 216;
+                }
+
+
+
+        }        
+
 
         #endregion
 
@@ -8321,7 +8453,7 @@ namespace TFMV
 
                     if (loadout_list.Controls.Count >= 12)
                     {
-                        MessageBox.Show("HLMV allows up to 12 model attachements.");
+                        MessageBox.Show("HLMV only allows up to 12 model attachments.");
                         return;
                     }
                     if (((mdl_path == "")) || (mdl_path == null))
@@ -8951,7 +9083,7 @@ namespace TFMV
         {
             if (loadout_list.Controls.Count >= 12)
             {
-                MessageBox.Show("HLMV allows up to 12 model attachements.");
+                MessageBox.Show("HLMV only allows up to 12 model attachments.");
                 return;
             }
 
@@ -9177,6 +9309,10 @@ namespace TFMV
         // on Form close do
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+
+            close_hlmv();
+
             miscFunc.DeleteDirectoryContent(steamGameConfig.tf_dir + "custom\\TFMV\\");
             miscFunc.delete_safe(steamGameConfig.tf_dir + "custom\\TFMV\\");
 
@@ -9185,11 +9321,11 @@ namespace TFMV
                 restore_custom_mods();
             }
 
-            miscFunc.delete_safe(steamGameConfig.tf_dir + "custom\\TFMV\\");
             miscFunc.DeleteDirectoryContent(steamGameConfig.tf_dir + "custom\\TFMV\\");
+            miscFunc.delete_safe(steamGameConfig.tf_dir + "custom\\TFMV\\");
+
             miscFunc.DeleteDirectoryContent(tmp_dir);
 
-            close_hlmv();
         }
 
 
@@ -9243,7 +9379,7 @@ namespace TFMV
 
             if (loadout_list.Controls.Count >= 12)
             {
-                MessageBox.Show("HLMV allows up to 12 model attachements.");
+                MessageBox.Show("HLMV only allows up to 12 model attachments.");
                 return;
             }
 
@@ -9749,7 +9885,7 @@ namespace TFMV
 
             try
             {
-                // close HLMV.exe so camera position/rotaiton is saved in windows registry
+                // close HLMV.exe so camera position/rotation is saved in windows registry
                 close_hlmv();
 
                 string modelname = tfmv_dir + txtb_main_model.Text;
@@ -9778,6 +9914,74 @@ namespace TFMV
                 txtb_hlmv_campos_x.Text = POS[0].Replace(".000000", "");
                 txtb_hlmv_campos_y.Text = POS[1].Replace(".000000", "");
                 txtb_hlmv_campos_z.Text = POS[2].Replace(".000000", "");
+
+
+                //neodement: save light values too
+
+                String lightrot = (String)key.GetValue("lightrot");
+                String lcolor = (String)key.GetValue("lColor");
+                String acolor = (String)key.GetValue("aColor");
+
+                lightrot = lightrot.Replace("(", "").Replace(")", "");
+                lcolor = lcolor.Replace("(", "").Replace(")", "");
+                acolor = acolor.Replace("(", "").Replace(")", "");
+
+                String[] LIGHTROT = lightrot.Split(' ');
+                String[] LCOLOR = lcolor.Split(' ');
+                String[] ACOLOR = acolor.Split(' ');
+
+                // set light rot in control form textboxs
+                txtb_hlmv_lightrot_x.Text = LIGHTROT[0].Replace(".000000", "");
+                txtb_hlmv_lightrot_y.Text = LIGHTROT[1].Replace(".000000", "");
+                txtb_hlmv_lightrot_z.Text = LIGHTROT[2].Replace(".000000", "");
+
+            MessageBox.Show(ACOLOR[0] + "");
+
+                // set light/ambient colour to control form colour panels
+                float aColor_Rf = float.Parse(ACOLOR[0].Replace(".000000", ""));
+                float aColor_Gf = float.Parse(ACOLOR[1].Replace(".000000", ""));
+                float aColor_Bf = float.Parse(ACOLOR[2].Replace(".000000", ""));
+
+            int aColor_R = (int)(aColor_Rf * 255.0);
+            int aColor_G = (int)(aColor_Gf * 255.0);
+            int aColor_B = (int)(aColor_Bf * 255.0);
+
+            panel_aColor.BackColor = Color.FromArgb(255, aColor_R, aColor_G, aColor_B);
+                aColor = Color.FromArgb(255, aColor_R, aColor_G, aColor_B);
+
+                float lColor_Rf = float.Parse(LCOLOR[0].Replace(".000000", ""));
+                float lColor_Gf = float.Parse(LCOLOR[1].Replace(".000000", ""));
+                float lColor_Bf = float.Parse(LCOLOR[2].Replace(".000000", ""));
+
+            int lColor_R = (int)(lColor_Rf * 255.0);
+            int lColor_G = (int)(lColor_Gf * 255.0);
+            int lColor_B = (int)(lColor_Bf * 255.0);
+
+            panel_lColor.BackColor = Color.FromArgb(255, lColor_R, lColor_G, lColor_B);
+                lColor = Color.FromArgb(255, lColor_R, lColor_G, lColor_B);
+
+
+                //also save bg colour
+
+                String bgcolor = (String)key.GetValue("bgColor");
+
+                bgcolor = bgcolor.Replace("(", "").Replace(")", "");
+
+                String[] BGCOLOR = bgcolor.Split(' ');
+
+                float bgColor_Rf = float.Parse(BGCOLOR[0].Replace(".000000", ""));
+                float bgColor_Gf = float.Parse(BGCOLOR[1].Replace(".000000", ""));
+                float bgColor_Bf = float.Parse(BGCOLOR[2].Replace(".000000", ""));
+
+            int bgColor_R = (int)(bgColor_Rf * 255.0);
+            int bgColor_G = (int)(bgColor_Gf * 255.0);
+            int bgColor_B = (int)(bgColor_Bf * 255.0);
+
+            //todo: what on earth is Bgcolor1?
+            panel_Bgcolor1.BackColor = Color.FromArgb(255, bgColor_R, bgColor_G, bgColor_B);
+                panel_Bgcolor.BackColor = Color.FromArgb(255, bgColor_R, bgColor_G, bgColor_B);
+                bg_color = Color.FromArgb(255, bgColor_R, bgColor_G, bgColor_B);
+
             }
             catch
             {
@@ -9972,6 +10176,105 @@ materials\models\player\soldier\soldier_head.vtf
                 steam_api_key = txtb_API_Key.Text;
                 SaveAPIKey();
             }
+
+        }
+
+        private void cb_disable_jigglebones_CheckedChanged(object sender, EventArgs e)
+        {
+            settings_save(sender, e);
+
+            /*
+            if (cb_disable_jigglebones.Checked)
+            {
+                //**here**
+                mdl_disable_hlp_bones(tfmv_dir + txtb_main_model.Text);
+
+                refresh_hlmv(false);
+            }
+            else
+            {
+                //restore main model 
+
+                #region extract/copy main model to tf/custom/TFMV
+
+                string mdlpath = txtb_main_model.Text;
+
+                // check if main .mdl exists in tf/models, in VPK or in tf/custom/TFMV/models
+                // if it doesn't exist in drive, we copy it to TF/custom/models
+                // so we can load the model directly to HLMV by argument (without having to manually load recent files or F5)
+
+                // if exists in tf/models/ copy to tf/custom/TFMV/models/
+                if (File.Exists(steamGameConfig.tf_dir + mdlpath))
+                {
+                    string mdl_name = mdlpath.Replace(".mdl", "");
+                    string mdl_in = steamGameConfig.tf_dir + mdl_name;
+                    string mdl_out = tfmv_dir + mdl_name;
+
+                    miscFunc.copy_safe(mdl_in + ".mdl", mdl_out + ".mdl");
+                }
+
+                else
+                { // if found in VPK, extract it to TF/custom/TFMV/...
+
+                    #region extract model
+
+                    if (VPK.Find(mdlpath, 0))
+                    {
+                        string mdl_name = mdlpath.Replace(".mdl", "");
+                        string mdl_in = mdl_name;
+                        string mdl_out = tfmv_dir + mdl_name;
+                        VPK.Extract(mdl_in + ".mdl", tfmv_dir + Path.GetDirectoryName(mdlpath), 0);
+                    }
+
+                    #endregion
+                }
+
+                #endregion
+
+                refresh_hlmv(false);
+            }
+            */
+        }
+
+        private void lbl_EasterEgg_Click(object sender, EventArgs e)
+        {
+            img_EasterEgg.Visible = true;
+        }
+
+        private void logoPictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel11_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cb_disable_background_CheckedChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("With the background disabled, TFMV will not be able to take transparent screenshots.", "Warning", MessageBoxButtons.OK);
+            //DisableBackgroundWarning.Show(); //neodement: todo: create a dialog with a "Don't warn me again" checkbox
+        }
+
+        private void btn_reset_background_Click(object sender, EventArgs e)
+        {
+            //todo: what on earth is Bgcolor1?
+            panel_Bgcolor1.BackColor = Color.FromArgb(255, 63, 63, 63);
+            panel_Bgcolor.BackColor = Color.FromArgb(255, 63, 63, 63);
+            bg_color = Color.FromArgb(255, 63, 63, 63);
+
+            cb_hlmv_bg.Checked = false;
+        }
+
+        private void btn_reset_window_Click(object sender, EventArgs e)
+        {
+            txtb_hlmv_def_wsize_x.Text = "800";
+            txtb_hlmv_def_wsize_y.Text = "600";
+        }
+
+        private void steamGameConfig_Load(object sender, EventArgs e)
+        {
 
         }
 

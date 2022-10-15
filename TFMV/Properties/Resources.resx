@@ -136,14 +136,14 @@
   <data name="scout_headphones_dogtags" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\scout_headphones_dogtags.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="demoman_grenades" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bodygroup_masks\demoman_grenades.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="scout_hat_shoes_socks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\scout_hat_shoes_socks.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="soldier_hat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\soldier_hat.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="scout_hat_headphones" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bodygroup_masks\scout_hat_headphones.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="scout_hat_shoes_socks_dogtags_headphones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\scout_hat_shoes_socks_dogtags_headphones.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -178,14 +178,14 @@
   <data name="pyro_head_grenades" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\pyro_head_grenades.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="pyro_head_grenades_backpack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bodygroup_masks\pyro_head_grenades_backpack.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="medic_backpack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\medic_backpack.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icon_missing" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon_missing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="scout_shoes_socks" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\scout_shoes_socks.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -205,11 +205,11 @@
   <data name="demoman_boots_grenades" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\demoman_shoes_grenades.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="engineer_hand_hat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bodygroup_masks\engineer_hand_hat.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="scout_hat_dogtags_headphones" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bodygroup_masks\scout_hat_dogtags_headphones.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="engineer_hand" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bodygroup_masks\engineer_hand.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btn_x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\btn_x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,8 +217,8 @@
   <data name="pyro_grenades" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\pyro_grenades.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pyro_head_grenades_backpack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bodygroup_masks\pyro_head_grenades_backpack.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="engineer_hand_hat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bodygroup_masks\engineer_hand_hat.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="scout_hat_dogtags" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\scout_hat_dogtags.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -229,20 +229,23 @@
   <data name="demoman_boots" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\demoman_shoes.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="demoman_grenades" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bodygroup_masks\demoman_grenades.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="scout_shoes_socks_dogtags" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\scout_shoes_socks_dogtags.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="refresh_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pencil_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pencil_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="engineer_hand" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bodygroup_masks\engineer_hand.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="icon_missing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_missing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="scout_hat_dogtags_headphones" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bodygroup_masks\scout_hat_dogtags_headphones.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="scout_hat_headphones" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bodygroup_masks\scout_hat_headphones.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="scout_shoes_socks_headphones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\scout_shoes_socks_headphones.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -253,7 +256,7 @@
   <data name="pyro_backpack_grenades" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bodygroup_masks\pyro_backpack_grenades.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="refresh_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh_16xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="steamcrappy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\steamcrappy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
