@@ -513,6 +513,16 @@ namespace TFMV.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TFMV_neo_logo {
+            get {
+                object obj = ResourceManager.GetObject("TFMV_neo_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap to_arrow_b16 {
             get {
                 object obj = ResourceManager.GetObject("to_arrow_b16", resourceCulture);

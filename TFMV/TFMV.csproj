@@ -438,6 +438,7 @@
     <Content Include="Libs\MouseKeyboardLibrary.dll" />
     <Content Include="Resources\steamcrappy.png" />
     <None Include="Resources\steamcrappy1.png" />
+    <None Include="Resources\TFMV_neo_logo.png" />
     <Content Include="TFMV.ico" />
   </ItemGroup>
   <ItemGroup>

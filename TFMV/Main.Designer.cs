@@ -65,6 +65,7 @@
             this.cb_disable_fov_mod = new System.Windows.Forms.CheckBox();
             this.cb_adv_settings_start_open = new System.Windows.Forms.CheckBox();
             this.cb_disable_custom_mods = new System.Windows.Forms.CheckBox();
+            this.cb_autoexpandonstartup = new System.Windows.Forms.CheckBox();
             this.cb_AllowMultipleProc = new System.Windows.Forms.CheckBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -90,6 +91,7 @@
             this.txtb_hlmv_campos_x = new System.Windows.Forms.TextBox();
             this.txtb_hlmv_camrot_y = new System.Windows.Forms.TextBox();
             this.tab_items = new System.Windows.Forms.TabPage();
+            this.btn_medal = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lab_item_id = new System.Windows.Forms.Label();
             this.cb_sort_order = new System.Windows.Forms.CheckBox();
@@ -152,7 +154,8 @@
             this.separator1 = new System.Windows.Forms.Panel();
             this.btn_browse_screenshots_dir = new System.Windows.Forms.Button();
             this.panel_tools = new System.Windows.Forms.Panel();
-            this.dfgfd = new System.Windows.Forms.CheckBox();
+            this.cb_cubemap = new System.Windows.Forms.CheckBox();
+            this.cb_disable_jigglebones = new System.Windows.Forms.CheckBox();
             this.label37 = new System.Windows.Forms.Label();
             this.lst_cubemap = new System.Windows.Forms.ComboBox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -238,7 +241,6 @@
             this.btn_item_sorting_order = new System.Windows.Forms.Button();
             this.list_view = new System.Windows.Forms.ListView();
             this.vtab_items = new System.Windows.Forms.Panel();
-            this.cb_disable_jigglebones = new System.Windows.Forms.CheckBox();
             this.lab_tf2_itemlist = new System.Windows.Forms.Label();
             this.txtb_searchitem = new System.Windows.Forms.TextBox();
             this.btn_scout = new System.Windows.Forms.Button();
@@ -292,6 +294,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -401,6 +404,7 @@
             this.Settings.Controls.Add(this.cb_disable_fov_mod);
             this.Settings.Controls.Add(this.cb_adv_settings_start_open);
             this.Settings.Controls.Add(this.cb_disable_custom_mods);
+            this.Settings.Controls.Add(this.cb_autoexpandonstartup);
             this.Settings.Controls.Add(this.cb_AllowMultipleProc);
             this.Settings.Controls.Add(this.panel8);
             this.Settings.Controls.Add(this.panel1);
@@ -616,6 +620,13 @@
             this.cb_disable_custom_mods.UseVisualStyleBackColor = true;
             this.cb_disable_custom_mods.CheckedChanged += new System.EventHandler(this.cb_disable_custom_mods_CheckedChanged);
             // 
+            // cb_autoexpandonstartup
+            // 
+            resources.ApplyResources(this.cb_autoexpandonstartup, "cb_autoexpandonstartup");
+            this.cb_autoexpandonstartup.Name = "cb_autoexpandonstartup";
+            this.cb_autoexpandonstartup.UseVisualStyleBackColor = true;
+            this.cb_autoexpandonstartup.CheckedChanged += new System.EventHandler(this.settings_save);
+            // 
             // cb_AllowMultipleProc
             // 
             resources.ApplyResources(this.cb_AllowMultipleProc, "cb_AllowMultipleProc");
@@ -823,6 +834,7 @@
             // tab_items
             // 
             this.tab_items.BackColor = System.Drawing.Color.Gainsboro;
+            this.tab_items.Controls.Add(this.btn_medal);
             this.tab_items.Controls.Add(this.textBox1);
             this.tab_items.Controls.Add(this.lab_item_id);
             this.tab_items.Controls.Add(this.cb_sort_order);
@@ -836,6 +848,16 @@
             this.tab_items.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             resources.ApplyResources(this.tab_items, "tab_items");
             this.tab_items.Name = "tab_items";
+            // 
+            // btn_medal
+            // 
+            this.btn_medal.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.btn_medal, "btn_medal");
+            this.btn_medal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btn_medal.Name = "btn_medal";
+            this.btn_medal.Tag = "medal";
+            this.btn_medal.UseVisualStyleBackColor = false;
+            this.btn_medal.Click += new System.EventHandler(this.btn_slot_load_Click);
             // 
             // textBox1
             // 
@@ -1329,7 +1351,8 @@
             // 
             // panel_tools
             // 
-            this.panel_tools.Controls.Add(this.dfgfd);
+            this.panel_tools.Controls.Add(this.cb_cubemap);
+            this.panel_tools.Controls.Add(this.cb_disable_jigglebones);
             this.panel_tools.Controls.Add(this.label37);
             this.panel_tools.Controls.Add(this.lst_cubemap);
             this.panel_tools.Controls.Add(this.panel6);
@@ -1350,14 +1373,21 @@
             resources.ApplyResources(this.panel_tools, "panel_tools");
             this.panel_tools.Name = "panel_tools";
             // 
-            // dfgfd
+            // cb_cubemap
             // 
-            resources.ApplyResources(this.dfgfd, "dfgfd");
-            this.dfgfd.Checked = true;
-            this.dfgfd.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.dfgfd.Name = "dfgfd";
-            this.dfgfd.UseVisualStyleBackColor = true;
-            this.dfgfd.CheckedChanged += new System.EventHandler(this.cb_disable_jigglebones_CheckedChanged);
+            resources.ApplyResources(this.cb_cubemap, "cb_cubemap");
+            this.cb_cubemap.Checked = true;
+            this.cb_cubemap.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_cubemap.Name = "cb_cubemap";
+            this.cb_cubemap.UseVisualStyleBackColor = true;
+            this.cb_cubemap.CheckedChanged += new System.EventHandler(this.cb_cubemap_CheckedChanged);
+            // 
+            // cb_disable_jigglebones
+            // 
+            resources.ApplyResources(this.cb_disable_jigglebones, "cb_disable_jigglebones");
+            this.cb_disable_jigglebones.Name = "cb_disable_jigglebones";
+            this.cb_disable_jigglebones.UseVisualStyleBackColor = true;
+            this.cb_disable_jigglebones.CheckedChanged += new System.EventHandler(this.cb_disable_jigglebones_CheckedChanged);
             // 
             // label37
             // 
@@ -2109,19 +2139,9 @@
             // vtab_items
             // 
             this.vtab_items.BackColor = System.Drawing.Color.Gray;
-            this.vtab_items.Controls.Add(this.cb_disable_jigglebones);
             this.vtab_items.Controls.Add(this.lab_tf2_itemlist);
             resources.ApplyResources(this.vtab_items, "vtab_items");
             this.vtab_items.Name = "vtab_items";
-            // 
-            // cb_disable_jigglebones
-            // 
-            resources.ApplyResources(this.cb_disable_jigglebones, "cb_disable_jigglebones");
-            this.cb_disable_jigglebones.Checked = true;
-            this.cb_disable_jigglebones.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_disable_jigglebones.Name = "cb_disable_jigglebones";
-            this.cb_disable_jigglebones.UseVisualStyleBackColor = true;
-            this.cb_disable_jigglebones.CheckedChanged += new System.EventHandler(this.cb_disable_jigglebones_CheckedChanged);
             // 
             // lab_tf2_itemlist
             // 
@@ -2460,6 +2480,7 @@
             this.About.Controls.Add(this.label24);
             this.About.Controls.Add(this.label23);
             this.About.Controls.Add(this.linkLabel5);
+            this.About.Controls.Add(this.linkLabel6);
             this.About.Controls.Add(this.linkLabel3);
             this.About.Controls.Add(this.logoPictureBox);
             resources.ApplyResources(this.About, "About");
@@ -2593,6 +2614,17 @@
             this.linkLabel5.Tag = "http://steamcommunity.com/workshop/suggestserviceproviders/?appid=440";
             this.linkLabel5.VisitedLinkColor = System.Drawing.Color.Gray;
             this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.launch_link);
+            // 
+            // linkLabel6
+            // 
+            resources.ApplyResources(this.linkLabel6, "linkLabel6");
+            this.linkLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.linkLabel6.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.Tag = "https://github.com/NeoDement/TFMV";
+            this.linkLabel6.VisitedLinkColor = System.Drawing.Color.Gray;
+            this.linkLabel6.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.launch_link);
             // 
             // linkLabel3
             // 
@@ -2973,7 +3005,6 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.ComboBox lst_cubemap;
         private System.Windows.Forms.CheckBox cb_lodclamps;
-        private System.Windows.Forms.CheckBox dfgfd;
         private System.Windows.Forms.CheckBox cb_disable_window;
         private System.Windows.Forms.CheckBox cb_disable_background;
         private System.Windows.Forms.CheckBox cb_disable_light_rotCol;
@@ -2988,6 +3019,10 @@
         private System.Windows.Forms.PictureBox img_EasterEgg;
         private System.Windows.Forms.Button btn_reset_window;
         private System.Windows.Forms.Button btn_reset_background;
+        private System.Windows.Forms.Button btn_medal;
+        private System.Windows.Forms.CheckBox cb_autoexpandonstartup;
+        private System.Windows.Forms.CheckBox cb_cubemap;
+        private System.Windows.Forms.LinkLabel linkLabel6;
     }
 }
 
