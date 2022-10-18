@@ -1,19 +1,71 @@
-# TFMV 1.9.2 - NeoDement's Fork (0.2)
+# TFMV Neo 0.4
 Team Fortress 2 Model Viewer
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-What's different in the NeoDement fork?
+   PATCH NOTES:
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+   0.4 (10/18/2022)
+   
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-Fixed a bug preventing HLMV from starting up relating to the HLMV recent files list change from 0.1 (thanks Wurlmon!)
+-Updated exe assembly information (TFMV Neo 0.3 was mistakenly referred to as TFMV 1.9 - Community Edition).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+   0.3 (10/18/2022)
+   
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+NEW FEATURES:
+
+-Added a checkbox to disable jiggle bones on loaded items.
+-Added Taunt Prop item filter type. This means you can load any ingame taunt prop alongside regular items.
+-Added option to expand item list on startup.
+-Added option to replace default Valve cubemap with one from 2fort. This feature will be expanded upon in the next release.
+
+IMPROVEMENTS:
+
+-Updated "Save current as default" button to also save Light and Background color settings.
+-Added options to disable TFMV overrides for Light and Window settings.
+-Added reset buttons to Background and Window settings.
+-Improved fixed head texture mipmap functionality. Now TFMV fixes them automatically instead of storing uncompressed versions of the head textures.
+-Made some non-tournament medals visible in the item selection panel. Notably, this prevents the Made Man not appearing in Spy's list of cosmetic items.
+(the Gentle Manne's Service Medal, Employee Badges and Dueling Badges are still disabled for now)
+
+OTHER CHANGES:
+
+-Fixed a bug preventing the TFMV folder in the Custom folder from being deleted when closing TFMV.
+-Removed PDA2 item filter type. It didn't work properly and both PDA2 items in the game are duplicates of existing items. The Taunt Prop filter replaces it.
+-Changed default HLMV window size to 800x600.
+-Added warning/instructions when a user attempts to load a Voodoo-Cursed Zombie Soul.
+-Added "Latest Patch Notes" to About tab.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+   0.2 (05/08/2022)
+   
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -TFMV now asks for an API Key the first time you launch it, so you're no longer relying on a key that could be invalidated at some point in the future.
 
--TFMV now auto-installs fixed head textures into the custom folder when putting a loadout into HLMV (no more pixelated eyebrows!)
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+   0.1 (05/06/2022)
+   
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-TFMV now auto-installs fixed head textures into the custom folder when putting a loadout into HLMV (no more pixelated eyebrows!)
 -TFMV no longer deletes the HLMV recent files list (good for those of us that still launch HLMV the old fashioned way sometimes).
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 User Guide / More information: https://steamcommunity.com/sharedfiles/filedetails/?id=158547475
 
