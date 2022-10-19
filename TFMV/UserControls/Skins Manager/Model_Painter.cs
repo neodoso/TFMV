@@ -388,7 +388,7 @@ namespace TFMV.UserControls
                         }
                 }
 
-                //m ake sure we aren't copying the same file (in the case where its the VMT0)
+                //make sure we aren't copying the same file (in the case where its the VMT0)
                 if (vmt.vmt_path != main_skins[vmt_num])
                 {
                         if (File.Exists(paint_dir + vmt.vmt_path))

@@ -1245,7 +1245,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>steamGameConfig</value>
   </data>
   <data name="&gt;&gt;steamGameConfig.Type" xml:space="preserve">
-    <value>TFMV.SourceEngine.SteamGameConfig, TFMV, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>TFMV.SourceEngine.SteamGameConfig, TFMV, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;steamGameConfig.Parent" xml:space="preserve">
     <value>Settings</value>
@@ -1257,7 +1257,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>4, 25</value>
   </data>
   <data name="Settings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1229, 4671</value>
+    <value>1229, 4677</value>
   </data>
   <data name="Settings.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1842,7 +1842,7 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
     <value>True</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>676, 232</value>
+    <value>676, 266</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1855,15 +1855,18 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
 -Add option to not auto-fix head textures
 -Cache workshop zips
 -Test if API key is valid whenever TFMV is started
--Maybe add option
+-Maybe add option to use an API key from a dummy steam account.
 -Improve clarity of Wiki button
--Save paint chart screenshots in Wiki compatible format
+-Save paint chart screenshots in Wiki compatible format. Possibly options for "old style", "wiki compatible", custom with a few options)
 -Fix auto updater to point to my own URL
 -Cubemaps
 -Make search look at item name strings instead of just internal name (search for "voodoo" to see this bug)
-Do something useful with the model name in the bottom right of TFMV. maybe it's a combox with a list of every model that is currently loaded.
 -Rename custom "TFMV" dir to "!TFMV" so it always takes priority.
--Fix style bug with dueling/id badge medals?</value>
+-Fix style bug with dueling/id badge medals?
+-Add warning when launching game with TFMV open
+-HLMV++ Integration
+-DONE message after finishing a paintchart?
+-make it so the program doesn't fail when attempting to do a second paintchart</value>
   </data>
   <data name="textBox1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3351,7 +3354,7 @@ Do something useful with the model name in the bottom right of TFMV. maybe it's 
     <value>colorPicker_master</value>
   </data>
   <data name="&gt;&gt;colorPicker_master.Type" xml:space="preserve">
-    <value>TFMV.PaintColorPicker, TFMV, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>TFMV.PaintColorPicker, TFMV, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorPicker_master.Parent" xml:space="preserve">
     <value>panel_paints</value>
@@ -3777,7 +3780,7 @@ Do something useful with the model name in the bottom right of TFMV. maybe it's 
     <value>bodygroup_manager_panel</value>
   </data>
   <data name="&gt;&gt;bodygroup_manager_panel.Type" xml:space="preserve">
-    <value>TFMV.UserControls.Bodygroup_manager, TFMV, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>TFMV.UserControls.Bodygroup_manager, TFMV, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;bodygroup_manager_panel.Parent" xml:space="preserve">
     <value>panel_tools</value>
@@ -7165,7 +7168,7 @@ Do something useful with the model name in the bottom right of TFMV. maybe it's 
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tab_items.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1229, 4671</value>
+    <value>1229, 4677</value>
   </data>
   <data name="tab_items.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -7263,6 +7266,17 @@ Do something useful with the model name in the bottom right of TFMV. maybe it's 
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>_______________________________________________________________________________________________________________________
 
+   0.5 (10/19/2022)
+_______________________________________________________________________________________________________________________
+
+-Fixed items from Workshop zips showing as error models when disable jigglebones is unchecked and the files don't exist locally (thanks Tabby!)
+-Fixed camera position, camera rotation and light rotation not accepting negative numbers (thanks Lo-fi!)
+-Fixed window size and screenshot delay accepting invalid decimal numbers.
+-Reorganized the order of paints to match the TF2 Wiki. This should make uploading painted images of in-game items easier (thanks Lo-fi!)
+-Added button to view the TFMV Neo Github to About tab.
+_______________________________________________________________________________________________________________________
+
+
    0.4 (10/18/2022)
 _______________________________________________________________________________________________________________________
 
@@ -7279,7 +7293,7 @@ NEW FEATURES:
 -Added a checkbox to disable jiggle bones on loaded items.
 -Added Taunt Prop item filter type. This means you can load any ingame taunt prop alongside regular items.
 -Added option to expand item list on startup.
--Added option to replace default Valve cubemap with one from 2fort. This feature will be expanded upon in the next release.
+-Added option to replace default Valve cubemap with one from 2fort. This feature will be expanded upon in the next (non-bugfix) release.
 
 IMPROVEMENTS:
 
@@ -7760,16 +7774,13 @@ ________________________________________________________________________________
     <value>415, 163</value>
   </data>
   <data name="linkLabel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 18</value>
+    <value>342, 18</value>
   </data>
   <data name="linkLabel6.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
   </data>
   <data name="linkLabel6.Text" xml:space="preserve">
-    <value>TODO: Click here to see the TFMV Neo Github</value>
-  </data>
-  <data name="linkLabel6.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+    <value>Click here to see the TFMV Neo Github</value>
   </data>
   <data name="&gt;&gt;linkLabel6.Name" xml:space="preserve">
     <value>linkLabel6</value>
@@ -8083,7 +8094,7 @@ ________________________________________________________________________________
     <value>4, 25</value>
   </data>
   <data name="About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1229, 4671</value>
+    <value>1229, 4677</value>
   </data>
   <data name="About.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -8113,7 +8124,7 @@ ________________________________________________________________________________
     <value>0, 0</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1237, 4700</value>
+    <value>1237, 4706</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -8140,7 +8151,7 @@ ________________________________________________________________________________
     <value>25</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1236, 1421</value>
+    <value>1236, 1427</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

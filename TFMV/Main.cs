@@ -8310,6 +8310,7 @@ namespace TFMV
                 Directory.CreateDirectory(folders.Target);
                 foreach (var file in Directory.GetFiles(folders.Source, "*.mdl"))
                 {
+                    if (Path.GetDirectoryName(file) == tmp_dir) return;
                     string targetFile = Path.Combine(folders.Target, Path.GetFileName(file));
                     if (File.Exists(targetFile)) File.Delete(targetFile);
                     //File.Move(file, targetFile);
@@ -8354,9 +8355,6 @@ namespace TFMV
 
 
             if (!File.Exists(filepath)) { return null; }
-
-            //todo: disable fixing jigglebones for models in root, those are copies created by the default tfmv material functions
-            //MessageBox.Show(Path.GetDirectoryName(filepath));
 
             try
             {
@@ -8445,12 +8443,12 @@ namespace TFMV
                 Directory.CreateDirectory(folders.Target);
                 foreach (var file in Directory.GetFiles(folders.Source, "*.mdl"))
                 {
+                    if (Path.GetDirectoryName(file) == tmp_dir) return;
                     string targetFile = Path.Combine(folders.Target, Path.GetFileName(file));
                     if (File.Exists(targetFile)) File.Delete(targetFile);
-                    //File.Move(file, targetFile);
 
-                    //replace or create the file in 
-                    miscFunc.delete_safe(targetFile);
+                    //replace or create the original mdl file (deleting it was breaking items from workshop zips)
+                    File.Copy(file, targetFile);
 
 #if DEBUG
                     //MessageBox.Show("attempted to delete " + targetFile);
@@ -10292,16 +10290,47 @@ namespace TFMV
         }
 
 
+        //this method makes sure the user can't type invalid stuff into textboxes intended for numbers. allows one decimal point and negative numbers.
         private void textBoxNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
+                (e.KeyChar != '.') && (e.KeyChar != '-'))
             {
                 e.Handled = true;
             }
 
             // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            //MessageBox.Show("" + (sender as TextBox).SelectionStart);
+
+            // allow negative numbers
+            if ((e.KeyChar == '-'))
+            {
+                //if we already have a - anywhere in the number, ignore the keypress
+                if (((sender as TextBox).Text.IndexOf('-') > -1))
+                {
+                    e.Handled = true;
+                }
+                else
+                //if the user is attempting to put a - anywhere but the start of the string, ignore the keypress
+                {
+                    if ((sender as TextBox).SelectionStart != 0)
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+
+        }
+
+        //this method makes sure the user can't type invalid stuff into textboxes intended for simple numbers (window size, second count). doesn't allow any decimal points or negative numbers.
+        private void textBoxNumericSimple_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -10540,6 +10569,18 @@ materials\models\player\soldier\soldier_head.vtf
             }
 
         }
+
+
+        //this method stops the user typing anything non-numerical into a numUpDown (used for screenshot delays)
+        private void numUpDown_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
 
         /*
         private void cb_autoexpandonstartup_CheckedChanged(object sender, EventArgs e)

@@ -1144,6 +1144,7 @@
             0,
             0});
             this.numUpDown_screen_paints_delay.ValueChanged += new System.EventHandler(this.numUpDown_screen_paints_delay_ValueChanged);
+            this.numUpDown_screen_paints_delay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numUpDown_KeyPress);
             // 
             // lab_warn_refresh1
             // 
@@ -1434,7 +1435,7 @@
             this.txtb_hlmv_wsize_x.Name = "txtb_hlmv_wsize_x";
             this.toolTip1.SetToolTip(this.txtb_hlmv_wsize_x, resources.GetString("txtb_hlmv_wsize_x.ToolTip"));
             this.txtb_hlmv_wsize_x.TextChanged += new System.EventHandler(this.settings_save);
-            this.txtb_hlmv_wsize_x.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumeric_KeyPress);
+            this.txtb_hlmv_wsize_x.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumericSimple_KeyPress);
             // 
             // bodygroup_manager_panel
             // 
@@ -1450,7 +1451,7 @@
             this.txtb_hlmv_wsize_y.Name = "txtb_hlmv_wsize_y";
             this.toolTip1.SetToolTip(this.txtb_hlmv_wsize_y, resources.GetString("txtb_hlmv_wsize_y.ToolTip"));
             this.txtb_hlmv_wsize_y.TextChanged += new System.EventHandler(this.settings_save);
-            this.txtb_hlmv_wsize_y.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumeric_KeyPress);
+            this.txtb_hlmv_wsize_y.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumericSimple_KeyPress);
             // 
             // btn_window_scale
             // 
@@ -1890,7 +1891,7 @@
             this.txtb_hlmv_def_wsize_x.Name = "txtb_hlmv_def_wsize_x";
             this.toolTip1.SetToolTip(this.txtb_hlmv_def_wsize_x, resources.GetString("txtb_hlmv_def_wsize_x.ToolTip"));
             this.txtb_hlmv_def_wsize_x.TextChanged += new System.EventHandler(this.settings_save);
-            this.txtb_hlmv_def_wsize_x.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumeric_KeyPress);
+            this.txtb_hlmv_def_wsize_x.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumericSimple_KeyPress);
             // 
             // vtab_hlmv_settings
             // 
@@ -1913,7 +1914,7 @@
             this.txtb_hlmv_def_wsize_y.Name = "txtb_hlmv_def_wsize_y";
             this.toolTip1.SetToolTip(this.txtb_hlmv_def_wsize_y, resources.GetString("txtb_hlmv_def_wsize_y.ToolTip"));
             this.txtb_hlmv_def_wsize_y.TextChanged += new System.EventHandler(this.settings_save);
-            this.txtb_hlmv_def_wsize_y.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumeric_KeyPress);
+            this.txtb_hlmv_def_wsize_y.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumericSimple_KeyPress);
             // 
             // panel13
             // 
@@ -2453,7 +2454,7 @@
             resources.ApplyResources(this.txtb_hlmv_fov, "txtb_hlmv_fov");
             this.txtb_hlmv_fov.Name = "txtb_hlmv_fov";
             this.txtb_hlmv_fov.TextChanged += new System.EventHandler(this.settings_save);
-            this.txtb_hlmv_fov.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumeric_KeyPress);
+            this.txtb_hlmv_fov.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumericSimple_KeyPress);
             // 
             // tabControl
             // 
