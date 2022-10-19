@@ -1,11 +1,27 @@
-# TFMV Neo 0.4
+# TFMV Neo 0.5
 Team Fortress 2 Model Viewer
 
-DOWNLOAD HERE: http://neodem.net/TFMV/TFMV_Neo_0.4.zip
+DOWNLOAD HERE: https://github.com/NeoDement/TFMV/releases
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 PATCH NOTES:
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+0.5 (10/19/2022)
+   
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-Fixed items from Workshop zips showing as error models when disable jigglebones is unchecked and the files don't exist locally (thanks Tabby!)
+
+-Fixed camera position, camera rotation and light rotation not accepting negative numbers (thanks Lo-fi!)
+
+-Fixed window size and screenshot delay accepting invalid decimal numbers.
+
+-Reorganized the order of paints to match the TF2 Wiki. This should make uploading painted images of in-game items easier (thanks Lo-fi!)
+
+-Added button to view the TFMV Neo Github to About tab.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
