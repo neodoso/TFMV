@@ -113,29 +113,29 @@ namespace TFMV.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] engineer_hand {
-            get {
-                object obj = ResourceManager.GetObject("engineer_hand", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] engineer_hand_hat {
-            get {
-                object obj = ResourceManager.GetObject("engineer_hand_hat", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] engineer_hat {
             get {
                 object obj = ResourceManager.GetObject("engineer_hat", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] engineer_rightarm {
+            get {
+                object obj = ResourceManager.GetObject("engineer_rightarm", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] engineer_rightarm_hat {
+            get {
+                object obj = ResourceManager.GetObject("engineer_rightarm_hat", resourceCulture);
                 return ((byte[])(obj));
             }
         }

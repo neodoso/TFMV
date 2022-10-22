@@ -114,6 +114,8 @@ namespace TFMV.UserControls
             bodygroups_class = new List<TF2.player_bodygroup>();
             bodygroups_combinations = new List<TF2.bodygroup_combination>();
 
+            //**HERE** TODO: engy isnt loading rightarm
+
             // object bodygroup_class = player_bodygroups.GetType().GetMember("scout");
             // TODO
             // we could get the bodygroup from "player_bodygroups" by name through reflection instead of using this switch

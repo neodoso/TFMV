@@ -88,9 +88,10 @@ namespace TFMV.TF2
 
             this.engineer.Add(new player_bodygroup("engineer", 0, ""));
             this.engineer.Add(new player_bodygroup("hat", 0, "engineer_hat"));
-            this.engineer.Add(new player_bodygroup("rightarm", 0, "engineer_hand"));
 
-            this.engineer_combinations.Add(new bodygroup_combination(new string[2] { "hat", "rightarm" }, "engineer_hand_hat"));
+            this.engineer.Add(new player_bodygroup("rightarm", 0, "engineer_rightarm"));
+
+            this.engineer_combinations.Add(new bodygroup_combination(new string[2] { "hat", "rightarm" }, "engineer_rightarm_hat"));
 
 
             this.heavy.Add(new player_bodygroup("heavy", 0, ""));

@@ -346,15 +346,33 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Files\textures\demoman_head.vtf" />
-    <None Include="Files\textures\engineer_head.vtf" />
-    <None Include="Files\textures\heavy_head.vtf" />
-    <None Include="Files\textures\medic_head.vtf" />
-    <None Include="Files\textures\scout_head.vtf" />
-    <None Include="Files\textures\sniper_head.vtf" />
-    <None Include="Files\textures\soldier_head.vtf" />
-    <None Include="Files\textures\spy_head_blue.vtf" />
-    <None Include="Files\textures\spy_head_red.vtf" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.dx80.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.dx90.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.mdl" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.swx.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.vvd" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.dx80.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.dx90.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.mdl" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.swx.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.vvd" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\hvyweapon_blue_purityfist.vmt" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\hvyweapon_red_purityfist.vmt" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.dx80.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.dx90.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.mdl" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.swx.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.vvd" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.dx80.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.dx90.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.mdl" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.swx.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.vvd" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.dx80.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.dx90.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.mdl" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.swx.vtx" />
+    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.vvd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -368,8 +386,8 @@
     <EmbeddedResource Include="Resources\bodygroup_masks\demoman_shoes.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\demoman_shoes_grenades.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\demoman_grenades.bin" />
-    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hand.bin" />
-    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hand_hat.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_rightarm.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_rightarm_hat.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hat.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\hvyweapon_hands.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\medic_backpack.bin" />

@@ -4261,6 +4261,58 @@ namespace TFMV
                         // skip "Upgradable" items (generally double stock weapons)
                         if (item.Name_str.Contains("Upgradeable")) { continue; }
 
+
+                        //neodement: compiled some items hidden inside bodygroups as their own separate mdls. they are added as model paths here.
+
+                        //add fake bodygroup for GENTLE MANNE'S SERVICE MEDAL
+                        if (item.Name_str == "Web Easteregg Medal")
+                        {
+                            item.model_path = "models\\TFMV_bodygroups\\soldier_medal_bodygroup.mdl";
+                        }
+
+                        //add fake bodygroup for GUNSLINGER
+                        if (item.Name_str == "The Gunslinger")
+                        {
+                            item.model_path = "models\\TFMV_bodygroups\\engineer_gunslinger_bodygroup.mdl";
+                        }
+
+                        //manually disable arm bodygroup for SHORT CIRCUIT
+                        if (item.Name_str == "The Short Circuit")
+                        {
+                            item.visuals.player_bodygroups = new List<TF2.items_game.player_bodygroup>();
+
+                            item.visuals.player_bodygroups.Add(new TF2.items_game.player_bodygroup("rightarm", "1"));
+                        }
+
+                        //add fake bodygroup for PURITY FIST (hand)
+                        if (item.Name_str == "The Purity Fist")
+                        {
+                            if (item.extra_wearable == null) { item.extra_wearable = new TF2.items_game.extra_wearable(); }
+
+                            item.extra_wearable.mdl_path = "models\\TFMV_bodygroups\\heavy_purityfist_bodygroup.mdl";
+
+                            item.visuals.player_bodygroups = new List<TF2.items_game.player_bodygroup>();
+
+                            item.visuals.player_bodygroups.Add(new TF2.items_game.player_bodygroup("hands", "1"));
+                        }
+
+                        //neodement: added extra fake bodygroups for the huntsman arrows and sydney sleeper darts
+                        if (item.item_class == "tf_weapon_compound_bow")
+                        {
+                            if (item.extra_wearable == null) { item.extra_wearable = new TF2.items_game.extra_wearable(); }
+
+                            item.extra_wearable.mdl_path = "models\\TFMV_bodygroups\\sniper_arrows_bodygroup.mdl";
+                        }
+                        
+                        if (item.Name_str == "The Sydney Sleeper")
+                        {
+                            if (item.extra_wearable == null) { item.extra_wearable = new TF2.items_game.extra_wearable(); }
+
+                            item.extra_wearable.mdl_path = "models\\TFMV_bodygroups\\sniper_darts_bodygroup.mdl";
+                        }
+
+
+
                         string defindex = vdf_schema.sGet_KeyVal(node, "defindex");
 
 
@@ -4404,7 +4456,7 @@ namespace TFMV
                                 {
                                     if (item.visuals.styles.Count > 0)
                                     {
-                                        // ready ech style and look for model styles
+                                        // ready each style and look for model styles
                                         foreach (var style in item.visuals.styles)
                                         {
                                             if (style.model_player != null)
@@ -4724,6 +4776,7 @@ namespace TFMV
 
                         continue;
 
+                        //todo: inside this visuals block is probably where the skin fix for medals goes. and also australium weapons.
 
                     case "visuals":
                         if (type == "item_game") visuals = node;
@@ -4747,6 +4800,9 @@ namespace TFMV
                                     // item.visuals.player_bodygroups = new List<TF2.items_game.player_bodygroup>();
                                     foreach (var bodygroup in vis_item.nSubNodes)
                                     {
+
+
+
                                         // if item visuals doesn't have this bodygroup, add it
                                         if (!item.visuals.player_bodygroups.Contains(new TF2.items_game.player_bodygroup(bodygroup.nkey, bodygroup.nvalue)))
                                         {
@@ -4757,6 +4813,28 @@ namespace TFMV
                                     }
                                     continue;
                                 }
+
+
+                                /*
+                                //neodement: fix for gunslinger and short circuit not activating appropriate bodygroup
+                                if (item.Name_str == "The Gunslinger" || item.Name_str == "The Short Circuit" || item.Name_str == "The Purity Fist")
+                                {
+                                    
+                                    // if item has no bodygroups, create new list
+                                    if (item.visuals.player_bodygroups == null) { item.visuals.player_bodygroups = new List<TF2.items_game.player_bodygroup>(); }
+
+                                    item.visuals.player_bodygroups.Add(new TF2.items_game.player_bodygroup("rightarm", "1"));
+                                    */
+                                /*
+                                    //todo: this doesn't work, at all!
+                                    MessageBox.Show("found " + item.Name_str + "!");
+
+                                    foreach (var bdygrp in item.visuals.player_bodygroups)
+                                    {
+                                    MessageBox.Show("" + bdygrp.key + ": " + bdygrp.value);
+                                    }
+                                }
+                                */
 
                                 #endregion
 
@@ -5373,7 +5451,8 @@ namespace TFMV
                     // search item by name.contains, skip if it doesn't match
                     if ((search_string != null) || (search_string != ""))
                     {
-                        if ((the_item.Name_str != null) && (!the_item.Name_str.ToLower().Contains(search_string.ToLower())))
+                        //neodement: this extra bit at the end makes it search the displayed name instead of just the internal one
+                        if ((the_item.Name_str != null) && (!the_item.Name_str.ToLower().Contains(search_string.ToLower())) && (!the_item.item_name_var.ToLower().Contains(search_string.ToLower())))
                         {
                             continue;
                         }
@@ -5532,6 +5611,8 @@ namespace TFMV
                         {
                             if (bodygroup.value == "1")
                             {
+                                //todo: remove this when it works...
+                                //MessageBox.Show("added " + bodygroup.key);
                                 item_ListView.bodygroups_off.Add(bodygroup.key);
                             }
                         }
@@ -8961,7 +9042,7 @@ namespace TFMV
 
                 TFMV.VDF_parser.VDF_node equip_region = manifest.sGet_NodePath("asset.ImportSession.equip_region");
 
-                    #region bodygroups
+                #region bodygroups
 
             // get bodygroups that should be disabled
             TFMV.VDF_parser.VDF_node bodygroups = manifest.sGet_NodePath("asset.ImportSession.bodygroup");
@@ -10369,70 +10450,64 @@ namespace TFMV
         // installs TFMV mods in "custom" folder, such as disabling the tiled fire overlay texture
         private void install_tfmv_mods()
         {
+
+            //TODO: change these to use tfmv_dir variable instead of manually finding it?
+
             //create directory for fire overlay
             miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\effects\\tiledfire\\");
 
-            /*
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\scout\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\soldier\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\pyro\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\demo\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\hvyweapon\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\engineer\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\medic\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\sniper\\");
-            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\spy\\");
-            */
+            //create directory for fake bodygroups
+            string out_dir = steamGameConfig.tf_dir + "custom\\TFMV\\models\\TFMV_bodygroups\\";
+            miscFunc.create_missing_dir(out_dir);
 
+            //create directory for purity fist material fix
+            miscFunc.create_missing_dir(steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\TFMV_bodygroups\\");
 
-            // write no fire overlay texture file
             try
             {
-             
-                //todo: neodement: delete this crapola!
 
+                // write no fire overlay texture file
                 WriteResourceToFile("TFMV.Files.textures.fireLayeredSlowTiled512.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\effects\\tiledfire\\fireLayeredSlowTiled512.vtf");
 
+                //write fake bodygroup files
 
-                /*
-                //neodement: replaces the face textures with recompressed ones (BGR888) to stop a bug where they appear low res in hlmv (especially obvious on the eyebrows)
-
-                WriteResourceToFile("TFMV.Files.textures.scout_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\scout\\scout_head.vtf");
-                //WriteResourceToFile("TFMV.Files.textures.soldier_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\soldier\\soldier_head.vtf");
-                //(pyro doesn't need one because he doesn't have a separate head texture)
-                WriteResourceToFile("TFMV.Files.textures.demoman_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\demo\\demoman_head.vtf");
-                WriteResourceToFile("TFMV.Files.textures.heavy_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\hvyweapon\\heavy_head.vtf");
-                WriteResourceToFile("TFMV.Files.textures.engineer_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\engineer\\engineer_head.vtf");
-                WriteResourceToFile("TFMV.Files.textures.medic_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\medic\\medic_head.vtf");
-                WriteResourceToFile("TFMV.Files.textures.sniper_head.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\sniper\\sniper_head.vtf");
-                WriteResourceToFile("TFMV.Files.textures.spy_head_red.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\spy\\spy_head_red.vtf");
-                WriteResourceToFile("TFMV.Files.textures.spy_head_blue.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\spy\\spy_head_blue.vtf");
-
-                //WriteResourceToFile("TFMV.Files.textures.fireLayeredSlowTiled512.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\effects\\tiledfire\\fireLayeredSlowTiled512_2.vtf");
-                WriteResourceToFile("TFMV.Files.textures.fireLayeredSlowTiled512.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\player\\soldier\\soldier_head.vtf");
-
-                //WriteResourceToFile("TFMV.Files.textures.fireLayeredSlowTiled512.vtf", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\effects\\tiledfire\\fireLayeredSlowTiled512_3.vtf");
-
-                //"custom\\TFMV\\materials\\models\\player\\soldier");
-                //"custom\\TFMV\\materials\\models\\player\\soldier\\soldier_head.vtf");
-
-                /*
-                materials\models\player\demo\demoman_head.vtf
-materials\models\player\engineer\engineer_head.vtf
-materials\models\player\hvyweapon\heavy_head.vtf
-materials\models\player\medic\medic_head.vtf
-(no pyro)
-materials\models\player\scout\scout_head.vtf
-materials\models\player\sniper\sniper_head.vtf
-materials\models\player\soldier\soldier_head.vtf
-                */
-
-            
-
+                //GUNSLINGER
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.engineer_gunslinger_bodygroup.dx80.vtx", out_dir + "engineer_gunslinger_bodygroup.dx80.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.engineer_gunslinger_bodygroup.dx90.vtx", out_dir + "engineer_gunslinger_bodygroup.dx90.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.engineer_gunslinger_bodygroup.mdl", out_dir + "engineer_gunslinger_bodygroup.mdl");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.engineer_gunslinger_bodygroup.swx.vtx", out_dir + "engineer_gunslinger_bodygroup.sw.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.engineer_gunslinger_bodygroup.vvd", out_dir + "engineer_gunslinger_bodygroup.vvd");
+                //SNIPER ARROWS
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_arrows_bodygroup.dx80.vtx", out_dir + "sniper_arrows_bodygroup.dx80.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_arrows_bodygroup.dx90.vtx", out_dir + "sniper_arrows_bodygroup.dx90.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_arrows_bodygroup.mdl", out_dir + "sniper_arrows_bodygroup.mdl");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_arrows_bodygroup.swx.vtx", out_dir + "sniper_arrows_bodygroup.sw.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_arrows_bodygroup.vvd", out_dir + "sniper_arrows_bodygroup.vvd");
+                //SNIPER DARTS
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_darts_bodygroup.dx80.vtx", out_dir + "sniper_darts_bodygroup.dx80.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_darts_bodygroup.dx90.vtx", out_dir + "sniper_darts_bodygroup.dx90.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_darts_bodygroup.mdl", out_dir + "sniper_darts_bodygroup.mdl");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_darts_bodygroup.swx.vtx", out_dir + "sniper_darts_bodygroup.sw.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.sniper_darts_bodygroup.vvd", out_dir + "sniper_darts_bodygroup.vvd");
+                //GENTLE MANNE'S SERVICE MEDAL
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.soldier_medal_bodygroup.dx80.vtx", out_dir + "soldier_medal_bodygroup.dx80.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.soldier_medal_bodygroup.dx90.vtx", out_dir + "soldier_medal_bodygroup.dx90.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.soldier_medal_bodygroup.mdl", out_dir + "soldier_medal_bodygroup.mdl");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.soldier_medal_bodygroup.swx.vtx", out_dir + "soldier_medal_bodygroup.sw.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.soldier_medal_bodygroup.vvd", out_dir + "soldier_medal_bodygroup.vvd");
+                //PURITY FIST
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.heavy_purityfist_bodygroup.dx80.vtx", out_dir + "heavy_purityfist_bodygroup.dx80.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.heavy_purityfist_bodygroup.dx90.vtx", out_dir + "heavy_purityfist_bodygroup.dx90.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.heavy_purityfist_bodygroup.mdl", out_dir + "heavy_purityfist_bodygroup.mdl");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.heavy_purityfist_bodygroup.swx.vtx", out_dir + "heavy_purityfist_bodygroup.sw.vtx");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.heavy_purityfist_bodygroup.vvd", out_dir + "heavy_purityfist_bodygroup.vvd");
+                //PURITY FIST MATERIALS (to fix masking bug with tfmv bodygroup method)
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.hvyweapon_red_purityfist.vmt", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\TFMV_bodygroups\\hvyweapon_red_purityfist.vmt");
+                WriteResourceToFile("TFMV.Files.models.fakebodygroups.hvyweapon_blue_purityfist.vmt", steamGameConfig.tf_dir + "custom\\TFMV\\materials\\models\\TFMV_bodygroups\\hvyweapon_blue_purityfist.vmt");
 
                 if (cb_screenshot_transparency.Checked)
                 {
-                    string out_dir = steamGameConfig.tf_dir + "custom\\TFMV\\models\\TFMV\\";
+                    out_dir = steamGameConfig.tf_dir + "custom\\TFMV\\models\\TFMV\\";
                     miscFunc.create_missing_dir(out_dir);
                     WriteResourceToFile("TFMV.Files.models.tfmv_bg.dx80.vtx", out_dir + "tfmv_bg.dx80.vtx");
                     WriteResourceToFile("TFMV.Files.models.tfmv_bg.dx90.vtx", out_dir + "tfmv_bg.dx90.vtx");
@@ -10443,7 +10518,7 @@ materials\models\player\soldier\soldier_head.vtf
             }
             catch
             {
-                MessageBox.Show("errored");
+                MessageBox.Show("Error writing files to TFMV custom directory.");
             }
         }
 
@@ -10578,6 +10653,75 @@ materials\models\player\soldier\soldier_head.vtf
             {
                 e.Handled = true;
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_allow_tournament_medals_CheckedChanged(object sender, EventArgs e)
+        {
+            //title: Warning
+            MessageBox.Show("Filtering items by Medal will take a LONG time. This option is not recommended unless you specifically need it (for Wiki articles etc).\n\nChanging this setting will cause the schema to re-download.\n\nAre you sure you want to do this? ");
+            //[yes] [no]
+            //todo: lets go
+
+
+            //will need a check for if the workshop button is visible, to decide what layout we are using...
+            /*
+             Buttons Y Pos = 61
+
+
+PDA
+
+X: 410
+W: 75
+
+Taunt Prop
+
+X: 491
+W: 75
+Text: "Taunt Prop"
+
+Medal
+
+X: 572
+W: 75
+
+Workshop
+
+X: 572
+W: 75
+
+
+
+
+
+
+PDA Small
+
+X: 405
+W: 49
+
+Taunt Prop Small
+
+X: 459
+W: 49
+Text: "Prop"
+
+Medal Small
+
+X: 513
+W: 49
+
+Workshop Small
+
+X: 572
+W: 76
+
+ 
+             */ 
         }
 
 

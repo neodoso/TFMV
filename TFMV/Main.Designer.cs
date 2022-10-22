@@ -55,6 +55,7 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.label32 = new System.Windows.Forms.Label();
             this.btn_sel_screensdir = new System.Windows.Forms.Button();
+            this.cb_allow_tournament_medals = new System.Windows.Forms.CheckBox();
             this.cb_strict_equip_regions = new System.Windows.Forms.CheckBox();
             this.btn_dl_schema = new System.Windows.Forms.Button();
             this.cb_hlmv_antialias = new System.Windows.Forms.CheckBox();
@@ -72,7 +73,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_recache_schema = new System.Windows.Forms.Button();
-            this.steamGameConfig = new TFMV.SourceEngine.SteamGameConfig();
             this.btn_reset_light = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_lColor = new System.Windows.Forms.Button();
@@ -91,7 +91,6 @@
             this.txtb_hlmv_campos_x = new System.Windows.Forms.TextBox();
             this.txtb_hlmv_camrot_y = new System.Windows.Forms.TextBox();
             this.tab_items = new System.Windows.Forms.TabPage();
-            this.btn_medal = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lab_item_id = new System.Windows.Forms.Label();
             this.cb_sort_order = new System.Windows.Forms.CheckBox();
@@ -147,7 +146,6 @@
             this.panel40 = new System.Windows.Forms.Panel();
             this.panel39 = new System.Windows.Forms.Panel();
             this.btn_bg_color1 = new System.Windows.Forms.Button();
-            this.colorPicker_master = new TFMV.PaintColorPicker();
             this.btn_screenshot = new System.Windows.Forms.Button();
             this.panel_Bgcolor1 = new System.Windows.Forms.Panel();
             this.btn_mainModel_material = new System.Windows.Forms.Button();
@@ -163,7 +161,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
             this.txtb_hlmv_wsize_x = new System.Windows.Forms.TextBox();
-            this.bodygroup_manager_panel = new TFMV.UserControls.Bodygroup_manager();
             this.txtb_hlmv_wsize_y = new System.Windows.Forms.TextBox();
             this.btn_window_scale = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -196,8 +193,10 @@
             this.separator = new System.Windows.Forms.Panel();
             this.btn_save_loadout = new System.Windows.Forms.Button();
             this.panel_hlmv_settings = new System.Windows.Forms.Panel();
+            this.label47 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.btn_tf2_wiki = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
             this.cb_disable_cam_rotPos = new System.Windows.Forms.CheckBox();
             this.label36 = new System.Windows.Forms.Label();
@@ -230,21 +229,24 @@
             this.btn_use_mainmodel = new System.Windows.Forms.Button();
             this.txtb_cmdl_path = new System.Windows.Forms.ComboBox();
             this.panel_items = new System.Windows.Forms.Panel();
+            this.btn_medal = new System.Windows.Forms.Button();
             this.btn_tauntprop = new System.Windows.Forms.Button();
             this.lab_region_filter = new System.Windows.Forms.Label();
-            this.btn_tf2_wiki = new System.Windows.Forms.Button();
             this.comboBox_equip_region_filter = new System.Windows.Forms.ComboBox();
             this.btn_workshop_items = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
             this.progressBar_item_list = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_expand_item_list = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.btn_item_sorting_order = new System.Windows.Forms.Button();
             this.list_view = new System.Windows.Forms.ListView();
             this.vtab_items = new System.Windows.Forms.Panel();
             this.lab_tf2_itemlist = new System.Windows.Forms.Label();
             this.txtb_searchitem = new System.Windows.Forms.TextBox();
             this.btn_scout = new System.Windows.Forms.Button();
-            this.btn_badge = new System.Windows.Forms.Button();
             this.cb_allclass_only = new System.Windows.Forms.CheckBox();
             this.btn_secondary = new System.Windows.Forms.Button();
             this.btn_primary = new System.Windows.Forms.Button();
@@ -273,6 +275,7 @@
             this.btn_clear_clist = new System.Windows.Forms.Button();
             this.loadout_list = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_pick_paints = new System.Windows.Forms.Button();
+            this.btn_badge = new System.Windows.Forms.Button();
             this.btn_pda2 = new System.Windows.Forms.Button();
             this.txtb_hlmv_fov = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -299,6 +302,9 @@
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.colorPicker_master = new TFMV.PaintColorPicker();
+            this.steamGameConfig = new TFMV.SourceEngine.SteamGameConfig();
+            this.bodygroup_manager_panel = new TFMV.UserControls.Bodygroup_manager();
             this.Settings.SuspendLayout();
             this.panel37.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_screenshot_delay)).BeginInit();
@@ -395,6 +401,7 @@
             this.Settings.Controls.Add(this.txtb_screenshots_dir);
             this.Settings.Controls.Add(this.panel23);
             this.Settings.Controls.Add(this.btn_sel_screensdir);
+            this.Settings.Controls.Add(this.cb_allow_tournament_medals);
             this.Settings.Controls.Add(this.cb_strict_equip_regions);
             this.Settings.Controls.Add(this.btn_dl_schema);
             this.Settings.Controls.Add(this.cb_hlmv_antialias);
@@ -501,6 +508,7 @@
             this.cb_strict_paintablity.Checked = true;
             this.cb_strict_paintablity.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_strict_paintablity.Name = "cb_strict_paintablity";
+            this.toolTip1.SetToolTip(this.cb_strict_paintablity, resources.GetString("cb_strict_paintablity.ToolTip"));
             this.cb_strict_paintablity.UseVisualStyleBackColor = true;
             this.cb_strict_paintablity.CheckedChanged += new System.EventHandler(this.settings_save);
             // 
@@ -546,12 +554,23 @@
             this.btn_sel_screensdir.UseVisualStyleBackColor = true;
             this.btn_sel_screensdir.Click += new System.EventHandler(this.btn_sel_screensdir_Click);
             // 
+            // cb_allow_tournament_medals
+            // 
+            resources.ApplyResources(this.cb_allow_tournament_medals, "cb_allow_tournament_medals");
+            this.cb_allow_tournament_medals.Checked = true;
+            this.cb_allow_tournament_medals.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_allow_tournament_medals.Name = "cb_allow_tournament_medals";
+            this.toolTip1.SetToolTip(this.cb_allow_tournament_medals, resources.GetString("cb_allow_tournament_medals.ToolTip"));
+            this.cb_allow_tournament_medals.UseVisualStyleBackColor = true;
+            this.cb_allow_tournament_medals.CheckedChanged += new System.EventHandler(this.cb_allow_tournament_medals_CheckedChanged);
+            // 
             // cb_strict_equip_regions
             // 
             resources.ApplyResources(this.cb_strict_equip_regions, "cb_strict_equip_regions");
             this.cb_strict_equip_regions.Checked = true;
             this.cb_strict_equip_regions.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_strict_equip_regions.Name = "cb_strict_equip_regions";
+            this.toolTip1.SetToolTip(this.cb_strict_equip_regions, resources.GetString("cb_strict_equip_regions.ToolTip"));
             this.cb_strict_equip_regions.UseVisualStyleBackColor = true;
             this.cb_strict_equip_regions.CheckedChanged += new System.EventHandler(this.settings_save);
             // 
@@ -667,16 +686,6 @@
             this.btn_recache_schema.Name = "btn_recache_schema";
             this.btn_recache_schema.UseVisualStyleBackColor = true;
             this.btn_recache_schema.Click += new System.EventHandler(this.btn_recache_schema_Click);
-            // 
-            // steamGameConfig
-            // 
-            this.steamGameConfig.bin_dir = null;
-            resources.ApplyResources(this.steamGameConfig, "steamGameConfig");
-            this.steamGameConfig.Name = "steamGameConfig";
-            this.steamGameConfig.steam_dir = null;
-            this.steamGameConfig.tf_dir = null;
-            this.steamGameConfig.tf2_dir = null;
-            this.steamGameConfig.Load += new System.EventHandler(this.steamGameConfig_Load);
             // 
             // btn_reset_light
             // 
@@ -834,7 +843,6 @@
             // tab_items
             // 
             this.tab_items.BackColor = System.Drawing.Color.Gainsboro;
-            this.tab_items.Controls.Add(this.btn_medal);
             this.tab_items.Controls.Add(this.textBox1);
             this.tab_items.Controls.Add(this.lab_item_id);
             this.tab_items.Controls.Add(this.cb_sort_order);
@@ -843,26 +851,18 @@
             this.tab_items.Controls.Add(this.panel_paints);
             this.tab_items.Controls.Add(this.panel_loadout);
             this.tab_items.Controls.Add(this.btn_pick_paints);
+            this.tab_items.Controls.Add(this.btn_badge);
             this.tab_items.Controls.Add(this.btn_pda2);
             this.tab_items.Controls.Add(this.txtb_hlmv_fov);
             this.tab_items.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             resources.ApplyResources(this.tab_items, "tab_items");
             this.tab_items.Name = "tab_items";
             // 
-            // btn_medal
-            // 
-            this.btn_medal.BackColor = System.Drawing.Color.Gainsboro;
-            resources.ApplyResources(this.btn_medal, "btn_medal");
-            this.btn_medal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btn_medal.Name = "btn_medal";
-            this.btn_medal.Tag = "medal";
-            this.btn_medal.UseVisualStyleBackColor = false;
-            this.btn_medal.Click += new System.EventHandler(this.btn_slot_load_Click);
-            // 
             // textBox1
             // 
             resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lab_item_id
             // 
@@ -1295,19 +1295,6 @@
             this.btn_bg_color1.UseVisualStyleBackColor = true;
             this.btn_bg_color1.Click += new System.EventHandler(this.panel_Bgcolor_Click);
             // 
-            // colorPicker_master
-            // 
-            this.colorPicker_master.BackColor = System.Drawing.Color.LightGray;
-            this.colorPicker_master.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.colorPicker_master.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.colorPicker_master, "colorPicker_master");
-            this.colorPicker_master.FormattingEnabled = true;
-            this.colorPicker_master.Name = "colorPicker_master";
-            this.colorPicker_master.SelectedItem = null;
-            this.colorPicker_master.SelectedValue = System.Drawing.Color.White;
-            this.colorPicker_master.VMT = null;
-            this.colorPicker_master.SelectionChangeCommitted += new System.EventHandler(this.colorPicker1_SelectionChangeCommitted);
-            // 
             // btn_screenshot
             // 
             resources.ApplyResources(this.btn_screenshot, "btn_screenshot");
@@ -1436,12 +1423,6 @@
             this.toolTip1.SetToolTip(this.txtb_hlmv_wsize_x, resources.GetString("txtb_hlmv_wsize_x.ToolTip"));
             this.txtb_hlmv_wsize_x.TextChanged += new System.EventHandler(this.settings_save);
             this.txtb_hlmv_wsize_x.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumericSimple_KeyPress);
-            // 
-            // bodygroup_manager_panel
-            // 
-            this.bodygroup_manager_panel.BackColor = System.Drawing.Color.Gainsboro;
-            resources.ApplyResources(this.bodygroup_manager_panel, "bodygroup_manager_panel");
-            this.bodygroup_manager_panel.Name = "bodygroup_manager_panel";
             // 
             // txtb_hlmv_wsize_y
             // 
@@ -1717,8 +1698,10 @@
             // 
             // panel_hlmv_settings
             // 
+            this.panel_hlmv_settings.Controls.Add(this.label47);
             this.panel_hlmv_settings.Controls.Add(this.label39);
             this.panel_hlmv_settings.Controls.Add(this.label19);
+            this.panel_hlmv_settings.Controls.Add(this.btn_tf2_wiki);
             this.panel_hlmv_settings.Controls.Add(this.panel11);
             this.panel_hlmv_settings.Controls.Add(this.panel18);
             this.panel_hlmv_settings.Controls.Add(this.panel_Bgcolor);
@@ -1749,6 +1732,11 @@
             resources.ApplyResources(this.panel_hlmv_settings, "panel_hlmv_settings");
             this.panel_hlmv_settings.Name = "panel_hlmv_settings";
             // 
+            // label47
+            // 
+            resources.ApplyResources(this.label47, "label47");
+            this.label47.Name = "label47";
+            // 
             // label39
             // 
             resources.ApplyResources(this.label39, "label39");
@@ -1760,6 +1748,14 @@
             resources.ApplyResources(this.label19, "label19");
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.label19.Name = "label19";
+            // 
+            // btn_tf2_wiki
+            // 
+            resources.ApplyResources(this.btn_tf2_wiki, "btn_tf2_wiki");
+            this.btn_tf2_wiki.ForeColor = System.Drawing.Color.Gray;
+            this.btn_tf2_wiki.Name = "btn_tf2_wiki";
+            this.btn_tf2_wiki.UseVisualStyleBackColor = true;
+            this.btn_tf2_wiki.Click += new System.EventHandler(this.btn_tf2_wiki_Click);
             // 
             // panel11
             // 
@@ -2012,16 +2008,15 @@
             // 
             // panel_items
             // 
+            this.panel_items.Controls.Add(this.btn_medal);
             this.panel_items.Controls.Add(this.btn_tauntprop);
             this.panel_items.Controls.Add(this.lab_region_filter);
-            this.panel_items.Controls.Add(this.btn_tf2_wiki);
             this.panel_items.Controls.Add(this.comboBox_equip_region_filter);
             this.panel_items.Controls.Add(this.btn_workshop_items);
             this.panel_items.Controls.Add(this.panel2);
             this.panel_items.Controls.Add(this.vtab_items);
             this.panel_items.Controls.Add(this.txtb_searchitem);
             this.panel_items.Controls.Add(this.btn_scout);
-            this.panel_items.Controls.Add(this.btn_badge);
             this.panel_items.Controls.Add(this.cb_allclass_only);
             this.panel_items.Controls.Add(this.btn_secondary);
             this.panel_items.Controls.Add(this.btn_primary);
@@ -2040,6 +2035,16 @@
             resources.ApplyResources(this.panel_items, "panel_items");
             this.panel_items.Name = "panel_items";
             // 
+            // btn_medal
+            // 
+            this.btn_medal.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.btn_medal, "btn_medal");
+            this.btn_medal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btn_medal.Name = "btn_medal";
+            this.btn_medal.Tag = "medal";
+            this.btn_medal.UseVisualStyleBackColor = false;
+            this.btn_medal.Click += new System.EventHandler(this.btn_slot_load_Click);
+            // 
             // btn_tauntprop
             // 
             this.btn_tauntprop.BackColor = System.Drawing.Color.Gainsboro;
@@ -2054,14 +2059,6 @@
             // 
             resources.ApplyResources(this.lab_region_filter, "lab_region_filter");
             this.lab_region_filter.Name = "lab_region_filter";
-            // 
-            // btn_tf2_wiki
-            // 
-            resources.ApplyResources(this.btn_tf2_wiki, "btn_tf2_wiki");
-            this.btn_tf2_wiki.ForeColor = System.Drawing.Color.Gray;
-            this.btn_tf2_wiki.Name = "btn_tf2_wiki";
-            this.btn_tf2_wiki.UseVisualStyleBackColor = true;
-            this.btn_tf2_wiki.Click += new System.EventHandler(this.btn_tf2_wiki_Click);
             // 
             // comboBox_equip_region_filter
             // 
@@ -2085,18 +2082,40 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Controls.Add(this.button10);
             this.panel2.Controls.Add(this.progressBar_item_list);
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btn_expand_item_list);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.btn_item_sorting_order);
             this.panel2.Controls.Add(this.list_view);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.button10, "button10");
+            this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button10.Name = "button10";
+            this.button10.Tag = "taunt";
+            this.button10.UseVisualStyleBackColor = false;
             // 
             // progressBar_item_list
             // 
             this.progressBar_item_list.ForeColor = System.Drawing.Color.LightGray;
             resources.ApplyResources(this.progressBar_item_list, "progressBar_item_list");
             this.progressBar_item_list.Name = "progressBar_item_list";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button1.Name = "button1";
+            this.button1.Tag = "taunt";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // btn_expand_item_list
             // 
@@ -2108,6 +2127,24 @@
             this.toolTip1.SetToolTip(this.btn_expand_item_list, resources.GetString("btn_expand_item_list.ToolTip"));
             this.btn_expand_item_list.UseVisualStyleBackColor = false;
             this.btn_expand_item_list.Click += new System.EventHandler(this.btn_expand_item_list_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.button2, "button2");
+            this.button2.ForeColor = System.Drawing.SystemColors.Control;
+            this.button2.Name = "button2";
+            this.button2.Tag = "workshop_items";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button3.Name = "button3";
+            this.button3.Tag = "pda";
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // btn_item_sorting_order
             // 
@@ -2167,15 +2204,6 @@
             this.btn_scout.Name = "btn_scout";
             this.btn_scout.UseVisualStyleBackColor = false;
             this.btn_scout.Click += new System.EventHandler(this.btn_class_load_Click);
-            // 
-            // btn_badge
-            // 
-            this.btn_badge.BackColor = System.Drawing.Color.Gainsboro;
-            resources.ApplyResources(this.btn_badge, "btn_badge");
-            this.btn_badge.ForeColor = System.Drawing.Color.Black;
-            this.btn_badge.Name = "btn_badge";
-            this.btn_badge.UseVisualStyleBackColor = false;
-            this.btn_badge.Click += new System.EventHandler(this.btn_badge_Click);
             // 
             // cb_allclass_only
             // 
@@ -2437,6 +2465,15 @@
             this.btn_pick_paints.UseVisualStyleBackColor = false;
             this.btn_pick_paints.Click += new System.EventHandler(this.btn_pick_paints_Click);
             // 
+            // btn_badge
+            // 
+            this.btn_badge.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.btn_badge, "btn_badge");
+            this.btn_badge.ForeColor = System.Drawing.Color.Black;
+            this.btn_badge.Name = "btn_badge";
+            this.btn_badge.UseVisualStyleBackColor = false;
+            this.btn_badge.Click += new System.EventHandler(this.btn_badge_Click);
+            // 
             // btn_pda2
             // 
             this.btn_pda2.BackColor = System.Drawing.Color.Gainsboro;
@@ -2644,6 +2681,35 @@
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.TabStop = false;
             this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
+            // 
+            // colorPicker_master
+            // 
+            this.colorPicker_master.BackColor = System.Drawing.Color.LightGray;
+            this.colorPicker_master.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.colorPicker_master.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.colorPicker_master, "colorPicker_master");
+            this.colorPicker_master.FormattingEnabled = true;
+            this.colorPicker_master.Name = "colorPicker_master";
+            this.colorPicker_master.SelectedItem = null;
+            this.colorPicker_master.SelectedValue = System.Drawing.Color.White;
+            this.colorPicker_master.VMT = null;
+            this.colorPicker_master.SelectionChangeCommitted += new System.EventHandler(this.colorPicker1_SelectionChangeCommitted);
+            // 
+            // steamGameConfig
+            // 
+            this.steamGameConfig.bin_dir = null;
+            resources.ApplyResources(this.steamGameConfig, "steamGameConfig");
+            this.steamGameConfig.Name = "steamGameConfig";
+            this.steamGameConfig.steam_dir = null;
+            this.steamGameConfig.tf_dir = null;
+            this.steamGameConfig.tf2_dir = null;
+            this.steamGameConfig.Load += new System.EventHandler(this.steamGameConfig_Load);
+            // 
+            // bodygroup_manager_panel
+            // 
+            this.bodygroup_manager_panel.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.bodygroup_manager_panel, "bodygroup_manager_panel");
+            this.bodygroup_manager_panel.Name = "bodygroup_manager_panel";
             // 
             // Main
             // 
@@ -3024,6 +3090,12 @@
         private System.Windows.Forms.CheckBox cb_autoexpandonstartup;
         private System.Windows.Forms.CheckBox cb_cubemap;
         private System.Windows.Forms.LinkLabel linkLabel6;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox cb_allow_tournament_medals;
+        private System.Windows.Forms.Label label47;
     }
 }
 
