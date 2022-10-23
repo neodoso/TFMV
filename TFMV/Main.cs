@@ -184,6 +184,9 @@ namespace TFMV
         //neodement: cubemaps_dir for cubemap functions
         string cubemaps_dir = app_data_dir + "cubemaps\\";
 
+        //neodement: special variable so we know not to trigger the dialog when changing medal setting if a user didn't click it.
+        bool cb_allow_tournament_medals_SupressCheckedChange = false;
+
         private static string tools_dir = Application.StartupPath + "\\tools\\";
 
         #endregion
@@ -606,6 +609,10 @@ namespace TFMV
             {
                 btn_expand_item_list.PerformClick();
             }
+
+
+            //neodement: set up buttons to make room for the medal button, if need be
+            set_filter_button_sizes();
 
             this.BringToFront();
 
@@ -2249,6 +2256,8 @@ namespace TFMV
 
             if (btn.Tag.ToString() == "misc")
             {
+                cb_allclass_only.Enabled = true;
+
                 comboBox_equip_region_filter.Visible = true;
                 lab_region_filter.Visible = true;
                 equip_regions_list = new List<equip_region_tfmv>();
@@ -2256,8 +2265,15 @@ namespace TFMV
                 // clear equip regions filter list
                 comboBox_equip_region_filter.Items.Clear();
             }
+            else if (btn.Tag.ToString() == "medal")
+            {
+                cb_allclass_only.Checked = true;
+                cb_allclass_only.Enabled = false;
+            }
             else
             {
+                cb_allclass_only.Enabled = true;
+
                 comboBox_equip_region_filter.Visible = false;
                 lab_region_filter.Visible = false;
             }
@@ -2763,8 +2779,20 @@ namespace TFMV
                         {
                             if (prop.GetType() == typeof(CheckBox))
                             {
+
                                 CheckBox obj = (CheckBox)prop;
-                                if (arg[0].ToLower() == "true") { obj.Checked = true; }
+
+                                if (arg[0].ToLower() == "true") {
+
+                                    if (obj.Name == "cb_allow_tournament_medals")
+                                    {
+                                        //special variable so we know not to trigger the dialog as a user didn't click it.
+                                        //this is only set when changing the checkbox value to TRUE, as it's FALSE by default and we don't want the SupressCheckedChange getting stuck.
+                                        cb_allow_tournament_medals_SupressCheckedChange = true;
+                                    }
+
+                                    obj.Checked = true;
+                                }
                                 if (arg[0].ToLower() == "false") { obj.Checked = false; }
 
                             }
@@ -4249,6 +4277,10 @@ namespace TFMV
 
                 #region for each item in items_schema (from schema.vdf) and items_game
 
+                //keep track of what medal models have already been seen //todo: make this obsolete
+                List<string> seen_medal_models = new List<string>();
+
+
                 // for each item in items_schema
                 for (int i = 0; i < items_schema_list.Count; i++)
                 {
@@ -4303,7 +4335,7 @@ namespace TFMV
 
                             item.extra_wearable.mdl_path = "models\\TFMV_bodygroups\\sniper_arrows_bodygroup.mdl";
                         }
-                        
+
                         if (item.Name_str == "The Sydney Sleeper")
                         {
                             if (item.extra_wearable == null) { item.extra_wearable = new TF2.items_game.extra_wearable(); }
@@ -4492,6 +4524,21 @@ namespace TFMV
                                     if (item.model_path != "models/player/items/all_class/id_badge.mdl" && item.model_path != "models/player/items/all_class/dueling_medal.mdl")
                                     {
                                         items_game.Add(item); // add to items list
+                                    }
+                                }
+                                //for tournament medals, change the item slot to "medal" instead of "misc" so the medal button can see them.
+                                else
+                                {
+                                    //only download tournament medals if you were told to.
+                                    if (cb_allow_tournament_medals.Checked == true)
+                                    {
+                                        //if we already have a medal using this model, don't add it to the list.
+                                        if (!seen_medal_models.Contains(item.model_path))
+                                        { 
+                                            seen_medal_models.Add(item.model_path);
+                                            item.item_slot_schema = "medal";
+                                            items_game.Add(item);
+                                        }
                                     }
                                 }
                             }
@@ -4776,7 +4823,7 @@ namespace TFMV
 
                         continue;
 
-                        //todo: inside this visuals block is probably where the skin fix for medals goes. and also australium weapons.
+                    //todo: inside this visuals block is probably where the skin fix for medals goes. and also australium weapons.
 
                     case "visuals":
                         if (type == "item_game") visuals = node;
@@ -4814,27 +4861,6 @@ namespace TFMV
                                     continue;
                                 }
 
-
-                                /*
-                                //neodement: fix for gunslinger and short circuit not activating appropriate bodygroup
-                                if (item.Name_str == "The Gunslinger" || item.Name_str == "The Short Circuit" || item.Name_str == "The Purity Fist")
-                                {
-                                    
-                                    // if item has no bodygroups, create new list
-                                    if (item.visuals.player_bodygroups == null) { item.visuals.player_bodygroups = new List<TF2.items_game.player_bodygroup>(); }
-
-                                    item.visuals.player_bodygroups.Add(new TF2.items_game.player_bodygroup("rightarm", "1"));
-                                    */
-                                /*
-                                    //todo: this doesn't work, at all!
-                                    MessageBox.Show("found " + item.Name_str + "!");
-
-                                    foreach (var bdygrp in item.visuals.player_bodygroups)
-                                    {
-                                    MessageBox.Show("" + bdygrp.key + ": " + bdygrp.value);
-                                    }
-                                }
-                                */
 
                                 #endregion
 
@@ -4944,6 +4970,31 @@ namespace TFMV
                                         foreach (var player_model in obj.nSubNodes)
                                         {
                                             item.models_allclass_ADD(player_model.nkey, player_model.nvalue);
+                                        }
+                                    }
+                            }
+
+                        }
+                        continue;
+
+
+                    //neodement: stop medals with paint colour overrides until this is implemented.
+                    case "attributes":
+                        if (node.nSubNodes.Count > 0)
+                        {
+                            foreach (var obj in node.nSubNodes)
+                            {
+
+
+                                // neodement: get sub nodes for SET ITEM TINT RGB
+                                if (obj.nkey == "set item tint RGB")
+                                    // loop through all attributes
+                                    if (obj.nSubNodes.Count > 0)
+                                    {
+                                        foreach (var paintcolor in obj.nSubNodes)
+                                        {
+                                            item.model_player_per_class.Clear();
+                                            item.model_path = "";
                                         }
                                     }
                             }
@@ -8248,7 +8299,7 @@ namespace TFMV
             path = "materials/" + path;
 
             try
-            { 
+            {
                 //extract head texture vtf from vpk to tmp folder
                 VPK.Extract(path + filename, tmp_dir + path, 1);
 
@@ -8259,7 +8310,7 @@ namespace TFMV
 
                 //check for LOD block
 
-            
+
                 if (vtf_data[104] == 0x4C && //L
                     vtf_data[105] == 0x4F && //O
                     vtf_data[106] == 0x44    //D
@@ -8270,7 +8321,7 @@ namespace TFMV
                     vtf_data[108] = 0x0A;
                     vtf_data[109] = 0x0A;
                 }
-            
+
 
                 //copy head texture
                 File.WriteAllBytes(tfmv_dir + path + filename, vtf_data);
@@ -8278,7 +8329,7 @@ namespace TFMV
             catch
             {
             }
-            
+
         }
 
 
@@ -8410,7 +8461,7 @@ namespace TFMV
                     }
 
 #if DEBUG
-//                    MessageBox.Show("attempted to remove some jigglebones from " + targetFile);
+                    //                    MessageBox.Show("attempted to remove some jigglebones from " + targetFile);
 #endif
                 }
 
@@ -8472,6 +8523,7 @@ namespace TFMV
                         mdl_data[bone_offset + 164] = 0x00;
 
 
+                        /*
                         int bone_names_list_offset = BitConverter.ToInt32(mdl_data, 348);
                         //int bone_names_list_length = mdl_data.Length - bone_names_list_offset;
 
@@ -8484,7 +8536,8 @@ namespace TFMV
 
                         string bone_name = Encoding.Default.GetString(mdl_data, bone_name_offset, numBytesToRead);
 
-                        //MessageBox.Show("Changed bone " + bone_name + " from a jigglebone to a regular bone.");
+                        MessageBox.Show("Changed this bone from a jigglebone to a regular bone:" + bone_name);
+                        */
 
                     }
 
@@ -8705,8 +8758,8 @@ namespace TFMV
                 }
             }
 
-        // add phong if required by material
-        if (mat.phong_lightwarp)
+            // add phong if required by material
+            if (mat.phong_lightwarp)
             {
                 vmt_code.Add("");
                 string phong_code =
@@ -8716,7 +8769,7 @@ namespace TFMV
 
                 ""$phongfresnelranges""   ""[.3 1 8]""
                 ""$halflambert"" ""0""";
-  
+
                 vmt_code.Add(phong_code);
             }
 
@@ -8792,142 +8845,142 @@ namespace TFMV
 
         private void filter_droped_file(string sFile)
         {
-                bool valid_model = false;
+            bool valid_model = false;
 
-                miscFunc.DeleteDirectoryContent(tmp_workshop_zip_dir);
+            miscFunc.DeleteDirectoryContent(tmp_workshop_zip_dir);
 
-                if (!Directory.Exists(tmp_dir)) { Directory.CreateDirectory(tmp_workshop_zip_dir); }
+            if (!Directory.Exists(tmp_dir)) { Directory.CreateDirectory(tmp_workshop_zip_dir); }
 
-                if (sFile.ToLower().Contains(".zip"))
+            if (sFile.ToLower().Contains(".zip"))
+            {
+                unzip_to_tmp(sFile);
+                load_tmp_models();
+                valid_model = true;
+            }
+
+            if (sFile.ToLower().Contains(".vpk"))
+            {
+                vpk_to_tmp(sFile);
+                load_tmp_models();
+                valid_model = true;
+            }
+
+            if (sFile.ToLower().Contains(".mdl"))
+            {
+                #region validate model path
+
+                string mdl_path = (sFile).Replace("\\", "/");
+                string cleanPath = String.Join("", mdl_path.Split(Path.GetInvalidPathChars()));
+
+                if (cleanPath != mdl_path)
                 {
-                    unzip_to_tmp(sFile);
-                    load_tmp_models();
-                    valid_model = true;
+                    MessageBox.Show("Invalid path.");
+                    return;
                 }
 
-                if (sFile.ToLower().Contains(".vpk"))
+
+                if (mdl_path == "custom model path to attach to the player model in HLMV (i.e.: models\\player\\items\\scout\\batter_helmet.mdl)")
+                { return; }
+
+                if (loadout_list.Controls.Count >= 12)
                 {
-                    vpk_to_tmp(sFile);
-                    load_tmp_models();
-                    valid_model = true;
+                    MessageBox.Show("HLMV only allows up to 12 model attachments.");
+                    return;
+                }
+                if (((mdl_path == "")) || (mdl_path == null))
+                {
+
+                    if ((mdl_path != "") || (mdl_path != null))
+                    {
+                        MessageBox.Show("You must define a model path before adding it to the loadout list.");
+                    }
+
+                }
+                else
+                {
+                    if ((!mdl_path.Contains(".mdl")) || (!mdl_path.Contains("/")))
+                    {
+                        MessageBox.Show("Invalid model path, example: \n\n models\\player\\items\\scout\\batter_helmet.mdl");
+                        return;
+                    }
                 }
 
-                if (sFile.ToLower().Contains(".mdl"))
+                #endregion
+
+                if (preload_mdl(sFile))
                 {
-                    #region validate model path
+                    SkinsManager_Form_reset();
 
-                    string mdl_path = (sFile).Replace("\\", "/");
-                    string cleanPath = String.Join("", mdl_path.Split(Path.GetInvalidPathChars()));
+                    loadout_addItem(Properties.Resources.icon_mdl_item, Path.GetFileName(sFile), sFile, 0, 1, -1, false);
 
-                    if (cleanPath != mdl_path)
+                    //load_tmp_models();
+                    valid_model = true;
+                }
+            }
+
+            // if Drag&Drop was on the player icon (because its a Panel and not a FlowLayoutPanel)
+            // get last item added to list and add it as main model
+            if ((DragNDrop_on_MainModel) && (valid_model))
+            {
+                if (loadout_list.Controls.Count > 0)
+                {
+                    #region get icon
+
+                    Image icon = null;
+                    #region search tga file
+
+                    if (Directory.Exists(tmp_loadout_dir + "content\\materialsrc\\backpack"))
                     {
-                        MessageBox.Show("Invalid path.");
-                        return;
-                    }
 
-
-                    if (mdl_path == "custom model path to attach to the player model in HLMV (i.e.: models\\player\\items\\scout\\batter_helmet.mdl)")
-                    { return; }
-
-                    if (loadout_list.Controls.Count >= 12)
-                    {
-                        MessageBox.Show("HLMV only allows up to 12 model attachments.");
-                        return;
-                    }
-                    if (((mdl_path == "")) || (mdl_path == null))
-                    {
-
-                        if ((mdl_path != "") || (mdl_path != null))
+                        string icon_path = "";
+                        var tga_files = Directory.GetFiles(tmp_loadout_dir + "content\\materialsrc\\backpack", "*.tga", SearchOption.AllDirectories);
+                        foreach (var tga_file in tga_files)
                         {
-                            MessageBox.Show("You must define a model path before adding it to the loadout list.");
-                        }
+                            if (!tga_file.Contains("_large"))
+                            {
+                                icon_path = tga_file;
 
-                    }
-                    else
-                    {
-                        if ((!mdl_path.Contains(".mdl")) || (!mdl_path.Contains("/")))
-                        {
-                            MessageBox.Show("Invalid model path, example: \n\n models\\player\\items\\scout\\batter_helmet.mdl");
-                            return;
+                                if (File.Exists(icon_path))
+                                {
+                                    Functions.TargaImage tf = null;
+                                    try
+                                    {
+                                        tf = new Functions.TargaImage(icon_path);
+                                        icon = tf.Image;
+                                    }
+                                    catch //(Exception ex)
+                                    {
+                                        //  MessageBox.Show(ex.ToString());
+                                    }
+                                }
+
+                            }
                         }
                     }
+                    #endregion
+
+                    if (icon == null) { icon = Properties.Resources.icon_workshop_item; }
 
                     #endregion
 
-                    if(preload_mdl(sFile))
-                    {
-                        SkinsManager_Form_reset();
+                    Loadout_Item item = (Loadout_Item)loadout_list.Controls[loadout_list.Controls.Count - 1];
 
-                        loadout_addItem(Properties.Resources.icon_mdl_item, Path.GetFileName(sFile), sFile, 0, 1, -1, false);
+                    item.PictureBox.Image = icon;
 
-                        //load_tmp_models();
-                        valid_model = true;
-                    }
+
+                    set_main_model(item, "", null);
+
+                    item.Dispose();
                 }
+                DragNDrop_on_MainModel = false;
 
-                // if Drag&Drop was on the player icon (because its a Panel and not a FlowLayoutPanel)
-                // get last item added to list and add it as main model
-                if ((DragNDrop_on_MainModel) && (valid_model))
-                {
-                    if (loadout_list.Controls.Count > 0)
-                    {
-                        #region get icon
-
-                        Image icon = null;
-                        #region search tga file
-
-                        if(Directory.Exists(tmp_loadout_dir + "content\\materialsrc\\backpack"))
-                        {
-
-                            string icon_path = "";
-                            var tga_files = Directory.GetFiles(tmp_loadout_dir + "content\\materialsrc\\backpack", "*.tga", SearchOption.AllDirectories);
-                            foreach (var tga_file in tga_files)
-                            {
-                                if (!tga_file.Contains("_large"))
-                                {
-                                    icon_path = tga_file;
-
-                                    if (File.Exists(icon_path))
-                                    {
-                                        Functions.TargaImage tf = null;
-                                        try
-                                        {
-                                            tf = new Functions.TargaImage(icon_path);
-                                            icon = tf.Image;
-                                        }
-                                        catch //(Exception ex)
-                                        {
-                                            //  MessageBox.Show(ex.ToString());
-                                        }
-                                    }
-
-                                }
-                            }
-                        }
-                        #endregion
-
-                        if (icon == null) { icon = Properties.Resources.icon_workshop_item; }
-
-                        #endregion
-
-                        Loadout_Item item = (Loadout_Item)loadout_list.Controls[loadout_list.Controls.Count - 1];
-
-                        item.PictureBox.Image = icon;
-      
-
-                        set_main_model(item, "", null);
-
-                        item.Dispose();
-                    }
-                    DragNDrop_on_MainModel = false;
-
-                }
             }
+        }
 
         private void unzip_to_tmp(string sFile)
         {
             if (Path.GetExtension(sFile).StartsWith(".zip", StringComparison.InvariantCultureIgnoreCase))
-            {  
+            {
                 // extract to tmp
                 using (ZipFile zip1 = ZipFile.Read(sFile))
                 {
@@ -8977,9 +9030,9 @@ namespace TFMV
             {
                 if (list_mdl_dirs[i].Contains("materials") == false)
                 {
-                    if (list_mdl_dirs[i] != "") 
-                    { 
-                        mdl_dir = list_mdl_dirs[i]; 
+                    if (list_mdl_dirs[i] != "")
+                    {
+                        mdl_dir = list_mdl_dirs[i];
                     }
                 }
             }
@@ -8989,15 +9042,15 @@ namespace TFMV
             {
                 if (list_mat_dirs[i].Contains("models") == false)
                 {
-                    if (list_mat_dirs[i] != "") 
-                    { 
+                    if (list_mat_dirs[i] != "")
+                    {
                         mat_dir = list_mat_dirs[i];
                     }
                 }
             }
 
 
-           
+
             #endregion
 
             #region move "models" & "materials" from "tmp_loadout\..\models\.." to "tmp_loadout\models\.."
@@ -9032,8 +9085,8 @@ namespace TFMV
 
             #region get workshop zip manifest info
 
-            if(File.Exists(tmp_loadout_dir + "manifest.txt"))
-            { 
+            if (File.Exists(tmp_loadout_dir + "manifest.txt"))
+            {
                 TFMV.VDF_parser manifest = new TFMV.VDF_parser();
                 manifest.file_path = tmp_loadout_dir + "manifest.txt";
                 manifest.load_VDF_file();
@@ -9044,8 +9097,8 @@ namespace TFMV
 
                 #region bodygroups
 
-            // get bodygroups that should be disabled
-            TFMV.VDF_parser.VDF_node bodygroups = manifest.sGet_NodePath("asset.ImportSession.bodygroup");
+                // get bodygroups that should be disabled
+                TFMV.VDF_parser.VDF_node bodygroups = manifest.sGet_NodePath("asset.ImportSession.bodygroup");
                 List<string> bodygroups_off = new List<string>();
 
                 foreach (var bodygroup in bodygroups.nSubNodes)
@@ -9063,7 +9116,7 @@ namespace TFMV
                 #endregion
 
                 // if not bodygroups add equip_region as bodygroup to hide
-                if(!loadout_bodygroups_off.Contains(equip_region.nvalue) && loadout_bodygroups_off.Count == 0)
+                if (!loadout_bodygroups_off.Contains(equip_region.nvalue) && loadout_bodygroups_off.Count == 0)
                 {
                     loadout_bodygroups_off.Add(equip_region.nvalue);
                 }
@@ -9140,7 +9193,7 @@ namespace TFMV
                     {
                         string[] mdl_internal_path = mdl_files[i].ToString().Replace("/", "\\").Split(new[] { "\\models" }, StringSplitOptions.None);
 
-                        mdls_list.Add("models" + mdl_internal_path[mdl_internal_path.Length-1]);
+                        mdls_list.Add("models" + mdl_internal_path[mdl_internal_path.Length - 1]);
                     }
                 }
 
@@ -9188,13 +9241,13 @@ namespace TFMV
 
                     add_models_tolist(dlg.selected_models, icon);
 
-                    if(dlg.selected_models.Count == 1)
+                    if (dlg.selected_models.Count == 1)
                     {
                         string tf_class = miscFunc.findclass(dlg.selected_models[0]);
 
                         if (tf_class != "")
                         {
-                        set_class(tf_class, true);
+                            set_class(tf_class, true);
                         }
                     }
                 }
@@ -9224,7 +9277,7 @@ namespace TFMV
             if (Directory.Exists(mat_dir))
             {
                 mat_files = Directory.GetFiles(mat_dir, "*.*", SearchOption.AllDirectories);
-            } 
+            }
             else
             {
                 for (int i = 0; i < list_mat_dirs.Length; i++)
@@ -9233,7 +9286,7 @@ namespace TFMV
                     {
                         if (list_mat_dirs[i] != "") { miscFunc.copy_safe(list_mat_dirs[i], steamGameConfig.tf_dir + "custom\\TFMV\\materials\\"); }
                     }
-                } 
+                }
             }
 
             #endregion
@@ -9252,13 +9305,13 @@ namespace TFMV
                 {
                     miscFunc.move_dir_safe(mdl_dir, tmp_dir + "models\\");
                 }
-            
+
 
                 if (Directory.Exists(mat_dir))
                 {
                     miscFunc.move_dir_safe(mat_dir, tmp_dir + "materials\\");
                 }
-               
+
             }
             catch (Exception e)
             {
@@ -9368,10 +9421,10 @@ namespace TFMV
 
             foreach (string item in mats)
             {
-                miscFunc.copy_safe (steamGameConfig.tf_dir + item, tmp_dir + item);
+                miscFunc.copy_safe(steamGameConfig.tf_dir + item, tmp_dir + item);
             }
 
-            string mdl_game_path = Path.GetDirectoryName(mdl_path.Replace("/", "\\").ToLower().Replace (steamGameConfig.tf_dir.ToLower(), "")) + "\\";//mdl_path.Replace((mdl_path.Replace("/", "\\").Replace(steamGameConfig.tf_dir, "")), "");
+            string mdl_game_path = Path.GetDirectoryName(mdl_path.Replace("/", "\\").ToLower().Replace(steamGameConfig.tf_dir.ToLower(), "")) + "\\";//mdl_path.Replace((mdl_path.Replace("/", "\\").Replace(steamGameConfig.tf_dir, "")), "");
             mdl_in = Path.GetDirectoryName(mdl_path) + "\\" + mdl_name;
             mdl_out = tmp_dir + mdl_game_path + mdl_name;
 
@@ -9399,12 +9452,12 @@ namespace TFMV
             if (sender is Panel)
             {
                 Panel p = (Panel)sender;
-                if(p.Name == "main_model_panel")
+                if (p.Name == "main_model_panel")
                 {
                     DragNDrop_on_MainModel = true;
                 }
             }
- 
+
             miscFunc.DeleteDirectoryContent(tmp_loadout_dir);
 
             string url = "";
@@ -9430,7 +9483,7 @@ namespace TFMV
                 Array a = (Array)e.Data.GetData(DataFormats.FileDrop);
 
                 // make sure its a .zip and not null
-                if ((a != null)) 
+                if ((a != null))
                 {
                     string s = a.GetValue(0).ToString();
 
@@ -9604,13 +9657,13 @@ namespace TFMV
                     {
                         found_mdl = true;
                     }
-                    
+
                 }
 
                 // search item by mdl path
                 if (!found_mdl)
                 {
-                    loadout_addItem(null, "", model, 0, 0, - 1, false);
+                    loadout_addItem(null, "", model, 0, 0, -1, false);
                     // listb_cmdls.Items.Add(model);
                 }
                 else
@@ -9846,7 +9899,7 @@ namespace TFMV
         // set main model (instead of loading a player model as main model)
         private void btn_use_mainmodel_Click(object sender, EventArgs e)
         {
-            set_main_model(null, txtb_main_model.Text, Properties.Resources.icon_mdl_item); 
+            set_main_model(null, txtb_main_model.Text, Properties.Resources.icon_mdl_item);
         }
 
 
@@ -9924,9 +9977,9 @@ namespace TFMV
             for (int i = 0; i < items.Count; i++)
             {
                 if (check_max_loadout_items()) { return; }
-               Loadout_Item loadout_item_added = loadout_addItem(icon, Path.GetFileName(items[i].ToString()), items[i].ToString(), 0, 0, -1, false);
+                Loadout_Item loadout_item_added = loadout_addItem(icon, Path.GetFileName(items[i].ToString()), items[i].ToString(), 0, 0, -1, false);
 
-               loadout_item_added.Parent = loadout_list;
+                loadout_item_added.Parent = loadout_list;
             }
         }
 
@@ -9988,7 +10041,7 @@ namespace TFMV
                 string SearchItemName = (list_view.SelectedItems[0].Text.Split('(')[0].Replace(" ", "_"));
 
                 Process.Start("http://wiki.teamfortress.com/wiki/Special:Search/" + SearchItemName);
-             
+
             }
             catch (Exception) { }
         }
@@ -9997,11 +10050,11 @@ namespace TFMV
         // checkbox HLMV anti aliasing
         private void cb_hlmv_antialias_CheckedChanged_1(object sender, EventArgs e)
         {
-            settings_save(sender,e);
+            settings_save(sender, e);
 
-            if (cb_hlmv_antialias.Checked) 
-            { 
-                set_hlmv_antialias("8"); 
+            if (cb_hlmv_antialias.Checked)
+            {
+                set_hlmv_antialias("8");
             } else {
                 set_hlmv_antialias("0");
             }
@@ -10132,7 +10185,7 @@ namespace TFMV
                     write_flat_mat(tfmv_dir + @"materials\models\TFMV\tfmv_bg.vmt", panel_Bgcolor.BackColor.R + " " + panel_Bgcolor.BackColor.G + " " + panel_Bgcolor.BackColor.B);
                 }
             }
-            
+
             btn_bg_color1.Visible = ctrl_checked;
             panel_Bgcolor1.Visible = ctrl_checked;
             lab_trsp_scrn.Visible = ctrl_checked;
@@ -10141,6 +10194,90 @@ namespace TFMV
 
             settings_save(sender, e);
         }
+
+        #endregion
+
+
+
+
+        #region set filter button sizes
+
+        // sets the loadout filter buttons to the appropriate sizes and locations. also handles hiding or unhiding the medals button as appropriate.
+        private void set_filter_button_sizes()
+        {
+            //if medals are checked, show the medal button
+            if (cb_allow_tournament_medals.Checked)
+            {
+                btn_medal.Visible = true;
+
+                //set the button scale appropriately depending on if workshop button is present
+                if (btn_workshop_items.Visible)
+                {
+                    make_buttons_small();
+                }
+                else
+                {
+                    make_buttons_big();
+                }
+            }
+            //medals aren't checked, use default big layout and no medal button
+            else
+            {
+                make_buttons_big();
+                btn_medal.Visible = false;
+            }
+        }
+
+
+        private void make_buttons_big()
+        {
+            //resize buttons back to their regular size.
+            int y = 61;
+
+            //PDA
+            btn_pda.Location = new Point(410, y);
+            btn_pda.Width = 75;
+
+            //Taunt Prop
+            btn_tauntprop.Location = new Point(491, y);
+            btn_tauntprop.Width = 75;
+            btn_tauntprop.Text = "Taunt Prop";
+
+            //Medal
+            btn_medal.Location = new Point(572, y);
+            btn_medal.Width = 75;
+
+            //Workshop
+            btn_workshop_items.Location = new Point(571, y - 1);
+            btn_workshop_items.Width = 77;
+        }
+
+
+        private void make_buttons_small()
+        {
+            //resize existing buttons to make room for medal button.
+            int y = 61;
+
+            //PDA Small
+            btn_pda.Location = new Point(410, y);
+            btn_pda.Width = 49;
+
+            //Taunt Prop Small
+            btn_tauntprop.Location = new Point(464, y);
+            btn_tauntprop.Width = 49;
+            btn_tauntprop.Text = "Prop";
+
+            //Medal Small
+            btn_medal.Location = new Point(518, y);
+            btn_medal.Width = 49;
+
+            //Workshop Small
+            btn_workshop_items.Location = new Point(572, y - 1);
+            btn_workshop_items.Width = 76;
+        }
+
+
+
 
         #endregion
 
@@ -10167,10 +10304,14 @@ namespace TFMV
                     if ((player_mat == null) || (player_mat.tf_class == "") || (player_mat.mat_name == "") || (player_mat.mat_dir == "")) { continue; }
 
                     string mat_name = player_mat.mat_name + "_" + teams[t];
-
                     string path = (cached_dir + mat_name + "_mask" + ".vtf").Replace("\\/", "\\");
+
+                    //todo: wip fix for head bodygroups not finding the cached copy. (medic_head)
+                    string mat_name_noteamcolor = player_mat.mat_name;
+                    string path_noteamcolor = (cached_dir + mat_name_noteamcolor + "_mask" + ".vtf").Replace("\\/", "\\");
+
                     // if VTF DXT5 doesn't exist in "/cached/mat_name_team_color_mask.vtf"
-                    if (!File.Exists(path))
+                    if (!File.Exists(path) && !File.Exists(path_noteamcolor))
                     {
                         need_to_cache = true;
                         break;
@@ -10662,92 +10803,55 @@ namespace TFMV
 
         private void cb_allow_tournament_medals_CheckedChanged(object sender, EventArgs e)
         {
-            //title: Warning
-            MessageBox.Show("Filtering items by Medal will take a LONG time. This option is not recommended unless you specifically need it (for Wiki articles etc).\n\nChanging this setting will cause the schema to re-download.\n\nAre you sure you want to do this? ");
-            //[yes] [no]
-            //todo: lets go
+
+            settings_save(sender, e);
 
 
-            //will need a check for if the workshop button is visible, to decide what layout we are using...
-            /*
-             Buttons Y Pos = 61
-
-
-PDA
-
-X: 410
-W: 75
-
-Taunt Prop
-
-X: 491
-W: 75
-Text: "Taunt Prop"
-
-Medal
-
-X: 572
-W: 75
-
-Workshop
-
-X: 572
-W: 75
-
-
-
-
-
-
-PDA Small
-
-X: 405
-W: 49
-
-Taunt Prop Small
-
-X: 459
-W: 49
-Text: "Prop"
-
-Medal Small
-
-X: 513
-W: 49
-
-Workshop Small
-
-X: 572
-W: 76
-
- 
-             */ 
-        }
-
-
-
-        /*
-        private void cb_autoexpandonstartup_CheckedChanged(object sender, EventArgs e)
-        {
-            //**HERE**
-        }
-        */
-
-        /*
-        private void cb_OriginalExpandButtonPos_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_OriginalExpandButtonPos.Checked)
+            //special variable so we don't trigger the dialog unless the user clicked it.
+            if (cb_allow_tournament_medals_SupressCheckedChange)
             {
-                btn_expand_item_list.Location = new Point(860, 294);
-                progressBar_item_list.Location = new Point(1, 304);
+                cb_allow_tournament_medals_SupressCheckedChange = false;
+                return;
+            }
+
+            if (cb_allow_tournament_medals.Checked)
+            {
+
+                var result = MessageBox.Show("Changing this setting will cause the schema to re-download.\n\nAre you sure you want to do this? ", "Warning", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    tabControl.SelectedIndex = 0;
+                    download_schemas();
+                    set_filter_button_sizes();
+                }
+                else
+                {
+                    //special variable so we know not to trigger the dialog as a user didn't click it.
+                    cb_allow_tournament_medals_SupressCheckedChange = true;
+                    cb_allow_tournament_medals.Checked = false;
+                }
             }
             else
-            { 
-                btn_expand_item_list.Location = new Point(0, 294);
-                progressBar_item_list.Location = new Point(20, 304);
+            {
+                var result = MessageBox.Show("Changing this setting will cause the schema to re-download.\n\nAre you sure you want to do this? ", "Warning", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    tabControl.SelectedIndex = 0;
+                    download_schemas();
+                    set_filter_button_sizes();
+                }
+                else
+                {
+                    //special variable so we know not to trigger the dialog as a user didn't click it.
+                    cb_allow_tournament_medals_SupressCheckedChange = true;
+                    cb_allow_tournament_medals.Checked = true;
+                }
             }
+
+
+
+
         }
-        */
 
         private void disable_custom_mods()
         {

@@ -17,6 +17,8 @@ namespace TFMV.TF2
         public List<player_bodygroup> heavy = new List<player_bodygroup>();
         public List<player_bodygroup> medic = new List<player_bodygroup>();
 
+        public List<bodygroup_combination> medic_combinations = new List<bodygroup_combination>();
+
         public List<player_bodygroup> pyro = new List<player_bodygroup>();
         public List<bodygroup_combination> pyro_combinations = new List<bodygroup_combination>();
 
@@ -99,6 +101,9 @@ namespace TFMV.TF2
 
             this.medic.Add(new player_bodygroup("medic", 0, ""));
             this.medic.Add(new player_bodygroup("medic_backpack", 0, "medic_backpack"));
+            this.medic.Add(new player_bodygroup("head", 0, "medic_head"));
+
+            this.medic_combinations.Add(new bodygroup_combination(new string[2] { "medic_backpack", "head" }, "engineer_rightarm_hat"));
 
             this.sniper.Add(new player_bodygroup("sniper", 0, ""));
             this.sniper.Add(new player_bodygroup("arrows", 1, ""));

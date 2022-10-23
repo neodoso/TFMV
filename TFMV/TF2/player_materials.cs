@@ -23,6 +23,7 @@ namespace TFMV.TF2
 
             players_mats.Add(new player_material("medic", @"materials\models\player\medic\", "medic", 2));
             players_mats.Add(new player_material("medic", @"materials\models\player\medic\", "medic_backpack", 0));
+            players_mats.Add(new player_material("medic", @"materials\models\player\medic\", "medic_head", 0));
 
             players_mats.Add(new player_material("pyro", @"materials\models\player\pyro\", "pyro", 2));
             players_mats.Add(new player_material("scout", @"materials\models\player\scout\", "scout", 2));
