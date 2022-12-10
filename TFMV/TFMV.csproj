@@ -92,6 +92,9 @@
     <Reference Include="Ionic.Zip">
       <HintPath>bin\Debug\Libs\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="LibDithering, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LibDithering.1.0.0\lib\netstandard2.0\LibDithering.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.JScript" />
     <Reference Include="MouseKeyboardLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -167,6 +170,18 @@
     </Compile>
     <Compile Include="UserControls\DisableBackgroundWarning.Designer.cs">
       <DependentUpon>DisableBackgroundWarning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Jigglebone_Editor\AddJiggleBone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Jigglebone_Editor\AddJiggleBone.Designer.cs">
+      <DependentUpon>AddJiggleBone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Jigglebone_Editor\JiggleboneEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\Jigglebone_Editor\JiggleboneEditor.Designer.cs">
+      <DependentUpon>JiggleboneEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Loadout\Loadout_File.cs" />
     <Compile Include="UserControls\Loadout\Loadout_Item.cs">
@@ -285,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DisableBackgroundWarning.resx">
       <DependentUpon>DisableBackgroundWarning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Jigglebone_Editor\AddJiggleBone.resx">
+      <DependentUpon>AddJiggleBone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Jigglebone_Editor\JiggleboneEditor.resx">
+      <DependentUpon>JiggleboneEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Loadout\Loadout_Item.resx">
       <DependentUpon>Loadout_Item.cs</DependentUpon>
@@ -454,6 +475,7 @@
     <Content Include="Libs\AnimatedGif.dll" />
     <Content Include="Libs\Ionic.Zip.dll" />
     <Content Include="Libs\MouseKeyboardLibrary.dll" />
+    <None Include="Resources\btn_reset.png" />
     <Content Include="Resources\steamcrappy.png" />
     <None Include="Resources\steamcrappy1.png" />
     <None Include="Resources\TFMV_neo_logo.png" />

@@ -16,6 +16,80 @@ namespace TFMV.UserControls
 {
     public partial class Turntable_GIF_Generator : UserControl
     {
+     
+
+        /*
+        
+        //DITHERING FUNCTIONS!
+        public void DoAtkinsonDithering()
+        {
+            //AtkinsonDitheringRGBByte atkinson = new AtkinsonDitheringRGBByte(TrueColorBytesToWebSafeColorBytes);
+
+            //using (FileStream pngStream = new FileStream("half.png", FileMode.Open, FileAccess.Read))
+            using (var image = new Bitmap(pngStream))
+            {
+                byte[,,] bytes = ReadBitmapToColorBytes(image);
+
+                TempByteImageFormat temp = new TempByteImageFormat(bytes);
+                atkinson.DoDithering(temp);
+
+                WriteToBitmap(image, temp.GetPixelChannels);
+
+                image.Save("test.png");
+            }
+        }
+
+        static private Color roundColor(Color color, int factor)
+        {
+            double R = (double)factor * color.R / 255.0;
+            double newR = Math.Round(R) * (255 / factor);
+            double G = (double)factor * color.G / 255.0;
+            double newG = Math.Round(G) * (255 / factor);
+            double B = (double)factor * color.B / 255.0;
+            double newB = Math.Round(B) * (255 / factor);
+            return Color.FromArgb((int)newR, (int)newG, (int)newB);
+        }
+
+        private static void TrueColorBytesToWebSafeColorBytes(in byte[] input, ref byte[] output)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                output[i] = (byte)(Math.Round(input[i] / 51.0) * 51);
+            }
+        }
+
+        private static byte[,,] ReadBitmapToColorBytes(Bitmap bitmap)
+        {
+            byte[,,] returnValue = new byte[bitmap.Width, bitmap.Height, 3];
+            for (int x = 0; x < bitmap.Width; x++)
+            {
+                for (int y = 0; y < bitmap.Height; y++)
+                {
+                    Color color = bitmap.GetPixel(x, y);
+                    returnValue[x, y, 0] = color.R;
+                    returnValue[x, y, 1] = color.G;
+                    returnValue[x, y, 2] = color.B;
+                }
+            }
+            return returnValue;
+        }
+
+        private static void WriteToBitmap(Bitmap bitmap, Func<int, int, byte[]> reader)
+        {
+            for (int x = 0; x < bitmap.Width; x++)
+            {
+                for (int y = 0; y < bitmap.Height; y++)
+                {
+                    byte[] read = reader(x, y);
+                    Color color = Color.FromArgb(read[0], read[1], read[2]);
+                    bitmap.SetPixel(x, y, color);
+                }
+            }
+        }
+
+        */
+
+
         bool cancel_capture;
         Process proc_HLMV;
         string screemshots_dir;
@@ -84,12 +158,36 @@ namespace TFMV.UserControls
 
             #endregion
 
+            //neodement: todo: add gif options!
+
             string date = DateTime.UtcNow.AddTicks(Stopwatch.StartNew().Elapsed.Ticks).ToString().Replace(" ", "").Replace("/", "_").Replace(":", "");
 
+       
+            /*
+            //// SAVE AS STATIC IMAGE ////
+            for (int i = 0; i < loop_count; i++)
+            {
+                if (cancel_capture)
+                {
+                    break;
+                }
+
+                MouseSimulator.X += move_x_factor;
+
+                Bitmap img = CaptureApplication(proc_HLMV.ProcessName);
+                img.Save(screemshots_dir + "/" + i + ".png");
+
+                progressBar.Value = i;
+
+            }
+            */
+
+
+            //// SAVE AS ANIMATED GIF ////
             // 33ms delay (~30fps)
             using (var gif = AnimatedGif.AnimatedGif.Create(screemshots_dir + @"\TurnTable_" + date + ".gif", 33))
             {
-                for (int i = 0; i < loop_count; i++)
+            for (int i = 0; i < loop_count; i++)
                 {
                     if(cancel_capture)
                     {
@@ -97,6 +195,10 @@ namespace TFMV.UserControls
                     }
 
                     MouseSimulator.X += move_x_factor;
+
+                    Bitmap image = CaptureApplication(proc_HLMV.ProcessName);
+                    
+                    
 
                     var img = CaptureApplication(proc_HLMV.ProcessName);
                     gif.AddFrame(img, delay: 1, quality: GifQuality.Bit8);
@@ -106,10 +208,17 @@ namespace TFMV.UserControls
                 }
             }
 
-            btn_start_turntable.Visible = true;
+            //neodement: fixed turntable never reporting it's finished
 
             // release Left Mouse Button 
             MouseSimulator.MouseUp(MouseButton.Left);
+
+            System.Windows.Forms.MessageBox.Show("Done!");
+
+            progressBar.Value = 0;
+
+            btn_start_turntable.Visible = true;
+
         }
 
         private class HLMV_window_pos

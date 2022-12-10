@@ -314,6 +314,7 @@ namespace TFMV.SourceEngine
 
         public void save_game_config()
         {
+            MessageBox.Show(settings_dir);
             try
             {
                 TextWriter tw = new StreamWriter(settings_dir + "game_config.ini");
@@ -325,7 +326,7 @@ namespace TFMV.SourceEngine
             }
             catch (System.Exception excep)
             {
-                MessageBox.Show("Error saving settings " + excep.Message);
+                MessageBox.Show("Error saving settings! " + excep.Message);
             }
 
             Main.tfmv_dir = (tf_dir + "custom\\TFMV\\").Replace("\\\\", "\\");

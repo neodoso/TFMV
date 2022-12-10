@@ -161,6 +161,65 @@ namespace TFMV
 
         #endregion
 
+
+        /*
+        //todo: get this working, it's for the TURNTABLE GIF GENERATOR
+        public void DoAtkinsonDithering()
+        {
+            AtkinsonDitheringRGBByte atkinson = new AtkinsonDitheringRGBByte(TrueColorBytesToWebSafeColorBytes);
+
+            using (FileStream pngStream = new FileStream("half.png", FileMode.Open, FileAccess.Read))
+            using (var image = new Bitmap(pngStream))
+            {
+                byte[,,] bytes = ReadBitmapToColorBytes(image);
+
+                TempByteImageFormat temp = new TempByteImageFormat(bytes);
+                atkinson.DoDithering(temp);
+
+                WriteToBitmap(image, temp.GetPixelChannels);
+
+                image.Save("test.png");
+            }
+        }
+
+        private static void TrueColorBytesToWebSafeColorBytes(in byte[] input, ref byte[] output)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                output[i] = (byte)(Math.Round(input[i] / 51.0) * 51);
+            }
+        }
+
+        private static byte[,,] ReadBitmapToColorBytes(Bitmap bitmap)
+        {
+            byte[,,] returnValue = new byte[bitmap.Width, bitmap.Height, 3];
+            for (int x = 0; x < bitmap.Width; x++)
+            {
+                for (int y = 0; y < bitmap.Height; y++)
+                {
+                    Color color = bitmap.GetPixel(x, y);
+                    returnValue[x, y, 0] = color.R;
+                    returnValue[x, y, 1] = color.G;
+                    returnValue[x, y, 2] = color.B;
+                }
+            }
+            return returnValue;
+        }
+
+        private static void WriteToBitmap(Bitmap bitmap, Func<int, int, byte[]> reader)
+        {
+            for (int x = 0; x < bitmap.Width; x++)
+            {
+                for (int y = 0; y < bitmap.Height; y++)
+                {
+                    byte[] read = reader(x, y);
+                    Color color = Color.FromArgb(read[0], read[1], read[2]);
+                    bitmap.SetPixel(x, y, color);
+                }
+            }
+        }
+        */
+
         // list of items/models attachments
         public static ListBox listbox_mdls = new ListBox();
 
@@ -176,7 +235,8 @@ namespace TFMV
         public static string settings_dir = app_data_dir;
 
         //todo: neodement: this is where bodygroups are breaking i guess, maybe?
-        string tmp_dir = app_data_dir + "tmp\\";
+        //neodement: made tmp_dir public, jigglebone editor needed access
+        public static string tmp_dir = app_data_dir + "tmp\\";
         string cached_dir = app_data_dir + "cached\\";
         string tmp_loadout_dir = app_data_dir + "tmp_loadout\\";
         string tmp_workshop_zip_dir = app_data_dir + "\\tmp_workshop_zip\\";
@@ -190,6 +250,8 @@ namespace TFMV
         private static string tools_dir = Application.StartupPath + "\\tools\\";
 
         #endregion
+
+
 
         bool items_loading;//skins_first_load,
         public static bool auto_refresh_paints, auto_refresh_busy;
@@ -256,6 +318,7 @@ namespace TFMV
 
         // hlmv window padding needed for taking screenshots (cropping area of HLMV's window)
         // number of pixels (takes account for HLMV's form pannels, we only want to get the 3D render window region)
+        //todo: i think this number is wrong on windows 11
         OS_Settings.Point4 hlmv_padding = new OS_Settings.Point4(18, 8, 50, 300);
         OS_Settings OS_settings = new OS_Settings();
 
@@ -301,11 +364,10 @@ namespace TFMV
 
             InitializeComponent();
 
-
-
             // for debugging: set config / schema directories to TFMV in desktop folder
             //(this is to stop you writing crap like updated schema pngs to the debug folder)
 #if DEBUG
+
 
             app_data_dir = "C:\\Users\\" + DirUserName + "\\Desktop\\TFMV\\config\\";
             tools_dir = "C:\\Users\\" + DirUserName + "\\Desktop\\TFMV\\tools\\";
@@ -1970,7 +2032,14 @@ namespace TFMV
                         foreach (ZipEntry z in zip1.Where(x => x.FileName.StartsWith("content\\materialsrc\\backpack")))
                         {
                             // if ((!e.FileName.Contains(".tga")) && (!e.FileName.Contains(".dmx")) && (!e.FileName.Contains(".qc")))
-                            z.Extract(tmp_workshop_zip_dir, ExtractExistingFileAction.OverwriteSilently);
+                            try
+                            {
+                                z.Extract(tmp_workshop_zip_dir, ExtractExistingFileAction.OverwriteSilently);
+                            }
+                            catch
+                            { 
+                                continue;
+                            }
                         }
 
                         try
@@ -2512,7 +2581,8 @@ namespace TFMV
                         }
 
                         mp.switch_Skin(skin_index);
-                    }
+
+                   }
                 }
             }
 
@@ -3094,7 +3164,7 @@ namespace TFMV
         }
 
 
-        private Bitmap screenshot_capture(bool export_to_file, bool opaque)
+        public Bitmap screenshot_capture(bool export_to_file, bool opaque)
         {
             // create screenshots dir if it doesn't exist
             miscFunc.create_missing_dir(txtb_screenshots_dir.Text);
@@ -6875,8 +6945,10 @@ namespace TFMV
 
                 if (loadout_item.item_name != "")
                 {
-                    mp.lab_mdl.Text = loadout_item.item_name.Split('(')[0];
+                    mp.lab_mdl.Text = loadout_item.item_name; //.Split('(')[0] disable style name in model name
                     mp.lab_mdl.Tag = model_filename;
+                    mp.txt_mdlpath.Text = mdlpath;
+                    mp.mdlpath = mdlpath;
                 }
                 else
                 {
@@ -6948,7 +7020,7 @@ namespace TFMV
                     Model_Painter mp = new Model_Painter();
 
                     string model_filename = Path.GetFileName(mdlpath);
-                    mp.lab_mdl.Text = model_filename;
+                    mp.lab_mdl.Text = model_filename + "(" + mdlpath + ")";
                     mp.Text = "Model: " + model_filename;
 
                     mp.paint_dir = tfmv_dir;
@@ -8515,30 +8587,12 @@ namespace TFMV
                     //(it's intended to be read as an int but easier to just treat it as a single byte)
                     //int bone_type = BitConverter.ToInt32(mdl_data, bone_offset + 164);
 
-                    //MessageBox.Show("" + bone_type);
+
 
                     //if bone type is jigglebone (05), set it to 00 (normal bone).
                     if (bone_type == 0x05)
                     {
                         mdl_data[bone_offset + 164] = 0x00;
-
-
-                        /*
-                        int bone_names_list_offset = BitConverter.ToInt32(mdl_data, 348);
-                        //int bone_names_list_length = mdl_data.Length - bone_names_list_offset;
-
-
-                        //the first int32 in each bone is the offset to its entry in the name table
-                        int bone_name_offset = BitConverter.ToInt32(mdl_data, bone_offset) + bone_offset;
-
-                        //this stops reading strings from attempting to seek past the end of the file
-                        int numBytesToRead = mdl_data.Length - bone_name_offset;
-
-                        string bone_name = Encoding.Default.GetString(mdl_data, bone_name_offset, numBytesToRead);
-
-                        MessageBox.Show("Changed this bone from a jigglebone to a regular bone:" + bone_name);
-                        */
-
                     }
 
 
@@ -8547,14 +8601,12 @@ namespace TFMV
                 }
 
                 return mdl_data;
+                }
+                catch
+                {
+                    return null;
+                }
             }
-            catch
-            {
-                return null;
-            }
-
-        }
-
 
 
         // this method restores all the original .mdl files from the tmp folder!
@@ -10513,7 +10565,7 @@ namespace TFMV
 
 
         //this method makes sure the user can't type invalid stuff into textboxes intended for numbers. allows one decimal point and negative numbers.
-        private void textBoxNumeric_KeyPress(object sender, KeyPressEventArgs e)
+        public void textBoxNumeric_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
                 (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -10852,6 +10904,12 @@ namespace TFMV
 
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void disable_custom_mods()
         {
