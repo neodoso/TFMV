@@ -1877,14 +1877,17 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
   <data name="&gt;&gt;button10.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="textBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 6.75pt</value>
+  </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 542</value>
+    <value>11, 527</value>
   </data>
   <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>676, 311</value>
+    <value>676, 332</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1912,7 +1915,10 @@ You can get your Steam API Key here: https://steamcommunity.com/dev/apikey</valu
 -fix heavy hands and scout headset (maybe others) not properly being hidden on LODs.
 -dilate all existing bodygroup masks.
 add overrides for medal colour for later medals.
--fix problem in item loading loop causing it to take forever.</value>
+-fix problem in item loading loop causing it to take forever.
+-Save Pose button
+-Pose dropdown improvement: get all pose names from mdl. warn user that it can only save/load the pose on frame 0 (posible hlmv++ advantage)
+-fix screenshots being cropped incorrectly on windows 11 (possibly)</value>
   </data>
   <data name="textBox1.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7409,7 +7415,7 @@ add overrides for medal colour for later medals.
     <value>NoControl</value>
   </data>
   <data name="img_EasterEgg.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 128</value>
+    <value>67, 123</value>
   </data>
   <data name="img_EasterEgg.Size" type="System.Drawing.Size, System.Drawing">
     <value>26, 27</value>
@@ -7442,7 +7448,7 @@ add overrides for medal colour for later medals.
     <value>NoControl</value>
   </data>
   <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 197</value>
+    <value>12, 185</value>
   </data>
   <data name="label44.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 16</value>
@@ -7466,10 +7472,10 @@ add overrides for medal colour for later medals.
     <value>1</value>
   </data>
   <data name="richTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 215</value>
+    <value>15, 203</value>
   </data>
   <data name="richTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>742, 270</value>
+    <value>742, 287</value>
   </data>
   <data name="richTextBox1.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -7495,6 +7501,11 @@ OTHER IMPROVEMENTS:
 -TODO: Added a cubemap selection dropdown next to the "Override default cubemap" checkbox.
 -Added option to download additional medals. These medals will show up under their own Medal item filter type.
 (This only shows medals with unique models, duplicates are currently skipped for performance reasons.)
+-Fixed Workshop tab occasionally stopping part way through the loading process, when encountering a corrupt zip.
+TURNTABLE GENERATOR IMPROVEMENTS TODO! Turntable_GIF_Generator.cs - save as gif compression options, save as image sequence
+investigate "set window size" not functioning?
+-Updated TFMV to .NET Framework 4.8 (was 4.7.2)
+add "override weapon light warp on hats with pyro" option?
 
 _______________________________________________________________________________________________________________________
 
@@ -7871,7 +7882,7 @@ ________________________________________________________________________________
     <value>NoControl</value>
   </data>
   <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 131</value>
+    <value>11, 126</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
@@ -8003,7 +8014,7 @@ ________________________________________________________________________________
     <value>NoControl</value>
   </data>
   <data name="linkLabel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>415, 163</value>
+    <value>415, 156</value>
   </data>
   <data name="linkLabel6.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 18</value>
@@ -8036,7 +8047,7 @@ ________________________________________________________________________________
     <value>NoControl</value>
   </data>
   <data name="linkLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 163</value>
+    <value>12, 156</value>
   </data>
   <data name="linkLabel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 18</value>
@@ -8380,7 +8391,7 @@ ________________________________________________________________________________
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>75</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1236, 1427</value>
@@ -8910,6 +8921,9 @@ ________________________________________________________________________________
         AAAAAAAAAAAAAAAAAAAAAAAAAPAPAADgBwAAwmMAAI5xAACccAAAHDAAADwAAAAgAAAAIAQAACAcAAAQ
         GAAAkDgAAIARAADAAwAA4AcAAPgfAAA=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TFMV</value>

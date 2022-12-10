@@ -123,3 +123,7 @@ C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Debug\TFMV.csproj.CopyCom
 C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Debug\TFMV.exe
 C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Debug\TFMV.pdb
 C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Debug\TFMV.UserControls.DisableBackgroundWarning.resources
+C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\bin\Debug\LibDithering.dll
+C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\bin\Debug\LibDithering.xml
+C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Debug\TFMV.UserControls.Jigglebone_Editor.JiggleboneEditor.resources
+C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Debug\TFMV.UserControls.Jigglebone_Editor.AddJiggleBone.resources

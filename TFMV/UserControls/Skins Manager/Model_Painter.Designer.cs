@@ -37,6 +37,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_editJigglebones = new System.Windows.Forms.Button();
+            this.txt_mdlpath = new System.Windows.Forms.TextBox();
             this.panel_header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel1.SuspendLayout();
@@ -57,8 +59,9 @@
             // panel_header
             // 
             this.panel_header.BackColor = System.Drawing.Color.Silver;
-            this.panel_header.Controls.Add(this.cb_lock_skin);
+            this.panel_header.Controls.Add(this.txt_mdlpath);
             this.panel_header.Controls.Add(this.lab_mdl);
+            this.panel_header.Controls.Add(this.cb_lock_skin);
             this.panel_header.Location = new System.Drawing.Point(-1, -1);
             this.panel_header.Name = "panel_header";
             this.panel_header.Size = new System.Drawing.Size(879, 20);
@@ -113,11 +116,41 @@
             this.panel3.Size = new System.Drawing.Size(10, 97);
             this.panel3.TabIndex = 5;
             // 
+            // btn_editJigglebones
+            // 
+            this.btn_editJigglebones.BackColor = System.Drawing.Color.Gainsboro;
+            this.btn_editJigglebones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_editJigglebones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btn_editJigglebones.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btn_editJigglebones.Location = new System.Drawing.Point(762, 59);
+            this.btn_editJigglebones.Name = "btn_editJigglebones";
+            this.btn_editJigglebones.Size = new System.Drawing.Size(105, 23);
+            this.btn_editJigglebones.TabIndex = 6;
+            this.btn_editJigglebones.Text = "Edit Jigglebones";
+            this.btn_editJigglebones.UseVisualStyleBackColor = false;
+            this.btn_editJigglebones.Click += new System.EventHandler(this.btn_editJigglebones_Click);
+            // 
+            // txt_mdlpath
+            // 
+            this.txt_mdlpath.BackColor = System.Drawing.Color.Silver;
+            this.txt_mdlpath.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txt_mdlpath.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold);
+            this.txt_mdlpath.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_mdlpath.Location = new System.Drawing.Point(183, 4);
+            this.txt_mdlpath.Name = "txt_mdlpath";
+            this.txt_mdlpath.ReadOnly = true;
+            this.txt_mdlpath.Size = new System.Drawing.Size(609, 11);
+            this.txt_mdlpath.TabIndex = 7;
+            this.txt_mdlpath.Text = "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" +
+    "fffffffffff";
+            this.txt_mdlpath.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Model_Painter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
+            this.Controls.Add(this.btn_editJigglebones);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_header);
             this.Controls.Add(this.panel2);
@@ -143,5 +176,7 @@
         public System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btn_editJigglebones;
+        public System.Windows.Forms.TextBox txt_mdlpath;
     }
 }
