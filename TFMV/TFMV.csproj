@@ -303,6 +303,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Jigglebone_Editor\AddJiggleBone.resx">
       <DependentUpon>AddJiggleBone.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Jigglebone_Editor\JiggleboneEditor.resx">
       <DependentUpon>JiggleboneEditor.cs</DependentUpon>

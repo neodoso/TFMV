@@ -136,7 +136,8 @@ namespace TFMV.UserControls
             int loop_count = 360 / Convert.ToInt32(txtb_move_x_factor.Text);
             int move_x_factor = Convert.ToInt32(txtb_move_x_factor.Text);
 
-            if(cb_invert_rotation.Checked)
+            //todo: is this the right way round?
+            if (lstTurnDirection.SelectedItem.ToString().ToLower() == "counterclockwise") 
             {
                 move_x_factor = move_x_factor * -1;
             }
@@ -158,12 +159,13 @@ namespace TFMV.UserControls
 
             #endregion
 
-            //neodement: todo: add gif options!
+            //neodement: todo: add gif dithering options! and image as png etc options!
 
             string date = DateTime.UtcNow.AddTicks(Stopwatch.StartNew().Elapsed.Ticks).ToString().Replace(" ", "").Replace("/", "_").Replace(":", "");
 
        
-            /*
+            if(lstOutputFormat.SelectedItem.ToString().ToLower() == "image sequence")
+
             //// SAVE AS STATIC IMAGE ////
             for (int i = 0; i < loop_count; i++)
             {
@@ -180,7 +182,7 @@ namespace TFMV.UserControls
                 progressBar.Value = i;
 
             }
-            */
+            
 
 
             //// SAVE AS ANIMATED GIF ////
@@ -295,6 +297,8 @@ namespace TFMV.UserControls
 
         private void txtb_move_x_factor_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
@@ -330,11 +334,13 @@ namespace TFMV.UserControls
                     found_set_a = true;
                     settings[i] = txtb_move_x_factor.Text.ToString() + "<" + "txtb_move_x_factor" ;
                 }
+                /*
                 if (settings[i].Split('<')[1] == "cb_invert_rotation")
                 {
                     found_set_b = true;
                     settings[i] = cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation" ;
                 }
+                */
             }
 
             if(!found_set_a)
@@ -342,10 +348,12 @@ namespace TFMV.UserControls
                 settings.Add(txtb_move_x_factor.Text.ToString() + "<" + "txtb_move_x_factor"  );
             }
 
+            /*
             if (!found_set_b)
             {
                 settings.Add(cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation" );
             }
+            */
 
             try
             {
@@ -385,6 +393,8 @@ namespace TFMV.UserControls
                     {
                         txtb_move_x_factor.Text = arg[0];
                     }
+
+                    /*
                     if (arg[1] == "cb_invert_rotation")
                     {
                         if (arg[0].ToLower() == "true")
@@ -395,6 +405,7 @@ namespace TFMV.UserControls
                         }
                            
                     }
+                    */
 
                 }
             }
@@ -407,10 +418,35 @@ namespace TFMV.UserControls
         private void Turntable_GIF_Generator_Load(object sender, EventArgs e)
         {
             load_settings();
+
+#if DEBUG
+    System.Windows.MessageBox.Show("finish this!");
+#endif
+            btn_Options.Visible = false;
+            lstOutputFormat.Width = lstTurnDirection.Width;
+
+            //set default state of dropdowns
+            if (lstOutputFormat.SelectedIndex == -1)
+            {
+                lstOutputFormat.SelectedIndex = 0;
+            }
+
+            if (lstTurnDirection.SelectedIndex == -1)
+            {
+                lstTurnDirection.SelectedIndex = 0;
+            }
+
         }
 
 
+
+
         private void cb_invert_rotation_CheckedChanged(object sender, EventArgs e)
+        {
+            save_settings();
+        }
+
+        private void save_settings(object sender, EventArgs e)
         {
             save_settings();
         }

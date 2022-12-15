@@ -281,7 +281,6 @@ namespace TFMV
 
         private string selected_player_class = "", selected_item_slot = "primary", item_type_name = "";
 
-
         List<TF2.items_game.item> items_game = new List<TF2.items_game.item>();
 
         private List<string> banned_items = new List<string>();
@@ -363,6 +362,7 @@ namespace TFMV
 
 
             InitializeComponent();
+
 
             // for debugging: set config / schema directories to TFMV in desktop folder
             //(this is to stop you writing crap like updated schema pngs to the debug folder)
@@ -727,7 +727,58 @@ namespace TFMV
                 panel_Bgcolor1.Visible = true;
             }
 
-            btn_primary.PerformClick();
+            //btn_primary.PerformClick();
+
+
+            switch (lstStartupTab_Slot.Text)
+            {
+                case "Primary":
+                    btn_primary.PerformClick();
+                    break;
+                case "Secondary":
+                    btn_secondary.PerformClick();
+                    break;
+                case "Melee":
+                    btn_melee.PerformClick();
+                    break;
+                case "Cosmetic":
+                    btn_misc.PerformClick();
+                    break;
+                case "Building":
+                    btn_building.PerformClick();
+                    break;
+                case "PDA":
+                    btn_pda.PerformClick();
+                    break;
+                case "Taunt Prop":
+                    btn_tauntprop.PerformClick();
+                    break;
+                //if it isn't set, set it to Primary
+                default:
+
+                    if (lstStartupTab_Slot.Text == "Workshop" && btn_workshop_items.Visible)
+                    {
+                        btn_workshop_items.PerformClick();
+                    }
+                    else if (lstStartupTab_Slot.Text == "Medal" && btn_medal.Visible)
+                    {
+                        btn_medal.PerformClick();
+                    }
+                    else
+                    {
+                        {
+
+                            lstStartupTab_Slot.SelectedIndex = 0;
+                            btn_primary.PerformClick();
+                        }
+                    }
+
+                    break;
+
+            }
+
+
+
         }
 
         #region dpi scaling info
@@ -1053,8 +1104,19 @@ namespace TFMV
 
                 check_schema_version();
 
+
+                //set a default value to the class startup tab if it wasn't set before
+                if (lstStartupTab_Class.Text == "")
+                {
+                    lstStartupTab_Class.SelectedIndex = 0;
+                }
+
                 // set class and slot and load items
-                set_class("scout", false);
+                //set_class("scout", false);
+                set_class(lstStartupTab_Class.Text.ToLower(), true);
+
+
+
             }
         }
 
@@ -1863,6 +1925,11 @@ namespace TFMV
 
         private void btn_workshop_items_Click(object sender, EventArgs e)
         {
+
+            //disable multiclass checkbox, it doesn't work on this page
+            cb_allclass_only.Enabled = false;
+
+
             items_loading = true;
 
             list_view.BeginUpdate();
@@ -2037,7 +2104,7 @@ namespace TFMV
                                 z.Extract(tmp_workshop_zip_dir, ExtractExistingFileAction.OverwriteSilently);
                             }
                             catch
-                            { 
+                            {
                                 continue;
                             }
                         }
@@ -2307,6 +2374,10 @@ namespace TFMV
         // buttons load item slot type
         private void btn_slot_load_Click(object sender, EventArgs e)
         {
+
+            //enable multiclass checkbox, workshop button may have disabled it
+            cb_allclass_only.Enabled = true;
+
 
             if (bgWorker_download_schema.IsBusy) { return; }
             if (bgWorker_load_schema.IsBusy) { return; }
@@ -2582,7 +2653,7 @@ namespace TFMV
 
                         mp.switch_Skin(skin_index);
 
-                   }
+                    }
                 }
             }
 
@@ -4604,7 +4675,7 @@ namespace TFMV
                                     {
                                         //if we already have a medal using this model, don't add it to the list.
                                         if (!seen_medal_models.Contains(item.model_path))
-                                        { 
+                                        {
                                             seen_medal_models.Add(item.model_path);
                                             item.item_slot_schema = "medal";
                                             items_game.Add(item);
@@ -4677,8 +4748,18 @@ namespace TFMV
 
             this.BeginInvoke((Action)(() => this.Enabled = true));
 
-            set_class("scout", false);
-            set_slot("primary");
+            //set_class("scout", false);
+            //set_slot("primary");
+            //set_slot("misc");
+
+
+            // set class and slot and load items
+            //set_class("scout", false);
+
+            set_class(lstStartupTab_Class.Text.ToLower(), true);
+            set_class(lstStartupTab_Slot.Text.ToLower(), true);
+
+
         }
 
         private void check_schema_version()
@@ -8601,12 +8682,12 @@ namespace TFMV
                 }
 
                 return mdl_data;
-                }
-                catch
-                {
-                    return null;
-                }
             }
+            catch
+            {
+                return null;
+            }
+        }
 
 
         // this method restores all the original .mdl files from the tmp folder!
@@ -10278,6 +10359,47 @@ namespace TFMV
                 make_buttons_big();
                 btn_medal.Visible = false;
             }
+
+
+
+            //hide/unhide startup button choices that shouldn't be there
+            if (!btn_medal.Visible)
+            {
+                if (lstStartupTab_Slot.Items.Contains("Medal"))
+                {
+                    lstStartupTab_Slot.Items.Remove("Medal");
+                }
+            }
+            else
+            {
+                if (!lstStartupTab_Slot.Items.Contains("Medal"))
+                {
+                    lstStartupTab_Slot.Items.Add("Medal");
+                }
+            }
+
+
+            if (!btn_workshop_items.Visible)
+            {
+                if (lstStartupTab_Slot.Items.Contains("Workshop"))
+                {
+                    lstStartupTab_Slot.Items.Remove("Workshop");
+                }
+            }
+            else
+            {
+                if (!lstStartupTab_Slot.Items.Contains("Workshop"))
+                {
+                    lstStartupTab_Slot.Items.Add("Workshop");
+                }
+            }
+
+            //if you deleted the selected index, default back to 0
+            if (lstStartupTab_Slot.Text == "")
+            {
+                lstStartupTab_Slot.SelectedIndex = 0;
+            }
+
         }
 
 
@@ -10373,7 +10495,7 @@ namespace TFMV
                 if (need_to_cache) { break; }
             }
 
-            if(need_to_cache)
+            if (need_to_cache)
             {
                 MessageBox.Show("Player bodygroup masks cache files are missing. \nPlease re-install TFMV to restore missing files.");
             }
@@ -10395,11 +10517,11 @@ namespace TFMV
                     ZipFile zip = ZipFile.Read(cached_dir + "player_masks.zip");
                     zip.ExtractAll(cached_dir);
 
-                } catch{
+                } catch {
                 }
             }
 
-           // miscFunc.delete_safe(cached_dir + "player_masks.zip");
+            // miscFunc.delete_safe(cached_dir + "player_masks.zip");
         }
 
         private void numUpDown_screenshot_delay_ValueChanged(object sender, EventArgs e)
@@ -10448,7 +10570,7 @@ namespace TFMV
                 txtb_hlmv_wsize_y.Text = size_y;
                 txtb_hlmv_def_wsize_x.Text = size_x;
                 txtb_hlmv_def_wsize_y.Text = size_y;
-            } catch { 
+            } catch {
             }
 
             #endregion
@@ -10506,29 +10628,29 @@ namespace TFMV
                 txtb_hlmv_lightrot_x.Text = LIGHTROT[0].Replace(".000000", "");
                 txtb_hlmv_lightrot_y.Text = LIGHTROT[1].Replace(".000000", "");
                 txtb_hlmv_lightrot_z.Text = LIGHTROT[2].Replace(".000000", "");
-            
+
 
                 // set light/ambient colour to control form colour panels
                 float aColor_Rf = float.Parse(ACOLOR[0].Replace(".000000", ""));
                 float aColor_Gf = float.Parse(ACOLOR[1].Replace(".000000", ""));
                 float aColor_Bf = float.Parse(ACOLOR[2].Replace(".000000", ""));
 
-            int aColor_R = (int)(aColor_Rf * 255.0);
-            int aColor_G = (int)(aColor_Gf * 255.0);
-            int aColor_B = (int)(aColor_Bf * 255.0);
+                int aColor_R = (int)(aColor_Rf * 255.0);
+                int aColor_G = (int)(aColor_Gf * 255.0);
+                int aColor_B = (int)(aColor_Bf * 255.0);
 
-            panel_aColor.BackColor = Color.FromArgb(255, aColor_R, aColor_G, aColor_B);
+                panel_aColor.BackColor = Color.FromArgb(255, aColor_R, aColor_G, aColor_B);
                 aColor = Color.FromArgb(255, aColor_R, aColor_G, aColor_B);
 
                 float lColor_Rf = float.Parse(LCOLOR[0].Replace(".000000", ""));
                 float lColor_Gf = float.Parse(LCOLOR[1].Replace(".000000", ""));
                 float lColor_Bf = float.Parse(LCOLOR[2].Replace(".000000", ""));
 
-            int lColor_R = (int)(lColor_Rf * 255.0);
-            int lColor_G = (int)(lColor_Gf * 255.0);
-            int lColor_B = (int)(lColor_Bf * 255.0);
+                int lColor_R = (int)(lColor_Rf * 255.0);
+                int lColor_G = (int)(lColor_Gf * 255.0);
+                int lColor_B = (int)(lColor_Bf * 255.0);
 
-            panel_lColor.BackColor = Color.FromArgb(255, lColor_R, lColor_G, lColor_B);
+                panel_lColor.BackColor = Color.FromArgb(255, lColor_R, lColor_G, lColor_B);
                 lColor = Color.FromArgb(255, lColor_R, lColor_G, lColor_B);
 
 
@@ -10544,12 +10666,12 @@ namespace TFMV
                 float bgColor_Gf = float.Parse(BGCOLOR[1].Replace(".000000", ""));
                 float bgColor_Bf = float.Parse(BGCOLOR[2].Replace(".000000", ""));
 
-            int bgColor_R = (int)(bgColor_Rf * 255.0);
-            int bgColor_G = (int)(bgColor_Gf * 255.0);
-            int bgColor_B = (int)(bgColor_Bf * 255.0);
+                int bgColor_R = (int)(bgColor_Rf * 255.0);
+                int bgColor_G = (int)(bgColor_Gf * 255.0);
+                int bgColor_B = (int)(bgColor_Bf * 255.0);
 
-            //todo: what on earth is Bgcolor1?
-            panel_Bgcolor1.BackColor = Color.FromArgb(255, bgColor_R, bgColor_G, bgColor_B);
+                //todo: what on earth is Bgcolor1?
+                panel_Bgcolor1.BackColor = Color.FromArgb(255, bgColor_R, bgColor_G, bgColor_B);
                 panel_Bgcolor.BackColor = Color.FromArgb(255, bgColor_R, bgColor_G, bgColor_B);
                 bg_color = Color.FromArgb(255, bgColor_R, bgColor_G, bgColor_B);
 
@@ -10578,8 +10700,6 @@ namespace TFMV
             {
                 e.Handled = true;
             }
-
-            //MessageBox.Show("" + (sender as TextBox).SelectionStart);
 
             // allow negative numbers
             if ((e.KeyChar == '-'))
@@ -10622,7 +10742,7 @@ namespace TFMV
 
             foreach (var c in tab_items.Controls)
             {
-                if(c.GetType() == typeof(Turntable_GIF_Generator))
+                if (c.GetType() == typeof(Turntable_GIF_Generator))
                 {
                     ((Turntable_GIF_Generator)c).Dispose();
                 }
@@ -10738,7 +10858,7 @@ namespace TFMV
                 }
             }
 
-            File.AppendAllText(filepath, Environment.NewLine + "ask_disable_mods");    
+            File.AppendAllText(filepath, Environment.NewLine + "ask_disable_mods");
 
             if ((Directory.Exists(steamGameConfig.tf_dir + "custom\\")) && (!cb_disable_custom_mods.Checked))
 
@@ -10750,8 +10870,8 @@ namespace TFMV
                          + "\n\nHowever, TFMV can temporarily disable the mods while using TFMV to avoid this."
                          + "\n\nWould you like TFMV to disable mods? mods will always be re-enabled again when TFMV is closed."
                          + "\nYou can disable this option in the Settings tab."
-                        , 
-                        
+                        ,
+
                         "TFMV: Disable custom mods while using TFMV?", MessageBoxButtons.YesNo);
 
                     if (result == DialogResult.Yes)
@@ -10910,6 +11030,1053 @@ namespace TFMV
 
         }
 
+        private void label46_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_scout_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+            }
+        }
+
+        private void lstStartupTab_Slot_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //disable class selection if Workshop is selected
+            lstStartupTab_Class.Enabled = true;
+            if (lstStartupTab_Slot.Text == "Workshop")
+            {
+                lstStartupTab_Class.Enabled = false;
+            }
+
+            settings_save(sender, e);
+        }
+
+
+
+
+
+
+
+        /*
+        Public Class SourceMdlBodyPart
+
+	'struct mstudiobodyparts_t
+	'{
+	'	DECLARE_BYTESWAP_DATADESC();
+	'	int					sznameindex;
+	'	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	'	int					nummodels;
+	'	int					base;
+	'	int					modelindex; // index into models array
+	'	inline mstudiomodel_t *pModel( int i ) const { return (mstudiomodel_t *)(((byte *)this) + modelindex) + i; };
+	'};
+
+	'   offset from start of this struct
+	'	int					sznameindex;
+	Public nameOffset As Integer
+	'	int					nummodels;
+
+    Public modelCount As Integer
+	'	int					base;
+
+    Public base As Integer
+	'	int					modelindex; // index into models array
+
+    Public modelOffset As Integer
+
+
+    Public theName As String
+
+    Public theModels As List(Of SourceMdlModel)
+
+    Public theModelCommandIsUsed As Boolean
+
+    Public theEyeballOptionIsUsed As Boolean
+
+    Public theFlexFrames As List(Of FlexFrame)
+
+End Class
+*/
+
+
+        private string ReadNullTerminatedString(BinaryReader inputFileReader)
+        {
+            StringBuilder text = new StringBuilder();
+
+            text.Length = 0;
+
+            while (inputFileReader.PeekChar() > 0)
+            {
+
+                text.Append(inputFileReader.ReadChar());
+            }
+
+            //' Read the null character.
+
+            inputFileReader.ReadChar();
+            return text.ToString();
+
+        }
+
+
+
+
+
+
+
+        [Serializable]
+        public class SourceMdlBodyPart
+        {
+            public int nameOffset { get; set; }
+            public int modelCount { get; set; }
+            public int Base { get; set; }
+
+            public int modelOffset { get; set; }
+
+            public string theName { get; set; }
+
+            //Public theModels As List(Of SourceMdlModel)
+            public List<SourceMdlModel> theModels { get; set; }
+
+            //Public theModelCommandIsUsed As Boolean
+
+            //Public theEyeballOptionIsUsed As Boolean
+
+            //Public theFlexFrames As List(Of FlexFrame)
+        }
+
+
+
+
+
+        [Serializable]
+        public class SourceMdlModel
+        {
+
+            //todo: possibly important
+            /*
+            	'	char				name[64];
+	Public name(63) As Char
+	'	int					type;
+            */
+
+
+            public char[] name { get; set; }
+
+            public int type { get; set; }
+            public Single boundingRadius { get; set; }
+            public int meshCount { get; set; }
+
+            //offset to the offset
+            //public int meshOffset_Offset { get; set; }
+            public int meshOffset { get; set; }
+
+
+            public int vertexCount { get; set; }
+
+
+
+            public int vertexOffset { get; set; }
+
+            public int tangentOffset { get; set; }
+
+            public int attachmentCount { get; set; }
+
+            public int attachmentOffset { get; set; }
+
+
+            public int eyeballCount { get; set; }
+
+            public int eyeballOffset { get; set; }
+
+            //these are a separate struct in crowbar but it's probably ok
+            public int vertexDataP { get; set; }
+
+            public int tangentDataP { get; set; }
+
+
+
+
+            public List<SourceMdlMesh> theMeshes { get; set; }
+
+            //todo: good chance we need the vertex data.
+
+            /*
+
+	'	int					numeyeballs;
+
+    Public eyeballCount As Integer
+	'	int					eyeballindex;
+
+    Public eyeballOffset As Integer
+
+	'	mstudio_modelvertexdata_t vertexdata;
+
+    Public vertexData As SourceMdlModelVertexData
+
+	'	int					unused[8];		// remove as appropriate
+
+    Public unused(7) As Integer
+
+
+
+    Public theSmdFileNames As List(Of String)
+
+    Public theMeshes As List(Of SourceMdlMesh)
+
+    Public theEyeballs As List(Of SourceMdlEyeball)
+
+            */
+        }
+
+
+
+
+        [Serializable]
+        public class SourceMdlMesh
+        {
+            public int materialIndex { get; set; }
+            public int modelOffset { get; set; }
+            public int vertexCount { get; set; }
+            public int vertexIndexStart { get; set; }
+            public int flexCount { get; set; }
+            public int flexOffset { get; set; }
+            public int materialType { get; set; }
+            public int materialParam { get; set; }
+
+            public int id { get; set; }
+
+            public Single centerX { get; set; }
+
+            public Single centerY { get; set; }
+
+            public Single centerZ { get; set; }
+
+
+            /*
+            	'	mstudio_meshvertexdata_t vertexdata;
+	Public vertexData As SourceMdlMeshVertexData
+
+	'	int					unused[8]; // remove as appropriate
+
+    Public unused(7) As Integer
+
+
+
+    Public theFlexes As List(Of SourceMdlFlex)
+                */
+
+        }
+
+
+
+
+            private void ReadMeshes(long modelInputFileStreamPosition, SourceMdlModel aModel)
+        {
+
+
+            if (aModel.meshCount > 0 && aModel.meshOffset != 0) {
+
+                aModel.theMeshes = new List<SourceMdlMesh>(aModel.meshCount);
+                long meshInputFileStreamPosition;
+                long inputFileStreamPosition;
+                long fileOffsetStart;
+                long fileOffsetEnd;
+
+
+
+                reader.BaseStream.Seek(modelInputFileStreamPosition + aModel.meshOffset, SeekOrigin.Begin);
+
+                fileOffsetStart = reader.BaseStream.Position;
+
+                for (int meshIndex = 0; meshIndex < aModel.meshCount; meshIndex++)
+                {
+
+
+                    meshInputFileStreamPosition = reader.BaseStream.Position;
+
+
+                    SourceMdlMesh aMesh = new SourceMdlMesh();
+
+
+                    aMesh.materialIndex = reader.ReadInt32();
+
+
+                    MessageBox.Show("this one:" + reader.BaseStream.Position);
+                    aMesh.modelOffset = reader.ReadInt32();
+
+
+                    aMesh.vertexCount = reader.ReadInt32();
+
+                    MessageBox.Show("btw, vert count was: " + aMesh.vertexCount);
+
+                    aMesh.vertexIndexStart = reader.ReadInt32();
+
+
+                    aMesh.flexCount = reader.ReadInt32();
+
+
+                    aMesh.flexOffset = reader.ReadInt32();
+
+
+                    aMesh.materialType = reader.ReadInt32();
+
+
+                    aMesh.materialParam = reader.ReadInt32();
+
+
+                    aMesh.id = reader.ReadInt32();
+                    //MessageBox.Show("btw, id was: " + aMesh.id);
+
+                    aMesh.centerX = reader.ReadSingle();
+
+
+                    aMesh.centerY = reader.ReadSingle();
+
+                    //bet we could fuck with this
+                    /////////////////////////////////////////////////////////////////////
+                    aMesh.centerZ = reader.ReadSingle();
+                    ////////////////////////////////////////////////////////////////////
+
+                    int MAX_NUM_LODS = 1;
+
+                    //SourceMdlMeshVertexData meshVertexData = new SourceMdlMeshVertexData();
+
+                    //do nothing instead
+                    reader.ReadInt32();
+
+
+
+                    for (int x = 0; x < MAX_NUM_LODS; x++)
+                    {
+
+
+                        //meshVertexData.lodVertexCount(x) = reader.ReadInt32();
+
+                        //do nothing instead
+                        reader.ReadInt32();
+
+
+                    }
+
+                    //aMesh.vertexData = meshVertexData;
+
+
+
+                    for (int x = 0; x < 8; x++)
+                    {
+
+                        //do nothing instead
+                        reader.ReadInt32();
+
+                        //aMesh.unused(x) = Me.theInputFileReader.ReadInt32()
+
+
+
+                    }
+
+
+                    aModel.theMeshes.Add(aMesh);
+
+
+                    /*
+                    ' Fill-in eyeball texture index info.
+    
+
+                    If aMesh.materialType = 1 Then
+    
+                        aModel.theEyeballs(aMesh.materialParam).theTextureIndex = aMesh.materialIndex
+    
+
+                    End If
+    */
+
+
+                    inputFileStreamPosition = reader.BaseStream.Position;
+    
+
+                    /*
+                    If aMesh.flexCount > 0 AndAlso aMesh.flexOffset <> 0 Then
+    
+                        Me.ReadFlexes(meshInputFileStreamPosition, aMesh)
+    
+                    End If
+    
+
+                    Me.theInputFileReader.BaseStream.Seek(inputFileStreamPosition, SeekOrigin.Begin)
+                    */
+                }
+                
+
+                fileOffsetEnd = reader.BaseStream.Position - 1;
+
+            //Me.theMdlFileData.theFileSeekLog.Add(fileOffsetStart, fileOffsetEnd, "aModel.theMeshes " + aModel.theMeshes.Count.ToString())
+
+
+            //Me.theMdlFileData.theFileSeekLog.LogToEndAndAlignToNextStart(Me.theInputFileReader, fileOffsetEnd, 4, "aModel.theMeshes alignment")
+
+        }
+
+ }
+
+            
+
+
+
+        private void ReadModels(long bodyPartInputFileStreamPosition, SourceMdlBodyPart aBodyPart, int bodyPartIndex)
+        {
+
+            if (aBodyPart.modelCount > 0)
+            {
+                long modelInputFileStreamPosition;
+                long inputFileStreamPosition;
+                long fileOffsetStart;
+                long fileOffsetEnd;
+
+
+                string modelName = "";
+
+
+                reader.BaseStream.Seek(bodyPartInputFileStreamPosition + aBodyPart.modelOffset, SeekOrigin.Begin);
+
+                //'fileOffsetStart = Me.theInputFileReader.BaseStream.Position
+
+
+                aBodyPart.theModels = new List<SourceMdlModel>(aBodyPart.modelCount);
+
+                //For j As Integer = 0 To aBodyPart.modelCount - 1
+                for (int j = 0; j < aBodyPart.modelCount; j++)
+                {
+
+                    modelInputFileStreamPosition = reader.BaseStream.Position;
+
+                    //MessageBox.Show("HEY!!!!!!!! " + modelInputFileStreamPosition);
+
+                    fileOffsetStart = reader.BaseStream.Position;
+
+
+                    SourceMdlModel aModel = new SourceMdlModel();
+
+                    aModel.name = reader.ReadChars(64);
+
+                    aModel.type = reader.ReadInt32();
+
+                    aModel.boundingRadius = reader.ReadSingle();
+
+                    aModel.meshCount = reader.ReadInt32();
+
+
+                    //offset to the offset
+                    //aModel.meshOffset_Offset = Convert.ToInt32(reader.BaseStream.Position);
+
+                    aModel.meshOffset = reader.ReadInt32();
+
+                    aModel.vertexCount = reader.ReadInt32();
+
+                    aModel.vertexOffset = reader.ReadInt32();
+
+                    aModel.tangentOffset = reader.ReadInt32();
+
+                    aModel.attachmentCount = reader.ReadInt32();
+
+                    aModel.attachmentOffset = reader.ReadInt32();
+
+                    aModel.eyeballCount = reader.ReadInt32();
+
+                    aModel.eyeballOffset = reader.ReadInt32();
+
+                    aModel.vertexDataP = reader.ReadInt32();
+
+                    aModel.tangentDataP = reader.ReadInt32();
+
+                    //todo: junk data
+                    int temp = reader.ReadInt32();
+                    temp = reader.ReadInt32();
+                    temp = reader.ReadInt32();
+                    temp = reader.ReadInt32();
+                    temp = reader.ReadInt32();
+                    temp = reader.ReadInt32();
+                    temp = reader.ReadInt32();
+                    temp = reader.ReadInt32();
+
+
+                    /*
+                    aModel.eyeballCount = reader.ReadInt32();
+
+                    aModel.eyeballOffset = reader.ReadInt32();
+
+                    Dim modelVertexData As New SourceMdlModelVertexData()
+                     modelVertexData.vertexDataP = Me.theInputFileReader.ReadInt32()
+
+                    modelVertexData.tangentDataP = Me.theInputFileReader.ReadInt32()
+
+                    aModel.vertexData = modelVertexData
+
+                    For x As Integer = 0 To 7
+
+                        aModel.unused(x) = Me.theInputFileReader.ReadInt32()
+                    Next
+     */
+
+
+                    aBodyPart.theModels.Add(aModel);
+
+                    inputFileStreamPosition = reader.BaseStream.Position;
+
+
+                    /*
+                'NOTE: Call ReadEyeballs() before ReadMeshes() so that ReadMeshes can fill-in the eyeball.theTextureIndex values.
+
+
+                Me.ReadEyeballs(modelInputFileStreamPosition, aModel)
+                 Me.ReadMeshes(modelInputFileStreamPosition, aModel)
+                    */
+
+                    //dead end?
+                    ReadMeshes(modelInputFileStreamPosition, aModel);
+
+                reader.BaseStream.Seek(inputFileStreamPosition, SeekOrigin.Begin);
+
+                        //todo: is this needed?
+                //modelName = CStr(aModel.name).Trim(Chr(0))
+
+
+                fileOffsetEnd = reader.BaseStream.Position - 1;
+
+
+                //Me.theMdlFileData.theFileSeekLog.Add(fileOffsetStart, fileOffsetEnd, "aModel Name = " + modelName)
+
+
+            }
+ 
+
+            //'fileOffsetEnd = Me.theInputFileReader.BaseStream.Position - 1
+ 
+            //'Me.theMdlFileData.theFileSeekLog.Add(fileOffsetStart, fileOffsetEnd, "aBodyPart.theModels " + aBodyPart.theModels.Count.ToString())
+ 
+        }
+
+    }
+        
+
+        //using (var stream = File.Open(filepath, FileMode.Open))
+        //{
+        //    using (var reader = new BinaryReader(stream, Encoding.UTF8, false))
+        //    {
+
+        private static BinaryReader reader;
+
+        // this method edits the .mdl to disable bodygroups
+        // reads .mdl file, gets bodygroup count and offset and blah blah
+        // if found, it swaps the nameoffset and modeloffset with each other
+
+        //this results in the bodygroup working in reverse,
+        //being hidden when it would usually be visible and vice versa
+
+        //(returns an array of bytes to write back to a file)
+
+        //Public theBodyParts As List(Of SourceMdlBodyPart);
+
+        private byte[] mdl_disable_bodygroup(string filepath)
+        {
+
+
+            if (!File.Exists(filepath)) { return null; }
+
+            //TODO: uncomment this
+            //try
+            //{
+
+                byte[] mdl_data = File.ReadAllBytes(filepath);
+
+            // Offsets: 0xE8 (232), 0xEC (236)
+
+                int bodyPartCount = BitConverter.ToInt32(mdl_data, 232);
+                int bodyPartOffset = BitConverter.ToInt32(mdl_data, 236);
+
+            //MessageBox.Show("body part count is " + bodyPartCount);
+
+            //todo: reading file twice for no reason currently
+
+
+            if (bodyPartCount > 0)
+            {
+                long bodyPartInputFileStreamPosition;
+                long inputFileStreamPosition;
+                long fileOffsetStart;
+                long fileOffsetEnd;
+                long fileOffsetStart2;
+                long fileOffsetEnd2;
+
+
+                //using (var stream = File.Open(filepath, FileMode.Open))
+                //{
+                //    using (var reader = new BinaryReader(stream, Encoding.UTF8, false))
+                //    {
+
+
+                //load file into the stream
+                FileStream stream = File.Open(filepath, FileMode.Open);
+
+                reader = new BinaryReader(stream, Encoding.UTF8, false);
+
+                reader.BaseStream.Seek(bodyPartOffset, SeekOrigin.Begin);
+
+                        fileOffsetStart = reader.BaseStream.Position;
+
+                        List<SourceMdlBodyPart> theBodyParts = new List<SourceMdlBodyPart>(bodyPartCount);
+
+
+                //For bodyPartIndex As Integer = 0 To Me.theMdlFileData.bodyPartCount - 1
+                for (int bodyPartIndex = 0; bodyPartIndex < bodyPartCount; bodyPartIndex++)
+                {
+
+                    bodyPartInputFileStreamPosition = reader.BaseStream.Position;
+
+                    SourceMdlBodyPart aBodyPart = new SourceMdlBodyPart();
+
+
+                    MessageBox.Show("OFFSET:  " + reader.BaseStream.Position);
+
+                    aBodyPart.nameOffset = reader.ReadInt32();
+
+                    aBodyPart.modelCount = reader.ReadInt32();
+
+                    aBodyPart.Base = reader.ReadInt32();
+
+                    aBodyPart.modelOffset = reader.ReadInt32();
+
+
+                    //theBodyParts.Add(aBodyPart);
+
+
+                    inputFileStreamPosition = reader.BaseStream.Position;
+
+
+                    if (aBodyPart.nameOffset != 0)
+                    {
+
+                        reader.BaseStream.Seek(bodyPartInputFileStreamPosition + aBodyPart.nameOffset, SeekOrigin.Begin);
+
+                        fileOffsetStart2 = reader.BaseStream.Position;
+
+                        //TODO: reuse it for jigglebone disable and editor
+                        aBodyPart.theName = ReadNullTerminatedString(reader);
+
+
+                        fileOffsetEnd2 = reader.BaseStream.Position - 1;
+
+                        //Me.theMdlFileData.theFileSeekLog.Add(fileOffsetStart2, fileOffsetEnd2, "aBodyPart.theName = " + aBodyPart.theName)
+
+                    }
+                    else
+                    {
+
+                        aBodyPart.theName = "";
+                    }
+
+
+                    theBodyParts.Add(aBodyPart);
+
+
+
+                    ReadModels(bodyPartInputFileStreamPosition, aBodyPart, bodyPartIndex);
+
+
+                    //MessageBox.Show("mesh offset: " + (bodyPartInputFileStreamPosition + aBodyPart.modelOffset));
+
+                    //'NOTE: Aligned here because studiomdl aligns after reserving space for bodyparts and models.
+
+                            /*
+                            if (bodyPartIndex == Me.theMdlFileData.bodyPartCount - 1)
+                            { 
+
+                            Me.theMdlFileData.theFileSeekLog.LogToEndAndAlignToNextStart(Me.theInputFileReader, Me.theInputFileReader.BaseStream.Position - 1, 4, "theMdlFileData.theBodyParts + aBodyPart.theModels alignment")
+
+                        }
+                            */
+
+
+
+
+                            reader.BaseStream.Seek(inputFileStreamPosition, SeekOrigin.Begin);
+
+                        }
+
+                string allNames = "Found these bodyparts on soldier.mdl:\n\n";
+                        for (int i = 0; i < theBodyParts.Count; i++)
+                        {
+                            allNames += theBodyParts[i].theName + ":";
+                            allNames += "\n";
+
+
+                    for (int j = 0; j < theBodyParts[i].modelCount; j++)
+                    {
+
+
+                        string MyString = "";
+                        for (int k = 0; k < 64; k++)
+                        {
+                            if (theBodyParts[i].theModels[j].name[k] != 0)
+                            {
+                                MyString += theBodyParts[i].theModels[j].name[k];
+                            }
+                        }
+
+
+                        if (MyString == "")
+                        {
+                            MyString = "<blank>";
+                        }
+
+                        allNames += "-" + MyString + " (mesh offset: " + theBodyParts[i].theModels[j].meshOffset + ")";
+                        allNames += "\n";
+
+                        /*
+                        allNames += "-" + MyString + " (vertex offset: " + theBodyParts[i].theModels[j].vertexOffset_Offset + ")";
+                        allNames += "\n";
+                        allNames += "-" + MyString + " (tangent offset: " + theBodyParts[i].theModels[j].tangentOffset_Offset + ")";
+                        allNames += "\n";
+                        */
+
+                        /*
+                        theBodyParts[i].theModels[0].meshOffset = theBodyParts[i].theModels[1].meshOffset;
+                        theBodyParts[i].theModels[0].meshOffset = theBodyParts[i].theModels[1].meshOffset;
+                        theBodyParts[i].theModels[0].meshOffset = theBodyParts[i].theModels[1].meshOffset;
+                        theBodyParts[i].theModels[0].meshOffset = theBodyParts[i].theModels[1].meshOffset;
+                        theBodyParts[i].theModels[0].meshOffset = theBodyParts[i].theModels[1].meshOffset;
+                        theBodyParts[i].theModels[0].meshOffset = theBodyParts[i].theModels[1].meshOffset;
+                        theBodyParts[i].theModels[0].meshOffset = theBodyParts[i].theModels[1].meshOffset;
+                        */
+
+                        //swap submodel 0 data entirely with submodel 1
+
+                        //disabled for now
+                        if (theBodyParts[i].modelCount == 2 && (true == false))
+                        {
+                            SourceMdlModel temporaryModel_0 = theBodyParts[i].theModels[0];
+                            SourceMdlModel temporaryModel_1 = theBodyParts[i].theModels[1];
+
+                            //correct the offsets. we're moving the entire model 148 bytes FORWARD,
+                            //so adjust the offsets 148 bytes backwards
+                            temporaryModel_0.attachmentOffset -= 148;
+                            temporaryModel_0.eyeballOffset -= 148;
+                            temporaryModel_0.meshOffset -= 148;
+                            temporaryModel_0.tangentOffset -= 148;
+                            temporaryModel_0.vertexOffset -= 148;
+
+                            //correct the offsets. we're moving the entire model 148 bytes BACKWARD,
+                            //so adjust the offsets 148 bytes forwards
+                            temporaryModel_0.attachmentOffset += 148;
+                            temporaryModel_0.eyeballOffset += 148;
+                            temporaryModel_0.meshOffset += 148;
+                            temporaryModel_0.tangentOffset += 148;
+                            temporaryModel_0.vertexOffset += 148;
+
+                            theBodyParts[i].theModels[0] = temporaryModel_1;
+                            theBodyParts[i].theModels[1] = temporaryModel_0;
+                        }
+
+                    }
+                    allNames += "\n";
+
+                }
+                        MessageBox.Show(allNames);
+                    //}
+                        /*
+            fileOffsetEnd = Me.theInputFileReader.BaseStream.Position - 1
+
+            Me.theMdlFileData.theFileSeekLog.Add(fileOffsetStart, fileOffsetEnd, "theMdlFileData.theBodyParts " + Me.theMdlFileData.theBodyParts.Count.ToString())
+
+        End If
+                        */
+
+//}
+                }
+
+
+
+                return mdl_data;
+            //}
+            //catch
+            //{
+            //    return null;
+            //}
+        }
+
+
+        private void btnDisableSoldierHelm_Click(object sender, EventArgs e)
+        {
+            mdl_disable_bodygroup("C:\\Users\\jburn\\Desktop\\TFMV\\config\\soldier.mdl");
+        }
+
+
+        //TODO:
+
+        //this successfully disables soldiers helmet bodygroup, but it's not perfect:
+
+        //model1 decompiles as a mesh with some default name instead of as "none" in the qc (a quick look in crowbar for "body" shows it has invalid chars in filename?)
+        //model2 is the medal bodygroup?
+
+        //theory: maybe we need to change the bodygroup header instead of just the information inside.
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            byte[] mdl_data = File.ReadAllBytes("C:\\Users\\jburn\\Desktop\\TFMV\\config\\soldier.mdl");
+
+            string filepath = "C:\\Users\\jburn\\Desktop\\TFMV\\config\\soldier.mdl";
+
+
+
+
+            //mdl_data[101556]
+            //BitConverter.ToInt32(mdl_data[10])
+
+
+            //load file into the stream
+            FileStream stream = File.Open(filepath, FileMode.Open);
+
+            reader = new BinaryReader(stream, Encoding.UTF8, false);
+
+
+
+            //go to first model data
+//            reader.BaseStream.Seek(102000, SeekOrigin.Begin);
+            reader.BaseStream.Position = 102000;
+//            reader.BaseStream.Position = 101704;
+
+            SourceMdlModel aModel = new SourceMdlModel();
+
+            aModel.name = reader.ReadChars(64);
+
+            aModel.type = reader.ReadInt32();
+
+            aModel.boundingRadius = reader.ReadSingle();
+
+            aModel.meshCount = reader.ReadInt32();
+
+            //offset to the offset
+            //aModel.meshOffset_Offset = Convert.ToInt32(reader.BaseStream.Position);
+
+            aModel.meshOffset = reader.ReadInt32();
+
+            aModel.vertexCount = reader.ReadInt32();
+
+            aModel.vertexOffset = reader.ReadInt32();
+
+            aModel.tangentOffset = reader.ReadInt32();
+
+            aModel.attachmentCount = reader.ReadInt32();
+
+            aModel.attachmentOffset = reader.ReadInt32();
+
+            aModel.eyeballCount = reader.ReadInt32();
+
+            aModel.eyeballOffset = reader.ReadInt32();
+
+            aModel.vertexDataP = reader.ReadInt32();
+
+            aModel.tangentDataP = reader.ReadInt32();
+
+            //todo: junk data
+            int temp = reader.ReadInt32();
+            temp = reader.ReadInt32();
+            temp = reader.ReadInt32();
+            temp = reader.ReadInt32();
+            temp = reader.ReadInt32();
+            temp = reader.ReadInt32();
+            temp = reader.ReadInt32();
+            temp = reader.ReadInt32();
+
+
+
+            //go to second model data
+//            reader.BaseStream.Seek(102148, SeekOrigin.Begin);
+            reader.BaseStream.Position = 102148;
+//            reader.BaseStream.Position = 101852;
+
+
+            SourceMdlModel bModel = new SourceMdlModel();
+
+            bModel.name = reader.ReadChars(64);
+
+            bModel.type = reader.ReadInt32();
+
+            bModel.boundingRadius = reader.ReadSingle();
+
+            bModel.meshCount = reader.ReadInt32();
+
+            //offset to the offset
+            //aModel.meshOffset_Offset = Convert.ToInt32(reader.BaseStream.Position);
+
+            bModel.meshOffset = reader.ReadInt32();
+
+            bModel.vertexCount = reader.ReadInt32();
+
+            bModel.vertexOffset = reader.ReadInt32();
+
+            bModel.tangentOffset = reader.ReadInt32();
+
+            bModel.attachmentCount = reader.ReadInt32();
+
+            bModel.attachmentOffset = reader.ReadInt32();
+
+            bModel.eyeballCount = reader.ReadInt32();
+
+            bModel.eyeballOffset = reader.ReadInt32();
+
+            bModel.vertexDataP = reader.ReadInt32();
+
+            bModel.tangentDataP = reader.ReadInt32();
+
+            //todo: junk data
+            int temp2 = reader.ReadInt32();
+            temp2 = reader.ReadInt32();
+            temp2 = reader.ReadInt32();
+            temp2 = reader.ReadInt32();
+            temp2 = reader.ReadInt32();
+            temp2 = reader.ReadInt32();
+            temp2 = reader.ReadInt32();
+            temp2 = reader.ReadInt32();
+
+
+
+            reader.Close();
+
+
+
+
+            File.WriteAllBytes("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf\\custom\\!TFMV\\models\\player\\soldier.mdl", mdl_data);
+
+            MessageBox.Show("hacky pause...");
+
+            string filepath2 = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Team Fortress 2\\tf\\custom\\!TFMV\\models\\player\\soldier.mdl";
+
+            using (var stream2 = File.Open(filepath2, FileMode.Open))
+            {
+                using (var writer = new BinaryWriter(stream2, Encoding.UTF8, false))
+                {
+
+                    //go to first model data
+                    //                    writer.BaseStream.Seek(101556, SeekOrigin.Begin);
+                    //                    writer.BaseStream.Seek(102148, SeekOrigin.Begin);
+                    writer.BaseStream.Position = 102148;
+//                    writer.BaseStream.Position = 101852;
+
+                    writer.Write(aModel.name);
+
+                    writer.Write(aModel.type);
+
+                    writer.Write(aModel.boundingRadius);
+
+                    writer.Write(aModel.meshCount);
+
+                    //offset to the offset
+                    //aModel.meshOffset_Offset = Convert.ToInt32(reader.BaseStream.Position);
+
+                    writer.Write(aModel.meshOffset - 148 + 0);
+
+                    writer.Write(aModel.vertexCount);
+
+                    writer.Write(aModel.vertexOffset - 0);
+
+                    writer.Write(aModel.tangentOffset - 0);
+
+                    writer.Write(aModel.attachmentCount);
+
+                    writer.Write(aModel.attachmentOffset - 0);
+
+                    writer.Write(aModel.eyeballCount);
+
+                    writer.Write(aModel.eyeballOffset - 0);
+
+                    writer.Write(aModel.vertexDataP);
+
+                    writer.Write(aModel.tangentDataP);
+
+                    //todo: junk data
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+
+
+
+
+                    //go to second model data
+                    //                    writer.BaseStream.Seek(101704, SeekOrigin.Begin);
+                    //                    writer.BaseStream.Seek(102000, SeekOrigin.Begin);
+                    writer.BaseStream.Position = 102000;
+//                    writer.BaseStream.Position = 101704;
+
+                    writer.Write(bModel.name);
+
+                    writer.Write(bModel.type);
+
+                    writer.Write(bModel.boundingRadius);
+
+                    writer.Write(bModel.meshCount);
+
+                    //offset to the offset
+                    //aModel.meshOffset_Offset = Convert.ToInt32(reader.BaseStream.Position);
+
+                    writer.Write(bModel.meshOffset + 0); //doesnt matter?
+
+                    writer.Write(bModel.vertexCount);
+
+                    writer.Write(bModel.vertexOffset + 0);
+
+                    writer.Write(bModel.tangentOffset + 0);
+
+                    writer.Write(bModel.attachmentCount);
+
+                    writer.Write(bModel.attachmentOffset + 0);
+
+                    writer.Write(bModel.eyeballCount);
+
+                    writer.Write(bModel.eyeballOffset + 0);
+
+                    writer.Write(bModel.vertexDataP);
+
+                    writer.Write(bModel.tangentDataP);
+
+                    //todo: junk data
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+                    writer.Write(temp);
+
+                    writer.Close();
+
+
+
+
+                }
+            }
+        }
+
+        private void skins_manager_control_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void chk_API_Key_CheckedChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("make this work!");
+            //txtb_API_Key.Text = "";
+        }
 
         private void disable_custom_mods()
         {

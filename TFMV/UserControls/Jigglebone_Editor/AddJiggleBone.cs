@@ -253,10 +253,10 @@ namespace TFMV.UserControls.Jigglebone_Editor
                                 theJiggleBone.baseForwardFriction = reader.ReadSingle();
 
 
-                                //is_boing params. DO NOT READ if file wasn't compiled with isBoing or you'll read past the jigglebone data!
+                                //todo: is_boing params. DO NOT READ if file wasn't compiled with isBoing or you'll read past the jigglebone data!
 
                                 //todo: this is incorrect! there are 2 types of jigglebone and 2 subproperties!
-                                if (theJiggleBone.jiggleType == JiggleType.isBoing)
+                                if (theJiggleBone.isBoing)
                                 {
                                     theJiggleBone.boingImpactSpeed = reader.ReadSingle();
 
@@ -310,18 +310,6 @@ namespace TFMV.UserControls.Jigglebone_Editor
         }
 
 
-        //always make sure lstJiggleType items are in the exact same order!
-
-        //todo: this is incorrect! there are 2 types of jigglebone and 2 subproperties!
-        public enum JiggleType
-        {
-            none,
-            isFlexible,
-            isRigid,
-            isBoing,
-        }
-
-
 
         [Serializable]
         public class jiggleBone
@@ -331,8 +319,18 @@ namespace TFMV.UserControls.Jigglebone_Editor
             public string Name { get; set; }
 
             //todo: this is incorrect! there are 2 types of jigglebone and 2 subproperties!
-            public JiggleType jiggleType { get; set; } //isFlexible, isRigid or isBoing
+//            public JiggleType jiggleType { get; set; } //isFlexible, isRigid or isBoing
+
+            //rotational property groups
+            public bool isRigid { get; set; }
+            public bool isFlexible { get; set; }
+
+            //translational property groups
             public bool hasBaseSpring { get; set; } //todo: don't allow this with certain types of jigglebone
+            public bool isBoing { get; set; }
+
+
+
 
             public bool hasYawConstraint { get; set; }
             public bool hasPitchConstraint { get; set; }
@@ -405,27 +403,27 @@ namespace TFMV.UserControls.Jigglebone_Editor
 
                 if ((jiggleFlags & JIGGLE_IS_FLEXIBLE) > 0)
                 {
-                    jiggleType = JiggleType.isFlexible;
+                    isRigid = false;
+                    isFlexible = true;
                 }
                 else if ((jiggleFlags & JIGGLE_IS_RIGID) > 0)
                 {
-                    jiggleType = JiggleType.isRigid;
+                    isRigid = true;
+                    isFlexible = false;
                 }
                 //todo: this is incorrect! there are 2 types of jigglebone and 2 subproperties!
-                else if ((jiggleFlags & JIGGLE_IS_BOING) > 0)
-                {
-                    jiggleType = JiggleType.isBoing;
-                }
-                //probably a jigglebone that only has base spring or is boing
-                else
-                {
-                    jiggleType = JiggleType.none;
-                }
-
                 if ((jiggleFlags & JIGGLE_HAS_BASE_SPRING) > 0)
                 {
-                    hasBaseSpring = true;
+                    hasBaseSpring = false;
+                    isBoing = true;
                 }
+                //probably a jigglebone that only has base spring or is boing
+                else if ((jiggleFlags & JIGGLE_IS_BOING) > 0)
+                {
+                    hasBaseSpring = true;
+                    isBoing = false;
+                }
+
 
                 if ((jiggleFlags & JIGGLE_HAS_YAW_CONSTRAINT) > 0)
                 {
@@ -469,8 +467,28 @@ namespace TFMV.UserControls.Jigglebone_Editor
 
 
             //JIGGLE TYPE
-            //todo: this is incorrect! there are 2 types of jigglebone and 2 subproperties!
-            lstJiggleType.SelectedIndex = Convert.ToInt32(theJiggleBone.jiggleType);
+            //lstJiggleType.SelectedIndex = Convert.ToInt32(theJiggleBone.jiggleType);
+            if (theJiggleBone.isRigid)
+            {
+                chk_isRigid.Checked = true;
+                chk_isFlexible.Checked = false;
+            }
+            else if (theJiggleBone.isFlexible)
+            {
+                chk_isFlexible.Checked = false;
+                chk_isFlexible.Checked = true;
+            }
+
+            if (theJiggleBone.hasBaseSpring)
+            {
+                chk_hasBaseSpring.Checked = true;
+                chk_isBoing.Checked = false;
+            }
+            else if(theJiggleBone.isBoing)
+            {
+                chk_hasBaseSpring.Checked = false;
+                chk_isBoing.Checked = true;
+            }
 
 
             //GENERAL
@@ -564,6 +582,12 @@ namespace TFMV.UserControls.Jigglebone_Editor
         private void jigglePropertyChanged(object sender, EventArgs e)
         {
 
+            //if there are no bones loaded, don't do anything!
+            if(lstBoneName.SelectedIndex == -1)
+            {
+                return;
+            }
+
             //MessageBox.Show("if control equals controlname, set whichever relevant jigglebone property on the live model");
 
             // Properties ob =  (Object)sender;
@@ -583,7 +607,6 @@ namespace TFMV.UserControls.Jigglebone_Editor
                 obj_name = obj.Name.ToString();
                 arg = obj.Text.ToString();
             }
-
 
             jiggleBone theJiggleBone = allJiggleBones[lstBoneName.SelectedIndex];
 
@@ -789,22 +812,21 @@ namespace TFMV.UserControls.Jigglebone_Editor
                         int flags = 0;
 
 
-                        if (theJiggleBone.jiggleType == JiggleType.isFlexible)
-                        {
-                            flags = JIGGLE_IS_FLEXIBLE;
-                        }
-                        else if (theJiggleBone.jiggleType == JiggleType.isRigid)
+
+                        if (theJiggleBone.isRigid)
                         {
                             flags = JIGGLE_IS_RIGID;
                         }
-                        //todo: this is incorrect! there are 2 types of jigglebone and 2 subproperties!
-                        else if (theJiggleBone.jiggleType == JiggleType.isBoing)
+                        else if (theJiggleBone.isFlexible)
+                        {
+                            flags = JIGGLE_IS_FLEXIBLE;
+                        }
+
+                        if (theJiggleBone.isBoing)
                         {
                             flags = JIGGLE_IS_BOING;
                         }
-
-                        //todo: make sure you can't set isBoing and has base spring... check if you can compile it yourself first tho.
-                        if (theJiggleBone.hasBaseSpring)
+                        else if (theJiggleBone.hasBaseSpring)
                         {
                             flags += JIGGLE_HAS_BASE_SPRING;
                         }
@@ -929,7 +951,7 @@ namespace TFMV.UserControls.Jigglebone_Editor
 
         private void lstJiggleType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            /*
             //currently selected jigglebone
             jiggleBone theJiggleBone = allJiggleBones[lstBoneName.SelectedIndex];
 
@@ -958,8 +980,68 @@ namespace TFMV.UserControls.Jigglebone_Editor
                     grpHasBaseSpring.Enabled = false;
                     break;
             }
+            */
+        }
+
+
+
+
+        private void evaluate_Jigglebone_Property_Groups()
+        {
+            //currently selected jigglebone
+            jiggleBone theJiggleBone = allJiggleBones[lstBoneName.SelectedIndex];
+
+
+            if (chk_isRigid.Checked)
+            {
+                theJiggleBone.isRigid = true;
+                theJiggleBone.isFlexible = false;
+
+                //todo: set up ui!
+            }
+            else if (chk_isFlexible.Checked)
+            {
+                theJiggleBone.isRigid = false;
+                theJiggleBone.isFlexible = true;
+
+                //todo: set up ui!
+            }
+            else
+            {
+                theJiggleBone.isRigid = false;
+                theJiggleBone.isFlexible = false;
+
+                //todo: set up ui!
+            }
+
+
+
+            if (chk_hasBaseSpring.Checked)
+            {
+                theJiggleBone.hasBaseSpring = true;
+                theJiggleBone.isBoing = false;
+
+                //todo: set up ui!
+            }
+            else if (chk_isBoing.Checked)
+            {
+                theJiggleBone.hasBaseSpring = false;
+                theJiggleBone.isBoing = true;
+
+                //todo: set up ui!
+            }
+            else
+            {
+                theJiggleBone.hasBaseSpring = false;
+                theJiggleBone.isBoing = false;
+
+                //todo: set up ui!
+            }
+
 
         }
+
+
 
         //handle property groups so you can't select any that don't work together
         private void chk_isRigid_CheckedChanged(object sender, EventArgs e)
@@ -967,12 +1049,15 @@ namespace TFMV.UserControls.Jigglebone_Editor
             if (chk_isRigid.Checked)
             {
                 chk_isFlexible.Checked = false;
-                chk_isFlexible.Enabled = false;
+                //chk_isFlexible.Enabled = false;
             }
             else
             {
-                chk_isFlexible.Enabled = true;
+                //chk_isFlexible.Enabled = true;
+
             }
+
+            evaluate_Jigglebone_Property_Groups();
         }
 
         private void chk_isFlexible_CheckedChanged(object sender, EventArgs e)
@@ -980,12 +1065,14 @@ namespace TFMV.UserControls.Jigglebone_Editor
             if (chk_isFlexible.Checked)
             {
                 chk_isRigid.Checked = false;
-                chk_isRigid.Enabled = false;
+                //chk_isRigid.Enabled = false;
             }
             else
             {
-                chk_isRigid.Enabled = true;
+                //chk_isRigid.Enabled = true;
             }
+
+            evaluate_Jigglebone_Property_Groups();
         }
 
         private void chk_hasBaseSpring_CheckedChanged(object sender, EventArgs e)
@@ -993,13 +1080,14 @@ namespace TFMV.UserControls.Jigglebone_Editor
             if (chk_hasBaseSpring.Checked)
             {
                 chk_isBoing.Checked = false;
-                chk_isBoing.Enabled = false;
+                //chk_isBoing.Enabled = false;
             }
             else
             {
-                chk_isBoing.Enabled = true;
+                //chk_isBoing.Enabled = true;
             }
 
+            evaluate_Jigglebone_Property_Groups();
         }
 
         private void chk_isBoing_CheckedChanged(object sender, EventArgs e)
@@ -1007,12 +1095,29 @@ namespace TFMV.UserControls.Jigglebone_Editor
             if (chk_isBoing.Checked)
             {
                 chk_hasBaseSpring.Checked = false;
-                chk_hasBaseSpring.Enabled = false;
+                //chk_hasBaseSpring.Enabled = false;
             }
             else
             {
-                chk_hasBaseSpring.Enabled = true;
+                //chk_hasBaseSpring.Enabled = true;
             }
+
+            evaluate_Jigglebone_Property_Groups();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void resetToDefaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_reset_generic_Click(object sender, EventArgs e)
+        {
+            menuResetValue.Show(MousePosition);
         }
     }
 
@@ -1025,7 +1130,7 @@ namespace TFMV.UserControls.Jigglebone_Editor
         {
 
         //extends textbox, puts a float into a textbox and correctly formats it (with option to convert radians to degrees)
-        public static void SetNumber(this System.Windows.Forms.TextBox txtBox, double value, bool RadiansToDegrees, bool isBoingImpactAngle = false)
+        public static void SetNumber(this System.Windows.Forms.NumericUpDown txtBox, double value, bool RadiansToDegrees, bool isBoingImpactAngle = false)
             {
 
                 //according to the crowbar source, we need the INVERSE cosine of the actual value
@@ -1063,7 +1168,7 @@ namespace TFMV.UserControls.Jigglebone_Editor
             }
 
         //extends textbox, gets the text from a textbox and correctly formats it as a Single (with option to convert degrees to radians)
-        public static Single GetNumber(this System.Windows.Forms.TextBox txtBox, bool DegreesToRadians, bool isBoingImpactAngle = false)
+        public static Single GetNumber(this System.Windows.Forms.NumericUpDown txtBox, bool DegreesToRadians, bool isBoingImpactAngle = false)
             {
 
 

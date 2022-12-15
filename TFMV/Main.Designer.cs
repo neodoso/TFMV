@@ -37,7 +37,10 @@
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.txtb_main_model = new System.Windows.Forms.ComboBox();
             this.Settings = new System.Windows.Forms.TabPage();
-            this.label46 = new System.Windows.Forms.Label();
+            this.lstStartupTab_Slot = new System.Windows.Forms.ComboBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.lstStartupTab_Class = new System.Windows.Forms.ComboBox();
+            this.label48 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.txtb_API_Key = new System.Windows.Forms.TextBox();
             this.panel37 = new System.Windows.Forms.Panel();
@@ -244,6 +247,8 @@
             this.btn_item_sorting_order = new System.Windows.Forms.Button();
             this.list_view = new System.Windows.Forms.ListView();
             this.vtab_items = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnDisableSoldierHelm = new System.Windows.Forms.Button();
             this.lab_tf2_itemlist = new System.Windows.Forms.Label();
             this.txtb_searchitem = new System.Windows.Forms.TextBox();
             this.btn_scout = new System.Windows.Forms.Button();
@@ -280,7 +285,6 @@
             this.txtb_hlmv_fov = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.About = new System.Windows.Forms.TabPage();
-            this.img_EasterEgg = new System.Windows.Forms.PictureBox();
             this.label44 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -302,9 +306,11 @@
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.chk_API_Key = new System.Windows.Forms.CheckBox();
             this.colorPicker_master = new TFMV.PaintColorPicker();
             this.steamGameConfig = new TFMV.SourceEngine.SteamGameConfig();
             this.bodygroup_manager_panel = new TFMV.UserControls.Bodygroup_manager();
+            this.img_EasterEgg = new System.Windows.Forms.PictureBox();
             this.Settings.SuspendLayout();
             this.panel37.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_screenshot_delay)).BeginInit();
@@ -349,11 +355,11 @@
             this.vtab_loadout.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.About.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_EasterEgg)).BeginInit();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_EasterEgg)).BeginInit();
             this.SuspendLayout();
             // 
             // imgList
@@ -386,7 +392,10 @@
             // Settings
             // 
             this.Settings.BackColor = System.Drawing.Color.Gainsboro;
-            this.Settings.Controls.Add(this.label46);
+            this.Settings.Controls.Add(this.lstStartupTab_Slot);
+            this.Settings.Controls.Add(this.label49);
+            this.Settings.Controls.Add(this.lstStartupTab_Class);
+            this.Settings.Controls.Add(this.label48);
             this.Settings.Controls.Add(this.linkLabel2);
             this.Settings.Controls.Add(this.txtb_API_Key);
             this.Settings.Controls.Add(this.panel37);
@@ -404,6 +413,7 @@
             this.Settings.Controls.Add(this.cb_allow_tournament_medals);
             this.Settings.Controls.Add(this.cb_strict_equip_regions);
             this.Settings.Controls.Add(this.btn_dl_schema);
+            this.Settings.Controls.Add(this.chk_API_Key);
             this.Settings.Controls.Add(this.cb_hlmv_antialias);
             this.Settings.Controls.Add(this.panel9);
             this.Settings.Controls.Add(this.cb_lodclamps);
@@ -421,10 +431,51 @@
             this.Settings.Name = "Settings";
             this.Settings.Click += new System.EventHandler(this.Settings_Click);
             // 
-            // label46
+            // lstStartupTab_Slot
             // 
-            resources.ApplyResources(this.label46, "label46");
-            this.label46.Name = "label46";
+            this.lstStartupTab_Slot.FormattingEnabled = true;
+            this.lstStartupTab_Slot.Items.AddRange(new object[] {
+            resources.GetString("lstStartupTab_Slot.Items"),
+            resources.GetString("lstStartupTab_Slot.Items1"),
+            resources.GetString("lstStartupTab_Slot.Items2"),
+            resources.GetString("lstStartupTab_Slot.Items3"),
+            resources.GetString("lstStartupTab_Slot.Items4"),
+            resources.GetString("lstStartupTab_Slot.Items5"),
+            resources.GetString("lstStartupTab_Slot.Items6"),
+            resources.GetString("lstStartupTab_Slot.Items7"),
+            resources.GetString("lstStartupTab_Slot.Items8")});
+            resources.ApplyResources(this.lstStartupTab_Slot, "lstStartupTab_Slot");
+            this.lstStartupTab_Slot.Name = "lstStartupTab_Slot";
+            this.lstStartupTab_Slot.SelectedIndexChanged += new System.EventHandler(this.lstStartupTab_Slot_SelectedIndexChanged);
+            // 
+            // label49
+            // 
+            resources.ApplyResources(this.label49, "label49");
+            this.label49.Name = "label49";
+            this.label49.Click += new System.EventHandler(this.label46_Click);
+            // 
+            // lstStartupTab_Class
+            // 
+            this.lstStartupTab_Class.FormattingEnabled = true;
+            this.lstStartupTab_Class.Items.AddRange(new object[] {
+            resources.GetString("lstStartupTab_Class.Items"),
+            resources.GetString("lstStartupTab_Class.Items1"),
+            resources.GetString("lstStartupTab_Class.Items2"),
+            resources.GetString("lstStartupTab_Class.Items3"),
+            resources.GetString("lstStartupTab_Class.Items4"),
+            resources.GetString("lstStartupTab_Class.Items5"),
+            resources.GetString("lstStartupTab_Class.Items6"),
+            resources.GetString("lstStartupTab_Class.Items7"),
+            resources.GetString("lstStartupTab_Class.Items8")});
+            resources.ApplyResources(this.lstStartupTab_Class, "lstStartupTab_Class");
+            this.lstStartupTab_Class.Name = "lstStartupTab_Class";
+            this.lstStartupTab_Class.SelectedIndexChanged += new System.EventHandler(this.settings_save);
+            // 
+            // label48
+            // 
+            resources.ApplyResources(this.label48, "label48");
+            this.label48.Name = "label48";
+            this.label48.Click += new System.EventHandler(this.label46_Click);
             // 
             // linkLabel2
             // 
@@ -1619,9 +1670,10 @@
             // 
             // skins_manager_control
             // 
-            resources.ApplyResources(this.skins_manager_control, "skins_manager_control");
             this.skins_manager_control.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.skins_manager_control, "skins_manager_control");
             this.skins_manager_control.Name = "skins_manager_control";
+            this.skins_manager_control.Paint += new System.Windows.Forms.PaintEventHandler(this.skins_manager_control_Paint);
             // 
             // panel_loadout
             // 
@@ -2169,6 +2221,7 @@
             this.list_view.HideSelection = false;
             this.list_view.MultiSelect = false;
             this.list_view.Name = "list_view";
+            this.list_view.ShowItemToolTips = true;
             this.list_view.UseCompatibleStateImageBehavior = false;
             this.list_view.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.list_view_ItemChecked);
             this.list_view.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.list_view_ItemSelectionChanged);
@@ -2176,9 +2229,29 @@
             // vtab_items
             // 
             this.vtab_items.BackColor = System.Drawing.Color.Gray;
+            this.vtab_items.Controls.Add(this.button4);
+            this.vtab_items.Controls.Add(this.btnDisableSoldierHelm);
             this.vtab_items.Controls.Add(this.lab_tf2_itemlist);
             resources.ApplyResources(this.vtab_items, "vtab_items");
             this.vtab_items.Name = "vtab_items";
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.button4, "button4");
+            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.button4.Name = "button4";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // btnDisableSoldierHelm
+            // 
+            this.btnDisableSoldierHelm.BackColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.btnDisableSoldierHelm, "btnDisableSoldierHelm");
+            this.btnDisableSoldierHelm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnDisableSoldierHelm.Name = "btnDisableSoldierHelm";
+            this.btnDisableSoldierHelm.UseVisualStyleBackColor = false;
+            this.btnDisableSoldierHelm.Click += new System.EventHandler(this.btnDisableSoldierHelm_Click);
             // 
             // lab_tf2_itemlist
             // 
@@ -2203,6 +2276,7 @@
             this.btn_scout.Name = "btn_scout";
             this.btn_scout.UseVisualStyleBackColor = false;
             this.btn_scout.Click += new System.EventHandler(this.btn_class_load_Click);
+            this.btn_scout.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btn_scout_MouseClick);
             // 
             // cb_allclass_only
             // 
@@ -2523,15 +2597,6 @@
             resources.ApplyResources(this.About, "About");
             this.About.Name = "About";
             // 
-            // img_EasterEgg
-            // 
-            this.img_EasterEgg.ErrorImage = global::TFMV.Properties.Resources.steamcrappy;
-            this.img_EasterEgg.Image = global::TFMV.Properties.Resources.steamcrappy;
-            resources.ApplyResources(this.img_EasterEgg, "img_EasterEgg");
-            this.img_EasterEgg.InitialImage = global::TFMV.Properties.Resources.steamcrappy;
-            this.img_EasterEgg.Name = "img_EasterEgg";
-            this.img_EasterEgg.TabStop = false;
-            // 
             // label44
             // 
             resources.ApplyResources(this.label44, "label44");
@@ -2681,6 +2746,13 @@
             this.logoPictureBox.TabStop = false;
             this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
             // 
+            // chk_API_Key
+            // 
+            resources.ApplyResources(this.chk_API_Key, "chk_API_Key");
+            this.chk_API_Key.Name = "chk_API_Key";
+            this.chk_API_Key.UseVisualStyleBackColor = true;
+            this.chk_API_Key.CheckedChanged += new System.EventHandler(this.chk_API_Key_CheckedChanged);
+            // 
             // colorPicker_master
             // 
             this.colorPicker_master.BackColor = System.Drawing.Color.LightGray;
@@ -2709,6 +2781,15 @@
             this.bodygroup_manager_panel.BackColor = System.Drawing.Color.Gainsboro;
             resources.ApplyResources(this.bodygroup_manager_panel, "bodygroup_manager_panel");
             this.bodygroup_manager_panel.Name = "bodygroup_manager_panel";
+            // 
+            // img_EasterEgg
+            // 
+            this.img_EasterEgg.ErrorImage = global::TFMV.Properties.Resources.steamcrappy;
+            this.img_EasterEgg.Image = global::TFMV.Properties.Resources.steamcrappy;
+            resources.ApplyResources(this.img_EasterEgg, "img_EasterEgg");
+            this.img_EasterEgg.InitialImage = global::TFMV.Properties.Resources.steamcrappy;
+            this.img_EasterEgg.Name = "img_EasterEgg";
+            this.img_EasterEgg.TabStop = false;
             // 
             // Main
             // 
@@ -2806,7 +2887,6 @@
             this.tabControl.ResumeLayout(false);
             this.About.ResumeLayout(false);
             this.About.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.img_EasterEgg)).EndInit();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             this.panel16.ResumeLayout(false);
@@ -2814,6 +2894,7 @@
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_EasterEgg)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3065,7 +3146,6 @@
         private System.Windows.Forms.CheckBox cb_disable_cam_rotPos;
         private System.Windows.Forms.Panel panel37;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label46;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.TextBox txtb_API_Key;
         private System.Windows.Forms.Label label37;
@@ -3082,7 +3162,6 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.Label lbl_EasterEgg;
-        private System.Windows.Forms.PictureBox img_EasterEgg;
         private System.Windows.Forms.Button btn_reset_window;
         private System.Windows.Forms.Button btn_reset_background;
         private System.Windows.Forms.Button btn_medal;
@@ -3095,6 +3174,14 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox lstStartupTab_Slot;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.ComboBox lstStartupTab_Class;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Button btnDisableSoldierHelm;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.CheckBox chk_API_Key;
+        private System.Windows.Forms.PictureBox img_EasterEgg;
     }
 }
 

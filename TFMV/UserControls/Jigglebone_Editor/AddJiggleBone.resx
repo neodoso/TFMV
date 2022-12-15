@@ -117,4 +117,57 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox3.Text" xml:space="preserve">
+    <value>$jigglebone "FloppyAndBouncy" {
+	is_rigid {
+		tip_mass 100
+		length 20
+		angle_constraint 60 
+	}
+
+	has_base_spring {
+		stiffness 100 
+		damping 1 
+		left_constraint -20 20
+		up_constraint -20 20
+		forward_constraint -20 20
+	}
+}
+
+$jigglebone "FloppyAndBouncy" {
+	is_rigid {
+		tip_mass 100
+		length 20
+		angle_constraint 60 
+	}
+
+	has_base_spring {
+		stiffness 100 
+		damping 1 
+		left_constraint -20 20
+		up_constraint -20 20
+		forward_constraint -20 20
+	}
+}
+
+$jigglebone "FloppyAndBouncy" {
+	is_rigid {
+		tip_mass 100
+		length 20
+		angle_constraint 60 
+	}
+
+	has_base_spring {
+		stiffness 100 
+		damping 1 
+		left_constraint -20 20
+		up_constraint -20 20
+		forward_constraint -20 20
+	}
+}
+</value>
+  </data>
+  <metadata name="menuResetValue.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
