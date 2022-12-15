@@ -61,6 +61,7 @@
             this.cb_allow_tournament_medals = new System.Windows.Forms.CheckBox();
             this.cb_strict_equip_regions = new System.Windows.Forms.CheckBox();
             this.btn_dl_schema = new System.Windows.Forms.Button();
+            this.chk_API_Key = new System.Windows.Forms.CheckBox();
             this.cb_hlmv_antialias = new System.Windows.Forms.CheckBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -76,6 +77,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_recache_schema = new System.Windows.Forms.Button();
+            this.steamGameConfig = new TFMV.SourceEngine.SteamGameConfig();
             this.btn_reset_light = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_lColor = new System.Windows.Forms.Button();
@@ -153,6 +155,7 @@
             this.panel40 = new System.Windows.Forms.Panel();
             this.panel39 = new System.Windows.Forms.Panel();
             this.btn_bg_color1 = new System.Windows.Forms.Button();
+            this.colorPicker_master = new TFMV.PaintColorPicker();
             this.btn_screenshot = new System.Windows.Forms.Button();
             this.panel_Bgcolor1 = new System.Windows.Forms.Panel();
             this.btn_mainModel_material = new System.Windows.Forms.Button();
@@ -168,6 +171,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
             this.txtb_hlmv_wsize_x = new System.Windows.Forms.TextBox();
+            this.bodygroup_manager_panel = new TFMV.UserControls.Bodygroup_manager();
             this.txtb_hlmv_wsize_y = new System.Windows.Forms.TextBox();
             this.btn_window_scale = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -285,6 +289,7 @@
             this.txtb_hlmv_fov = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.About = new System.Windows.Forms.TabPage();
+            this.img_EasterEgg = new System.Windows.Forms.PictureBox();
             this.label44 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -306,11 +311,7 @@
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.chk_API_Key = new System.Windows.Forms.CheckBox();
-            this.colorPicker_master = new TFMV.PaintColorPicker();
-            this.steamGameConfig = new TFMV.SourceEngine.SteamGameConfig();
-            this.bodygroup_manager_panel = new TFMV.UserControls.Bodygroup_manager();
-            this.img_EasterEgg = new System.Windows.Forms.PictureBox();
+            this.label46 = new System.Windows.Forms.Label();
             this.Settings.SuspendLayout();
             this.panel37.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_screenshot_delay)).BeginInit();
@@ -355,11 +356,11 @@
             this.vtab_loadout.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.About.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_EasterEgg)).BeginInit();
             this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_EasterEgg)).BeginInit();
             this.SuspendLayout();
             // 
             // imgList
@@ -433,6 +434,7 @@
             // 
             // lstStartupTab_Slot
             // 
+            this.lstStartupTab_Slot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstStartupTab_Slot.FormattingEnabled = true;
             this.lstStartupTab_Slot.Items.AddRange(new object[] {
             resources.GetString("lstStartupTab_Slot.Items"),
@@ -456,6 +458,7 @@
             // 
             // lstStartupTab_Class
             // 
+            this.lstStartupTab_Class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstStartupTab_Class.FormattingEnabled = true;
             this.lstStartupTab_Class.Items.AddRange(new object[] {
             resources.GetString("lstStartupTab_Class.Items"),
@@ -631,6 +634,13 @@
             this.btn_dl_schema.UseVisualStyleBackColor = true;
             this.btn_dl_schema.Click += new System.EventHandler(this.btn_dl_schema_Click_1);
             // 
+            // chk_API_Key
+            // 
+            resources.ApplyResources(this.chk_API_Key, "chk_API_Key");
+            this.chk_API_Key.Name = "chk_API_Key";
+            this.chk_API_Key.UseVisualStyleBackColor = true;
+            this.chk_API_Key.CheckedChanged += new System.EventHandler(this.chk_API_Key_CheckedChanged);
+            // 
             // cb_hlmv_antialias
             // 
             resources.ApplyResources(this.cb_hlmv_antialias, "cb_hlmv_antialias");
@@ -735,6 +745,16 @@
             this.btn_recache_schema.Name = "btn_recache_schema";
             this.btn_recache_schema.UseVisualStyleBackColor = true;
             this.btn_recache_schema.Click += new System.EventHandler(this.btn_recache_schema_Click);
+            // 
+            // steamGameConfig
+            // 
+            this.steamGameConfig.bin_dir = null;
+            resources.ApplyResources(this.steamGameConfig, "steamGameConfig");
+            this.steamGameConfig.Name = "steamGameConfig";
+            this.steamGameConfig.steam_dir = null;
+            this.steamGameConfig.tf_dir = null;
+            this.steamGameConfig.tf2_dir = null;
+            this.steamGameConfig.Load += new System.EventHandler(this.steamGameConfig_Load);
             // 
             // btn_reset_light
             // 
@@ -892,6 +912,7 @@
             // tab_items
             // 
             this.tab_items.BackColor = System.Drawing.Color.Gainsboro;
+            this.tab_items.Controls.Add(this.label46);
             this.tab_items.Controls.Add(this.button10);
             this.tab_items.Controls.Add(this.textBox1);
             this.tab_items.Controls.Add(this.lab_item_id);
@@ -1385,6 +1406,19 @@
             this.btn_bg_color1.UseVisualStyleBackColor = true;
             this.btn_bg_color1.Click += new System.EventHandler(this.panel_Bgcolor_Click);
             // 
+            // colorPicker_master
+            // 
+            this.colorPicker_master.BackColor = System.Drawing.Color.LightGray;
+            this.colorPicker_master.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.colorPicker_master.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.colorPicker_master, "colorPicker_master");
+            this.colorPicker_master.FormattingEnabled = true;
+            this.colorPicker_master.Name = "colorPicker_master";
+            this.colorPicker_master.SelectedItem = null;
+            this.colorPicker_master.SelectedValue = System.Drawing.Color.White;
+            this.colorPicker_master.VMT = null;
+            this.colorPicker_master.SelectionChangeCommitted += new System.EventHandler(this.colorPicker1_SelectionChangeCommitted);
+            // 
             // btn_screenshot
             // 
             resources.ApplyResources(this.btn_screenshot, "btn_screenshot");
@@ -1513,6 +1547,12 @@
             this.toolTip1.SetToolTip(this.txtb_hlmv_wsize_x, resources.GetString("txtb_hlmv_wsize_x.ToolTip"));
             this.txtb_hlmv_wsize_x.TextChanged += new System.EventHandler(this.settings_save);
             this.txtb_hlmv_wsize_x.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumericSimple_KeyPress);
+            // 
+            // bodygroup_manager_panel
+            // 
+            this.bodygroup_manager_panel.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.bodygroup_manager_panel, "bodygroup_manager_panel");
+            this.bodygroup_manager_panel.Name = "bodygroup_manager_panel";
             // 
             // txtb_hlmv_wsize_y
             // 
@@ -2597,6 +2637,15 @@
             resources.ApplyResources(this.About, "About");
             this.About.Name = "About";
             // 
+            // img_EasterEgg
+            // 
+            this.img_EasterEgg.ErrorImage = global::TFMV.Properties.Resources.steamcrappy;
+            this.img_EasterEgg.Image = global::TFMV.Properties.Resources.steamcrappy;
+            resources.ApplyResources(this.img_EasterEgg, "img_EasterEgg");
+            this.img_EasterEgg.InitialImage = global::TFMV.Properties.Resources.steamcrappy;
+            this.img_EasterEgg.Name = "img_EasterEgg";
+            this.img_EasterEgg.TabStop = false;
+            // 
             // label44
             // 
             resources.ApplyResources(this.label44, "label44");
@@ -2746,50 +2795,10 @@
             this.logoPictureBox.TabStop = false;
             this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
             // 
-            // chk_API_Key
+            // label46
             // 
-            resources.ApplyResources(this.chk_API_Key, "chk_API_Key");
-            this.chk_API_Key.Name = "chk_API_Key";
-            this.chk_API_Key.UseVisualStyleBackColor = true;
-            this.chk_API_Key.CheckedChanged += new System.EventHandler(this.chk_API_Key_CheckedChanged);
-            // 
-            // colorPicker_master
-            // 
-            this.colorPicker_master.BackColor = System.Drawing.Color.LightGray;
-            this.colorPicker_master.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.colorPicker_master.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.colorPicker_master, "colorPicker_master");
-            this.colorPicker_master.FormattingEnabled = true;
-            this.colorPicker_master.Name = "colorPicker_master";
-            this.colorPicker_master.SelectedItem = null;
-            this.colorPicker_master.SelectedValue = System.Drawing.Color.White;
-            this.colorPicker_master.VMT = null;
-            this.colorPicker_master.SelectionChangeCommitted += new System.EventHandler(this.colorPicker1_SelectionChangeCommitted);
-            // 
-            // steamGameConfig
-            // 
-            this.steamGameConfig.bin_dir = null;
-            resources.ApplyResources(this.steamGameConfig, "steamGameConfig");
-            this.steamGameConfig.Name = "steamGameConfig";
-            this.steamGameConfig.steam_dir = null;
-            this.steamGameConfig.tf_dir = null;
-            this.steamGameConfig.tf2_dir = null;
-            this.steamGameConfig.Load += new System.EventHandler(this.steamGameConfig_Load);
-            // 
-            // bodygroup_manager_panel
-            // 
-            this.bodygroup_manager_panel.BackColor = System.Drawing.Color.Gainsboro;
-            resources.ApplyResources(this.bodygroup_manager_panel, "bodygroup_manager_panel");
-            this.bodygroup_manager_panel.Name = "bodygroup_manager_panel";
-            // 
-            // img_EasterEgg
-            // 
-            this.img_EasterEgg.ErrorImage = global::TFMV.Properties.Resources.steamcrappy;
-            this.img_EasterEgg.Image = global::TFMV.Properties.Resources.steamcrappy;
-            resources.ApplyResources(this.img_EasterEgg, "img_EasterEgg");
-            this.img_EasterEgg.InitialImage = global::TFMV.Properties.Resources.steamcrappy;
-            this.img_EasterEgg.Name = "img_EasterEgg";
-            this.img_EasterEgg.TabStop = false;
+            resources.ApplyResources(this.label46, "label46");
+            this.label46.Name = "label46";
             // 
             // Main
             // 
@@ -2887,6 +2896,7 @@
             this.tabControl.ResumeLayout(false);
             this.About.ResumeLayout(false);
             this.About.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.img_EasterEgg)).EndInit();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             this.panel16.ResumeLayout(false);
@@ -2894,7 +2904,6 @@
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_EasterEgg)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3182,6 +3191,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox chk_API_Key;
         private System.Windows.Forms.PictureBox img_EasterEgg;
+        private System.Windows.Forms.Label label46;
     }
 }
 

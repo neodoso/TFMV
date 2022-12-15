@@ -14,9 +14,18 @@ using System.Collections.Generic;
 
 namespace TFMV.UserControls
 {
+
     public partial class Turntable_GIF_Generator : UserControl
     {
-     
+
+        //settings stuff taken from Main.cs
+        private List<string> settings = new List<string>();
+
+        //don't save settings if you haven't loaded settings yet
+        private bool settings_loaded = false;
+
+        //test/placeholder
+        private Form parentform;
 
         /*
         
@@ -114,7 +123,8 @@ namespace TFMV.UserControls
 
             if(!Main.Process_IsRunning(proc_HLMV))
             {
-              System.Windows.MessageBox.Show("Could not run task, HLMV is closed");
+              System.Windows.MessageBox.Show("Could not run task, HLMV is closed.");
+                return;
             }
 
             if(!Directory.Exists(screemshots_dir))
@@ -124,7 +134,8 @@ namespace TFMV.UserControls
                     Directory.CreateDirectory(screemshots_dir);
                 } catch
                 {
-                    System.Windows.MessageBox.Show("Could not create screenshots folder, verify the path is correct");
+                    System.Windows.MessageBox.Show("Could not create screenshots folder, verify the path is correct.");
+                    return;
                 }
             }
 
@@ -136,8 +147,8 @@ namespace TFMV.UserControls
             int loop_count = 360 / Convert.ToInt32(txtb_move_x_factor.Text);
             int move_x_factor = Convert.ToInt32(txtb_move_x_factor.Text);
 
-            //todo: is this the right way round?
-            if (lstTurnDirection.SelectedItem.ToString().ToLower() == "counterclockwise") 
+            //clockwise/counterclockwise
+            if (lstTurnDirection.SelectedIndex == 0) 
             {
                 move_x_factor = move_x_factor * -1;
             }
@@ -161,52 +172,71 @@ namespace TFMV.UserControls
 
             //neodement: todo: add gif dithering options! and image as png etc options!
 
+            //todo: better naming options than this
             string date = DateTime.UtcNow.AddTicks(Stopwatch.StartNew().Elapsed.Ticks).ToString().Replace(" ", "").Replace("/", "_").Replace(":", "");
 
-       
-            if(lstOutputFormat.SelectedItem.ToString().ToLower() == "image sequence")
 
-            //// SAVE AS STATIC IMAGE ////
-            for (int i = 0; i < loop_count; i++)
+            if (lstOutputFormat.SelectedIndex == 1)
             {
-                if (cancel_capture)
+
+                //// SAVE AS STATIC IMAGE ////
+
+                if (!Directory.Exists(screemshots_dir + @"\TurnTable_" + date))
                 {
-                    break;
+                    try
+                    {
+                        Directory.CreateDirectory(screemshots_dir + @"\TurnTable_" + date);
+                    }
+                    catch
+                    {
+                        System.Windows.MessageBox.Show("Could not create subfolder in screenshots folder, verify the path is correct.");
+                        return;
+                    }
                 }
 
-                MouseSimulator.X += move_x_factor;
-
-                Bitmap img = CaptureApplication(proc_HLMV.ProcessName);
-                img.Save(screemshots_dir + "/" + i + ".png");
-
-                progressBar.Value = i;
-
-            }
-            
-
-
-            //// SAVE AS ANIMATED GIF ////
-            // 33ms delay (~30fps)
-            using (var gif = AnimatedGif.AnimatedGif.Create(screemshots_dir + @"\TurnTable_" + date + ".gif", 33))
-            {
-            for (int i = 0; i < loop_count; i++)
+                for (int i = 0; i < loop_count; i++)
                 {
-                    if(cancel_capture)
+                    if (cancel_capture)
                     {
                         break;
                     }
 
                     MouseSimulator.X += move_x_factor;
 
-                    Bitmap image = CaptureApplication(proc_HLMV.ProcessName);
-                    
-                    
-
-                    var img = CaptureApplication(proc_HLMV.ProcessName);
-                    gif.AddFrame(img, delay: 1, quality: GifQuality.Bit8);
+                    Bitmap img = CaptureApplication(proc_HLMV.ProcessName);
+                    img.Save(screemshots_dir + @"\TurnTable_" + date + "/" + i + ".png");
 
                     progressBar.Value = i;
 
+                }
+            }
+            else
+            {
+
+
+                //// SAVE AS ANIMATED GIF ////
+                // 33ms delay (~30fps)
+                using (var gif = AnimatedGif.AnimatedGif.Create(screemshots_dir + @"\TurnTable_" + date + ".gif", 33))
+                {
+                    for (int i = 0; i < loop_count; i++)
+                    {
+                        if (cancel_capture)
+                        {
+                            break;
+                        }
+
+                        MouseSimulator.X += move_x_factor;
+
+                        Bitmap image = CaptureApplication(proc_HLMV.ProcessName);
+
+
+
+                        var img = CaptureApplication(proc_HLMV.ProcessName);
+                        gif.AddFrame(img, delay: 1, quality: GifQuality.Bit8);
+
+                        progressBar.Value = i;
+
+                    }
                 }
             }
 
@@ -215,11 +245,20 @@ namespace TFMV.UserControls
             // release Left Mouse Button 
             MouseSimulator.MouseUp(MouseButton.Left);
 
-            System.Windows.Forms.MessageBox.Show("Done!");
-
             progressBar.Value = 0;
 
             btn_start_turntable.Visible = true;
+
+            //cheeky hack to make sure the user realises the turntable is done
+            //todo: paint chart tool needs a copy of this too
+
+            Form mainForm = this.FindForm();
+
+            mainForm.WindowState = FormWindowState.Minimized;
+            //mainForm.Show();
+            mainForm.WindowState = FormWindowState.Normal;
+
+            System.Windows.Forms.MessageBox.Show("Done!");
 
         }
 
@@ -311,13 +350,79 @@ namespace TFMV.UserControls
             }
         }
 
-        private void txtb_move_x_factor_TextChanged(object sender, EventArgs e)
+        private void settings_save(object sender, EventArgs e)
         {
-            save_settings();
-        }
 
-        private void save_settings()
-        {
+            //don't save settings if you haven't loaded settings yet
+            if (!settings_loaded) { return; }
+
+            //settings stuff taken from Main.cs
+            try
+            {
+                // Properties ob =  (Object)sender;
+                string obj_name = "";
+                string arg = "";
+
+                if (sender.GetType() == typeof(CheckBox))
+                {
+                    CheckBox obj = (CheckBox)sender;
+                    obj_name = obj.Name.ToString();
+                    arg = obj.Checked.ToString();
+                }
+
+                if (sender.GetType() == typeof(TextBox))
+                {
+                    TextBox obj = (TextBox)sender;
+                    obj_name = obj.Name.ToString();
+                    arg = obj.Text.ToString();
+                }
+
+                if (sender.GetType() == typeof(ComboBox))
+                {
+                    ComboBox obj = (ComboBox)sender;
+                    obj_name = obj.Name.ToString();
+                    arg = obj.SelectedIndex.ToString();
+                }
+
+                if (sender.GetType() == typeof(NumericUpDown))
+                {
+                    NumericUpDown obj = (NumericUpDown)sender;
+                    obj_name = obj.Name.ToString();
+                    arg = obj.Value.ToString();
+                }
+
+
+                TextWriter tw = new StreamWriter(TFMV.Main.settings_dir + "settings_turntable.ini");
+
+                Boolean set_found = false;
+                for (int i = 0; i < settings.Count; i++)
+                {
+                    if (settings[i].Split('<')[1] == obj_name)
+                    {
+                        settings[i] = arg + "<" + obj_name;
+                        set_found = true;
+                    }
+                    tw.WriteLine(settings[i]);
+                }
+
+                if ((settings.Count == 0) || (!set_found) && (arg != "") && (obj_name != ""))
+                {
+                    settings.Add(arg + "<" + obj_name);
+                    tw.WriteLine(arg + "<" + obj_name);
+                }
+
+
+                tw.Close();
+
+            }
+
+            catch (System.Exception excep)
+            {
+                System.Windows.MessageBox.Show("Error saving turntable settings.\n\n" + excep.Message);
+            }
+
+
+            /*
             if(!File.Exists(Main.settings_dir + "settings_turntable.ini"))
             {
                 using (File.Create(Main.settings_dir + "settings_turntable.ini"));
@@ -334,13 +439,13 @@ namespace TFMV.UserControls
                     found_set_a = true;
                     settings[i] = txtb_move_x_factor.Text.ToString() + "<" + "txtb_move_x_factor" ;
                 }
-                /*
-                if (settings[i].Split('<')[1] == "cb_invert_rotation")
-                {
-                    found_set_b = true;
-                    settings[i] = cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation" ;
-                }
-                */
+                
+                //if (settings[i].Split('<')[1] == "cb_invert_rotation")
+                //{
+                //    found_set_b = true;
+                //    settings[i] = cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation" ;
+                //}
+                
             }
 
             if(!found_set_a)
@@ -348,22 +453,113 @@ namespace TFMV.UserControls
                 settings.Add(txtb_move_x_factor.Text.ToString() + "<" + "txtb_move_x_factor"  );
             }
 
-            /*
-            if (!found_set_b)
-            {
-                settings.Add(cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation" );
-            }
-            */
+            
+            //if (!found_set_b)
+            //{
+            //    settings.Add(cb_invert_rotation.Checked.ToString() + "<" + "cb_invert_rotation" );
+            //}
+            
 
             try
             {
                 System.IO.File.WriteAllLines(Main.settings_dir + "settings_turntable.ini", settings);
             } catch { 
             }
+*/
         }
 
-        private void load_settings()
+        private void load_settings()          
         {
+
+
+            //settings stuff taken from Main.cs
+            {
+                settings.Clear();
+
+                try
+                {
+                    if (File.Exists(TFMV.Main.settings_dir + "settings_turntable.ini"))
+                    {
+                        string f = TFMV.Main.settings_dir + "settings_turntable.ini";
+                        List<string> lines = new List<string>();
+
+                        using (StreamReader r = new StreamReader(f))
+                        {
+                            string line;
+                            while ((line = r.ReadLine()) != null)
+                            {
+                                lines.Add(line);
+                            }
+                        }
+
+                        foreach (string s in lines)
+                        {
+                            string[] arg = s.Split('<');
+
+                            // Object prop = this.GetType().GetProperty(arg[1].GetType().GetProperties();
+                            // string  test = this.GetType().GetProperty(arg[1]).GetType().ToString();
+                            Object prop = null;
+                            try
+                            {
+                                Control[] ctrl = this.Controls.Find(arg[1], true);
+
+                                if (ctrl.Length > 0)
+                                {
+                                    prop = ctrl[0];
+                                }
+                            }
+                            catch
+                            {
+                                settings.Add(s);
+                                //string test_fail = "";
+                                continue;
+                            }
+
+
+                            settings.Add(s);
+
+                            if (prop != null)
+                            {
+                                if (prop.GetType() == typeof(CheckBox))
+                                {
+                                    CheckBox obj = (CheckBox)prop;
+
+                                    if (arg[0].ToLower() == "true") { obj.Checked = true; }
+                                    if (arg[0].ToLower() == "false") { obj.Checked = false; }
+                                }
+
+                                if (prop.GetType() == typeof(TextBox))
+                                {
+                                    TextBox obj = (TextBox)prop;
+                                    obj.Text = arg[0];
+                                }
+
+                                if (prop.GetType() == typeof(ComboBox))
+                                {
+                                    ComboBox obj = (ComboBox)prop;
+                                    obj.SelectedIndex = Convert.ToInt32(arg[0]);
+                                }
+
+                                if (prop.GetType() == typeof(NumericUpDown))
+                                {
+                                    NumericUpDown obj = (NumericUpDown)prop;
+                                    obj.Value = Convert.ToDecimal(arg[0]);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                catch (System.Exception excep)
+                {
+                    System.Windows.MessageBox.Show("Error loading turntable settings.\n\n" + excep.Message);
+                }
+            }            
+
+
+
+            //original load method
+            /*
             try
             {
                 if (!File.Exists(Main.settings_dir + "settings_turntable.ini"))
@@ -405,7 +601,7 @@ namespace TFMV.UserControls
                         }
                            
                     }
-                    */
+                    
 
                 }
             }
@@ -413,7 +609,12 @@ namespace TFMV.UserControls
             {
                 //System.Windows.MessageBox.Show("Error loading settings " + excep.Message);
             }
+            */
+
+            //settings are loaded, now we can save them
+            settings_loaded = true;
         }
+
 
         private void Turntable_GIF_Generator_Load(object sender, EventArgs e)
         {
@@ -425,6 +626,7 @@ namespace TFMV.UserControls
             btn_Options.Visible = false;
             lstOutputFormat.Width = lstTurnDirection.Width;
 
+
             //set default state of dropdowns
             if (lstOutputFormat.SelectedIndex == -1)
             {
@@ -435,20 +637,50 @@ namespace TFMV.UserControls
             {
                 lstTurnDirection.SelectedIndex = 0;
             }
-
         }
 
-
-
-
-        private void cb_invert_rotation_CheckedChanged(object sender, EventArgs e)
+        private void btnDefault_Click(object sender, EventArgs e)
         {
-            save_settings();
+            txtb_move_x_factor.Value = 7;
         }
 
-        private void save_settings(object sender, EventArgs e)
+        //todo: idk
+        private void btnOpenOutputFolder_Click(object sender, EventArgs e)
         {
-            save_settings();
+            if (!Directory.Exists(screemshots_dir))
+            {
+                try
+                {
+                    Directory.CreateDirectory(screemshots_dir);
+                    Process.Start(screemshots_dir);
+                }
+                catch
+                {
+                    System.Windows.MessageBox.Show("Could not create screenshots folder, verify the path is correct.");
+                    return;
+                }
+            }
+            else
+            {
+                Process.Start(screemshots_dir);
+            }
+        }
+
+        private void lstOutputFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstOutputFormat.SelectedIndex == 0)
+            {
+                lbl_Info_1.Text = "This tool captures a 360 degree horizontal turn around the object and generates an animated GIF.";
+                lbl_Info_2.Text = "You will find the generated GIF in the screenshots folder.";
+            }
+            else
+            {
+                lbl_Info_1.Text = "This tool captures a 360 degree horizontal turn around the object and generates an image sequence.";
+                lbl_Info_2.Text = "You will find the image sequence in a subfolder of the screenshots folder.";
+            }
+
+            settings_save(sender, e);
+
         }
     }
 }

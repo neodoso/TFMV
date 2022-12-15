@@ -34,9 +34,9 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.panel_close = new System.Windows.Forms.Panel();
             this.btn_start_turntable = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_Info_1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_Info_2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btn_Options = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
+            this.btnOpenOutputFolder = new System.Windows.Forms.Button();
             this.panel61.SuspendLayout();
             this.panel_close.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -80,9 +80,9 @@
             this.label54.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label54.Location = new System.Drawing.Point(3, 3);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(243, 20);
+            this.label54.Size = new System.Drawing.Size(207, 20);
             this.label54.TabIndex = 0;
-            this.label54.Text = "Turntable GIF generator Tool";
+            this.label54.Text = "Turntable generator Tool";
             // 
             // lab_close
             // 
@@ -125,22 +125,22 @@
             this.btn_start_turntable.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btn_start_turntable.Location = new System.Drawing.Point(299, 366);
             this.btn_start_turntable.Name = "btn_start_turntable";
-            this.btn_start_turntable.Size = new System.Drawing.Size(297, 63);
+            this.btn_start_turntable.Size = new System.Drawing.Size(297, 44);
             this.btn_start_turntable.TabIndex = 27;
             this.btn_start_turntable.Text = "Start";
             this.btn_start_turntable.UseVisualStyleBackColor = false;
             this.btn_start_turntable.Click += new System.EventHandler(this.btn_start_turntable_Click);
             // 
-            // label1
+            // lbl_Info_1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(102, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(660, 16);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "This tool captures a 360 degree horizontal turn around the object and generates a" +
+            this.lbl_Info_1.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Info_1.Location = new System.Drawing.Point(5, 15);
+            this.lbl_Info_1.Name = "lbl_Info_1";
+            this.lbl_Info_1.Size = new System.Drawing.Size(879, 20);
+            this.lbl_Info_1.TabIndex = 29;
+            this.lbl_Info_1.Text = "This tool captures a 360 degree horizontal turn around the object and generates a" +
     "n animated GIF.";
+            this.lbl_Info_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -153,15 +153,15 @@
             this.label2.Text = "Please do not touch the mouse or keyboard while the tool is capturing the turntab" +
     "le screenshots.";
             // 
-            // label3
+            // lbl_Info_2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(240, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(384, 16);
-            this.label3.TabIndex = 29;
-            this.label3.Text = "You will find the generated GIF in the screenshots folder.";
+            this.lbl_Info_2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Info_2.Location = new System.Drawing.Point(5, 35);
+            this.lbl_Info_2.Name = "lbl_Info_2";
+            this.lbl_Info_2.Size = new System.Drawing.Size(878, 20);
+            this.lbl_Info_2.TabIndex = 29;
+            this.lbl_Info_2.Text = "You will find the generated GIF in the screenshots folder.";
+            this.lbl_Info_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -218,8 +218,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lbl_Info_2);
+            this.panel1.Controls.Add(this.lbl_Info_1);
             this.panel1.Location = new System.Drawing.Point(2, 25);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(890, 65);
@@ -248,7 +248,8 @@
             0,
             0,
             0});
-            this.txtb_move_x_factor.TextChanged += new System.EventHandler(this.txtb_move_x_factor_TextChanged);
+            this.txtb_move_x_factor.TextChanged += new System.EventHandler(this.settings_save);
+            this.txtb_move_x_factor.ValueChanged += new System.EventHandler(this.settings_save);
             this.txtb_move_x_factor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtb_move_x_factor_KeyPress);
             // 
             // label11
@@ -292,6 +293,7 @@
             // 
             // lstTurnDirection
             // 
+            this.lstTurnDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstTurnDirection.FormattingEnabled = true;
             this.lstTurnDirection.Items.AddRange(new object[] {
             "Clockwise",
@@ -300,6 +302,7 @@
             this.lstTurnDirection.Name = "lstTurnDirection";
             this.lstTurnDirection.Size = new System.Drawing.Size(123, 21);
             this.lstTurnDirection.TabIndex = 40;
+            this.lstTurnDirection.SelectedIndexChanged += new System.EventHandler(this.settings_save);
             // 
             // label49
             // 
@@ -313,6 +316,7 @@
             // 
             // lstOutputFormat
             // 
+            this.lstOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.lstOutputFormat.FormattingEnabled = true;
             this.lstOutputFormat.Items.AddRange(new object[] {
             "Animated Gif",
@@ -321,6 +325,7 @@
             this.lstOutputFormat.Name = "lstOutputFormat";
             this.lstOutputFormat.Size = new System.Drawing.Size(91, 21);
             this.lstOutputFormat.TabIndex = 42;
+            this.lstOutputFormat.SelectedIndexChanged += new System.EventHandler(this.lstOutputFormat_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -357,23 +362,29 @@
             this.btnDefault.TabIndex = 44;
             this.btnDefault.Text = "Default";
             this.btnDefault.UseVisualStyleBackColor = false;
+            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
             // 
-            // label13
+            // btnOpenOutputFolder
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(24, 459);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(345, 16);
-            this.label13.TabIndex = 45;
-            this.label13.Text = "TODO: FIX SAVE_SETTINGS AND LOAD_SETTINGS!";
+            this.btnOpenOutputFolder.BackColor = System.Drawing.Color.LightGray;
+            this.btnOpenOutputFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenOutputFolder.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenOutputFolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btnOpenOutputFolder.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnOpenOutputFolder.Location = new System.Drawing.Point(367, 418);
+            this.btnOpenOutputFolder.Name = "btnOpenOutputFolder";
+            this.btnOpenOutputFolder.Size = new System.Drawing.Size(160, 24);
+            this.btnOpenOutputFolder.TabIndex = 46;
+            this.btnOpenOutputFolder.Text = "Open output folder";
+            this.btnOpenOutputFolder.UseVisualStyleBackColor = false;
+            this.btnOpenOutputFolder.Click += new System.EventHandler(this.btnOpenOutputFolder_Click);
             // 
             // Turntable_GIF_Generator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.btnOpenOutputFolder);
             this.Controls.Add(this.btnDefault);
             this.Controls.Add(this.btn_Options);
             this.Controls.Add(this.lstOutputFormat);
@@ -406,7 +417,6 @@
             this.panel_close.ResumeLayout(false);
             this.panel_close.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtb_move_x_factor)).EndInit();
@@ -423,9 +433,9 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Panel panel_close;
         private System.Windows.Forms.Button btn_start_turntable;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_Info_1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_Info_2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -444,6 +454,6 @@
         private System.Windows.Forms.Button btn_Options;
         private System.Windows.Forms.Button btnDefault;
         private System.Windows.Forms.NumericUpDown txtb_move_x_factor;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnOpenOutputFolder;
     }
 }

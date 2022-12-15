@@ -256,7 +256,12 @@ namespace TFMV
         bool items_loading;//skins_first_load,
         public static bool auto_refresh_paints, auto_refresh_busy;
 
+        //for saving/loading settings
         private List<string> settings = new List<string>();
+
+        //don't save settings if you haven't loaded settings yet
+        private bool settings_loaded = false;
+
 
         //selection of paints (indices) that the user selects to have for the "screenshot paints tool" mosaic generation
         public static List<byte> paints_selection = new List<byte>();
@@ -2789,6 +2794,10 @@ namespace TFMV
 
         private void settings_save(object sender, EventArgs e)
         {
+
+        //don't save settings if you haven't loaded settings yet
+        if (!settings_loaded) { return; }
+
             try
             {
                 // Properties ob =  (Object)sender;
@@ -2865,7 +2874,7 @@ namespace TFMV
 
             catch (System.Exception excep)
             {
-                MessageBox.Show("Error saving settings " + excep.Message);
+                MessageBox.Show("Error saving settings.\n\n" + excep.Message);
             }
         }
 
@@ -2990,9 +2999,12 @@ namespace TFMV
 
             catch (System.Exception excep)
             {
-                MessageBox.Show("Error loading settings " + excep.Message);
+                MessageBox.Show("Error loading settings.\n\n" + excep.Message);
             }
-        }
+
+        //settings are loaded, now we can save them
+        settings_loaded = true;
+    }
 
         static string GetVariableName<T>(Expression<Func<T>> expr)
         {

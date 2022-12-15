@@ -291,6 +291,7 @@
             this.revertToOriginalboneNameValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label76 = new System.Windows.Forms.Label();
             this.btn_reset_generic = new System.Windows.Forms.Button();
+            this.label53 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown14)).BeginInit();
@@ -3160,12 +3161,22 @@
             this.btn_reset_generic.UseVisualStyleBackColor = true;
             this.btn_reset_generic.Click += new System.EventHandler(this.btn_reset_generic_Click);
             // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(467, 627);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(121, 13);
+            this.label53.TabIndex = 79;
+            this.label53.Text = "test TopMost, look it up!";
+            // 
             // AddJiggleBone
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1713, 897);
+            this.Controls.Add(this.label53);
             this.Controls.Add(this.btn_reset_generic);
             this.Controls.Add(this.label76);
             this.Controls.Add(this.label59);
@@ -3642,5 +3653,6 @@
         private CheckBox checkBox1;
         private Label label76;
         private Button btn_reset_generic;
+        private Label label53;
     }
 }
