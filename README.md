@@ -1,3 +1,8 @@
+This repo is the original source code of TFMV 1.9.2
+
+You can find an updated version by Neodement here: https://github.com/NeoDement/TFMV
+
+
 # TFMV 1.9.2
 Team Fortress 2 Model Viewer
 
