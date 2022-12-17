@@ -92,9 +92,6 @@
     <Reference Include="Ionic.Zip">
       <HintPath>bin\Debug\Libs\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="LibDithering, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LibDithering.1.0.0\lib\netstandard2.0\LibDithering.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.JScript" />
     <Reference Include="MouseKeyboardLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -164,24 +161,6 @@
     </Compile>
     <Compile Include="UserControls\ColorPicker.Designer.cs">
       <DependentUpon>ColorPicker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\DisableBackgroundWarning.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\DisableBackgroundWarning.Designer.cs">
-      <DependentUpon>DisableBackgroundWarning.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Jigglebone_Editor\AddJiggleBone.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\Jigglebone_Editor\AddJiggleBone.Designer.cs">
-      <DependentUpon>AddJiggleBone.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Jigglebone_Editor\JiggleboneEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserControls\Jigglebone_Editor\JiggleboneEditor.Designer.cs">
-      <DependentUpon>JiggleboneEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Loadout\Loadout_File.cs" />
     <Compile Include="UserControls\Loadout\Loadout_Item.cs">
@@ -298,16 +277,6 @@
       <DependentUpon>ColorPicker.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\DisableBackgroundWarning.resx">
-      <DependentUpon>DisableBackgroundWarning.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Jigglebone_Editor\AddJiggleBone.resx">
-      <DependentUpon>AddJiggleBone.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Jigglebone_Editor\JiggleboneEditor.resx">
-      <DependentUpon>JiggleboneEditor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Loadout\Loadout_Item.resx">
       <DependentUpon>Loadout_Item.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -368,33 +337,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.dx80.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.dx90.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.mdl" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.swx.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\engineer_gunslinger_bodygroup.vvd" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.dx80.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.dx90.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.mdl" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.swx.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\heavy_purityfist_bodygroup.vvd" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\hvyweapon_blue_purityfist.vmt" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\hvyweapon_red_purityfist.vmt" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.dx80.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.dx90.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.mdl" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.swx.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_arrows_bodygroup.vvd" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.dx80.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.dx90.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.mdl" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.swx.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\sniper_darts_bodygroup.vvd" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.dx80.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.dx90.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.mdl" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.swx.vtx" />
-    <EmbeddedResource Include="Files\models\fakebodygroups\soldier_medal_bodygroup.vvd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -408,8 +350,8 @@
     <EmbeddedResource Include="Resources\bodygroup_masks\demoman_shoes.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\demoman_shoes_grenades.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\demoman_grenades.bin" />
-    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_rightarm.bin" />
-    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_rightarm_hat.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hand.bin" />
+    <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hand_hat.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\engineer_hat.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\hvyweapon_hands.bin" />
     <EmbeddedResource Include="Resources\bodygroup_masks\medic_backpack.bin" />
@@ -476,11 +418,6 @@
     <Content Include="Libs\AnimatedGif.dll" />
     <Content Include="Libs\Ionic.Zip.dll" />
     <Content Include="Libs\MouseKeyboardLibrary.dll" />
-    <None Include="Resources\btn_reset.png" />
-    <None Include="Resources\settings_red_border.png" />
-    <Content Include="Resources\steamcrappy.png" />
-    <None Include="Resources\steamcrappy1.png" />
-    <None Include="Resources\TFMV_neo_logo.png" />
     <Content Include="TFMV.ico" />
   </ItemGroup>
   <ItemGroup>

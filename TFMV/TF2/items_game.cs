@@ -53,7 +53,6 @@ namespace TFMV.TF2
 
                 model_player_per_class.Add(model);
             }
- 
 
             public void used_by_class_ADD(string Class, string Slot)
             {

@@ -101,7 +101,7 @@
             this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MessageBox_PaintsChartNotice";
-            this.Text = "It\'s tea time, Doctor!";
+            this.Text = "Its tea time, Doctor!";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,6 +1,0 @@
-ref
-Stand_PRIMARY
-Stand_SECONDARY
-Stand_MELEE
-Stand_MELEE_ALLCLASS
-selectionMenu_Idle

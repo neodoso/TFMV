@@ -55,7 +55,7 @@ namespace TFMV.UserControls
         public void add_bodygroups(string name, bool _checked)
         {
             Point checkbox_pos = new Point();
-            int posy_increment = 0; //starting position for the first checkbox
+            int posy_increment = 0; //starting position for the firxt checkbox
             Panel p = (Panel)this.Controls["this"];
 
             // search checkboxes
@@ -78,9 +78,6 @@ namespace TFMV.UserControls
 
             cb.Location = new Point(5, posy);
             cb.Text = name;
-
-            //neodement: fix for long bodygroup names getting cut off (such as medic_backpack)
-            cb.Width = 110;
 
             this.Controls.Add(cb);
 
