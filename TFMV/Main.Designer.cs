@@ -37,14 +37,21 @@
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.txtb_main_model = new System.Windows.Forms.ComboBox();
             this.Settings = new System.Windows.Forms.TabPage();
+            this.panel_APIKey = new System.Windows.Forms.Panel();
+            this.boxL = new System.Windows.Forms.Panel();
+            this.boxR = new System.Windows.Forms.Panel();
+            this.label51 = new System.Windows.Forms.Label();
+            this.boxT = new System.Windows.Forms.Panel();
+            this.panel37 = new System.Windows.Forms.Panel();
+            this.label45 = new System.Windows.Forms.Label();
+            this.boxB = new System.Windows.Forms.Panel();
+            this.txtb_API_Key = new System.Windows.Forms.TextBox();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.chk_HideAPIKey = new System.Windows.Forms.CheckBox();
             this.lstStartupTab_Slot = new System.Windows.Forms.ComboBox();
             this.label49 = new System.Windows.Forms.Label();
             this.lstStartupTab_Class = new System.Windows.Forms.ComboBox();
             this.label48 = new System.Windows.Forms.Label();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.txtb_API_Key = new System.Windows.Forms.TextBox();
-            this.panel37 = new System.Windows.Forms.Panel();
-            this.label45 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.lab_trsp_scrn1 = new System.Windows.Forms.Label();
             this.lab_trsp_scrn = new System.Windows.Forms.Label();
@@ -61,7 +68,6 @@
             this.cb_allow_tournament_medals = new System.Windows.Forms.CheckBox();
             this.cb_strict_equip_regions = new System.Windows.Forms.CheckBox();
             this.btn_dl_schema = new System.Windows.Forms.Button();
-            this.chk_API_Key = new System.Windows.Forms.CheckBox();
             this.cb_hlmv_antialias = new System.Windows.Forms.CheckBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
@@ -77,7 +83,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_recache_schema = new System.Windows.Forms.Button();
-            this.steamGameConfig = new TFMV.SourceEngine.SteamGameConfig();
             this.btn_reset_light = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_lColor = new System.Windows.Forms.Button();
@@ -155,7 +160,6 @@
             this.panel40 = new System.Windows.Forms.Panel();
             this.panel39 = new System.Windows.Forms.Panel();
             this.btn_bg_color1 = new System.Windows.Forms.Button();
-            this.colorPicker_master = new TFMV.PaintColorPicker();
             this.btn_screenshot = new System.Windows.Forms.Button();
             this.panel_Bgcolor1 = new System.Windows.Forms.Panel();
             this.btn_mainModel_material = new System.Windows.Forms.Button();
@@ -171,7 +175,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
             this.txtb_hlmv_wsize_x = new System.Windows.Forms.TextBox();
-            this.bodygroup_manager_panel = new TFMV.UserControls.Bodygroup_manager();
             this.txtb_hlmv_wsize_y = new System.Windows.Forms.TextBox();
             this.btn_window_scale = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -204,6 +207,8 @@
             this.separator = new System.Windows.Forms.Panel();
             this.btn_save_loadout = new System.Windows.Forms.Button();
             this.panel_hlmv_settings = new System.Windows.Forms.Panel();
+            this.panel42 = new System.Windows.Forms.Panel();
+            this.panel41 = new System.Windows.Forms.Panel();
             this.label47 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -251,8 +256,7 @@
             this.btn_item_sorting_order = new System.Windows.Forms.Button();
             this.list_view = new System.Windows.Forms.ListView();
             this.vtab_items = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.btnDisableSoldierHelm = new System.Windows.Forms.Button();
+            this.label50 = new System.Windows.Forms.Label();
             this.lab_tf2_itemlist = new System.Windows.Forms.Label();
             this.txtb_searchitem = new System.Windows.Forms.TextBox();
             this.btn_scout = new System.Windows.Forms.Button();
@@ -311,8 +315,14 @@
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label46 = new System.Windows.Forms.Label();
+            this.menu_TF2Item = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyMDLPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewOnTF2WikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorPicker_master = new TFMV.PaintColorPicker();
+            this.steamGameConfig = new TFMV.SourceEngine.SteamGameConfig();
+            this.bodygroup_manager_panel = new TFMV.UserControls.Bodygroup_manager();
             this.Settings.SuspendLayout();
+            this.panel_APIKey.SuspendLayout();
             this.panel37.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_screenshot_delay)).BeginInit();
             this.panel20.SuspendLayout();
@@ -361,6 +371,7 @@
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
+            this.menu_TF2Item.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgList
@@ -393,13 +404,11 @@
             // Settings
             // 
             this.Settings.BackColor = System.Drawing.Color.Gainsboro;
+            this.Settings.Controls.Add(this.panel_APIKey);
             this.Settings.Controls.Add(this.lstStartupTab_Slot);
             this.Settings.Controls.Add(this.label49);
             this.Settings.Controls.Add(this.lstStartupTab_Class);
             this.Settings.Controls.Add(this.label48);
-            this.Settings.Controls.Add(this.linkLabel2);
-            this.Settings.Controls.Add(this.txtb_API_Key);
-            this.Settings.Controls.Add(this.panel37);
             this.Settings.Controls.Add(this.panel12);
             this.Settings.Controls.Add(this.lab_trsp_scrn1);
             this.Settings.Controls.Add(this.lab_trsp_scrn);
@@ -414,7 +423,6 @@
             this.Settings.Controls.Add(this.cb_allow_tournament_medals);
             this.Settings.Controls.Add(this.cb_strict_equip_regions);
             this.Settings.Controls.Add(this.btn_dl_schema);
-            this.Settings.Controls.Add(this.chk_API_Key);
             this.Settings.Controls.Add(this.cb_hlmv_antialias);
             this.Settings.Controls.Add(this.panel9);
             this.Settings.Controls.Add(this.cb_lodclamps);
@@ -431,6 +439,96 @@
             resources.ApplyResources(this.Settings, "Settings");
             this.Settings.Name = "Settings";
             this.Settings.Click += new System.EventHandler(this.Settings_Click);
+            // 
+            // panel_APIKey
+            // 
+            this.panel_APIKey.Controls.Add(this.boxL);
+            this.panel_APIKey.Controls.Add(this.boxR);
+            this.panel_APIKey.Controls.Add(this.label51);
+            this.panel_APIKey.Controls.Add(this.boxT);
+            this.panel_APIKey.Controls.Add(this.panel37);
+            this.panel_APIKey.Controls.Add(this.boxB);
+            this.panel_APIKey.Controls.Add(this.txtb_API_Key);
+            this.panel_APIKey.Controls.Add(this.linkLabel2);
+            this.panel_APIKey.Controls.Add(this.chk_HideAPIKey);
+            resources.ApplyResources(this.panel_APIKey, "panel_APIKey");
+            this.panel_APIKey.Name = "panel_APIKey";
+            // 
+            // boxL
+            // 
+            this.boxL.BackColor = System.Drawing.Color.Red;
+            this.boxL.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.boxL, "boxL");
+            this.boxL.Name = "boxL";
+            // 
+            // boxR
+            // 
+            this.boxR.BackColor = System.Drawing.Color.Red;
+            this.boxR.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.boxR, "boxR");
+            this.boxR.Name = "boxR";
+            // 
+            // label51
+            // 
+            resources.ApplyResources(this.label51, "label51");
+            this.label51.Name = "label51";
+            // 
+            // boxT
+            // 
+            this.boxT.BackColor = System.Drawing.Color.Red;
+            this.boxT.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.boxT, "boxT");
+            this.boxT.Name = "boxT";
+            // 
+            // panel37
+            // 
+            this.panel37.BackColor = System.Drawing.Color.DimGray;
+            this.panel37.Controls.Add(this.label45);
+            resources.ApplyResources(this.panel37, "panel37");
+            this.panel37.Name = "panel37";
+            // 
+            // label45
+            // 
+            resources.ApplyResources(this.label45, "label45");
+            this.label45.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label45.Name = "label45";
+            // 
+            // boxB
+            // 
+            this.boxB.BackColor = System.Drawing.Color.Red;
+            this.boxB.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.boxB, "boxB");
+            this.boxB.Name = "boxB";
+            // 
+            // txtb_API_Key
+            // 
+            this.txtb_API_Key.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtb_API_Key.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.txtb_API_Key, "txtb_API_Key");
+            this.txtb_API_Key.Name = "txtb_API_Key";
+            this.txtb_API_Key.UseSystemPasswordChar = true;
+            this.txtb_API_Key.TextChanged += new System.EventHandler(this.txtb_API_Key_TextChanged);
+            this.txtb_API_Key.Enter += new System.EventHandler(this.txtb_API_Key_Enter);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.Blue;
+            resources.ApplyResources(this.linkLabel2, "linkLabel2");
+            this.linkLabel2.DisabledLinkColor = System.Drawing.Color.Gray;
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.UseCompatibleTextRendering = true;
+            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Gray;
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // chk_HideAPIKey
+            // 
+            resources.ApplyResources(this.chk_HideAPIKey, "chk_HideAPIKey");
+            this.chk_HideAPIKey.Checked = true;
+            this.chk_HideAPIKey.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_HideAPIKey.Name = "chk_HideAPIKey";
+            this.chk_HideAPIKey.UseVisualStyleBackColor = true;
+            this.chk_HideAPIKey.CheckedChanged += new System.EventHandler(this.chk_API_Key_CheckedChanged);
             // 
             // lstStartupTab_Slot
             // 
@@ -479,38 +577,6 @@
             resources.ApplyResources(this.label48, "label48");
             this.label48.Name = "label48";
             this.label48.Click += new System.EventHandler(this.label46_Click);
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.Blue;
-            resources.ApplyResources(this.linkLabel2, "linkLabel2");
-            this.linkLabel2.DisabledLinkColor = System.Drawing.Color.Gray;
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.UseCompatibleTextRendering = true;
-            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.Gray;
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // txtb_API_Key
-            // 
-            this.txtb_API_Key.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtb_API_Key.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.txtb_API_Key, "txtb_API_Key");
-            this.txtb_API_Key.Name = "txtb_API_Key";
-            this.txtb_API_Key.TextChanged += new System.EventHandler(this.txtb_API_Key_TextChanged);
-            // 
-            // panel37
-            // 
-            this.panel37.BackColor = System.Drawing.Color.DimGray;
-            this.panel37.Controls.Add(this.label45);
-            resources.ApplyResources(this.panel37, "panel37");
-            this.panel37.Name = "panel37";
-            // 
-            // label45
-            // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label45.Name = "label45";
             // 
             // panel12
             // 
@@ -634,13 +700,6 @@
             this.btn_dl_schema.UseVisualStyleBackColor = true;
             this.btn_dl_schema.Click += new System.EventHandler(this.btn_dl_schema_Click_1);
             // 
-            // chk_API_Key
-            // 
-            resources.ApplyResources(this.chk_API_Key, "chk_API_Key");
-            this.chk_API_Key.Name = "chk_API_Key";
-            this.chk_API_Key.UseVisualStyleBackColor = true;
-            this.chk_API_Key.CheckedChanged += new System.EventHandler(this.chk_API_Key_CheckedChanged);
-            // 
             // cb_hlmv_antialias
             // 
             resources.ApplyResources(this.cb_hlmv_antialias, "cb_hlmv_antialias");
@@ -745,16 +804,6 @@
             this.btn_recache_schema.Name = "btn_recache_schema";
             this.btn_recache_schema.UseVisualStyleBackColor = true;
             this.btn_recache_schema.Click += new System.EventHandler(this.btn_recache_schema_Click);
-            // 
-            // steamGameConfig
-            // 
-            this.steamGameConfig.bin_dir = null;
-            resources.ApplyResources(this.steamGameConfig, "steamGameConfig");
-            this.steamGameConfig.Name = "steamGameConfig";
-            this.steamGameConfig.steam_dir = null;
-            this.steamGameConfig.tf_dir = null;
-            this.steamGameConfig.tf2_dir = null;
-            this.steamGameConfig.Load += new System.EventHandler(this.steamGameConfig_Load);
             // 
             // btn_reset_light
             // 
@@ -912,7 +961,6 @@
             // tab_items
             // 
             this.tab_items.BackColor = System.Drawing.Color.Gainsboro;
-            this.tab_items.Controls.Add(this.label46);
             this.tab_items.Controls.Add(this.button10);
             this.tab_items.Controls.Add(this.textBox1);
             this.tab_items.Controls.Add(this.lab_item_id);
@@ -1406,19 +1454,6 @@
             this.btn_bg_color1.UseVisualStyleBackColor = true;
             this.btn_bg_color1.Click += new System.EventHandler(this.panel_Bgcolor_Click);
             // 
-            // colorPicker_master
-            // 
-            this.colorPicker_master.BackColor = System.Drawing.Color.LightGray;
-            this.colorPicker_master.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.colorPicker_master.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.colorPicker_master, "colorPicker_master");
-            this.colorPicker_master.FormattingEnabled = true;
-            this.colorPicker_master.Name = "colorPicker_master";
-            this.colorPicker_master.SelectedItem = null;
-            this.colorPicker_master.SelectedValue = System.Drawing.Color.White;
-            this.colorPicker_master.VMT = null;
-            this.colorPicker_master.SelectionChangeCommitted += new System.EventHandler(this.colorPicker1_SelectionChangeCommitted);
-            // 
             // btn_screenshot
             // 
             resources.ApplyResources(this.btn_screenshot, "btn_screenshot");
@@ -1547,12 +1582,6 @@
             this.toolTip1.SetToolTip(this.txtb_hlmv_wsize_x, resources.GetString("txtb_hlmv_wsize_x.ToolTip"));
             this.txtb_hlmv_wsize_x.TextChanged += new System.EventHandler(this.settings_save);
             this.txtb_hlmv_wsize_x.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNumericSimple_KeyPress);
-            // 
-            // bodygroup_manager_panel
-            // 
-            this.bodygroup_manager_panel.BackColor = System.Drawing.Color.Gainsboro;
-            resources.ApplyResources(this.bodygroup_manager_panel, "bodygroup_manager_panel");
-            this.bodygroup_manager_panel.Name = "bodygroup_manager_panel";
             // 
             // txtb_hlmv_wsize_y
             // 
@@ -1829,6 +1858,8 @@
             // 
             // panel_hlmv_settings
             // 
+            this.panel_hlmv_settings.Controls.Add(this.panel42);
+            this.panel_hlmv_settings.Controls.Add(this.panel41);
             this.panel_hlmv_settings.Controls.Add(this.label47);
             this.panel_hlmv_settings.Controls.Add(this.label39);
             this.panel_hlmv_settings.Controls.Add(this.label19);
@@ -1862,6 +1893,19 @@
             this.panel_hlmv_settings.Controls.Add(this.txtb_hlmv_camrot_x);
             resources.ApplyResources(this.panel_hlmv_settings, "panel_hlmv_settings");
             this.panel_hlmv_settings.Name = "panel_hlmv_settings";
+            this.panel_hlmv_settings.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_hlmv_settings_Paint);
+            // 
+            // panel42
+            // 
+            this.panel42.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.panel42, "panel42");
+            this.panel42.Name = "panel42";
+            // 
+            // panel41
+            // 
+            this.panel41.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.panel41, "panel41");
+            this.panel41.Name = "panel41";
             // 
             // label47
             // 
@@ -2265,33 +2309,20 @@
             this.list_view.UseCompatibleStateImageBehavior = false;
             this.list_view.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.list_view_ItemChecked);
             this.list_view.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.list_view_ItemSelectionChanged);
+            this.list_view.MouseClick += new System.Windows.Forms.MouseEventHandler(this.list_view_MouseClick_1);
             // 
             // vtab_items
             // 
             this.vtab_items.BackColor = System.Drawing.Color.Gray;
-            this.vtab_items.Controls.Add(this.button4);
-            this.vtab_items.Controls.Add(this.btnDisableSoldierHelm);
+            this.vtab_items.Controls.Add(this.label50);
             this.vtab_items.Controls.Add(this.lab_tf2_itemlist);
             resources.ApplyResources(this.vtab_items, "vtab_items");
             this.vtab_items.Name = "vtab_items";
             // 
-            // button4
+            // label50
             // 
-            this.button4.BackColor = System.Drawing.Color.LightGray;
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // btnDisableSoldierHelm
-            // 
-            this.btnDisableSoldierHelm.BackColor = System.Drawing.Color.LightGray;
-            resources.ApplyResources(this.btnDisableSoldierHelm, "btnDisableSoldierHelm");
-            this.btnDisableSoldierHelm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.btnDisableSoldierHelm.Name = "btnDisableSoldierHelm";
-            this.btnDisableSoldierHelm.UseVisualStyleBackColor = false;
-            this.btnDisableSoldierHelm.Click += new System.EventHandler(this.btnDisableSoldierHelm_Click);
+            resources.ApplyResources(this.label50, "label50");
+            this.label50.Name = "label50";
             // 
             // lab_tf2_itemlist
             // 
@@ -2795,10 +2826,54 @@
             this.logoPictureBox.TabStop = false;
             this.logoPictureBox.Click += new System.EventHandler(this.logoPictureBox_Click);
             // 
-            // label46
+            // menu_TF2Item
             // 
-            resources.ApplyResources(this.label46, "label46");
-            this.label46.Name = "label46";
+            this.menu_TF2Item.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyMDLPathToolStripMenuItem,
+            this.viewOnTF2WikiToolStripMenuItem});
+            this.menu_TF2Item.Name = "menu_TF2Item";
+            resources.ApplyResources(this.menu_TF2Item, "menu_TF2Item");
+            // 
+            // copyMDLPathToolStripMenuItem
+            // 
+            this.copyMDLPathToolStripMenuItem.Name = "copyMDLPathToolStripMenuItem";
+            resources.ApplyResources(this.copyMDLPathToolStripMenuItem, "copyMDLPathToolStripMenuItem");
+            this.copyMDLPathToolStripMenuItem.Click += new System.EventHandler(this.copyMDLPathToolStripMenuItem_Click);
+            // 
+            // viewOnTF2WikiToolStripMenuItem
+            // 
+            this.viewOnTF2WikiToolStripMenuItem.Name = "viewOnTF2WikiToolStripMenuItem";
+            resources.ApplyResources(this.viewOnTF2WikiToolStripMenuItem, "viewOnTF2WikiToolStripMenuItem");
+            this.viewOnTF2WikiToolStripMenuItem.Click += new System.EventHandler(this.viewOnTF2WikiToolStripMenuItem_Click);
+            // 
+            // colorPicker_master
+            // 
+            this.colorPicker_master.BackColor = System.Drawing.Color.LightGray;
+            this.colorPicker_master.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.colorPicker_master.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.colorPicker_master, "colorPicker_master");
+            this.colorPicker_master.FormattingEnabled = true;
+            this.colorPicker_master.Name = "colorPicker_master";
+            this.colorPicker_master.SelectedItem = null;
+            this.colorPicker_master.SelectedValue = System.Drawing.Color.White;
+            this.colorPicker_master.VMT = null;
+            this.colorPicker_master.SelectionChangeCommitted += new System.EventHandler(this.colorPicker1_SelectionChangeCommitted);
+            // 
+            // steamGameConfig
+            // 
+            this.steamGameConfig.bin_dir = null;
+            resources.ApplyResources(this.steamGameConfig, "steamGameConfig");
+            this.steamGameConfig.Name = "steamGameConfig";
+            this.steamGameConfig.steam_dir = null;
+            this.steamGameConfig.tf_dir = null;
+            this.steamGameConfig.tf2_dir = null;
+            this.steamGameConfig.Load += new System.EventHandler(this.steamGameConfig_Load);
+            // 
+            // bodygroup_manager_panel
+            // 
+            this.bodygroup_manager_panel.BackColor = System.Drawing.Color.Gainsboro;
+            resources.ApplyResources(this.bodygroup_manager_panel, "bodygroup_manager_panel");
+            this.bodygroup_manager_panel.Name = "bodygroup_manager_panel";
             // 
             // Main
             // 
@@ -2817,6 +2892,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
             this.Settings.ResumeLayout(false);
             this.Settings.PerformLayout();
+            this.panel_APIKey.ResumeLayout(false);
+            this.panel_APIKey.PerformLayout();
             this.panel37.ResumeLayout(false);
             this.panel37.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDown_screenshot_delay)).EndInit();
@@ -2904,6 +2981,7 @@
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
+            this.menu_TF2Item.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3187,11 +3265,20 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.ComboBox lstStartupTab_Class;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Button btnDisableSoldierHelm;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox chk_API_Key;
+        private System.Windows.Forms.CheckBox chk_HideAPIKey;
         private System.Windows.Forms.PictureBox img_EasterEgg;
-        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Panel panel41;
+        private System.Windows.Forms.Panel panel42;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Panel boxR;
+        private System.Windows.Forms.Panel boxL;
+        private System.Windows.Forms.Panel boxT;
+        private System.Windows.Forms.Panel boxB;
+        private System.Windows.Forms.Panel panel_APIKey;
+        private System.Windows.Forms.ContextMenuStrip menu_TF2Item;
+        private System.Windows.Forms.ToolStripMenuItem copyMDLPathToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewOnTF2WikiToolStripMenuItem;
     }
 }
 

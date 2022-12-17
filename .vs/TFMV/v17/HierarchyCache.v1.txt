@@ -4,10 +4,26 @@ i:{00000000-0000-0000-0000-000000000000}:TFMV.sln
 i:{00000000-0000-0000-0000-000000000000}:TFMV
 ++Properties
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\
+++AssemblyInfo.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\assemblyinfo.cs
+++Resources.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\resources.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources.resx
+++Resources.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\resources.designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources.designer.cs
+++Settings.settings
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\settings.settings
+++Settings.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\settings.designer.cs
 ++References
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:
 ++Files
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\
+++models
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\
+++textures
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\
 ++Functions
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\functions\
 ++Libs
@@ -56,6 +72,8 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources\remove_16xlg.png
 ++scout_icon.png
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources\scout_icon.png
+++settings_red_border.png
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources\settings_red_border.png
 ++sniper_icon.png
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources\sniper_icon.png
 ++soldier_icon.png
@@ -74,6 +92,20 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources\up.png
 ++SourceEngine
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\
+++SteamGameConfig.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\steamgameconfig.cs
+++SteamGameConfig.designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\steamgameconfig.designer.cs
+++SteamGameConfig.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\steamgameconfig.resx
+++VDF.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\vdf.cs
+++VMT.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\vmt.cs
+++VPK.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\vpk.cs
+++VTFedit.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\vtfedit.cs
 ++TF2
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\tf2\
 ++UserControls
@@ -82,8 +114,16 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\
 ++AddJiggleBone.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\addjigglebone.cs
+++AddJiggleBone.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\addjigglebone.designer.cs
+++AddJiggleBone.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\addjigglebone.resx
 ++JiggleboneEditor.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\jiggleboneeditor.cs
+++JiggleboneEditor.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\jiggleboneeditor.designer.cs
+++JiggleboneEditor.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\jiggleboneeditor.resx
 ++Loadout
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\loadout\
 ++ExtdListViewItem.cs
@@ -92,36 +132,78 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\loadout\loadout_file.cs
 ++Loadout_Item.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\loadout\loadout_item.cs
+++Loadout_Item.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\loadout\loadout_item.designer.cs
+++Loadout_Item.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\loadout\loadout_item.resx
 ++Loadout_Item_simple.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\loadout\loadout_item_simple.cs
 ++Model_Selection
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\
 ++ModelSelect.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\modelselect.cs
+++ModelSelect.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\modelselect.designer.cs
+++ModelSelect.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\modelselect.resx
 ++VPKSelect.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\vpkselect.cs
+++VPKSelect.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\vpkselect.designer.cs
+++VPKSelect.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\vpkselect.resx
 ++Screenshot_Paints_Tool
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\
 ++CheckBox_Paint.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\checkbox_paint.cs
+++CheckBox_Paint.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\checkbox_paint.designer.cs
+++CheckBox_Paint.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\checkbox_paint.resx
 ++MessageBox_PaintsChartNotice.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\messagebox_paintschartnotice.cs
+++MessageBox_PaintsChartNotice.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\messagebox_paintschartnotice.designer.cs
+++MessageBox_PaintsChartNotice.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\messagebox_paintschartnotice.resx
 ++PickPaints_List.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\pickpaints_list.cs
+++PickPaints_List.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\pickpaints_list.designer.cs
+++PickPaints_List.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\pickpaints_list.resx
 ++Skins Manager
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\
 ++MaterialColorPicker
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialcolorpicker\
 ++Bodygroup_manager.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\bodygroup_manager.cs
+++Bodygroup_manager.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\bodygroup_manager.designer.cs
+++Bodygroup_manager.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\bodygroup_manager.resx
 ++MaterialEditorDialog.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialeditordialog.cs
+++MaterialEditorDialog.de.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialeditordialog.de.resx
+++MaterialEditorDialog.designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialeditordialog.designer.cs
+++MaterialEditorDialog.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialeditordialog.resx
 ++Model_Painter.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\model_painter.cs
+++Model_Painter.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\model_painter.designer.cs
+++Model_Painter.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\model_painter.resx
 ++PaintColorPicker.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\paintcolorpicker.cs
 ++VMT_Painter.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\vmt_painter.cs
+++VMT_Painter.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\vmt_painter.designer.cs
+++VMT_Painter.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\vmt_painter.resx
 ++TurnTable_Gif_gen
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\turntable_gif_gen\
 ++Turntable_GIF_Generator.cs
@@ -132,8 +214,16 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\turntable_gif_gen\turntable_gif_generator.resx
 ++ColorPicker.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\colorpicker.cs
+++ColorPicker.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\colorpicker.designer.cs
+++ColorPicker.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\colorpicker.resx
 ++DisableBackgroundWarning.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\disablebackgroundwarning.cs
+++DisableBackgroundWarning.Designer.cs
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\disablebackgroundwarning.designer.cs
+++DisableBackgroundWarning.resx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\disablebackgroundwarning.resx
 ++app.config
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\app.config
 ++Main.cs
@@ -146,17 +236,10 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\packages.config
 ++Program.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\program.cs
-++Resources.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\resources.resx
 ++Settings.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\settings.cs
 ++TFMV.ico
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\tfmv.ico
-++AssemblyInfo.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\assemblyinfo.cs
-++Settings.settings
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\settings.settings
 ++AnimatedGif
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:
 ++Ionic.Zip
@@ -205,10 +288,26 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:
 ++WindowsBase
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:
-++models
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\
-++textures
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\
+++fakebodygroups
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\fakebodygroups\
+++tfmv_bg.dx80.vtx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.dx80.vtx
+++tfmv_bg.dx90.vtx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.dx90.vtx
+++tfmv_bg.mdl
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.mdl
+++tfmv_bg.swx.vtx
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.swx.vtx
+++tfmv_bg.vvd
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.vvd
+++fireLayeredSlowTiled512.vtf
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\firelayeredslowtiled512.vtf
+++flat_color.vtf
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\flat_color.vtf
+++flat_color_white.vtf
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\flat_color_white.vtf
+++player_masks.zip
+i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\player_masks.zip
 ++BitmapProcessing.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\functions\bitmapprocessing.cs
 ++misc.cs
@@ -313,16 +412,6 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources\player_icons\soldier.png
 ++spy.png
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources\player_icons\spy.png
-++SteamGameConfig.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\steamgameconfig.cs
-++VDF.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\vdf.cs
-++VMT.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\vmt.cs
-++VPK.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\vpk.cs
-++VTFedit.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\vtfedit.cs
 ++items_game.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\tf2\items_game.cs
 ++model_attachement.cs
@@ -335,38 +424,6 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\tf2\player_materials.cs
 ++player_materials_all.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\tf2\player_materials_all.cs
-++AddJiggleBone.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\addjigglebone.designer.cs
-++AddJiggleBone.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\addjigglebone.resx
-++JiggleboneEditor.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\jiggleboneeditor.designer.cs
-++JiggleboneEditor.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\jigglebone_editor\jiggleboneeditor.resx
-++Loadout_Item.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\loadout\loadout_item.designer.cs
-++Loadout_Item.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\loadout\loadout_item.resx
-++ModelSelect.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\modelselect.designer.cs
-++ModelSelect.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\modelselect.resx
-++VPKSelect.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\vpkselect.designer.cs
-++VPKSelect.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\model_selection\vpkselect.resx
-++CheckBox_Paint.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\checkbox_paint.designer.cs
-++CheckBox_Paint.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\checkbox_paint.resx
-++MessageBox_PaintsChartNotice.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\messagebox_paintschartnotice.designer.cs
-++MessageBox_PaintsChartNotice.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\messagebox_paintschartnotice.resx
-++PickPaints_List.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\pickpaints_list.designer.cs
-++PickPaints_List.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\screenshot_paints_tool\pickpaints_list.resx
 ++ColorPanel.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialcolorpicker\colorpanel.cs
 ++ColorShowBox.cs
@@ -375,61 +432,6 @@ i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-ma
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialcolorpicker\colorslider.cs
 ++ExtMethodsSystemDrawingColor.cs
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialcolorpicker\extmethodssystemdrawingcolor.cs
-++Bodygroup_manager.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\bodygroup_manager.designer.cs
-++Bodygroup_manager.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\bodygroup_manager.resx
-++MaterialEditorDialog.de.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialeditordialog.de.resx
-++MaterialEditorDialog.designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialeditordialog.designer.cs
-++MaterialEditorDialog.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\materialeditordialog.resx
-++Model_Painter.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\model_painter.designer.cs
-++Model_Painter.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\model_painter.resx
-++VMT_Painter.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\vmt_painter.designer.cs
-++VMT_Painter.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\skins manager\vmt_painter.resx
-++ColorPicker.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\colorpicker.designer.cs
-++ColorPicker.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\colorpicker.resx
-++DisableBackgroundWarning.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\disablebackgroundwarning.designer.cs
-++DisableBackgroundWarning.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\usercontrols\disablebackgroundwarning.resx
-++Resources.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\resources.designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\resources.designer.cs
-++Settings.Designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\properties\settings.designer.cs
-++fakebodygroups
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\fakebodygroups\
-++tfmv_bg.dx80.vtx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.dx80.vtx
-++tfmv_bg.dx90.vtx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.dx90.vtx
-++tfmv_bg.mdl
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.mdl
-++tfmv_bg.swx.vtx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.swx.vtx
-++tfmv_bg.vvd
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\tfmv_bg.vvd
-++fireLayeredSlowTiled512.vtf
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\firelayeredslowtiled512.vtf
-++flat_color.vtf
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\flat_color.vtf
-++flat_color_white.vtf
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\flat_color_white.vtf
-++player_masks.zip
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\textures\player_masks.zip
-++SteamGameConfig.designer.cs
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\steamgameconfig.designer.cs
-++SteamGameConfig.resx
-i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\sourceengine\steamgameconfig.resx
 ++engineer_gunslinger_bodygroup.dx80.vtx
 i:{4ecc5125-1306-48f3-8314-4959ef1e5d8e}:c:\users\jburn\documents\github\tfmv-main\tfmv\files\models\fakebodygroups\engineer_gunslinger_bodygroup.dx80.vtx
 ++engineer_gunslinger_bodygroup.dx90.vtx

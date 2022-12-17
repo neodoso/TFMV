@@ -250,7 +250,6 @@ namespace TFMV.UserControls
             btn_start_turntable.Visible = true;
 
             //cheeky hack to make sure the user realises the turntable is done
-            //todo: paint chart tool needs a copy of this too
 
             Form mainForm = this.FindForm();
 

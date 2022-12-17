@@ -61,3 +61,7 @@ C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Release\de\TFMV.resources
 C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Release\TFMV.csproj.CopyComplete
 C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Release\TFMV.exe
 C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Release\TFMV.pdb
+C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\bin\Release\LibDithering.dll
+C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\bin\Release\LibDithering.xml
+C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Release\TFMV.UserControls.Jigglebone_Editor.AddJiggleBone.resources
+C:\Users\jburn\Documents\GitHub\TFMV-main\TFMV\obj\x86\Release\TFMV.UserControls.Jigglebone_Editor.JiggleboneEditor.resources

@@ -35,11 +35,13 @@ namespace TFMV
         // this key is necesary in order to download the TF2's item schema from Valve's servers
         // you can get your steam api key here: https://steamcommunity.com/dev/apikey
         // http://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key=" + steam_api_key +"&format=vdf"
-        //        private string steam_api_key = "989D1517F19FB88BE9DF763E5D6BEC31";
-        //        private string steam_api_key = "http://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key=989D1517F19FB88BE9DF763E5D6BEC31";
+        //        private string steam_api_key = "<API KEY>";
+        //        private string steam_api_key = "http://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key=<API KEY>";
         //        http://api.steampowered.com/IEconItems_440/GetSchemaURL/v1/?key=
 
 
+        //todo: enter an API key from a dummy account here
+        private string internal_steam_api_key = "INVALID KEY";
         private string steam_api_key = "";
 
 
@@ -56,9 +58,6 @@ namespace TFMV
 
         private bool adding_workshop_item_toLoadout = false;
         private string adding_workshop_item_zip_path;
-
-
-
 
         Image missing_icon = Properties.Resources.icon_workshop_item;
 
@@ -290,6 +289,11 @@ namespace TFMV
 
         private List<string> banned_items = new List<string>();
 
+
+        //this variable stops right click context menu popping up when the Workshop tab is open
+        private bool supress_TF2Item_ContextMenu = false;
+
+
         // drag and drop handle file
         private delegate void DelegateOpenFile(String s);
         private DelegateOpenFile m_DelegateOpenFile;
@@ -390,20 +394,6 @@ namespace TFMV
 
 #endif
 
-
-
-            steam_api_key = LoadAPIKey();
-
-            //neodement:
-            //if api key was empty the above function will have thrown out an appropriate error message explaining why
-            if (steam_api_key == "")
-            {
-                tabControl.SelectedIndex = 1;
-            }
-            else
-            {
-                txtb_API_Key.Text = steam_api_key;
-            }
 
 
 
@@ -512,6 +502,43 @@ namespace TFMV
             cb_cubemap.CheckedChanged -= new EventHandler(cb_cubemap_CheckedChanged);
 
             settings_load();
+
+
+
+            #region API KEY STUFF
+
+            //use the built-in one unless you were told not to
+            //if (chk_API_Key.Checked)
+            //{
+                steam_api_key = LoadAPIKey();
+            //}
+            //else
+            //{
+            //    steam_api_key = internal_steam_api_key;
+            //}
+
+            //neodement:
+            //if api key was empty the above function will have thrown out an appropriate error message explaining why (not anymore)
+            if (steam_api_key == "")
+            {
+                //tabControl.SelectedIndex = 1;
+                panel_APIKey.Visible = false;
+                steam_api_key = internal_steam_api_key;
+
+            }
+            else
+            {
+                panel_APIKey.Visible = true;
+                txtb_API_Key.Text = steam_api_key;
+                boxL.Visible = false;
+                boxT.Visible = false;
+                boxR.Visible = false;
+                boxB.Visible = false;
+            }
+            #endregion
+
+
+
 
             // CHECK DUPLICATE PROCESSES  ////////////////////////////////////////////////////////////////////////////////////////////////////
             // check if another TFMV or HLMV is running
@@ -1107,8 +1134,14 @@ namespace TFMV
 
                 load_schema(false);
 
-                check_schema_version();
+                //freeze the whole program (oops)
+                //while (bgWorker_load_schema.IsBusy)
+                //{
+                //    Thread.Sleep(1000);
+                //}
+                
 
+                check_schema_version(true);
 
                 //set a default value to the class startup tab if it wasn't set before
                 if (lstStartupTab_Class.Text == "")
@@ -1317,7 +1350,7 @@ namespace TFMV
 
             if ((steamGameConfig.steam_dir == "") || (steamGameConfig.steam_dir == null) || (!Directory.Exists(steamGameConfig.steam_dir)))
             {
-                MessageBox.Show("Error: You need to set the steam directory.");
+                MessageBox.Show("Error: You need to set the Steam directory.");
                 tabControl.SelectedIndex = 1;
 
                 return;
@@ -1341,7 +1374,7 @@ namespace TFMV
 
                 if (mdl_path == null)
                 {
-                    MessageBox.Show("Error: (" + item.item_name + ") item's model path is udnefined.");
+                    MessageBox.Show("Error: (" + item.item_name + ") item's model path is undefined.");
                     return;
                 }
 
@@ -1934,6 +1967,12 @@ namespace TFMV
             //disable multiclass checkbox, it doesn't work on this page
             cb_allclass_only.Enabled = false;
 
+            //this variable stops right click context menu popping up when the Workshop tab is open
+            supress_TF2Item_ContextMenu = true;
+
+            //hide equip region filter because it doesn't work on this page
+            comboBox_equip_region_filter.Visible = false;
+            lab_region_filter.Visible = false;
 
             items_loading = true;
 
@@ -2383,6 +2422,8 @@ namespace TFMV
             //enable multiclass checkbox, workshop button may have disabled it
             cb_allclass_only.Enabled = true;
 
+            //this variable stops right click context menu popping up when the Workshop tab is open
+            supress_TF2Item_ContextMenu = false;
 
             if (bgWorker_download_schema.IsBusy) { return; }
             if (bgWorker_load_schema.IsBusy) { return; }
@@ -2548,10 +2589,11 @@ namespace TFMV
             int width = x + hlmv_padding.left;
             int height = y + hlmv_padding.bottom;
 
-            if (!cb_disable_window.Checked)
-            {
+            //neodement: apply scale even if tfmv window size is disabled
+            //if (!cb_disable_window.Checked)
+            //{
                 SetWindowPos(proc_HLMV.MainWindowHandle, HWND_TOP, rect.left, rect.top, width, height, 0);
-            }
+            //}
         }
         // textbox event : set HLMV window size X
         private void txtb_hlmv_wsize_x_KeyPress(object sender, KeyPressEventArgs e)
@@ -3654,7 +3696,7 @@ namespace TFMV
                 Thread.Sleep(delay); // wait for hlmv refresh
                 Bitmap white_bg = screenshot_capture(false, true);
 
-                // set black backgroung
+                // set black background again
                 this.BeginInvoke((Action)(() => write_flat_mat(tfmv_dir + @"materials\models\TFMV\tfmv_bg.vmt", "0 0 0")));
 
                 // generate bitmap with alpha mask from black/white background bitmaps
@@ -3825,7 +3867,7 @@ namespace TFMV
             for (int i = 1; i < 37; i++)
             {
 
-                // if user çancelled or HLMV was closed
+                // if user cancelled or HLMV was closed
                 if (sendingWorker.CancellationPending || proc_HLMV.HasExited)//At each iteration of the loop, check if there is a cancellation request pending 
                 {
                     //  cancel background worker
@@ -4072,9 +4114,9 @@ namespace TFMV
             if (!e.Cancelled && e.Error == null)//Check if the worker has been cancelled or if an error occured
             {
                 string result = (string)e.Result;//Get the result from the background thread
-                //txtResult.Text = result;//Display the result to the user
-                //lblStatus.Text = "Done";
-            }
+                                                 //txtResult.Text = result;//Display the result to the user
+                                                 //lblStatus.Text = "Done";
+        }
             else if (e.Cancelled)
             {
 
@@ -4130,8 +4172,21 @@ namespace TFMV
 
             if (!e.Cancelled)
             {
-                SystemSounds.Exclamation.Play();
+
+                //cheeky hack to make sure the user realises the paint chart is done
+
+                Form mainForm = this.FindForm();
+
+                mainForm.WindowState = FormWindowState.Minimized;
+                //mainForm.Show();
+                mainForm.WindowState = FormWindowState.Normal;
+
+                System.Windows.Forms.MessageBox.Show("Done!");
+
+                //it used to just play a sound
+                //SystemSounds.Exclamation.Play();
             }
+
         }
 
         // cancel
@@ -4774,7 +4829,7 @@ namespace TFMV
 
         }
 
-        private void check_schema_version()
+        private bool check_schema_version(bool promptUser)
         {
             #region download and get items_game URL
             string schemaURL_path_latest = schema_dir + "items_game_URL_latest.txt";
@@ -4793,11 +4848,33 @@ namespace TFMV
                     Client.Dispose();
                 }
             }
-            catch //(WebException e)
+            catch (WebException e)
             {
                 // failed to download
-                // MessageBox.Show("\n Failed to get items_game URL." + e.Message);
-                return;
+
+                //slightly different error messages depending if the user is already overriding the default key or not
+                if (steam_api_key != internal_steam_api_key)
+                {
+                    MessageBox.Show("Failed to get items_game URL. The API Key may be invalid.\n\nYou can set an API Key at the bottom of the settings tab.", "Error"); // + e.Message
+                }
+                else
+                {
+                MessageBox.Show("Failed to get items_game URL. The built-in API Key may have expired.\n\nYou can set your own API Key at the bottom of the settings tab.", "Error"); // + e.Message
+                }
+
+                //dont jump to the tab unless the schema is done loading.
+                if (!bgWorker_load_schema.IsBusy)
+                {
+                    panel_APIKey.Visible = true;
+
+                    tabControl.SelectedIndex = 1;
+
+                    txtb_API_Key.Focus();
+                    txtb_API_Key.SelectionStart = txtb_API_Key.TextLength;
+                    txtb_API_Key.SelectionLength = 0;
+                }
+
+                return false;
             }
 
             // check that file exists
@@ -4807,7 +4884,7 @@ namespace TFMV
                 if (f.Length == 0)
                 {
                     miscFunc.delete_safe(schemaURL_path_latest);
-                    return;
+                    //return;
                 }
 
                 TFMV.VDF_parser parser = new TFMV.VDF_parser();
@@ -4820,7 +4897,7 @@ namespace TFMV
                 if (f.Length == 0)
                 {
                     miscFunc.delete_safe(schemaURL_path);
-                    return;
+                    //return;
                 }
 
                 parser = new TFMV.VDF_parser();
@@ -4828,7 +4905,8 @@ namespace TFMV
                 parser.load_VDF_file();
                 items_game_URL = parser.RootNode.nSubNodes[1].nvalue;
 
-                if (items_game_URL_latest != items_game_URL)
+                //only ask this if promptUser is set to true
+                if (items_game_URL_latest != items_game_URL && promptUser)
                 {
                     DialogResult dialogResult = MessageBox.Show("A new version of the schema (item list) is available.\nDo you want to download it now?", "Schema update", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
@@ -4843,6 +4921,8 @@ namespace TFMV
             }
 
             #endregion
+
+            return true;
         }
 
 
@@ -5273,18 +5353,27 @@ namespace TFMV
 
         private void download_schemas()
         {
-            this.BeginInvoke((Action)(() => progressBar_dl.Visible = true));
-            this.BeginInvoke((Action)(() => progressBar_dl.Value = 0));
-            this.BeginInvoke((Action)(() => lab_status.Visible = true));
-
-            object[] arrObjects = new object[] { null };
-
-            if (!bgWorker_load_schema.IsBusy)
+            //if a schema version check succeeds, carry on with the work
+            if (check_schema_version(false))
             {
-                // call background worker
-                bgWorker_download_schema.RunWorkerAsync(arrObjects);
+
+                this.BeginInvoke((Action)(() => progressBar_dl.Visible = true));
+                this.BeginInvoke((Action)(() => progressBar_dl.Value = 0));
+                this.BeginInvoke((Action)(() => lab_status.Visible = true));
+
+                object[] arrObjects = new object[] { null };
+
+                    if (!bgWorker_load_schema.IsBusy)
+                    {
+
+
+                        // call background worker
+                        bgWorker_download_schema.RunWorkerAsync(arrObjects);
+                    }
             }
         }
+
+        //todo: if this has an error it never recovers!
 
         // do work
         protected void bgWorker_download_schema_DoWork(object sender, DoWorkEventArgs eventarg)
@@ -5322,7 +5411,32 @@ namespace TFMV
                 }
                 else
                 {
-                    MessageBox.Show("Failed to get items_game URL. \n" + e.Message, "Error");
+                
+                // failed to download
+
+                //slightly different error messages depending if the user is already overriding the default key or not
+                if (steam_api_key != internal_steam_api_key)
+                {
+                    MessageBox.Show("Failed to get items_game URL. The API Key may be invalid.\n\nYou can set an API Key at the bottom of the settings tab.", "Error"); // + e.Message
+                }
+                else
+                {
+                    MessageBox.Show("Failed to get items_game URL. The built-in API Key may have expired.\n\nYou can set your own API Key at the bottom of the settings tab.", "Error"); // + e.Message
+                }
+
+                //set controls on main thread...
+                tabControl.BeginInvoke((Action)(() => tabControl.SelectedIndex = 1));
+                txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.Focus()));
+                txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.SelectionStart = txtb_API_Key.TextLength));
+                txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.SelectionLength = 0));
+
+                panel_APIKey.BeginInvoke((Action)(() => panel_APIKey.Visible = true));
+
+                bgWorker_download_schema.CancelAsync();
+                
+
+                return;
+
                 }
 
                 return;
@@ -5389,7 +5503,27 @@ namespace TFMV
                 }
                 else
                 {
-                    MessageBox.Show("Failed to get schema.vdf. \n" + e.Message, "Error");
+                    // failed to download
+
+                    //slightly different error messages depending if the user is already overriding the default key or not
+                    if (steam_api_key != internal_steam_api_key)
+                    {
+                        MessageBox.Show("Failed to get items_game URL. The API Key may be invalid.\n\nYou can set an API Key at the bottom of the settings tab.", "Error"); // + e.Message
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to get items_game URL. The built-in API Key may have expired.\n\nYou can set your own API Key at the bottom of the settings tab.", "Error"); // + e.Message
+                    }
+
+                    //set controls on main thread...
+                    tabControl.BeginInvoke((Action)(() => tabControl.SelectedIndex = 1));
+                    txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.Focus()));
+                    txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.SelectionStart = txtb_API_Key.TextLength));
+                    txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.SelectionLength = 0));
+
+                    panel_APIKey.BeginInvoke((Action)(() => panel_APIKey.Visible = true));
+
+                    bgWorker_download_schema.CancelAsync();
                 }
                 return;
             }
@@ -5421,7 +5555,29 @@ namespace TFMV
                     }
                     else
                     {
-                        MessageBox.Show("Failed to get schema.vdf. \n" + e.Message, "Error");
+
+                        // failed to download
+
+                        //slightly different error messages depending if the user is already overriding the default key or not
+                        if (steam_api_key != internal_steam_api_key)
+                        {
+                            MessageBox.Show("Failed to get items_game URL. The API Key may be invalid.\n\nYou can set an API Key at the bottom of the settings tab.", "Error"); // + e.Message
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to get items_game URL. The built-in API Key may have expired.\n\nYou can set your own API Key at the bottom of the settings tab.", "Error"); // + e.Message
+                        }
+
+                        //set controls on main thread...
+                        tabControl.BeginInvoke((Action)(() => tabControl.SelectedIndex = 1));
+                        txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.Focus()));
+                        txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.SelectionStart = txtb_API_Key.TextLength));
+                        txtb_API_Key.BeginInvoke((Action)(() => txtb_API_Key.SelectionLength = 0));
+
+                        panel_APIKey.BeginInvoke((Action)(() => panel_APIKey.Visible = true));
+
+                        bgWorker_download_schema.CancelAsync();
+
                     }
                     return;
                 }
@@ -6221,7 +6377,10 @@ namespace TFMV
             if ((item_name == null) || (item_name == "")) { return ""; }
             item_name = item_name.Replace("#", "");
             string result = "";
-            int index = item_names_List.key.FindIndex(x => x.StartsWith(item_name, StringComparison.OrdinalIgnoreCase));
+            //int index = item_names_List.key.FindIndex(x => x.StartsWith(item_name, StringComparison.OrdinalIgnoreCase));
+
+            //fix for wrong string being pulled from TF_English, for example POMSON, Fishcake Fragment
+            int index = item_names_List.key.FindIndex(x => x.Equals(item_name, StringComparison.OrdinalIgnoreCase));
 
             if (index > -1)
             {
@@ -7113,8 +7272,9 @@ namespace TFMV
                     Model_Painter mp = new Model_Painter();
 
                     string model_filename = Path.GetFileName(mdlpath);
-                    mp.lab_mdl.Text = model_filename + "(" + mdlpath + ")";
+                    mp.lab_mdl.Text = model_filename; // + "(" + mdlpath + ")"
                     mp.Text = "Model: " + model_filename;
+                    mp.txt_mdlpath.Text = model_filename;
 
                     mp.paint_dir = tfmv_dir;
                     mp.tf_dir = steamGameConfig.tf_dir;
@@ -9930,13 +10090,6 @@ namespace TFMV
             download_schemas();
         }
 
-        // item icon list click event
-        private void list_view_MouseClick(object sender, MouseEventArgs e)
-        {
-
-
-        }
-
         // define custom model to load
         private void btn_clist_add_Click(object sender, EventArgs e)
         {
@@ -10274,6 +10427,14 @@ namespace TFMV
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
+            //lock out API key whenever user changes tab
+            if (chkHideAPIKey.Checked)
+            {
+                txtb_API_Key.UseSystemPasswordChar = true;
+            }
+            */
+
             int fheight = this_height;
             if (btn_expand_item_list.Text == "-") { fheight = this_height_extended; }
 
@@ -12086,8 +12247,101 @@ End Class
 
         private void chk_API_Key_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("make this work!");
+            //MessageBox.Show("make this work!");
             //txtb_API_Key.Text = "";
+
+            if (chk_HideAPIKey.Checked)
+            {
+                txtb_API_Key.UseSystemPasswordChar = true;
+                //txtb_API_Key.Enabled = true;
+                //txtb_API_Key.BackColor = Color.WhiteSmoke;
+
+                string txtb_API_Key_Text = txtb_API_Key.Text;
+
+                //check if it's a 32 character Alphanumerical string. as soon as it is, try to save it
+                //if (txtb_API_Key_Text.Length == 32 && Regex.IsMatch(txtb_API_Key_Text, "^[a-zA-Z0-9]*$"))
+                //{
+                //    steam_api_key = txtb_API_Key.Text;
+                //    SaveAPIKey();
+                //}
+
+            }
+            else
+            {
+                txtb_API_Key.UseSystemPasswordChar = false;
+                //txtb_API_Key.Enabled = false;
+                //txtb_API_Key.BackColor = Color.Gainsboro;
+                //steam_api_key = internal_steam_api_key;
+            }
+
+            settings_save(sender, e);
+        }
+
+        private void panel_hlmv_settings_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        //unlock API key textbox when clicked
+        private void txtb_API_Key_Enter(object sender, EventArgs e)
+        {
+            //txtb_API_Key.UseSystemPasswordChar = false;
+        }
+
+        private void list_view_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (!supress_TF2Item_ContextMenu)
+                {
+                    ExtdListViewItem focusedItem = (ExtdListViewItem)list_view.FocusedItem;
+                    if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                    {
+                        //tag is used to store right clicked item
+                        menu_TF2Item.Tag = focusedItem;
+                        menu_TF2Item.Show(Cursor.Position);
+                    }
+                }
+            }
+        }
+
+
+        // get checked/unchecked item
+        //ExtdListViewItem item = (ExtdListViewItem)e.Item;
+
+
+        /*
+        // searches item by mdl_path and returns the index
+        private int loadout_find_model(string search_mdl_path)
+        {
+            for (int i = 0; i < loadout_list.Controls.Count; i++)
+            {
+
+                if (((Loadout_Item)loadout_list.Controls[i]).model_path == search_mdl_path)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+        */
+
+
+        private void copyMDLPathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExtdListViewItem item = (ExtdListViewItem)menu_TF2Item.Tag;
+
+            Clipboard.SetText(item.model_path);
+        }
+
+        private void viewOnTF2WikiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExtdListViewItem item = (ExtdListViewItem)menu_TF2Item.Tag;
+
+            string SearchItemName = (item.Text.Split('(')[0].Replace(" ", "_"));
+
+            Process.Start("http://wiki.teamfortress.com/wiki/Special:Search/" + SearchItemName);
         }
 
         private void disable_custom_mods()
@@ -12121,6 +12375,8 @@ End Class
 
         //neodement:
         //load API key from "api_key.ini"
+
+        //(disabled error messages, just use the built-in one if it exists)
         private string LoadAPIKey()
         {
             try
@@ -12134,13 +12390,13 @@ End Class
                 }
                 else
                 {
-                    MessageBox.Show("Failed to load API key from file (invalid key).\nPlease set your API Key at the bottom of the settings window.");
+                    //MessageBox.Show("Failed to load API key from file (invalid key).\nPlease set your API Key at the bottom of the settings window.");
                     return "";
                 }
             }
             catch
             {
-                MessageBox.Show("Failed to load API key from file (api_key.ini couldn't be loaded).\nPlease set your API Key at the bottom of the settings window.");
+                //MessageBox.Show("Failed to load API key from file (api_key.ini couldn't be loaded).\nPlease set your API Key at the bottom of the settings window.");
                 return "";
             }
         }
@@ -12154,6 +12410,10 @@ End Class
             try
             {
                  File.WriteAllText(app_data_dir + "api_key.ini", steam_api_key);
+                 boxL.Visible = false;
+                 boxT.Visible = false;
+                 boxR.Visible = false;
+                 boxB.Visible = false;
             }
             catch
             {

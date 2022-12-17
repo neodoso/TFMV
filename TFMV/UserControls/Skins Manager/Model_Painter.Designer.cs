@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.lab_mdl = new System.Windows.Forms.Label();
             this.panel_header = new System.Windows.Forms.Panel();
-            this.txt_mdlpath = new System.Windows.Forms.TextBox();
             this.cb_lock_skin = new System.Windows.Forms.CheckBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -39,6 +38,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_editJigglebones = new System.Windows.Forms.Button();
+            this.txt_mdlpath = new System.Windows.Forms.Label();
             this.panel_header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel1.SuspendLayout();
@@ -47,11 +47,11 @@
             // lab_mdl
             // 
             this.lab_mdl.AutoSize = true;
-            this.lab_mdl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Bold);
+            this.lab_mdl.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_mdl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.lab_mdl.Location = new System.Drawing.Point(3, 3);
             this.lab_mdl.Name = "lab_mdl";
-            this.lab_mdl.Size = new System.Drawing.Size(41, 13);
+            this.lab_mdl.Size = new System.Drawing.Size(36, 12);
             this.lab_mdl.TabIndex = 0;
             this.lab_mdl.Text = "Model";
             this.lab_mdl.MouseHover += new System.EventHandler(this.lab_mdl_MouseHover);
@@ -59,28 +59,13 @@
             // panel_header
             // 
             this.panel_header.BackColor = System.Drawing.Color.Silver;
-            this.panel_header.Controls.Add(this.txt_mdlpath);
             this.panel_header.Controls.Add(this.lab_mdl);
+            this.panel_header.Controls.Add(this.txt_mdlpath);
             this.panel_header.Controls.Add(this.cb_lock_skin);
             this.panel_header.Location = new System.Drawing.Point(-1, -1);
             this.panel_header.Name = "panel_header";
             this.panel_header.Size = new System.Drawing.Size(879, 20);
             this.panel_header.TabIndex = 1;
-            // 
-            // txt_mdlpath
-            // 
-            this.txt_mdlpath.BackColor = System.Drawing.Color.Silver;
-            this.txt_mdlpath.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_mdlpath.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold);
-            this.txt_mdlpath.ForeColor = System.Drawing.Color.DimGray;
-            this.txt_mdlpath.Location = new System.Drawing.Point(183, 4);
-            this.txt_mdlpath.Name = "txt_mdlpath";
-            this.txt_mdlpath.ReadOnly = true;
-            this.txt_mdlpath.Size = new System.Drawing.Size(609, 11);
-            this.txt_mdlpath.TabIndex = 7;
-            this.txt_mdlpath.Text = "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff" +
-    "fffffffffff";
-            this.txt_mdlpath.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cb_lock_skin
             // 
@@ -146,6 +131,20 @@
             this.btn_editJigglebones.Visible = false;
             this.btn_editJigglebones.Click += new System.EventHandler(this.btn_editJigglebones_Click);
             // 
+            // txt_mdlpath
+            // 
+            this.txt_mdlpath.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txt_mdlpath.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.txt_mdlpath.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txt_mdlpath.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_mdlpath.Location = new System.Drawing.Point(45, 3);
+            this.txt_mdlpath.Name = "txt_mdlpath";
+            this.txt_mdlpath.Size = new System.Drawing.Size(747, 14);
+            this.txt_mdlpath.TabIndex = 8;
+            this.txt_mdlpath.Tag = " ";
+            this.txt_mdlpath.Text = "txt_mdlpath";
+            this.txt_mdlpath.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Model_Painter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,6 +177,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_editJigglebones;
-        public System.Windows.Forms.TextBox txt_mdlpath;
+        public System.Windows.Forms.Label txt_mdlpath;
     }
 }

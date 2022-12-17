@@ -477,6 +477,7 @@
     <Content Include="Libs\Ionic.Zip.dll" />
     <Content Include="Libs\MouseKeyboardLibrary.dll" />
     <None Include="Resources\btn_reset.png" />
+    <None Include="Resources\settings_red_border.png" />
     <Content Include="Resources\steamcrappy.png" />
     <None Include="Resources\steamcrappy1.png" />
     <None Include="Resources\TFMV_neo_logo.png" />
