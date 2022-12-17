@@ -14,10 +14,6 @@ namespace TFMV.UserControls
 {
     public partial class Model_Painter : UserControl
     {
-
-        //need this so the jigglebone editor can read it
-        public string mdlpath { get; set; }
-
         #region declarations
 
         public byte skin_red_override = 0;
@@ -392,7 +388,7 @@ namespace TFMV.UserControls
                         }
                 }
 
-                //make sure we aren't copying the same file (in the case where its the VMT0)
+                //m ake sure we aren't copying the same file (in the case where its the VMT0)
                 if (vmt.vmt_path != main_skins[vmt_num])
                 {
                         if (File.Exists(paint_dir + vmt.vmt_path))
@@ -434,18 +430,5 @@ namespace TFMV.UserControls
         private void lab_mdl_MouseHover(object sender, EventArgs e)
         {
         }
-
-        private void btn_editJigglebones_Click(object sender, EventArgs e)
-        {
-            TFMV.UserControls.Jigglebone_Editor.AddJiggleBone jiggleForm = new TFMV.UserControls.Jigglebone_Editor.AddJiggleBone();
-
-            //set up the jigglebone editor so it knows what mdl it's pointing at
-            jiggleForm.mdlpath = mdlpath;
-            jiggleForm.readJigglebones();
-
-
-            //            jiggleForm.ShowDialog();
-        }
-
     }
 }

@@ -19,7 +19,7 @@ namespace TFMV.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -57,16 +57,6 @@ namespace TFMV.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btn_reset {
-            get {
-                object obj = ResourceManager.GetObject("btn_reset", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -123,29 +113,29 @@ namespace TFMV.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] engineer_hand {
+            get {
+                object obj = ResourceManager.GetObject("engineer_hand", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] engineer_hand_hat {
+            get {
+                object obj = ResourceManager.GetObject("engineer_hand_hat", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] engineer_hat {
             get {
                 object obj = ResourceManager.GetObject("engineer_hat", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] engineer_rightarm {
-            get {
-                object obj = ResourceManager.GetObject("engineer_rightarm", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] engineer_rightarm_hat {
-            get {
-                object obj = ResourceManager.GetObject("engineer_rightarm_hat", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -507,26 +497,6 @@ namespace TFMV.Properties {
             get {
                 object obj = ResourceManager.GetObject("soldier_hat", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap steamcrappy {
-            get {
-                object obj = ResourceManager.GetObject("steamcrappy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TFMV_neo_logo {
-            get {
-                object obj = ResourceManager.GetObject("TFMV_neo_logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
