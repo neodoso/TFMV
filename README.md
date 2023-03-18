@@ -21,3 +21,8 @@ TFMV manages the models and materials(aka skins) of each item through a visual i
 It also makes it possible to switch skins(red/blue) on model attachments, change paint colors, easily edit skins with the material editor and test material 
 changes in real time, take screenshots with specific resolutions, take screenshots with transparency, automatically capture screenshots for each of item's paint color, 
 load workshop .zip compiled items, etc
+
+
+![tfmv_loadout_setup](https://user-images.githubusercontent.com/39770445/226131234-e09f2fac-2623-41e9-97d7-7d2e3af9f13f.jpg)
+
+![tfmv_loadout_to_hlmv](https://user-images.githubusercontent.com/39770445/226131239-10560968-ef7c-45e7-8a70-33abe134bcf5.gif)
